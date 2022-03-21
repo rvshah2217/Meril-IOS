@@ -8,6 +8,6 @@ target 'Meril' do
   # Pods for Meril
   pod 'iOSDropDown'
   pod 'LGSideMenuController'
-#  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 
 end

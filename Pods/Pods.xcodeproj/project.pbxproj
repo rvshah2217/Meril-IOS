@@ -103,8 +103,8 @@
 		9B799078EC1A827289BFA5141C60AA4D /* Pods-Meril-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Meril-frameworks.sh"; sourceTree = "<group>"; };
 		9C09193A052927B31C8B55270AC578DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		9C4D02FBEA9E61EAEEE0185C1BF1E988 /* LGSideMenuWrapperView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuWrapperView.swift; path = LGSideMenuController/LGSideMenuWrapperView.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F6927A07B46136AF6742F53BDA00608 /* Pods-Meril */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Meril"; path = Pods_Meril.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F6927A07B46136AF6742F53BDA00608 /* Pods_Meril.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meril.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A676E834A4034255F273EA084FDCD4CA /* LGSideMenuController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LGSideMenuController.debug.xcconfig; sourceTree = "<group>"; };
 		A95921B80FC900A29BD65887D18F775B /* LGSideMenuHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuHelper.swift; path = LGSideMenuController/LGSideMenuHelper.swift; sourceTree = "<group>"; };
 		AA9386CD975BD549E3076F190482CF61 /* LGSideMenuController+Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+Helpers.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+Helpers.swift"; sourceTree = "<group>"; };
@@ -189,7 +189,6 @@
 				3410F70CE3F33F41A56795273848A1DB /* iOSDropDown.swift */,
 				FE048D34E6B92C83FC4708523B23565B /* Support Files */,
 			);
-			name = iOSDropDown;
 			path = iOSDropDown;
 			sourceTree = "<group>";
 		};
@@ -198,7 +197,7 @@
 			children = (
 				FCEEA8BBD9DA8D0CCE0A3092B20E3FA7 /* iOSDropDown */,
 				1A30172AE9F0660847BC807A6F15A494 /* LGSideMenuController */,
-				9F6927A07B46136AF6742F53BDA00608 /* Pods-Meril */,
+				9F6927A07B46136AF6742F53BDA00608 /* Pods_Meril.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -289,7 +288,6 @@
 				E4C30FB5EA71B5524FB0622DF77EB233 /* UIViewController+LGSideMenuController.swift */,
 				079DCC6E5F9C6BC94FC4FA76E0278ADC /* Support Files */,
 			);
-			name = LGSideMenuController;
 			path = LGSideMenuController;
 			sourceTree = "<group>";
 		};
@@ -391,7 +389,7 @@
 			);
 			name = "Pods-Meril";
 			productName = Pods_Meril;
-			productReference = 9F6927A07B46136AF6742F53BDA00608 /* Pods-Meril */;
+			productReference = 9F6927A07B46136AF6742F53BDA00608 /* Pods_Meril.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */

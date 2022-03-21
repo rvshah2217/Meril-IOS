@@ -21,7 +21,7 @@ struct GlobalFunctions {
     
     static func setRootNavigationController(currentVC: UIViewController) -> UINavigationController {
         let navController = UINavigationController(rootViewController: currentVC)
-        navController.navigationBar.barTintColor = UIColor(hexs)
+//        navController.navigationBar.barTintColor = UIColor(hexs)
         navController.navigationBar.tintColor = .white
         navController.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .medium)

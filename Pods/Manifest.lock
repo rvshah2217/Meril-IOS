@@ -1,8 +1,12 @@
 PODS:
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
   - iOSDropDown (0.3.4)
   - LGSideMenuController (3.1.2)
 
 DEPENDENCIES:
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - iOSDropDown
   - LGSideMenuController
 
@@ -11,10 +15,20 @@ SPEC REPOS:
     - iOSDropDown
     - LGSideMenuController
 
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
 SPEC CHECKSUMS:
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   LGSideMenuController: 0c7b155b0dbdf14bf8b88d5ac363c5fe1584bb23
 
-PODFILE CHECKSUM: 0d5ea1982e8a9b2b18f10f6a278f875b41c2c556
+PODFILE CHECKSUM: 774f793c81e5312e8269d0c2f80c2cb79ec19ffe
 
 COCOAPODS: 1.11.3

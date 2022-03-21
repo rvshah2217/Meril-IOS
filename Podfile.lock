@@ -1,0 +1,20 @@
+PODS:
+  - iOSDropDown (0.3.4)
+  - LGSideMenuController (3.1.2)
+
+DEPENDENCIES:
+  - iOSDropDown
+  - LGSideMenuController
+
+SPEC REPOS:
+  trunk:
+    - iOSDropDown
+    - LGSideMenuController
+
+SPEC CHECKSUMS:
+  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
+  LGSideMenuController: 0c7b155b0dbdf14bf8b88d5ac363c5fe1584bb23
+
+PODFILE CHECKSUM: 0d5ea1982e8a9b2b18f10f6a278f875b41c2c556
+
+COCOAPODS: 1.11.3

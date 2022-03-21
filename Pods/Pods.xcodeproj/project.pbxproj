@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -162,7 +162,7 @@
 		9948CEEF4E8F8BAF07AEF8DA127FD328 /* LGSideMenuHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuHelper.swift; path = LGSideMenuController/LGSideMenuHelper.swift; sourceTree = "<group>"; };
 		9B799078EC1A827289BFA5141C60AA4D /* Pods-Meril-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Meril-frameworks.sh"; sourceTree = "<group>"; };
 		9C7D704A1A37AB775CB4F1F393DC7276 /* iOSDropDown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSDropDown.release.xcconfig; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DD27BADF3B60BE91710F96DE351D303 /* UIColor+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIColor+ChameleonPrivate.m"; sourceTree = "<group>"; };
 		9E219DD6F3AFACF1547469F14C3256CA /* NSArray+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+Chameleon.h"; path = "Pod/Classes/Objective-C/NSArray+Chameleon.h"; sourceTree = "<group>"; };
 		9F6927A07B46136AF6742F53BDA00608 /* Pods-Meril */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Meril"; path = Pods_Meril.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,7 +278,6 @@
 				A24A1C74ADF9697483B4B157375E0848 /* UIViewController+LGSideMenuController.swift */,
 				AFEE4FC0F43127F8082DE0D6F05DC3FE /* Support Files */,
 			);
-			name = LGSideMenuController;
 			path = LGSideMenuController;
 			sourceTree = "<group>";
 		};
@@ -303,7 +302,6 @@
 				ED43DA2D3F88505757DCB9B2D53D7892 /* iOSDropDown.swift */,
 				6B751C932E0400B41B7FE252B7C2D92A /* Support Files */,
 			);
-			name = iOSDropDown;
 			path = iOSDropDown;
 			sourceTree = "<group>";
 		};
@@ -314,7 +312,6 @@
 				903E413AB955EE14E99E91A4B6A1C1AB /* Support Files */,
 				E0ED7F073F930E52EB64BE1A9D5B036F /* Swift */,
 			);
-			name = ChameleonFramework;
 			path = ChameleonFramework;
 			sourceTree = "<group>";
 		};
@@ -604,7 +601,7 @@
 				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 11.4";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

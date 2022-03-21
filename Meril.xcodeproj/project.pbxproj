@@ -222,7 +222,7 @@
 				};
 			};
 			buildConfigurationList = 831A4F5827E83CED00BEF2E7 /* Build configuration list for PBXProject "Meril" */;
-			compatibilityVersion = "Xcode 10.0";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

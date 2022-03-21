@@ -3,61 +3,102 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07551A6B18761BBFBBF309E9C88C20CC /* LGSideMenuController+ValidatingUserInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD729833332086D33D10AB917537002 /* LGSideMenuController+ValidatingUserInteraction.swift */; };
-		0EA5251C6A730C1AF5C7BF561B03868F /* LGSideMenuController+ValidatingViewsTransforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CDFDD19EAED93A51E4D2F5A3922DF1 /* LGSideMenuController+ValidatingViewsTransforms.swift */; };
-		1585406029275A23CBFE5E6974D6FCD5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE09B24E9EBBCE4A19480F7596D32DB0 /* CoreGraphics.framework */; };
-		1A2C40587D5425F802612E65CD8232DD /* LGSideMenuBackgroundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208A20EBB301AA495F94F4F2DAC64AA6 /* LGSideMenuBackgroundShadowView.swift */; };
-		1B637C619A94E1DCC06D923F5AFC833B /* iOSDropDown-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C26EA11071D8BFA151F5CA4AECA9185D /* iOSDropDown-dummy.m */; };
-		1C3F0E3E733248DBB5DF96B9DE0FDCF7 /* LGSideMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D32C395BC1FEE7B0A4F67FD9BBCFFB /* LGSideMenuDelegate.swift */; };
-		285F0E91DB7A22D06F648FF5793FB7FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD98ACC7A6E40DDB620663F2EDAAF78E /* UIKit.framework */; };
-		2EF3A20D439DDAC3C368E36F8A7E85D2 /* LGSideMenuController+RightViewActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1B1D6905E7929728C22E74876BD1F2 /* LGSideMenuController+RightViewActions.swift */; };
-		30CC79215F75F7BD8660EAF3E20F8793 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B92BE98A3FECD223AC2BC418D1F6D1E /* Foundation.framework */; };
-		3291AF8F4E46E81B80CDB0A562C0FFCD /* LGSideMenuController+ValidatingViewsHierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F5ED77AD7663A8EEEE1FB0CDE2549B /* LGSideMenuController+ValidatingViewsHierarchy.swift */; };
-		360AA58F6F2A639A76B90D843176B81A /* LGSideMenuBackgroundDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64384C0B3FA41DD938295371A3B535CC /* LGSideMenuBackgroundDecorationView.swift */; };
-		395A27DEB28EAFB8B35B436ADE2A47E5 /* LGSideMenuController+Rotating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB4F27034992118FF075472AB9ED76 /* LGSideMenuController+Rotating.swift */; };
-		44E4A9CE4D199B2893785C01E5D686A0 /* UIViewController+LGSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C30FB5EA71B5524FB0622DF77EB233 /* UIViewController+LGSideMenuController.swift */; };
-		4552703889938422AEE520BE76096A60 /* LGSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1909670DFC21B3C8781C24981DE48D87 /* LGSideMenuController.swift */; };
-		4AFD2CEDC8E2682246D0F6D995FB803B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B92BE98A3FECD223AC2BC418D1F6D1E /* Foundation.framework */; };
-		4F8DB8C636CDF98CFD58363032299F3E /* LGSideMenuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95921B80FC900A29BD65887D18F775B /* LGSideMenuHelper.swift */; };
-		51606BB17A4049B3BEBA76190F3436D5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C09193A052927B31C8B55270AC578DC /* QuartzCore.framework */; };
-		621AD47029B8645E6E41027DCD932E3C /* LGSideMenuController+States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF515D235517C5AB9938E0EFA69511F /* LGSideMenuController+States.swift */; };
-		695E83CEE703F02CF00B718B83F31BBC /* LGSideMenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EF0C32EA43A919224D59913C85E993 /* LGSideMenuSegue.swift */; };
-		6C03405F9CDCB5A949DD5CE63454CCAB /* LGSideMenuController+StatusBarHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021699640DD8B604F3E418B0DCB2CAC7 /* LGSideMenuController+StatusBarHandler.swift */; };
-		6DA37CEE2AF2731145F341831BE7F08C /* LGSideMenuStatusBarBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496730CB0636801AAC2959181FB8A486 /* LGSideMenuStatusBarBackgroundView.swift */; };
-		6EFE85C2D1C6534290CD8F9CD933D233 /* LGSideMenuController+Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A6E787BEEBC273FF275A79516951E /* LGSideMenuController+Callbacks.swift */; };
-		73B10659B0D87FD5C3D8BDC22A5A234E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B92BE98A3FECD223AC2BC418D1F6D1E /* Foundation.framework */; };
-		75289A6C1A24D7FBFFFCA6B069CFF043 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD98ACC7A6E40DDB620663F2EDAAF78E /* UIKit.framework */; };
-		7BB4F17A1D47446DACA96A6C59A2D092 /* LGSideMenuController+ValidatingViewsInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E27DB3A2C8B563BCF08EEC35757A9B /* LGSideMenuController+ValidatingViewsInit.swift */; };
-		7BCED45248F4BBA23A81948281424A22 /* LGSideMenuController+LeftViewActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2392DADFD15BCC6EE1E822882D544992 /* LGSideMenuController+LeftViewActions.swift */; };
-		86CE5832D3A682556D777591604A9535 /* LGSideMenuController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2A39EA5735EF255608971CD0FE9311 /* LGSideMenuController-dummy.m */; };
-		873E61B83C7494913C7881AD2861A033 /* LGSideMenuController+Layouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C431E16F09C3E48676DBFE67CB5BBE /* LGSideMenuController+Layouting.swift */; };
-		8B463145D39F8F3D641B14D1C4B1FED2 /* LGSideMenuController+ValidatingViewsVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C42B6639D9779B58CBDC5F79A0E8F /* LGSideMenuController+ValidatingViewsVisibility.swift */; };
-		90778B0320F9565F184268E1BA0C9BD9 /* LGSideMenuController+ValidatingViewsStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2618E710C64FB8A699DBC4521CCD9174 /* LGSideMenuController+ValidatingViewsStyles.swift */; };
-		91C7212DA1ACAA72AA1882BDB86DE709 /* LGSideMenuController+GesturesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1A23EB4E1DE72F82EAF5B968DC6AE /* LGSideMenuController+GesturesHandler.swift */; };
-		9C36471BB22B2CCE6301741666DA5856 /* LGSideMenuWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D02FBEA9E61EAEEE0185C1BF1E988 /* LGSideMenuWrapperView.swift */; };
-		9D7BA31D4833C06A9740B1FC2A9382B1 /* LGSideMenuController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9386CD975BD549E3076F190482CF61 /* LGSideMenuController+Helpers.swift */; };
-		9F079A2701FEA0F33062E44BE2ECCBC0 /* iOSDropDown-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 983D18E05323334D4C16FDBF51D2D197 /* iOSDropDown-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B524765565276DF467902E7FA091702B /* Pods-Meril-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BE28F5DAD4AE5921619E871A9C5BDAD /* Pods-Meril-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BCEB90BA800125022381A37DF14EF939 /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3410F70CE3F33F41A56795273848A1DB /* iOSDropDown.swift */; };
-		CE7C9C87A773E15BF97EB50C029CADD9 /* LGSideMenuController+ViewsRemoving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4D226C5DBD8965A075F093B9B4D970 /* LGSideMenuController+ViewsRemoving.swift */; };
-		CEC800514A4DEE74A0EA5670306FAEAD /* LGSideMenuController+ValidatingViewsFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425C48C1AA45C9D0869A594B1182C967 /* LGSideMenuController+ValidatingViewsFrames.swift */; };
-		DC5E7B700B66B002633FEDBEB3A95197 /* LGSideMenuController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E76098A8E42E35BC8052CCFFB86120BE /* LGSideMenuController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FC13C87933E55643FADCEE2B88E89A6A /* Pods-Meril-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 470BD0022FCEA591199E5E6C43DF2DCD /* Pods-Meril-dummy.m */; };
+		05C752E65B5042A4602DDE7F527BF36E /* Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = D32435F24D81C5CB03CAFC372D4F1B8D /* Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07551A6B18761BBFBBF309E9C88C20CC /* LGSideMenuController+ValidatingUserInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B1E17C29BE7BE922AD10872FB8B862 /* LGSideMenuController+ValidatingUserInteraction.swift */; };
+		0EA5251C6A730C1AF5C7BF561B03868F /* LGSideMenuController+ValidatingViewsTransforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158887AD58B4655027739D2CC92620 /* LGSideMenuController+ValidatingViewsTransforms.swift */; };
+		0FA04FD308DACD489BB73B6B39BC549F /* ChameleonMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = A34EADF206E3A034F1DAF3ABE55001C0 /* ChameleonMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		130F2ECD2D1415CEC87855879AFB28D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F00BEE59DC7EC91BB1C827BEF78C6A7 /* CoreGraphics.framework */; };
+		153D18930C065806877C2B863608EA4A /* UIImage+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A8E56372B77640A11EEF33DA596395 /* UIImage+ChameleonPrivate.m */; };
+		1585406029275A23CBFE5E6974D6FCD5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F00BEE59DC7EC91BB1C827BEF78C6A7 /* CoreGraphics.framework */; };
+		1A2C40587D5425F802612E65CD8232DD /* LGSideMenuBackgroundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DDBC1F17180347683656BD32DA33D4 /* LGSideMenuBackgroundShadowView.swift */; };
+		1A7037B41DC0FBAED75176E9B1DF7C78 /* Pods-Meril-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 470BD0022FCEA591199E5E6C43DF2DCD /* Pods-Meril-dummy.m */; };
+		1B637C619A94E1DCC06D923F5AFC833B /* iOSDropDown-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 060FF3A3D346D7034CD57E4D474C252C /* iOSDropDown-dummy.m */; };
+		1C3F0E3E733248DBB5DF96B9DE0FDCF7 /* LGSideMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9BCC41A573E6104F2CC7A20649EBFC /* LGSideMenuDelegate.swift */; };
+		1F2DAA4BD665CC063D99F36764900586 /* UIColor+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 04AC90F22DF30009F2A62705FDFC691D /* UIColor+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		285F0E91DB7A22D06F648FF5793FB7FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF9E080A9A1ED9063D387790E4AE632 /* UIKit.framework */; };
+		2AD183881B50C9A6624CBE219076EEF5 /* ChameleonEnums.h in Headers */ = {isa = PBXBuildFile; fileRef = B484354B6A69EFDA52B59D44A63E7A34 /* ChameleonEnums.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2CDCB3D9817EB4A9D589CDF98F62C8F0 /* UIColor+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C56FED8382D119E29B964531E1073E /* UIColor+Chameleon.m */; };
+		2EF3A20D439DDAC3C368E36F8A7E85D2 /* LGSideMenuController+RightViewActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7872A73AC11DDCDE0AD0333BF1A235 /* LGSideMenuController+RightViewActions.swift */; };
+		30CC79215F75F7BD8660EAF3E20F8793 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316612CB60866F3952D1AEFFE9E409E7 /* Foundation.framework */; };
+		3291AF8F4E46E81B80CDB0A562C0FFCD /* LGSideMenuController+ValidatingViewsHierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BB8C273108F8EEF0D678D0A4A78A26 /* LGSideMenuController+ValidatingViewsHierarchy.swift */; };
+		34E5D0B65C391490E7FF3B31ECAF81F4 /* UINavigationController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EC66AD31BC2B2A474609A2F6A7EAFF /* UINavigationController+Chameleon.m */; };
+		34F64BE297E08E82118E6ED0A2A4372E /* UILabel+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = E590397E1F23CC40230A58AEA15A01C9 /* UILabel+Chameleon.m */; };
+		360AA58F6F2A639A76B90D843176B81A /* LGSideMenuBackgroundDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3495AE1BD0953F88E4492B56D69C8 /* LGSideMenuBackgroundDecorationView.swift */; };
+		395A27DEB28EAFB8B35B436ADE2A47E5 /* LGSideMenuController+Rotating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92114F9F50E47605FB5F2057CA8779AB /* LGSideMenuController+Rotating.swift */; };
+		3BC4F25FC9D78A7FD3609C8DE45F30A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF9E080A9A1ED9063D387790E4AE632 /* UIKit.framework */; };
+		44E4A9CE4D199B2893785C01E5D686A0 /* UIViewController+LGSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24A1C74ADF9697483B4B157375E0848 /* UIViewController+LGSideMenuController.swift */; };
+		4552703889938422AEE520BE76096A60 /* LGSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DF1B0F6B0FA5E29101AC8896907216 /* LGSideMenuController.swift */; };
+		459C57623C3D11CF7ACE4CCD0B8489C5 /* NSArray+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E219DD6F3AFACF1547469F14C3256CA /* NSArray+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45BF531839A5BD5956BB2D4D8DA35EAA /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = 36DA65A06F652DBC8F26EE28209ED84E /* UIAppearance+Swift.m */; };
+		4CF3E9796FBD824B001FDB5942B390B6 /* UIImage+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6752B5F053725B8B4F401043D094E814 /* UIImage+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F794EFEF032B56608F041D23C4CF43E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316612CB60866F3952D1AEFFE9E409E7 /* Foundation.framework */; };
+		4F8DB8C636CDF98CFD58363032299F3E /* LGSideMenuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9948CEEF4E8F8BAF07AEF8DA127FD328 /* LGSideMenuHelper.swift */; };
+		51606BB17A4049B3BEBA76190F3436D5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251D60A893F479C33123291FB0EED416 /* QuartzCore.framework */; };
+		5341A856F20ACDF7486662A572B28C42 /* ChameleonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1EEDC288914D2A1189CC598285A5D4 /* ChameleonConstants.m */; };
+		56210FF81A5911782AF2A2A736F4501D /* Pods-Meril-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BE28F5DAD4AE5921619E871A9C5BDAD /* Pods-Meril-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		621AD47029B8645E6E41027DCD932E3C /* LGSideMenuController+States.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD68D0F7E3CB9A73F094F9C2C115CE /* LGSideMenuController+States.swift */; };
+		67AC45926BBC4F97FC16A682730A4EF7 /* ChameleonFramework-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BDBAEEE3D03508BCE542C995F118BE37 /* ChameleonFramework-dummy.m */; };
+		695E83CEE703F02CF00B718B83F31BBC /* LGSideMenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31456F452704F3FC6276CE712B506CE4 /* LGSideMenuSegue.swift */; };
+		6C03405F9CDCB5A949DD5CE63454CCAB /* LGSideMenuController+StatusBarHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98801E45C3BA1134EE0AC85042A3CF9C /* LGSideMenuController+StatusBarHandler.swift */; };
+		6CE51CCE847DCE80C8534049A15B9175 /* UIButton+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E67109450B8CD6A9AD9A2BD0D007AE /* UIButton+Chameleon.m */; };
+		6DA37CEE2AF2731145F341831BE7F08C /* LGSideMenuStatusBarBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C17DC2CBCE066EA6A71CD33911E6ED /* LGSideMenuStatusBarBackgroundView.swift */; };
+		6EFE85C2D1C6534290CD8F9CD933D233 /* LGSideMenuController+Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838EED971B01DE32AF9BC5A91F943A8B /* LGSideMenuController+Callbacks.swift */; };
+		73B10659B0D87FD5C3D8BDC22A5A234E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316612CB60866F3952D1AEFFE9E409E7 /* Foundation.framework */; };
+		75289A6C1A24D7FBFFFCA6B069CFF043 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF9E080A9A1ED9063D387790E4AE632 /* UIKit.framework */; };
+		7549197FEE81350600EA312CD03EC140 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251D60A893F479C33123291FB0EED416 /* QuartzCore.framework */; };
+		788C099E58CD13DD82B4E1EAF8210C4C /* Chameleon_.h in Headers */ = {isa = PBXBuildFile; fileRef = 37E3F05F1FB5CD7022BC0C8D3F951CDA /* Chameleon_.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A1AFFB2DF4FE138400B9BF514BC1AE6 /* ChameleonShorthand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4559C56041E135DD3312D59FD8D3E948 /* ChameleonShorthand.swift */; };
+		7BB4F17A1D47446DACA96A6C59A2D092 /* LGSideMenuController+ValidatingViewsInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE47D988513AAD03D6AAC37D0F37EBC /* LGSideMenuController+ValidatingViewsInit.swift */; };
+		7BCED45248F4BBA23A81948281424A22 /* LGSideMenuController+LeftViewActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF0C47546A5186DE55403D3C99D2318 /* LGSideMenuController+LeftViewActions.swift */; };
+		86CE5832D3A682556D777591604A9535 /* LGSideMenuController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4613BF15588A8990A0B23647103E12 /* LGSideMenuController-dummy.m */; };
+		873E61B83C7494913C7881AD2861A033 /* LGSideMenuController+Layouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDB89A73A4DDE7AB835A4D2244789C4 /* LGSideMenuController+Layouting.swift */; };
+		8B463145D39F8F3D641B14D1C4B1FED2 /* LGSideMenuController+ValidatingViewsVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D75DA292CA78F977AAA9A462955D2E /* LGSideMenuController+ValidatingViewsVisibility.swift */; };
+		8DD3A4B2C237B71C270602CC77DC8968 /* UIButton+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = FEF410604217275B032316C058327927 /* UIButton+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90778B0320F9565F184268E1BA0C9BD9 /* LGSideMenuController+ValidatingViewsStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828337051ED469D8A7217831A785F0DB /* LGSideMenuController+ValidatingViewsStyles.swift */; };
+		91C7212DA1ACAA72AA1882BDB86DE709 /* LGSideMenuController+GesturesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D138101F702FF205DE7E75885D77F213 /* LGSideMenuController+GesturesHandler.swift */; };
+		9386FFB81D625B7F5FCB606334F726EA /* ChameleonConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 738BC44BEE391E03562538AB39B44B28 /* ChameleonConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		994E77AC9A0F6CCC35BAA55BABF6ACB5 /* ChameleonFramework-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AC3518FD7D233404EBF4998D66F122B7 /* ChameleonFramework-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C36471BB22B2CCE6301741666DA5856 /* LGSideMenuWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3FA4ABC4AAAAD5BEBA903E94C39E5 /* LGSideMenuWrapperView.swift */; };
+		9D7BA31D4833C06A9740B1FC2A9382B1 /* LGSideMenuController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152CE1C97F7CAC354F28FBABB8A98A76 /* LGSideMenuController+Helpers.swift */; };
+		9F079A2701FEA0F33062E44BE2ECCBC0 /* iOSDropDown-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BBB8FB3C6F071C4E761635B93ECFC98 /* iOSDropDown-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A128CAFB1566AC4184383C57D47A1216 /* UIViewController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1376CEA8008A777DF3D501AD53EC4A81 /* UIViewController+Chameleon.m */; };
+		A502D44AFA9C65CF3979D5FF1CBE019F /* UIColor+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = FAD872BF8337878ED41E43DED816FBBC /* UIColor+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A8F8FE3B9C1D2E65C9D08A5354E949C4 /* UIAppearance+Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 20A27ED85F6927EBBAC08C645F45EBD5 /* UIAppearance+Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCEB90BA800125022381A37DF14EF939 /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED43DA2D3F88505757DCB9B2D53D7892 /* iOSDropDown.swift */; };
+		C0C73A752141B2BD7542966C8AD618A7 /* NSArray+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8584A5A1BDF4A52AF1DC82E3D4339B /* NSArray+Chameleon.m */; };
+		C42DCE510858548F5578E3D876ADCC1F /* UIViewController+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDF8E16AAB3E1605AE0B58E583FCA54 /* UIViewController+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE2B5B9DA10114A686B7C66FA54BFD3A /* UILabel+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 76D0C36E428A2DA285CF3543C3673174 /* UILabel+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE7C9C87A773E15BF97EB50C029CADD9 /* LGSideMenuController+ViewsRemoving.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A433DA47B931EA384D4FA4C021577 /* LGSideMenuController+ViewsRemoving.swift */; };
+		CEC800514A4DEE74A0EA5670306FAEAD /* LGSideMenuController+ValidatingViewsFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21503C4A238CC512EB3E11B343B87867 /* LGSideMenuController+ValidatingViewsFrames.swift */; };
+		D93537E646257B24E671F24360811C39 /* Chameleon_.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB080E3A4B6E8E4D682EA2EF819F0B9 /* Chameleon_.m */; };
+		DC5E7B700B66B002633FEDBEB3A95197 /* LGSideMenuController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 752D5E14A23ABB1C48464A49A6A5EB5B /* LGSideMenuController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC9682BA1022743F3B023A23390CB623 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316612CB60866F3952D1AEFFE9E409E7 /* Foundation.framework */; };
+		F1CF296FBD4B14015276ABD63D8CF95D /* UIColor+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD27BADF3B60BE91710F96DE351D303 /* UIColor+ChameleonPrivate.m */; };
+		F4A33FE62AB9ACA4632D02C3846C1A8C /* UIView+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0EA7FAAA997BD76192EC1939391B73 /* UIView+ChameleonPrivate.m */; };
+		FB6B570FCD7E89B3A11BF2F34C293F0F /* UIView+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = B3C6FB3939EA15C8EA7DAADC306F97A5 /* UIView+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE95059BD2229491BAB689EFB41343E1 /* UINavigationController+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AA137D05C576BD29F731EAF5D3C8870 /* UINavigationController+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BD4D9A7DF2D1345220E97B10C27474D5 /* PBXContainerItemProxy */ = {
+		57136208FF3B59E07E3D6978792DE952 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28BFDC89BA4363F4F3576DEC70EE10AE;
+			remoteInfo = ChameleonFramework;
+		};
+		A12CEA84A50690596665CD97969382DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0E1EC8CEFCB04F48D36C12CD11425CAC;
 			remoteInfo = LGSideMenuController;
 		};
-		C9BE88ECD9FCF74BDDF78A90117B982D /* PBXContainerItemProxy */ = {
+		BFBAA7A89E03058B61809E608CFB888C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -67,67 +108,114 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		021699640DD8B604F3E418B0DCB2CAC7 /* LGSideMenuController+StatusBarHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+StatusBarHandler.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+StatusBarHandler.swift"; sourceTree = "<group>"; };
-		1909670DFC21B3C8781C24981DE48D87 /* LGSideMenuController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuController.swift; path = LGSideMenuController/LGSideMenuController.swift; sourceTree = "<group>"; };
+		028C5DB0083023B09EE77FD2A7BBC256 /* iOSDropDown.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = iOSDropDown.modulemap; sourceTree = "<group>"; };
+		0383903D05EDD5C442C682C1F7A1752D /* ChameleonFramework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ChameleonFramework; path = ChameleonFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04AC90F22DF30009F2A62705FDFC691D /* UIColor+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+Chameleon.h"; path = "Pod/Classes/Objective-C/UIColor+Chameleon.h"; sourceTree = "<group>"; };
+		060FF3A3D346D7034CD57E4D474C252C /* iOSDropDown-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iOSDropDown-dummy.m"; sourceTree = "<group>"; };
+		0A0EA7FAAA997BD76192EC1939391B73 /* UIView+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIView+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		1376CEA8008A777DF3D501AD53EC4A81 /* UIViewController+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Chameleon.m"; path = "Pod/Classes/Objective-C/UIViewController+Chameleon.m"; sourceTree = "<group>"; };
+		152CE1C97F7CAC354F28FBABB8A98A76 /* LGSideMenuController+Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+Helpers.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+Helpers.swift"; sourceTree = "<group>"; };
+		1773C5B7077E2474D22BD977FF74F59E /* iOSDropDown-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "iOSDropDown-Info.plist"; sourceTree = "<group>"; };
+		19B1E17C29BE7BE922AD10872FB8B862 /* LGSideMenuController+ValidatingUserInteraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingUserInteraction.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingUserInteraction.swift"; sourceTree = "<group>"; };
 		1A30172AE9F0660847BC807A6F15A494 /* LGSideMenuController */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LGSideMenuController; path = LGSideMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		208A20EBB301AA495F94F4F2DAC64AA6 /* LGSideMenuBackgroundShadowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuBackgroundShadowView.swift; path = LGSideMenuController/LGSideMenuBackgroundShadowView.swift; sourceTree = "<group>"; };
-		2392DADFD15BCC6EE1E822882D544992 /* LGSideMenuController+LeftViewActions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+LeftViewActions.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+LeftViewActions.swift"; sourceTree = "<group>"; };
-		2618E710C64FB8A699DBC4521CCD9174 /* LGSideMenuController+ValidatingViewsStyles.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingViewsStyles.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingViewsStyles.swift"; sourceTree = "<group>"; };
+		20A27ED85F6927EBBAC08C645F45EBD5 /* UIAppearance+Swift.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAppearance+Swift.h"; path = "Pod/Classes/Objective-C/UIAppearance+Swift.h"; sourceTree = "<group>"; };
+		21503C4A238CC512EB3E11B343B87867 /* LGSideMenuController+ValidatingViewsFrames.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingViewsFrames.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingViewsFrames.swift"; sourceTree = "<group>"; };
+		21D3495AE1BD0953F88E4492B56D69C8 /* LGSideMenuBackgroundDecorationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuBackgroundDecorationView.swift; path = LGSideMenuController/LGSideMenuBackgroundDecorationView.swift; sourceTree = "<group>"; };
+		251D60A893F479C33123291FB0EED416 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		29977D065236E6349284FE34355AA845 /* Pods-Meril.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Meril.modulemap"; sourceTree = "<group>"; };
 		2CD2CAFB27FED7203885571B40B4A56A /* Pods-Meril-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Meril-acknowledgements.plist"; sourceTree = "<group>"; };
-		3410F70CE3F33F41A56795273848A1DB /* iOSDropDown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = iOSDropDown.swift; path = iOSDropDown/Classes/iOSDropDown.swift; sourceTree = "<group>"; };
+		2F00BEE59DC7EC91BB1C827BEF78C6A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		31456F452704F3FC6276CE712B506CE4 /* LGSideMenuSegue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuSegue.swift; path = LGSideMenuController/LGSideMenuSegue.swift; sourceTree = "<group>"; };
+		316612CB60866F3952D1AEFFE9E409E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		36DA65A06F652DBC8F26EE28209ED84E /* UIAppearance+Swift.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAppearance+Swift.m"; path = "Pod/Classes/Objective-C/UIAppearance+Swift.m"; sourceTree = "<group>"; };
+		37E3F05F1FB5CD7022BC0C8D3F951CDA /* Chameleon_.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Chameleon_.h; path = "Pod/Classes/Objective-C/Chameleon_.h"; sourceTree = "<group>"; };
 		3BE28F5DAD4AE5921619E871A9C5BDAD /* Pods-Meril-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Meril-umbrella.h"; sourceTree = "<group>"; };
-		3CAB4F27034992118FF075472AB9ED76 /* LGSideMenuController+Rotating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+Rotating.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+Rotating.swift"; sourceTree = "<group>"; };
-		3D1B1D6905E7929728C22E74876BD1F2 /* LGSideMenuController+RightViewActions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+RightViewActions.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+RightViewActions.swift"; sourceTree = "<group>"; };
-		3DD729833332086D33D10AB917537002 /* LGSideMenuController+ValidatingUserInteraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingUserInteraction.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingUserInteraction.swift"; sourceTree = "<group>"; };
-		3E0C42B6639D9779B58CBDC5F79A0E8F /* LGSideMenuController+ValidatingViewsVisibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingViewsVisibility.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingViewsVisibility.swift"; sourceTree = "<group>"; };
-		40C431E16F09C3E48676DBFE67CB5BBE /* LGSideMenuController+Layouting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+Layouting.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+Layouting.swift"; sourceTree = "<group>"; };
-		40E27DB3A2C8B563BCF08EEC35757A9B /* LGSideMenuController+ValidatingViewsInit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingViewsInit.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingViewsInit.swift"; sourceTree = "<group>"; };
-		425C48C1AA45C9D0869A594B1182C967 /* LGSideMenuController+ValidatingViewsFrames.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingViewsFrames.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingViewsFrames.swift"; sourceTree = "<group>"; };
+		4559C56041E135DD3312D59FD8D3E948 /* ChameleonShorthand.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChameleonShorthand.swift; path = Pod/Classes/Swift/ChameleonShorthand.swift; sourceTree = "<group>"; };
 		470BD0022FCEA591199E5E6C43DF2DCD /* Pods-Meril-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Meril-dummy.m"; sourceTree = "<group>"; };
-		472906E21565CF50A9DE46018C1F3C4F /* LGSideMenuController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = LGSideMenuController.modulemap; sourceTree = "<group>"; };
-		496730CB0636801AAC2959181FB8A486 /* LGSideMenuStatusBarBackgroundView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuStatusBarBackgroundView.swift; path = LGSideMenuController/LGSideMenuStatusBarBackgroundView.swift; sourceTree = "<group>"; };
+		4B8584A5A1BDF4A52AF1DC82E3D4339B /* NSArray+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Chameleon.m"; path = "Pod/Classes/Objective-C/NSArray+Chameleon.m"; sourceTree = "<group>"; };
+		4D043B1CA826CF55634404214586A2FE /* iOSDropDown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSDropDown.debug.xcconfig; sourceTree = "<group>"; };
+		4D98D47D9368C6A6A86E3113B58AE920 /* LGSideMenuController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LGSideMenuController.release.xcconfig; sourceTree = "<group>"; };
+		5148B48E516CAA0554733C6E908851CD /* LGSideMenuController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "LGSideMenuController-Info.plist"; sourceTree = "<group>"; };
 		541A017A5F46C8A7AAE6EB15A2D443F4 /* Pods-Meril-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Meril-Info.plist"; sourceTree = "<group>"; };
-		5CF1423BC42E1D98656ED6FC2F3F0D79 /* LGSideMenuController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LGSideMenuController-prefix.pch"; sourceTree = "<group>"; };
-		62B76A62F5257CC438FF2A748337A5CA /* iOSDropDown-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "iOSDropDown-Info.plist"; sourceTree = "<group>"; };
-		64384C0B3FA41DD938295371A3B535CC /* LGSideMenuBackgroundDecorationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuBackgroundDecorationView.swift; path = LGSideMenuController/LGSideMenuBackgroundDecorationView.swift; sourceTree = "<group>"; };
-		6E2A6E787BEEBC273FF275A79516951E /* LGSideMenuController+Callbacks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+Callbacks.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+Callbacks.swift"; sourceTree = "<group>"; };
-		6F4D226C5DBD8965A075F093B9B4D970 /* LGSideMenuController+ViewsRemoving.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ViewsRemoving.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+ViewsRemoving.swift"; sourceTree = "<group>"; };
-		74F5ED77AD7663A8EEEE1FB0CDE2549B /* LGSideMenuController+ValidatingViewsHierarchy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingViewsHierarchy.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingViewsHierarchy.swift"; sourceTree = "<group>"; };
-		7B92BE98A3FECD223AC2BC418D1F6D1E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7BC1A23EB4E1DE72F82EAF5B968DC6AE /* LGSideMenuController+GesturesHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+GesturesHandler.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+GesturesHandler.swift"; sourceTree = "<group>"; };
-		80B8AC05F3DB7315DCC2C37E99C912F2 /* iOSDropDown.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = iOSDropDown.modulemap; sourceTree = "<group>"; };
+		58D75DA292CA78F977AAA9A462955D2E /* LGSideMenuController+ValidatingViewsVisibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingViewsVisibility.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingViewsVisibility.swift"; sourceTree = "<group>"; };
+		58E67109450B8CD6A9AD9A2BD0D007AE /* UIButton+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Chameleon.m"; path = "Pod/Classes/Objective-C/UIButton+Chameleon.m"; sourceTree = "<group>"; };
+		5AA137D05C576BD29F731EAF5D3C8870 /* UINavigationController+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Chameleon.h"; path = "Pod/Classes/Objective-C/UINavigationController+Chameleon.h"; sourceTree = "<group>"; };
+		5BBB8FB3C6F071C4E761635B93ECFC98 /* iOSDropDown-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSDropDown-umbrella.h"; sourceTree = "<group>"; };
+		6752B5F053725B8B4F401043D094E814 /* UIImage+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIImage+ChameleonPrivate.h"; sourceTree = "<group>"; };
+		6DF9E080A9A1ED9063D387790E4AE632 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		6F4613BF15588A8990A0B23647103E12 /* LGSideMenuController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LGSideMenuController-dummy.m"; sourceTree = "<group>"; };
+		738BC44BEE391E03562538AB39B44B28 /* ChameleonConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonConstants.h; path = "Pod/Classes/Objective-C/ChameleonConstants.h"; sourceTree = "<group>"; };
+		752D5E14A23ABB1C48464A49A6A5EB5B /* LGSideMenuController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LGSideMenuController-umbrella.h"; sourceTree = "<group>"; };
+		76D0C36E428A2DA285CF3543C3673174 /* UILabel+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UILabel+Chameleon.h"; path = "Pod/Classes/Objective-C/UILabel+Chameleon.h"; sourceTree = "<group>"; };
+		7DDB89A73A4DDE7AB835A4D2244789C4 /* LGSideMenuController+Layouting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+Layouting.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+Layouting.swift"; sourceTree = "<group>"; };
+		828337051ED469D8A7217831A785F0DB /* LGSideMenuController+ValidatingViewsStyles.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingViewsStyles.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingViewsStyles.swift"; sourceTree = "<group>"; };
+		838EED971B01DE32AF9BC5A91F943A8B /* LGSideMenuController+Callbacks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+Callbacks.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+Callbacks.swift"; sourceTree = "<group>"; };
+		8553BFAFC73356DB070F7F45B0D089DF /* LGSideMenuController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LGSideMenuController-prefix.pch"; sourceTree = "<group>"; };
 		87A06F1952B6D6BFB201142C9A07EADB /* Pods-Meril-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Meril-acknowledgements.markdown"; sourceTree = "<group>"; };
-		8CF515D235517C5AB9938E0EFA69511F /* LGSideMenuController+States.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+States.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+States.swift"; sourceTree = "<group>"; };
-		983D18E05323334D4C16FDBF51D2D197 /* iOSDropDown-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSDropDown-umbrella.h"; sourceTree = "<group>"; };
+		87C56FED8382D119E29B964531E1073E /* UIColor+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Chameleon.m"; path = "Pod/Classes/Objective-C/UIColor+Chameleon.m"; sourceTree = "<group>"; };
+		8AEF219FB7219639178B4CE1A0D8D9BB /* ChameleonFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChameleonFramework.release.xcconfig; sourceTree = "<group>"; };
+		8F9BCC41A573E6104F2CC7A20649EBFC /* LGSideMenuDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuDelegate.swift; path = LGSideMenuController/LGSideMenuDelegate.swift; sourceTree = "<group>"; };
+		92114F9F50E47605FB5F2057CA8779AB /* LGSideMenuController+Rotating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+Rotating.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+Rotating.swift"; sourceTree = "<group>"; };
+		9653396857E0BC04D9AAB47B945349AA /* ChameleonFramework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ChameleonFramework.modulemap; sourceTree = "<group>"; };
+		96A8E56372B77640A11EEF33DA596395 /* UIImage+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIImage+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		98801E45C3BA1134EE0AC85042A3CF9C /* LGSideMenuController+StatusBarHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+StatusBarHandler.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+StatusBarHandler.swift"; sourceTree = "<group>"; };
+		9948CEEF4E8F8BAF07AEF8DA127FD328 /* LGSideMenuHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuHelper.swift; path = LGSideMenuController/LGSideMenuHelper.swift; sourceTree = "<group>"; };
 		9B799078EC1A827289BFA5141C60AA4D /* Pods-Meril-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Meril-frameworks.sh"; sourceTree = "<group>"; };
-		9C09193A052927B31C8B55270AC578DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		9C4D02FBEA9E61EAEEE0185C1BF1E988 /* LGSideMenuWrapperView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuWrapperView.swift; path = LGSideMenuController/LGSideMenuWrapperView.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F6927A07B46136AF6742F53BDA00608 /* Pods_Meril.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meril.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A676E834A4034255F273EA084FDCD4CA /* LGSideMenuController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LGSideMenuController.debug.xcconfig; sourceTree = "<group>"; };
-		A95921B80FC900A29BD65887D18F775B /* LGSideMenuHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuHelper.swift; path = LGSideMenuController/LGSideMenuHelper.swift; sourceTree = "<group>"; };
-		AA9386CD975BD549E3076F190482CF61 /* LGSideMenuController+Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+Helpers.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+Helpers.swift"; sourceTree = "<group>"; };
-		B420763FEB680A7B8647D8EE5A9A69EE /* LGSideMenuController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "LGSideMenuController-Info.plist"; sourceTree = "<group>"; };
-		BBD3FCEBED2433BB7827343303F08767 /* LGSideMenuController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LGSideMenuController.release.xcconfig; sourceTree = "<group>"; };
+		9C7D704A1A37AB775CB4F1F393DC7276 /* iOSDropDown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSDropDown.release.xcconfig; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DD27BADF3B60BE91710F96DE351D303 /* UIColor+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIColor+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		9E219DD6F3AFACF1547469F14C3256CA /* NSArray+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+Chameleon.h"; path = "Pod/Classes/Objective-C/NSArray+Chameleon.h"; sourceTree = "<group>"; };
+		9F6927A07B46136AF6742F53BDA00608 /* Pods-Meril */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Meril"; path = Pods_Meril.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FB080E3A4B6E8E4D682EA2EF819F0B9 /* Chameleon_.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Chameleon_.m; path = "Pod/Classes/Objective-C/Chameleon_.m"; sourceTree = "<group>"; };
+		A24A1C74ADF9697483B4B157375E0848 /* UIViewController+LGSideMenuController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+LGSideMenuController.swift"; path = "LGSideMenuController/UIViewController+LGSideMenuController.swift"; sourceTree = "<group>"; };
+		A34EADF206E3A034F1DAF3ABE55001C0 /* ChameleonMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonMacros.h; path = "Pod/Classes/Objective-C/ChameleonMacros.h"; sourceTree = "<group>"; };
+		A5EC66AD31BC2B2A474609A2F6A7EAFF /* UINavigationController+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Chameleon.m"; path = "Pod/Classes/Objective-C/UINavigationController+Chameleon.m"; sourceTree = "<group>"; };
+		A8BD68D0F7E3CB9A73F094F9C2C115CE /* LGSideMenuController+States.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+States.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+States.swift"; sourceTree = "<group>"; };
+		A9BB8C273108F8EEF0D678D0A4A78A26 /* LGSideMenuController+ValidatingViewsHierarchy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingViewsHierarchy.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingViewsHierarchy.swift"; sourceTree = "<group>"; };
+		AC3518FD7D233404EBF4998D66F122B7 /* ChameleonFramework-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChameleonFramework-umbrella.h"; sourceTree = "<group>"; };
+		ACF0C47546A5186DE55403D3C99D2318 /* LGSideMenuController+LeftViewActions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+LeftViewActions.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+LeftViewActions.swift"; sourceTree = "<group>"; };
+		AEC3EE50A6F97326738ED7D5D61B806F /* ChameleonFramework-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ChameleonFramework-Info.plist"; sourceTree = "<group>"; };
+		B07B2AABF0C99CF755FECC1D984CBA9D /* ChameleonFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChameleonFramework.debug.xcconfig; sourceTree = "<group>"; };
+		B3C6FB3939EA15C8EA7DAADC306F97A5 /* UIView+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIView+ChameleonPrivate.h"; sourceTree = "<group>"; };
+		B484354B6A69EFDA52B59D44A63E7A34 /* ChameleonEnums.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonEnums.h; path = "Pod/Classes/Objective-C/ChameleonEnums.h"; sourceTree = "<group>"; };
+		B5DF1B0F6B0FA5E29101AC8896907216 /* LGSideMenuController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuController.swift; path = LGSideMenuController/LGSideMenuController.swift; sourceTree = "<group>"; };
+		BDBAEEE3D03508BCE542C995F118BE37 /* ChameleonFramework-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ChameleonFramework-dummy.m"; sourceTree = "<group>"; };
 		BE74D7A325526AD8D6C272D270C104AB /* Pods-Meril.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Meril.release.xcconfig"; sourceTree = "<group>"; };
-		C26EA11071D8BFA151F5CA4AECA9185D /* iOSDropDown-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iOSDropDown-dummy.m"; sourceTree = "<group>"; };
-		C2CDFDD19EAED93A51E4D2F5A3922DF1 /* LGSideMenuController+ValidatingViewsTransforms.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingViewsTransforms.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingViewsTransforms.swift"; sourceTree = "<group>"; };
-		D7EF0C32EA43A919224D59913C85E993 /* LGSideMenuSegue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuSegue.swift; path = LGSideMenuController/LGSideMenuSegue.swift; sourceTree = "<group>"; };
-		DD98ACC7A6E40DDB620663F2EDAAF78E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		E033A3A6CE7697FE1E5886C069D567B0 /* iOSDropDown-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSDropDown-prefix.pch"; sourceTree = "<group>"; };
-		E3D32C395BC1FEE7B0A4F67FD9BBCFFB /* LGSideMenuDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuDelegate.swift; path = LGSideMenuController/LGSideMenuDelegate.swift; sourceTree = "<group>"; };
-		E4C30FB5EA71B5524FB0622DF77EB233 /* UIViewController+LGSideMenuController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+LGSideMenuController.swift"; path = "LGSideMenuController/UIViewController+LGSideMenuController.swift"; sourceTree = "<group>"; };
-		E5BD8E74FDACDAF05654F3472575EC61 /* iOSDropDown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSDropDown.release.xcconfig; sourceTree = "<group>"; };
-		E76098A8E42E35BC8052CCFFB86120BE /* LGSideMenuController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LGSideMenuController-umbrella.h"; sourceTree = "<group>"; };
-		EB2A39EA5735EF255608971CD0FE9311 /* LGSideMenuController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LGSideMenuController-dummy.m"; sourceTree = "<group>"; };
-		EE09B24E9EBBCE4A19480F7596D32DB0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		CFDF8E16AAB3E1605AE0B58E583FCA54 /* UIViewController+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Chameleon.h"; path = "Pod/Classes/Objective-C/UIViewController+Chameleon.h"; sourceTree = "<group>"; };
+		D138101F702FF205DE7E75885D77F213 /* LGSideMenuController+GesturesHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+GesturesHandler.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+GesturesHandler.swift"; sourceTree = "<group>"; };
+		D2E3FA4ABC4AAAAD5BEBA903E94C39E5 /* LGSideMenuWrapperView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuWrapperView.swift; path = LGSideMenuController/LGSideMenuWrapperView.swift; sourceTree = "<group>"; };
+		D32435F24D81C5CB03CAFC372D4F1B8D /* Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Chameleon.h; path = "Pod/Classes/Objective-C/Chameleon.h"; sourceTree = "<group>"; };
+		DAE47D988513AAD03D6AAC37D0F37EBC /* LGSideMenuController+ValidatingViewsInit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingViewsInit.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingViewsInit.swift"; sourceTree = "<group>"; };
+		E590397E1F23CC40230A58AEA15A01C9 /* UILabel+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UILabel+Chameleon.m"; path = "Pod/Classes/Objective-C/UILabel+Chameleon.m"; sourceTree = "<group>"; };
+		E8A7DF1DD749BC0B5FF7DBC643A3BE12 /* ChameleonFramework-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChameleonFramework-prefix.pch"; sourceTree = "<group>"; };
+		E9158887AD58B4655027739D2CC92620 /* LGSideMenuController+ValidatingViewsTransforms.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ValidatingViewsTransforms.swift"; path = "LGSideMenuController/Extensions/Validators/LGSideMenuController+ValidatingViewsTransforms.swift"; sourceTree = "<group>"; };
+		EB1EEDC288914D2A1189CC598285A5D4 /* ChameleonConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ChameleonConstants.m; path = "Pod/Classes/Objective-C/ChameleonConstants.m"; sourceTree = "<group>"; };
+		EC31DF6AA60E0D04C5D702042A11DB9F /* iOSDropDown-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSDropDown-prefix.pch"; sourceTree = "<group>"; };
+		ED43DA2D3F88505757DCB9B2D53D7892 /* iOSDropDown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = iOSDropDown.swift; path = iOSDropDown/Classes/iOSDropDown.swift; sourceTree = "<group>"; };
+		ED7872A73AC11DDCDE0AD0333BF1A235 /* LGSideMenuController+RightViewActions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+RightViewActions.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+RightViewActions.swift"; sourceTree = "<group>"; };
+		ED7DD539F7C304E7DB2806DB85B8F06C /* LGSideMenuController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LGSideMenuController.debug.xcconfig; sourceTree = "<group>"; };
 		EFB0678875A69CACCC2415EAA3A0B8C1 /* Pods-Meril.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Meril.debug.xcconfig"; sourceTree = "<group>"; };
+		EFB2A87548B17C5A0A9E46F8B9605A36 /* LGSideMenuController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = LGSideMenuController.modulemap; sourceTree = "<group>"; };
+		F02A433DA47B931EA384D4FA4C021577 /* LGSideMenuController+ViewsRemoving.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LGSideMenuController+ViewsRemoving.swift"; path = "LGSideMenuController/Extensions/LGSideMenuController+ViewsRemoving.swift"; sourceTree = "<group>"; };
+		F5DDBC1F17180347683656BD32DA33D4 /* LGSideMenuBackgroundShadowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuBackgroundShadowView.swift; path = LGSideMenuController/LGSideMenuBackgroundShadowView.swift; sourceTree = "<group>"; };
+		F8C17DC2CBCE066EA6A71CD33911E6ED /* LGSideMenuStatusBarBackgroundView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGSideMenuStatusBarBackgroundView.swift; path = LGSideMenuController/LGSideMenuStatusBarBackgroundView.swift; sourceTree = "<group>"; };
+		FAD872BF8337878ED41E43DED816FBBC /* UIColor+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIColor+ChameleonPrivate.h"; sourceTree = "<group>"; };
 		FCEEA8BBD9DA8D0CCE0A3092B20E3FA7 /* iOSDropDown */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = iOSDropDown; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF56DBEE0AD7BFBC312C40E830DBAD56 /* iOSDropDown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSDropDown.debug.xcconfig; sourceTree = "<group>"; };
+		FEF410604217275B032316C058327927 /* UIButton+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+Chameleon.h"; path = "Pod/Classes/Objective-C/UIButton+Chameleon.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5809CFFDA79B695C5DEBB77E12EED0C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				130F2ECD2D1415CEC87855879AFB28D4 /* CoreGraphics.framework in Frameworks */,
+				EC9682BA1022743F3B023A23390CB623 /* Foundation.framework in Frameworks */,
+				7549197FEE81350600EA312CD03EC140 /* QuartzCore.framework in Frameworks */,
+				3BC4F25FC9D78A7FD3609C8DE45F30A5 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		757DD7F42483F1FD3CFAC8A82FD8B6AD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,11 +225,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9EB3B76B742B39020A702004761B4C67 /* Frameworks */ = {
+		8C7FAADED853EC44B222D1C0D3914302 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AFD2CEDC8E2682246D0F6D995FB803B /* Foundation.framework in Frameworks */,
+				4F794EFEF032B56608F041D23C4CF43E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,55 +247,158 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0595F82BD4A1B730C6F3F3A58BB09F46 /* Pods */ = {
+		5D7DAD40602A579FD0D57526A6ADB8E3 /* LGSideMenuController */ = {
 			isa = PBXGroup;
 			children = (
-				2973D9B7461EA41ACC4FCEF6E52DDBED /* iOSDropDown */,
-				EA4B6EC273400D9BBD7E053B16DD3634 /* LGSideMenuController */,
+				21D3495AE1BD0953F88E4492B56D69C8 /* LGSideMenuBackgroundDecorationView.swift */,
+				F5DDBC1F17180347683656BD32DA33D4 /* LGSideMenuBackgroundShadowView.swift */,
+				B5DF1B0F6B0FA5E29101AC8896907216 /* LGSideMenuController.swift */,
+				838EED971B01DE32AF9BC5A91F943A8B /* LGSideMenuController+Callbacks.swift */,
+				D138101F702FF205DE7E75885D77F213 /* LGSideMenuController+GesturesHandler.swift */,
+				152CE1C97F7CAC354F28FBABB8A98A76 /* LGSideMenuController+Helpers.swift */,
+				7DDB89A73A4DDE7AB835A4D2244789C4 /* LGSideMenuController+Layouting.swift */,
+				ACF0C47546A5186DE55403D3C99D2318 /* LGSideMenuController+LeftViewActions.swift */,
+				ED7872A73AC11DDCDE0AD0333BF1A235 /* LGSideMenuController+RightViewActions.swift */,
+				92114F9F50E47605FB5F2057CA8779AB /* LGSideMenuController+Rotating.swift */,
+				A8BD68D0F7E3CB9A73F094F9C2C115CE /* LGSideMenuController+States.swift */,
+				98801E45C3BA1134EE0AC85042A3CF9C /* LGSideMenuController+StatusBarHandler.swift */,
+				19B1E17C29BE7BE922AD10872FB8B862 /* LGSideMenuController+ValidatingUserInteraction.swift */,
+				21503C4A238CC512EB3E11B343B87867 /* LGSideMenuController+ValidatingViewsFrames.swift */,
+				A9BB8C273108F8EEF0D678D0A4A78A26 /* LGSideMenuController+ValidatingViewsHierarchy.swift */,
+				DAE47D988513AAD03D6AAC37D0F37EBC /* LGSideMenuController+ValidatingViewsInit.swift */,
+				828337051ED469D8A7217831A785F0DB /* LGSideMenuController+ValidatingViewsStyles.swift */,
+				E9158887AD58B4655027739D2CC92620 /* LGSideMenuController+ValidatingViewsTransforms.swift */,
+				58D75DA292CA78F977AAA9A462955D2E /* LGSideMenuController+ValidatingViewsVisibility.swift */,
+				F02A433DA47B931EA384D4FA4C021577 /* LGSideMenuController+ViewsRemoving.swift */,
+				8F9BCC41A573E6104F2CC7A20649EBFC /* LGSideMenuDelegate.swift */,
+				9948CEEF4E8F8BAF07AEF8DA127FD328 /* LGSideMenuHelper.swift */,
+				31456F452704F3FC6276CE712B506CE4 /* LGSideMenuSegue.swift */,
+				F8C17DC2CBCE066EA6A71CD33911E6ED /* LGSideMenuStatusBarBackgroundView.swift */,
+				D2E3FA4ABC4AAAAD5BEBA903E94C39E5 /* LGSideMenuWrapperView.swift */,
+				A24A1C74ADF9697483B4B157375E0848 /* UIViewController+LGSideMenuController.swift */,
+				AFEE4FC0F43127F8082DE0D6F05DC3FE /* Support Files */,
 			);
-			name = Pods;
+			name = LGSideMenuController;
+			path = LGSideMenuController;
 			sourceTree = "<group>";
 		};
-		079DCC6E5F9C6BC94FC4FA76E0278ADC /* Support Files */ = {
+		6B751C932E0400B41B7FE252B7C2D92A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				472906E21565CF50A9DE46018C1F3C4F /* LGSideMenuController.modulemap */,
-				EB2A39EA5735EF255608971CD0FE9311 /* LGSideMenuController-dummy.m */,
-				B420763FEB680A7B8647D8EE5A9A69EE /* LGSideMenuController-Info.plist */,
-				5CF1423BC42E1D98656ED6FC2F3F0D79 /* LGSideMenuController-prefix.pch */,
-				E76098A8E42E35BC8052CCFFB86120BE /* LGSideMenuController-umbrella.h */,
-				A676E834A4034255F273EA084FDCD4CA /* LGSideMenuController.debug.xcconfig */,
-				BBD3FCEBED2433BB7827343303F08767 /* LGSideMenuController.release.xcconfig */,
+				028C5DB0083023B09EE77FD2A7BBC256 /* iOSDropDown.modulemap */,
+				060FF3A3D346D7034CD57E4D474C252C /* iOSDropDown-dummy.m */,
+				1773C5B7077E2474D22BD977FF74F59E /* iOSDropDown-Info.plist */,
+				EC31DF6AA60E0D04C5D702042A11DB9F /* iOSDropDown-prefix.pch */,
+				5BBB8FB3C6F071C4E761635B93ECFC98 /* iOSDropDown-umbrella.h */,
+				4D043B1CA826CF55634404214586A2FE /* iOSDropDown.debug.xcconfig */,
+				9C7D704A1A37AB775CB4F1F393DC7276 /* iOSDropDown.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/iOSDropDown";
+			sourceTree = "<group>";
+		};
+		78811123973CEB4BF75F0320BC5AAC1A /* iOSDropDown */ = {
+			isa = PBXGroup;
+			children = (
+				ED43DA2D3F88505757DCB9B2D53D7892 /* iOSDropDown.swift */,
+				6B751C932E0400B41B7FE252B7C2D92A /* Support Files */,
+			);
+			name = iOSDropDown;
+			path = iOSDropDown;
+			sourceTree = "<group>";
+		};
+		8D413A691B7FBACF41E053DD2F1D7125 /* ChameleonFramework */ = {
+			isa = PBXGroup;
+			children = (
+				911C65AF984581BC2FD9AAA56C0E726C /* Default */,
+				903E413AB955EE14E99E91A4B6A1C1AB /* Support Files */,
+				E0ED7F073F930E52EB64BE1A9D5B036F /* Swift */,
+			);
+			name = ChameleonFramework;
+			path = ChameleonFramework;
+			sourceTree = "<group>";
+		};
+		903E413AB955EE14E99E91A4B6A1C1AB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9653396857E0BC04D9AAB47B945349AA /* ChameleonFramework.modulemap */,
+				BDBAEEE3D03508BCE542C995F118BE37 /* ChameleonFramework-dummy.m */,
+				AEC3EE50A6F97326738ED7D5D61B806F /* ChameleonFramework-Info.plist */,
+				E8A7DF1DD749BC0B5FF7DBC643A3BE12 /* ChameleonFramework-prefix.pch */,
+				AC3518FD7D233404EBF4998D66F122B7 /* ChameleonFramework-umbrella.h */,
+				B07B2AABF0C99CF755FECC1D984CBA9D /* ChameleonFramework.debug.xcconfig */,
+				8AEF219FB7219639178B4CE1A0D8D9BB /* ChameleonFramework.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ChameleonFramework";
+			sourceTree = "<group>";
+		};
+		911C65AF984581BC2FD9AAA56C0E726C /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				D32435F24D81C5CB03CAFC372D4F1B8D /* Chameleon.h */,
+				37E3F05F1FB5CD7022BC0C8D3F951CDA /* Chameleon_.h */,
+				9FB080E3A4B6E8E4D682EA2EF819F0B9 /* Chameleon_.m */,
+				738BC44BEE391E03562538AB39B44B28 /* ChameleonConstants.h */,
+				EB1EEDC288914D2A1189CC598285A5D4 /* ChameleonConstants.m */,
+				B484354B6A69EFDA52B59D44A63E7A34 /* ChameleonEnums.h */,
+				A34EADF206E3A034F1DAF3ABE55001C0 /* ChameleonMacros.h */,
+				9E219DD6F3AFACF1547469F14C3256CA /* NSArray+Chameleon.h */,
+				4B8584A5A1BDF4A52AF1DC82E3D4339B /* NSArray+Chameleon.m */,
+				20A27ED85F6927EBBAC08C645F45EBD5 /* UIAppearance+Swift.h */,
+				36DA65A06F652DBC8F26EE28209ED84E /* UIAppearance+Swift.m */,
+				FEF410604217275B032316C058327927 /* UIButton+Chameleon.h */,
+				58E67109450B8CD6A9AD9A2BD0D007AE /* UIButton+Chameleon.m */,
+				04AC90F22DF30009F2A62705FDFC691D /* UIColor+Chameleon.h */,
+				87C56FED8382D119E29B964531E1073E /* UIColor+Chameleon.m */,
+				FAD872BF8337878ED41E43DED816FBBC /* UIColor+ChameleonPrivate.h */,
+				9DD27BADF3B60BE91710F96DE351D303 /* UIColor+ChameleonPrivate.m */,
+				6752B5F053725B8B4F401043D094E814 /* UIImage+ChameleonPrivate.h */,
+				96A8E56372B77640A11EEF33DA596395 /* UIImage+ChameleonPrivate.m */,
+				76D0C36E428A2DA285CF3543C3673174 /* UILabel+Chameleon.h */,
+				E590397E1F23CC40230A58AEA15A01C9 /* UILabel+Chameleon.m */,
+				5AA137D05C576BD29F731EAF5D3C8870 /* UINavigationController+Chameleon.h */,
+				A5EC66AD31BC2B2A474609A2F6A7EAFF /* UINavigationController+Chameleon.m */,
+				B3C6FB3939EA15C8EA7DAADC306F97A5 /* UIView+ChameleonPrivate.h */,
+				0A0EA7FAAA997BD76192EC1939391B73 /* UIView+ChameleonPrivate.m */,
+				CFDF8E16AAB3E1605AE0B58E583FCA54 /* UIViewController+Chameleon.h */,
+				1376CEA8008A777DF3D501AD53EC4A81 /* UIViewController+Chameleon.m */,
+			);
+			name = Default;
+			sourceTree = "<group>";
+		};
+		AFEE4FC0F43127F8082DE0D6F05DC3FE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EFB2A87548B17C5A0A9E46F8B9605A36 /* LGSideMenuController.modulemap */,
+				6F4613BF15588A8990A0B23647103E12 /* LGSideMenuController-dummy.m */,
+				5148B48E516CAA0554733C6E908851CD /* LGSideMenuController-Info.plist */,
+				8553BFAFC73356DB070F7F45B0D089DF /* LGSideMenuController-prefix.pch */,
+				752D5E14A23ABB1C48464A49A6A5EB5B /* LGSideMenuController-umbrella.h */,
+				ED7DD539F7C304E7DB2806DB85B8F06C /* LGSideMenuController.debug.xcconfig */,
+				4D98D47D9368C6A6A86E3113B58AE920 /* LGSideMenuController.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/LGSideMenuController";
 			sourceTree = "<group>";
 		};
-		2973D9B7461EA41ACC4FCEF6E52DDBED /* iOSDropDown */ = {
-			isa = PBXGroup;
-			children = (
-				3410F70CE3F33F41A56795273848A1DB /* iOSDropDown.swift */,
-				FE048D34E6B92C83FC4708523B23565B /* Support Files */,
-			);
-			path = iOSDropDown;
-			sourceTree = "<group>";
-		};
-		A72EE65A4D4257AE8AD1D3F99FE913F7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FCEEA8BBD9DA8D0CCE0A3092B20E3FA7 /* iOSDropDown */,
-				1A30172AE9F0660847BC807A6F15A494 /* LGSideMenuController */,
-				9F6927A07B46136AF6742F53BDA00608 /* Pods_Meril.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E8E67CDA2898D79EB75F3AFB39904E7C /* iOS */,
+				EB0E3A0897B38211D65ACB5E48640571 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C293228CAEC0FBC19E528D7FCB35D373 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0383903D05EDD5C442C682C1F7A1752D /* ChameleonFramework */,
+				FCEEA8BBD9DA8D0CCE0A3092B20E3FA7 /* iOSDropDown */,
+				1A30172AE9F0660847BC807A6F15A494 /* LGSideMenuController */,
+				9F6927A07B46136AF6742F53BDA00608 /* Pods-Meril */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		CBFDADDABC0283F14DD6EFE3E0401212 /* Targets Support Files */ = {
@@ -223,10 +414,18 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */,
-				0595F82BD4A1B730C6F3F3A58BB09F46 /* Pods */,
-				A72EE65A4D4257AE8AD1D3F99FE913F7 /* Products */,
+				FFB51D90AE8BA92A91C39116F7095A9A /* Pods */,
+				C293228CAEC0FBC19E528D7FCB35D373 /* Products */,
 				CBFDADDABC0283F14DD6EFE3E0401212 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		E0ED7F073F930E52EB64BE1A9D5B036F /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				4559C56041E135DD3312D59FD8D3E948 /* ChameleonShorthand.swift */,
+			);
+			name = Swift;
 			sourceTree = "<group>";
 		};
 		E4660F2DB06C96ABB5D675F029035E49 /* Pods-Meril */ = {
@@ -246,74 +445,35 @@
 			path = "Target Support Files/Pods-Meril";
 			sourceTree = "<group>";
 		};
-		E8E67CDA2898D79EB75F3AFB39904E7C /* iOS */ = {
+		EB0E3A0897B38211D65ACB5E48640571 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				EE09B24E9EBBCE4A19480F7596D32DB0 /* CoreGraphics.framework */,
-				7B92BE98A3FECD223AC2BC418D1F6D1E /* Foundation.framework */,
-				9C09193A052927B31C8B55270AC578DC /* QuartzCore.framework */,
-				DD98ACC7A6E40DDB620663F2EDAAF78E /* UIKit.framework */,
+				2F00BEE59DC7EC91BB1C827BEF78C6A7 /* CoreGraphics.framework */,
+				316612CB60866F3952D1AEFFE9E409E7 /* Foundation.framework */,
+				251D60A893F479C33123291FB0EED416 /* QuartzCore.framework */,
+				6DF9E080A9A1ED9063D387790E4AE632 /* UIKit.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		EA4B6EC273400D9BBD7E053B16DD3634 /* LGSideMenuController */ = {
+		FFB51D90AE8BA92A91C39116F7095A9A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				64384C0B3FA41DD938295371A3B535CC /* LGSideMenuBackgroundDecorationView.swift */,
-				208A20EBB301AA495F94F4F2DAC64AA6 /* LGSideMenuBackgroundShadowView.swift */,
-				1909670DFC21B3C8781C24981DE48D87 /* LGSideMenuController.swift */,
-				6E2A6E787BEEBC273FF275A79516951E /* LGSideMenuController+Callbacks.swift */,
-				7BC1A23EB4E1DE72F82EAF5B968DC6AE /* LGSideMenuController+GesturesHandler.swift */,
-				AA9386CD975BD549E3076F190482CF61 /* LGSideMenuController+Helpers.swift */,
-				40C431E16F09C3E48676DBFE67CB5BBE /* LGSideMenuController+Layouting.swift */,
-				2392DADFD15BCC6EE1E822882D544992 /* LGSideMenuController+LeftViewActions.swift */,
-				3D1B1D6905E7929728C22E74876BD1F2 /* LGSideMenuController+RightViewActions.swift */,
-				3CAB4F27034992118FF075472AB9ED76 /* LGSideMenuController+Rotating.swift */,
-				8CF515D235517C5AB9938E0EFA69511F /* LGSideMenuController+States.swift */,
-				021699640DD8B604F3E418B0DCB2CAC7 /* LGSideMenuController+StatusBarHandler.swift */,
-				3DD729833332086D33D10AB917537002 /* LGSideMenuController+ValidatingUserInteraction.swift */,
-				425C48C1AA45C9D0869A594B1182C967 /* LGSideMenuController+ValidatingViewsFrames.swift */,
-				74F5ED77AD7663A8EEEE1FB0CDE2549B /* LGSideMenuController+ValidatingViewsHierarchy.swift */,
-				40E27DB3A2C8B563BCF08EEC35757A9B /* LGSideMenuController+ValidatingViewsInit.swift */,
-				2618E710C64FB8A699DBC4521CCD9174 /* LGSideMenuController+ValidatingViewsStyles.swift */,
-				C2CDFDD19EAED93A51E4D2F5A3922DF1 /* LGSideMenuController+ValidatingViewsTransforms.swift */,
-				3E0C42B6639D9779B58CBDC5F79A0E8F /* LGSideMenuController+ValidatingViewsVisibility.swift */,
-				6F4D226C5DBD8965A075F093B9B4D970 /* LGSideMenuController+ViewsRemoving.swift */,
-				E3D32C395BC1FEE7B0A4F67FD9BBCFFB /* LGSideMenuDelegate.swift */,
-				A95921B80FC900A29BD65887D18F775B /* LGSideMenuHelper.swift */,
-				D7EF0C32EA43A919224D59913C85E993 /* LGSideMenuSegue.swift */,
-				496730CB0636801AAC2959181FB8A486 /* LGSideMenuStatusBarBackgroundView.swift */,
-				9C4D02FBEA9E61EAEEE0185C1BF1E988 /* LGSideMenuWrapperView.swift */,
-				E4C30FB5EA71B5524FB0622DF77EB233 /* UIViewController+LGSideMenuController.swift */,
-				079DCC6E5F9C6BC94FC4FA76E0278ADC /* Support Files */,
+				8D413A691B7FBACF41E053DD2F1D7125 /* ChameleonFramework */,
+				78811123973CEB4BF75F0320BC5AAC1A /* iOSDropDown */,
+				5D7DAD40602A579FD0D57526A6ADB8E3 /* LGSideMenuController */,
 			);
-			path = LGSideMenuController;
-			sourceTree = "<group>";
-		};
-		FE048D34E6B92C83FC4708523B23565B /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				80B8AC05F3DB7315DCC2C37E99C912F2 /* iOSDropDown.modulemap */,
-				C26EA11071D8BFA151F5CA4AECA9185D /* iOSDropDown-dummy.m */,
-				62B76A62F5257CC438FF2A748337A5CA /* iOSDropDown-Info.plist */,
-				E033A3A6CE7697FE1E5886C069D567B0 /* iOSDropDown-prefix.pch */,
-				983D18E05323334D4C16FDBF51D2D197 /* iOSDropDown-umbrella.h */,
-				FF56DBEE0AD7BFBC312C40E830DBAD56 /* iOSDropDown.debug.xcconfig */,
-				E5BD8E74FDACDAF05654F3472575EC61 /* iOSDropDown.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/iOSDropDown";
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1BE5C3D26C86A4EA32A6AF75E38EA7BC /* Headers */ = {
+		49C217DE3B290A9762DB267E2E84AACD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B524765565276DF467902E7FA091702B /* Pods-Meril-umbrella.h in Headers */,
+				56210FF81A5911782AF2A2A736F4501D /* Pods-Meril-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +482,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC5E7B700B66B002633FEDBEB3A95197 /* LGSideMenuController-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		516296825B23CA8BC2B8391FD1131462 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05C752E65B5042A4602DDE7F527BF36E /* Chameleon.h in Headers */,
+				788C099E58CD13DD82B4E1EAF8210C4C /* Chameleon_.h in Headers */,
+				9386FFB81D625B7F5FCB606334F726EA /* ChameleonConstants.h in Headers */,
+				2AD183881B50C9A6624CBE219076EEF5 /* ChameleonEnums.h in Headers */,
+				994E77AC9A0F6CCC35BAA55BABF6ACB5 /* ChameleonFramework-umbrella.h in Headers */,
+				0FA04FD308DACD489BB73B6B39BC549F /* ChameleonMacros.h in Headers */,
+				459C57623C3D11CF7ACE4CCD0B8489C5 /* NSArray+Chameleon.h in Headers */,
+				A8F8FE3B9C1D2E65C9D08A5354E949C4 /* UIAppearance+Swift.h in Headers */,
+				8DD3A4B2C237B71C270602CC77DC8968 /* UIButton+Chameleon.h in Headers */,
+				1F2DAA4BD665CC063D99F36764900586 /* UIColor+Chameleon.h in Headers */,
+				A502D44AFA9C65CF3979D5FF1CBE019F /* UIColor+ChameleonPrivate.h in Headers */,
+				4CF3E9796FBD824B001FDB5942B390B6 /* UIImage+ChameleonPrivate.h in Headers */,
+				CE2B5B9DA10114A686B7C66FA54BFD3A /* UILabel+Chameleon.h in Headers */,
+				FE95059BD2229491BAB689EFB41343E1 /* UINavigationController+Chameleon.h in Headers */,
+				FB6B570FCD7E89B3A11BF2F34C293F0F /* UIView+ChameleonPrivate.h in Headers */,
+				C42DCE510858548F5578E3D876ADCC1F /* UIViewController+Chameleon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +537,24 @@
 			productReference = 1A30172AE9F0660847BC807A6F15A494 /* LGSideMenuController */;
 			productType = "com.apple.product-type.framework";
 		};
+		28BFDC89BA4363F4F3576DEC70EE10AE /* ChameleonFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2F51FC0F3EE6FB05502753D303F9DC0 /* Build configuration list for PBXNativeTarget "ChameleonFramework" */;
+			buildPhases = (
+				516296825B23CA8BC2B8391FD1131462 /* Headers */,
+				A233731DF32843873B9E373C486A330C /* Sources */,
+				5809CFFDA79B695C5DEBB77E12EED0C1 /* Frameworks */,
+				4D3E91E26ACE218AAD13F59631C557A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChameleonFramework;
+			productName = ChameleonFramework;
+			productReference = 0383903D05EDD5C442C682C1F7A1752D /* ChameleonFramework */;
+			productType = "com.apple.product-type.framework";
+		};
 		3C76CE6CD60B1CE55A174F03CC59AE17 /* iOSDropDown */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9BB71DF8A78DA9184B370DFCE2E4A9F5 /* Build configuration list for PBXNativeTarget "iOSDropDown" */;
@@ -374,22 +575,23 @@
 		};
 		47F7E8576978C1DB0C4341B237621054 /* Pods-Meril */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E1C74D7E0522776D14D4333B22755B18 /* Build configuration list for PBXNativeTarget "Pods-Meril" */;
+			buildConfigurationList = 49F8364A9C1B97489BFB3582E9B3990F /* Build configuration list for PBXNativeTarget "Pods-Meril" */;
 			buildPhases = (
-				1BE5C3D26C86A4EA32A6AF75E38EA7BC /* Headers */,
-				444F2469AF4C0E36BE5AD8E9A8402DBB /* Sources */,
-				9EB3B76B742B39020A702004761B4C67 /* Frameworks */,
-				F1F91A70DF214775A5E98854AF2F4CF8 /* Resources */,
+				49C217DE3B290A9762DB267E2E84AACD /* Headers */,
+				17CBED654DD4FCD3534DF52CDA27EA67 /* Sources */,
+				8C7FAADED853EC44B222D1C0D3914302 /* Frameworks */,
+				FC94F5545F6AE11BC86B0576443DAEA9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8219750DA052F63C6EC0B27712F5E938 /* PBXTargetDependency */,
-				2B48D863052D123C2B9696E43264C607 /* PBXTargetDependency */,
+				28D63CE59DCD6DCACC247834F1AFFE35 /* PBXTargetDependency */,
+				485DF6BE604BC61D3333A2391A138BF7 /* PBXTargetDependency */,
+				2028C5191A407545C94811CC746417F1 /* PBXTargetDependency */,
 			);
 			name = "Pods-Meril";
 			productName = Pods_Meril;
-			productReference = 9F6927A07B46136AF6742F53BDA00608 /* Pods_Meril.framework */;
+			productReference = 9F6927A07B46136AF6742F53BDA00608 /* Pods-Meril */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -402,7 +604,7 @@
 				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -410,10 +612,11 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = A72EE65A4D4257AE8AD1D3F99FE913F7 /* Products */;
+			productRefGroup = C293228CAEC0FBC19E528D7FCB35D373 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				28BFDC89BA4363F4F3576DEC70EE10AE /* ChameleonFramework */,
 				3C76CE6CD60B1CE55A174F03CC59AE17 /* iOSDropDown */,
 				0E1EC8CEFCB04F48D36C12CD11425CAC /* LGSideMenuController */,
 				47F7E8576978C1DB0C4341B237621054 /* Pods-Meril */,
@@ -429,6 +632,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4D3E91E26ACE218AAD13F59631C557A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A637E6D62C8F056CC40DC1E80705FA1C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -436,7 +646,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F1F91A70DF214775A5E98854AF2F4CF8 /* Resources */ = {
+		FC94F5545F6AE11BC86B0576443DAEA9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -446,6 +656,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		17CBED654DD4FCD3534DF52CDA27EA67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A7037B41DC0FBAED75176E9B1DF7C78 /* Pods-Meril-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2DA30093D60AE393F2C7C56D4FF7FE98 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -480,11 +698,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		444F2469AF4C0E36BE5AD8E9A8402DBB /* Sources */ = {
+		A233731DF32843873B9E373C486A330C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC13C87933E55643FADCEE2B88E89A6A /* Pods-Meril-dummy.m in Sources */,
+				D93537E646257B24E671F24360811C39 /* Chameleon_.m in Sources */,
+				5341A856F20ACDF7486662A572B28C42 /* ChameleonConstants.m in Sources */,
+				67AC45926BBC4F97FC16A682730A4EF7 /* ChameleonFramework-dummy.m in Sources */,
+				7A1AFFB2DF4FE138400B9BF514BC1AE6 /* ChameleonShorthand.swift in Sources */,
+				C0C73A752141B2BD7542966C8AD618A7 /* NSArray+Chameleon.m in Sources */,
+				45BF531839A5BD5956BB2D4D8DA35EAA /* UIAppearance+Swift.m in Sources */,
+				6CE51CCE847DCE80C8534049A15B9175 /* UIButton+Chameleon.m in Sources */,
+				2CDCB3D9817EB4A9D589CDF98F62C8F0 /* UIColor+Chameleon.m in Sources */,
+				F1CF296FBD4B14015276ABD63D8CF95D /* UIColor+ChameleonPrivate.m in Sources */,
+				153D18930C065806877C2B863608EA4A /* UIImage+ChameleonPrivate.m in Sources */,
+				34F64BE297E08E82118E6ED0A2A4372E /* UILabel+Chameleon.m in Sources */,
+				34E5D0B65C391490E7FF3B31ECAF81F4 /* UINavigationController+Chameleon.m in Sources */,
+				F4A33FE62AB9ACA4632D02C3846C1A8C /* UIView+ChameleonPrivate.m in Sources */,
+				A128CAFB1566AC4184383C57D47A1216 /* UIViewController+Chameleon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,24 +731,67 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2B48D863052D123C2B9696E43264C607 /* PBXTargetDependency */ = {
+		2028C5191A407545C94811CC746417F1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = iOSDropDown;
 			target = 3C76CE6CD60B1CE55A174F03CC59AE17 /* iOSDropDown */;
-			targetProxy = C9BE88ECD9FCF74BDDF78A90117B982D /* PBXContainerItemProxy */;
+			targetProxy = BFBAA7A89E03058B61809E608CFB888C /* PBXContainerItemProxy */;
 		};
-		8219750DA052F63C6EC0B27712F5E938 /* PBXTargetDependency */ = {
+		28D63CE59DCD6DCACC247834F1AFFE35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ChameleonFramework;
+			target = 28BFDC89BA4363F4F3576DEC70EE10AE /* ChameleonFramework */;
+			targetProxy = 57136208FF3B59E07E3D6978792DE952 /* PBXContainerItemProxy */;
+		};
+		485DF6BE604BC61D3333A2391A138BF7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = LGSideMenuController;
 			target = 0E1EC8CEFCB04F48D36C12CD11425CAC /* LGSideMenuController */;
-			targetProxy = BD4D9A7DF2D1345220E97B10C27474D5 /* PBXContainerItemProxy */;
+			targetProxy = A12CEA84A50690596665CD97969382DE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		16CA4C6783403BDCCDBE86178B2F007F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFB0678875A69CACCC2415EAA3A0B8C1 /* Pods-Meril.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Meril/Pods-Meril-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Meril/Pods-Meril.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		1E12A2FAE246AB180C3F3C676C300069 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF56DBEE0AD7BFBC312C40E830DBAD56 /* iOSDropDown.debug.xcconfig */;
+			baseConfigurationReference = 4D043B1CA826CF55634404214586A2FE /* iOSDropDown.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -551,7 +825,7 @@
 		};
 		2EF3F2C25B67E88777F4BA5C1EAD619D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBD3FCEBED2433BB7827343303F08767 /* LGSideMenuController.release.xcconfig */;
+			baseConfigurationReference = 4D98D47D9368C6A6A86E3113B58AE920 /* LGSideMenuController.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -584,7 +858,7 @@
 			};
 			name = Release;
 		};
-		2FA49507CC76542AD033743CC6640EB8 /* Release */ = {
+		477B62810348225A3081C47A89711048 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE74D7A325526AD8D6C272D270C104AB /* Pods-Meril.release.xcconfig */;
 			buildSettings = {
@@ -624,7 +898,7 @@
 		};
 		5B42562DF2EC85844EF2D9F4C24EEB63 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5BD8E74FDACDAF05654F3472575EC61 /* iOSDropDown.release.xcconfig */;
+			baseConfigurationReference = 9C7D704A1A37AB775CB4F1F393DC7276 /* iOSDropDown.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -657,9 +931,44 @@
 			};
 			name = Release;
 		};
+		70FABA802E6CA0849743A1F0C586EA04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AEF219FB7219639178B4CE1A0D8D9BB /* ChameleonFramework.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ChameleonFramework/ChameleonFramework-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ChameleonFramework/ChameleonFramework-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ChameleonFramework/ChameleonFramework.modulemap";
+				PRODUCT_MODULE_NAME = ChameleonFramework;
+				PRODUCT_NAME = ChameleonFramework;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		79CFF11A47BF1EF4C2974DA933AFCBCE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A676E834A4034255F273EA084FDCD4CA /* LGSideMenuController.debug.xcconfig */;
+			baseConfigurationReference = ED7DD539F7C304E7DB2806DB85B8F06C /* LGSideMenuController.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -753,12 +1062,10 @@
 			};
 			name = Release;
 		};
-		88B9ED139E38DF14430104DB28567945 /* Debug */ = {
+		C11D34FE7F4E678FD806584C41512D10 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EFB0678875A69CACCC2415EAA3A0B8C1 /* Pods-Meril.debug.xcconfig */;
+			baseConfigurationReference = B07B2AABF0C99CF755FECC1D984CBA9D /* ChameleonFramework.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -767,23 +1074,22 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Meril/Pods-Meril-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ChameleonFramework/ChameleonFramework-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ChameleonFramework/ChameleonFramework-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Meril/Pods-Meril.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/ChameleonFramework/ChameleonFramework.modulemap";
+				PRODUCT_MODULE_NAME = ChameleonFramework;
+				PRODUCT_NAME = ChameleonFramework;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -868,6 +1174,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		49F8364A9C1B97489BFB3582E9B3990F /* Build configuration list for PBXNativeTarget "Pods-Meril" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16CA4C6783403BDCCDBE86178B2F007F /* Debug */,
+				477B62810348225A3081C47A89711048 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7F3D5F8959DEB63E7472792406E5E3C6 /* Build configuration list for PBXNativeTarget "LGSideMenuController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -886,11 +1201,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E1C74D7E0522776D14D4333B22755B18 /* Build configuration list for PBXNativeTarget "Pods-Meril" */ = {
+		C2F51FC0F3EE6FB05502753D303F9DC0 /* Build configuration list for PBXNativeTarget "ChameleonFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				88B9ED139E38DF14430104DB28567945 /* Debug */,
-				2FA49507CC76542AD033743CC6640EB8 /* Release */,
+				C11D34FE7F4E678FD806584C41512D10 /* Debug */,
+				70FABA802E6CA0849743A1F0C586EA04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

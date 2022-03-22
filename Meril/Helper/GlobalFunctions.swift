@@ -22,7 +22,7 @@ struct GlobalFunctions {
     
     static func setRootNavigationController(currentVC: UIViewController) -> UINavigationController {
         let navController = UINavigationController(rootViewController: currentVC)
-        navController.navigationBar.barTintColor = UIColor(hexString: ColorConstant.mainThemeColor)
+        navController.navigationBar.barTintColor = ColorConstant.mainThemeColor//UIColor(hexString: ColorConstant.mainThemeColor)
         navController.navigationBar.tintColor = .white
         navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navController.navigationBar.shadowImage = UIImage()

@@ -10,9 +10,10 @@ import UIKit
 
 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 let sidemenuStoryboard = UIStoryboard(name: "Sidemenu", bundle: nil)
+let deviceToken = "123456"//UserDefaults.standard.string(forKey: "deviceToken")
 
 struct ColorConstant {
-    static let mainThemeColor = "#4476BB"
+    static let mainThemeColor = UIColor(hexString: "#317ac3") ?? UIColor.systemBlue//"#4476BB"
 }
 
 struct ApiConstant {

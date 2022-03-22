@@ -66,7 +66,7 @@ extension EndPointsItem: EndPointType {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .login:
+        case .getUserTypesApi:
             return .get
         default:
             return .post
@@ -75,16 +75,16 @@ extension EndPointsItem: EndPointType {
     
     var tokenHeader : HTTPHeaders {
         if let token = UserDefaults.standard.string(forKey: "headerToken") {
-            return ["Authorization" : token]//"Bearer \(token)"]
+            return ["Authorization" : token, "Accept": "application/json"]//"Bearer \(token)"]
         }else {
-            return [:]
+            return ["Accept": "application/json"]//[:]
         }
     }
     
     var headers: HTTPHeaders? {
         switch self {
-        case .login:
-            return nil
+        case .login, .getUserTypesApi:
+            return nil//["Accept": "application/json"]
         default:
             return tokenHeader
         }

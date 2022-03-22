@@ -15,8 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-        self.window?.rootViewController = GlobalFunctions.setRootNavigationController(currentVC: loginVC) //GlobalFunctions.setHomeVC()
+        let vc: UIViewController
+        if UserDefaults.standard.string(forKey: "userToken") != nil {
+            vc = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        } else {
+            vc = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        }
+        self.window?.rootViewController = GlobalFunctions.setRootNavigationController(currentVC: vc) //GlobalFunctions.setHomeVC()
         self.window?.makeKeyAndVisible()
         return true
     }

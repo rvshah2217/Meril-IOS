@@ -10,19 +10,41 @@ import UIKit
 
 class LoginServices {
     
+    //    Fetch user types
     static func getUserTypes(completionHandler: @escaping (ResponseModel?, _ error: String?) -> ()) {
         
-        let deviceToken = UserDefaults.standard.string(forKey: "deviceToken")
-        let params: [String:Any] = [:]
-        
-        APIManager.shared().call(for: ResponseModel.self, type: EndPointsItem.getUserTypesApi, params: params) { (responseData, error) in
+        //        let params: [String:Any] = [:]
+        APIManager.shared().call(for: ResponseModel.self, type: EndPointsItem.getUserTypesApi) { (responseData, error) in
+            
+            guard let response = responseData else {
+                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                return completionHandler(nil, error?.body)
+            }
+            //Check if server return success response or not
+            if response.success ?? false {
+                return completionHandler(response, nil)
+            } else {
+                return completionHandler(nil, response.message ?? UserMessages.serverError)
+            }
+        }
+    }
+    
+    //    Fetch user types
+    static func userLogin(loginObj: LoginRequesModel, completionHandler: @escaping (LoginResponseModel?, _ error: String?) -> ()) {
+                
+        APIManager.shared().call(for: LoginResponseModel.self, type: EndPointsItem.login, params: loginObj.dict) { (responseData, error) in
             
             guard let response = responseData else {
                 GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(nil, error?.body)
             }
             
-            return completionHandler(response, nil)
+            //Check if server return success response or not
+            if response.success ?? false {
+                return completionHandler(response, nil)
+            } else {
+                return completionHandler(nil, response.message ?? UserMessages.serverError)
+            }
         }
     }
 }

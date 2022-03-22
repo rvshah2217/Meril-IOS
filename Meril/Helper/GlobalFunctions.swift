@@ -7,6 +7,7 @@
 
 import LGSideMenuController
 import UIKit
+import ChameleonFramework
 
 struct GlobalFunctions {
     
@@ -21,12 +22,20 @@ struct GlobalFunctions {
     
     static func setRootNavigationController(currentVC: UIViewController) -> UINavigationController {
         let navController = UINavigationController(rootViewController: currentVC)
-//        navController.navigationBar.barTintColor = UIColor(hexs)
+        navController.navigationBar.barTintColor = UIColor(hexString: ColorConstant.mainThemeColor)
         navController.navigationBar.tintColor = .white
+        navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navController.navigationBar.shadowImage = UIImage()
         navController.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .medium)
         ]
         return navController
+    }
+    
+    static func printToConsole(message : String) {
+        #if DEBUG
+            print(message)
+        #endif
     }
 }
 

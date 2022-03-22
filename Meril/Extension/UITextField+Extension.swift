@@ -9,9 +9,20 @@ import UIKit
 
 extension UITextField {
         
+    func setIcon(imgName: String) {
+       let iconView = UIImageView(frame:
+                      CGRect(x: 10, y: 10, width: 20, height: 20))
+       iconView.image = UIImage(named: imgName)
+       let iconContainerView: UIView = UIView(frame:
+                      CGRect(x: 20, y: 0, width: 40, height: 40))
+       iconContainerView.addSubview(iconView)
+       leftView = iconContainerView
+       leftViewMode = .always
+    }
+    
     func addImageViewToLeft(imgName: String) {
         self.leftView = UIImageView(image: UIImage(named: imgName))
-        self.leftView?.frame = CGRect(x: 5, y: 5, width: 30 , height:30)
+        self.leftView?.frame = CGRect(x: 15, y: 5, width: 30 , height:30)
         self.leftViewMode = .always
     }
     

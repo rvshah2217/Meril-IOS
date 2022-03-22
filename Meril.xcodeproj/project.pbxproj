@@ -20,6 +20,10 @@
 		831A4F8727E86E4F00BEF2E7 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F8627E86E4F00BEF2E7 /* SideMenuCell.swift */; };
 		831A4F8A27E8A0A800BEF2E7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F8927E8A0A800BEF2E7 /* LoginVC.swift */; };
 		831A4F8D27E8A1B100BEF2E7 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F8C27E8A1B100BEF2E7 /* UITextField+Extension.swift */; };
+		837192C827E9FCFD00BE04A1 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192C727E9FCFD00BE04A1 /* ResponseModel.swift */; };
+		837192CD27EA026700BE04A1 /* ApiEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CA27EA026700BE04A1 /* ApiEndPoints.swift */; };
+		837192CE27EA026700BE04A1 /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CB27EA026700BE04A1 /* LoginServices.swift */; };
+		837192CF27EA026700BE04A1 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CC27EA026700BE04A1 /* APIManager.swift */; };
 		8F52398DF35062CB7B4C4689 /* Pods_Meril.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670968684A5D25B948E0B3F7 /* Pods_Meril.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +46,10 @@
 		831A4F8627E86E4F00BEF2E7 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		831A4F8927E8A0A800BEF2E7 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		831A4F8C27E8A1B100BEF2E7 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		837192C727E9FCFD00BE04A1 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		837192CA27EA026700BE04A1 /* ApiEndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiEndPoints.swift; sourceTree = "<group>"; };
+		837192CB27EA026700BE04A1 /* LoginServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
+		837192CC27EA026700BE04A1 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +93,7 @@
 		831A4F5F27E83CED00BEF2E7 /* Meril */ = {
 			isa = PBXGroup;
 			children = (
+				837192C927EA025C00BE04A1 /* Services */,
 				831A4F8B27E8A19700BEF2E7 /* Extension */,
 				831A4F7F27E850CA00BEF2E7 /* Config */,
 				831A4F7E27E850A900BEF2E7 /* Views */,
@@ -120,6 +129,7 @@
 		831A4F7D27E850A000BEF2E7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				837192C727E9FCFD00BE04A1 /* ResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -173,6 +183,16 @@
 				831A4F8C27E8A1B100BEF2E7 /* UITextField+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		837192C927EA025C00BE04A1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				837192CA27EA026700BE04A1 /* ApiEndPoints.swift */,
+				837192CC27EA026700BE04A1 /* APIManager.swift */,
+				837192CB27EA026700BE04A1 /* LoginServices.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		C2DE1A9E27ADBB95EED04745 /* Pods */ = {
@@ -301,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				831A4F8D27E8A1B100BEF2E7 /* UITextField+Extension.swift in Sources */,
+				837192CD27EA026700BE04A1 /* ApiEndPoints.swift in Sources */,
 				831A4F8127E8511F00BEF2E7 /* Constants.swift in Sources */,
 				831A4F8727E86E4F00BEF2E7 /* SideMenuCell.swift in Sources */,
 				831A4F8A27E8A0A800BEF2E7 /* LoginVC.swift in Sources */,
@@ -308,7 +329,10 @@
 				831A4F8427E86CA900BEF2E7 /* SideMenuVC.swift in Sources */,
 				831A4F6127E83CED00BEF2E7 /* AppDelegate.swift in Sources */,
 				831A4F7B27E8507600BEF2E7 /* GlobalFunctions.swift in Sources */,
+				837192C827E9FCFD00BE04A1 /* ResponseModel.swift in Sources */,
+				837192CF27EA026700BE04A1 /* APIManager.swift in Sources */,
 				831A4F6B27E83CED00BEF2E7 /* Meril.xcdatamodeld in Sources */,
+				837192CE27EA026700BE04A1 /* LoginServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,7 +483,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CPR2Y68PV8;
-				GENERATE_INFOPLIST_FILE = NO;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meril/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -490,7 +514,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CPR2Y68PV8;
-				GENERATE_INFOPLIST_FILE = NO;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meril/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

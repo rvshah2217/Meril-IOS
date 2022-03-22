@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "73E38E84-FDD8-4851-98E4-5E969D2A1339"
+            uuid = "524D7B1E-43EC-4F9C-83C4-DEE19BA6E320"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Meril/Extension/UITextField+Extension.swift"
+            filePath = "Meril/Services/LoginServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "addImageViewToLeft(imgName:)"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "getUserTypes(completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3BEA6BA8-401B-4C12-A3D3-71F50D31CB39"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Meril/Services/LoginServices.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "getUserTypes(completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

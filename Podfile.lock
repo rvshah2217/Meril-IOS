@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.5.0)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -6,12 +7,14 @@ PODS:
   - LGSideMenuController (3.1.2)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.5)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - iOSDropDown
   - LGSideMenuController
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - iOSDropDown
     - LGSideMenuController
 
@@ -25,10 +28,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ViccAlexander/Chameleon.git
 
 SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   LGSideMenuController: 0c7b155b0dbdf14bf8b88d5ac363c5fe1584bb23
 
-PODFILE CHECKSUM: 774f793c81e5312e8269d0c2f80c2cb79ec19ffe
+PODFILE CHECKSUM: ff185ad414b3f33137a56dfc35b479a87d50cbee
 
 COCOAPODS: 1.11.3

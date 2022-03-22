@@ -9,5 +9,6 @@ target 'Meril' do
   pod 'iOSDropDown'
   pod 'LGSideMenuController'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'Alamofire', '~> 5.5'
 
 end

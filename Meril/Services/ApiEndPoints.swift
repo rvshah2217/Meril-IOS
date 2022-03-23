@@ -33,7 +33,7 @@ enum EndPointsItem {
     
     // #MARK:- User actions
     case login
-    case getHomeDataApi
+    case getHomeBanners
     case getUserTypesApi
 }
 
@@ -57,7 +57,7 @@ extension EndPointsItem: EndPointType {
             
         case .login:
             return "login"
-        case .getHomeDataApi:
+        case .getHomeBanners:
             return "banners"
         case .getUserTypesApi:
             return "userTypes"
@@ -66,7 +66,7 @@ extension EndPointsItem: EndPointType {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .getUserTypesApi:
+        case .getUserTypesApi, .getHomeBanners:
             return .get
         default:
             return .post
@@ -82,12 +82,13 @@ extension EndPointsItem: EndPointType {
     }
     
     var headers: HTTPHeaders? {
-        switch self {
-        case .login, .getUserTypesApi:
-            return nil//["Accept": "application/json"]
-        default:
-            return tokenHeader
-        }
+        return tokenHeader
+//        switch self {
+//        case .login, .getUserTypesApi:
+//            return nil//["Accept": "application/json"]
+//        default:
+//            return tokenHeader
+//        }
     }
     
     var url: URL {

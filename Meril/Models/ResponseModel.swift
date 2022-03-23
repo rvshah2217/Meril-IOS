@@ -39,6 +39,12 @@ struct UserTypes : Codable {
     let user_type_id: String?
     let unique_id: String?
     let token: String?
+    
+//    For banners
+    let type : String?
+    let link : String?
+    let extra_parameter : String?
+    let image : String?
 
     enum CodingKeys: String, CodingKey {
 
@@ -51,6 +57,12 @@ struct UserTypes : Codable {
         case user_type_id = "user_type_id"
         case unique_id = "unique_id"
         case token = "token"
+        
+        case type = "type"
+        case link = "link"
+        case extra_parameter = "extra_parameter"
+        case image = "image"
+
     }
 
     init(from decoder: Decoder) throws {
@@ -64,6 +76,11 @@ struct UserTypes : Codable {
         user_type_id = try values.decodeIfPresent(String.self, forKey: .user_type_id)
         unique_id = try values.decodeIfPresent(String.self, forKey: .unique_id)
         token = try values.decodeIfPresent(String.self, forKey: .token)
+
+        type = try values.decodeIfPresent(String.self, forKey: .type)
+        link = try values.decodeIfPresent(String.self, forKey: .link)
+        extra_parameter = try values.decodeIfPresent(String.self, forKey: .extra_parameter)
+        image = try values.decodeIfPresent(String.self, forKey: .image)
 
     }
 

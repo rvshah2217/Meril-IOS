@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,7 @@
 		837192D327EA399C00BE04A1 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 837192D227EA399C00BE04A1 /* loading.json */; };
 		837192D527EA546D00BE04A1 /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192D427EA546C00BE04A1 /* LoginResponseModel.swift */; };
 		837192D727EA581F00BE04A1 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192D627EA581F00BE04A1 /* Validation.swift */; };
+		837192D927EAF4F300BE04A1 /* HomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192D827EAF4F300BE04A1 /* HomeServices.swift */; };
 		8F52398DF35062CB7B4C4689 /* Pods_Meril.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670968684A5D25B948E0B3F7 /* Pods_Meril.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		837192D227EA399C00BE04A1 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		837192D427EA546C00BE04A1 /* LoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
 		837192D627EA581F00BE04A1 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		837192D827EAF4F300BE04A1 /* HomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				837192CC27EA026700BE04A1 /* APIManager.swift */,
 				837192CB27EA026700BE04A1 /* LoginServices.swift */,
 				837192D227EA399C00BE04A1 /* loading.json */,
+				837192D827EAF4F300BE04A1 /* HomeServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -241,7 +244,6 @@
 		831A4F5527E83CED00BEF2E7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
@@ -340,6 +342,7 @@
 				831A4F6127E83CED00BEF2E7 /* AppDelegate.swift in Sources */,
 				837192D527EA546D00BE04A1 /* LoginResponseModel.swift in Sources */,
 				831A4F7B27E8507600BEF2E7 /* GlobalFunctions.swift in Sources */,
+				837192D927EAF4F300BE04A1 /* HomeServices.swift in Sources */,
 				837192C827E9FCFD00BE04A1 /* ResponseModel.swift in Sources */,
 				837192CF27EA026700BE04A1 /* APIManager.swift in Sources */,
 				831A4F6B27E83CED00BEF2E7 /* Meril.xcdatamodeld in Sources */,

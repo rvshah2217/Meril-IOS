@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="108" id="KGk-i7-Jjw" customClass="SurgeriListTableViewCell" customModule="Meril" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl7-FA-rPg">
+                        <rect key="frame" x="20" y="5" width="280" height="98"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PatientName : Sagar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdg-jy-EHM">
+                                <rect key="frame" x="15" y="8" width="250" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital code : 123456" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKB-yo-Mvh">
+                                <rect key="frame" x="15" y="30" width="250" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date: 19/3/22" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpm-1m-ihJ">
+                                <rect key="frame" x="15" y="52" width="250" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR: Erto9p0o8u7" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOp-bj-86p">
+                                <rect key="frame" x="15" y="74" width="250" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dpm-1m-ihJ" firstAttribute="trailing" secondItem="KKB-yo-Mvh" secondAttribute="trailing" id="2e3-bO-Vaq"/>
+                            <constraint firstItem="dpm-1m-ihJ" firstAttribute="leading" secondItem="KKB-yo-Mvh" secondAttribute="leading" id="B2K-d8-cBw"/>
+                            <constraint firstItem="jOp-bj-86p" firstAttribute="leading" secondItem="dpm-1m-ihJ" secondAttribute="leading" id="KWS-Gw-t6e"/>
+                            <constraint firstAttribute="bottom" secondItem="jOp-bj-86p" secondAttribute="bottom" constant="7" id="LMS-Jh-EDW"/>
+                            <constraint firstItem="KKB-yo-Mvh" firstAttribute="leading" secondItem="Bdg-jy-EHM" secondAttribute="leading" id="Ohi-iH-m4f"/>
+                            <constraint firstItem="KKB-yo-Mvh" firstAttribute="top" secondItem="Bdg-jy-EHM" secondAttribute="bottom" constant="5" id="Q4v-TW-HfK"/>
+                            <constraint firstItem="KKB-yo-Mvh" firstAttribute="trailing" secondItem="Bdg-jy-EHM" secondAttribute="trailing" id="Tf6-as-xUt"/>
+                            <constraint firstItem="dpm-1m-ihJ" firstAttribute="top" secondItem="KKB-yo-Mvh" secondAttribute="bottom" constant="5" id="UfQ-yv-bky"/>
+                            <constraint firstItem="Bdg-jy-EHM" firstAttribute="leading" secondItem="bl7-FA-rPg" secondAttribute="leading" constant="15" id="bi5-mE-AFZ"/>
+                            <constraint firstItem="jOp-bj-86p" firstAttribute="top" secondItem="dpm-1m-ihJ" secondAttribute="bottom" constant="5" id="gM7-NG-dt7"/>
+                            <constraint firstAttribute="trailing" secondItem="Bdg-jy-EHM" secondAttribute="trailing" constant="15" id="qgD-tQ-s0M"/>
+                            <constraint firstItem="jOp-bj-86p" firstAttribute="trailing" secondItem="dpm-1m-ihJ" secondAttribute="trailing" id="tF8-8O-uES"/>
+                            <constraint firstItem="Bdg-jy-EHM" firstAttribute="top" secondItem="bl7-FA-rPg" secondAttribute="top" constant="8" id="y0J-fy-3nw"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="bl7-FA-rPg" secondAttribute="trailing" constant="20" id="Sft-2w-gPZ"/>
+                    <constraint firstAttribute="bottom" secondItem="bl7-FA-rPg" secondAttribute="bottom" constant="5" id="Z9h-lE-FXW"/>
+                    <constraint firstItem="bl7-FA-rPg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="bhc-Or-8Pm"/>
+                    <constraint firstItem="bl7-FA-rPg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="gx8-hS-Ij4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblCode" destination="KKB-yo-Mvh" id="IOG-uG-oYu"/>
+                <outlet property="lblDate" destination="dpm-1m-ihJ" id="nRK-KY-fhC"/>
+                <outlet property="lblQuCode" destination="jOp-bj-86p" id="mkA-eh-S2F"/>
+                <outlet property="lblTitle" destination="Bdg-jy-EHM" id="dKW-EC-3r7"/>
+                <outlet property="viewMain" destination="bl7-FA-rPg" id="JT8-lf-EA0"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="119.86607142857142"/>
+        </tableViewCell>
+    </objects>
+</document>

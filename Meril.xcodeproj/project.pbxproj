@@ -42,6 +42,12 @@
 		88CBA34027ECCDE2005C22FE /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA33627ECCDE2005C22FE /* SettingsViewController.xib */; };
 		88CBA34127ECCDE2005C22FE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA33727ECCDE2005C22FE /* SettingsViewController.swift */; };
 		88CBA34327ECCE1F005C22FE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA34227ECCE1F005C22FE /* BaseViewController.swift */; };
+		88CBA34727ECD51E005C22FE /* AddInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA34527ECD51E005C22FE /* AddInventoryViewController.swift */; };
+		88CBA34827ECD51E005C22FE /* AddInventoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA34627ECD51E005C22FE /* AddInventoryViewController.xib */; };
+		88CBA34C27ECDC49005C22FE /* SurgerayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA34A27ECDC49005C22FE /* SurgerayListViewController.swift */; };
+		88CBA34D27ECDC49005C22FE /* SurgerayListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA34B27ECDC49005C22FE /* SurgerayListViewController.xib */; };
+		88CBA35127ECDF74005C22FE /* SurgeriListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA34F27ECDF74005C22FE /* SurgeriListTableViewCell.swift */; };
+		88CBA35227ECDF74005C22FE /* SurgeriListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA35027ECDF74005C22FE /* SurgeriListTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +90,12 @@
 		88CBA33627ECCDE2005C22FE /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		88CBA33727ECCDE2005C22FE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		88CBA34227ECCE1F005C22FE /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		88CBA34527ECD51E005C22FE /* AddInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInventoryViewController.swift; sourceTree = "<group>"; };
+		88CBA34627ECD51E005C22FE /* AddInventoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddInventoryViewController.xib; sourceTree = "<group>"; };
+		88CBA34A27ECDC49005C22FE /* SurgerayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgerayListViewController.swift; sourceTree = "<group>"; };
+		88CBA34B27ECDC49005C22FE /* SurgerayListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurgerayListViewController.xib; sourceTree = "<group>"; };
+		88CBA34F27ECDF74005C22FE /* SurgeriListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeriListTableViewCell.swift; sourceTree = "<group>"; };
+		88CBA35027ECDF74005C22FE /* SurgeriListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurgeriListTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +165,8 @@
 		831A4F7C27E8509900BEF2E7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				88CBA34927ECD951005C22FE /* SurgerayList */,
+				88CBA34427ECD4ED005C22FE /* AddInventory */,
 				88CBA32E27ECCDE2005C22FE /* AddSurgeray */,
 				88CBA32B27ECCDE2005C22FE /* PrivacyPolicy */,
 				88CBA33127ECCDE2005C22FE /* Profile */,
@@ -278,6 +292,34 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		88CBA34427ECD4ED005C22FE /* AddInventory */ = {
+			isa = PBXGroup;
+			children = (
+				88CBA34527ECD51E005C22FE /* AddInventoryViewController.swift */,
+				88CBA34627ECD51E005C22FE /* AddInventoryViewController.xib */,
+			);
+			path = AddInventory;
+			sourceTree = "<group>";
+		};
+		88CBA34927ECD951005C22FE /* SurgerayList */ = {
+			isa = PBXGroup;
+			children = (
+				88CBA34E27ECDF3D005C22FE /* Cell */,
+				88CBA34A27ECDC49005C22FE /* SurgerayListViewController.swift */,
+				88CBA34B27ECDC49005C22FE /* SurgerayListViewController.xib */,
+			);
+			path = SurgerayList;
+			sourceTree = "<group>";
+		};
+		88CBA34E27ECDF3D005C22FE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				88CBA34F27ECDF74005C22FE /* SurgeriListTableViewCell.swift */,
+				88CBA35027ECDF74005C22FE /* SurgeriListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C2DE1A9E27ADBB95EED04745 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,8 +396,11 @@
 				831A4F6827E83CED00BEF2E7 /* Main.storyboard in Resources */,
 				837192D327EA399C00BE04A1 /* loading.json in Resources */,
 				88CBA33827ECCDE2005C22FE /* PrivacyPolicyViewController.xib in Resources */,
+				88CBA34D27ECDC49005C22FE /* SurgerayListViewController.xib in Resources */,
 				88CBA33E27ECCDE2005C22FE /* EditProfileViewController.xib in Resources */,
+				88CBA35227ECDF74005C22FE /* SurgeriListTableViewCell.xib in Resources */,
 				88CBA34027ECCDE2005C22FE /* SettingsViewController.xib in Resources */,
+				88CBA34827ECD51E005C22FE /* AddInventoryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,12 +462,15 @@
 				831A4F8A27E8A0A800BEF2E7 /* LoginVC.swift in Sources */,
 				88CBA33F27ECCDE2005C22FE /* ProfileViewController.swift in Sources */,
 				831A4F6527E83CED00BEF2E7 /* HomeVC.swift in Sources */,
+				88CBA34727ECD51E005C22FE /* AddInventoryViewController.swift in Sources */,
 				831A4F8427E86CA900BEF2E7 /* SideMenuVC.swift in Sources */,
 				831A4F6127E83CED00BEF2E7 /* AppDelegate.swift in Sources */,
 				837192D527EA546D00BE04A1 /* LoginResponseModel.swift in Sources */,
 				831A4F7B27E8507600BEF2E7 /* GlobalFunctions.swift in Sources */,
+				88CBA35127ECDF74005C22FE /* SurgeriListTableViewCell.swift in Sources */,
 				837192D927EAF4F300BE04A1 /* HomeServices.swift in Sources */,
 				88CBA33927ECCDE2005C22FE /* PrivacyPolicyViewController.swift in Sources */,
+				88CBA34C27ECDC49005C22FE /* SurgerayListViewController.swift in Sources */,
 				837192DB27EB7B1600BE04A1 /* BarCodeScannerVC.swift in Sources */,
 				88CBA34127ECCDE2005C22FE /* SettingsViewController.swift in Sources */,
 				8326D89E27ECABD80081B4ED /* ScanAgainPopUpVC.swift in Sources */,

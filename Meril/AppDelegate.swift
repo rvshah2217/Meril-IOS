@@ -15,13 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UINavigationBar.appearance().barTintColor = ColorConstant.mainThemeColor
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+
         let vc: UIViewController
 //        if UserDefaults.standard.string(forKey: "userToken") != nil {
 //            vc = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
 //        } else {
 //            vc = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
 //        }
-                    vc = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+//                    vc = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        vc = SurgerayListViewController(nibName: "SurgerayListViewController", bundle: nil)
         self.window?.rootViewController = GlobalFunctions.setRootNavigationController(currentVC: vc) //GlobalFunctions.setHomeVC()
         self.window?.makeKeyAndVisible()
         return true

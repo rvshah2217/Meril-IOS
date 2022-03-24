@@ -8,7 +8,7 @@
 //
 import UIKit
 
-open class DropDown : UITextField {
+open class DropDown : UITextField{
 
     var arrow : Arrow!
     var table : UITableView!
@@ -27,6 +27,7 @@ open class DropDown : UITextField {
             addGesture()
         }
     }
+
 
     @IBInspectable public var borderColor: UIColor =  UIColor.lightGray {
         didSet {
@@ -152,6 +153,7 @@ open class DropDown : UITextField {
                         self.showList()
                     }
                 }
+              
             }
             NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: nil) { (notification) in
                 if self.isFirstResponder{
@@ -176,7 +178,6 @@ open class DropDown : UITextField {
         let gesture2 =  UITapGestureRecognizer(target: self, action:  #selector(touchAction))
         self.backgroundView.addGestureRecognizer(gesture2)
     }
-    
     func getConvertedPoint(_ targetView: UIView, baseView: UIView?)->CGPoint{
         var pnt = targetView.frame.origin
         if nil == targetView.superview{
@@ -193,7 +194,6 @@ open class DropDown : UITextField {
         }
         return superView!.convert(pnt, to: baseView)
     }
-    
     public func showList() {
         if parentController == nil{
             parentController = self.parentViewController
@@ -244,11 +244,16 @@ open class DropDown : UITextField {
                         self.shadow.frame = self.table.frame
                         self.shadow.dropShadow()
                         self.arrow.position = .up
+                       
+
         },
                        completion: { (finish) -> Void in
                         self.layoutIfNeeded()
+
         })
+
     }
+
 
     public func hideList() {
         TableWillDisappearCompletion()
@@ -277,9 +282,9 @@ open class DropDown : UITextField {
     }
 
     @objc public func touchAction() {
+
         isSelected ?  hideList() : showList()
     }
-    
     func reSizeTable() {
         if listHeight > rowHeight * CGFloat( dataArray.count) {
             self.tableheightX = rowHeight * CGFloat(dataArray.count)
@@ -308,6 +313,7 @@ open class DropDown : UITextField {
                        completion: { (didFinish) -> Void in
                       //  self.shadow.layer.shadowPath = UIBezierPath(rect: self.table.bounds).cgPath
                         self.layoutIfNeeded()
+
         })
     }
 
@@ -331,6 +337,7 @@ open class DropDown : UITextField {
     public func listDidDisappear(completion: @escaping () -> ()) {
         TableDidDisappearCompletion = completion
     }
+
 }
 
 //MARK: UITextFieldDelegate
@@ -423,6 +430,7 @@ extension DropDown: UITableViewDelegate {
             }else{
                 didSelectCompletion(selectedText, selected , 0)
             }
+
         }
 
     }

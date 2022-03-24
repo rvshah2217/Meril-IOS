@@ -168,6 +168,9 @@
                                                             <fontDescription key="titleFontDescription" name="Verdana-Bold" family="Verdana" pointSize="24"/>
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="syncDataBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mYQ-6u-CGW"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -228,6 +231,156 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="65.625"/>
+        </scene>
+        <!--Bar Code ScannerVC-->
+        <scene sceneID="xlG-qK-grH">
+            <objects>
+                <viewController storyboardIdentifier="BarCodeScannerVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="K9x-iI-y6O" customClass="BarCodeScannerVC" customModule="Meril" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TpR-Vy-pSr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7A9-nw-5fq">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="iSk-wA-te2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iSk-wA-te2" firstAttribute="trailing" secondItem="7A9-nw-5fq" secondAttribute="trailing" id="15x-Bf-CHC"/>
+                            <constraint firstItem="7A9-nw-5fq" firstAttribute="leading" secondItem="iSk-wA-te2" secondAttribute="leading" id="C7u-qL-Aka"/>
+                            <constraint firstItem="iSk-wA-te2" firstAttribute="bottom" secondItem="7A9-nw-5fq" secondAttribute="bottom" id="JJP-Uy-46H"/>
+                            <constraint firstItem="7A9-nw-5fq" firstAttribute="top" secondItem="iSk-wA-te2" secondAttribute="top" id="etF-Gh-BSa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cameraView" destination="7A9-nw-5fq" id="56s-F3-TjV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4fp-sF-9Of" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="684" y="66"/>
+        </scene>
+        <!--Scan Again Pop UpVC-->
+        <scene sceneID="SNL-hG-Pr5">
+            <objects>
+                <viewController storyboardIdentifier="ScanAgainPopUpVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MiL-ZE-f6L" customClass="ScanAgainPopUpVC" customModule="Meril" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eg9-uw-MC6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T37-Gq-Y4W">
+                                <rect key="frame" x="30" y="323" width="354" height="250"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vic-qC-Y1C">
+                                        <rect key="frame" x="15" y="15" width="324" height="29.5"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKU-QK-EOm">
+                                        <rect key="frame" x="0.0" y="54.5" width="354" height="1"/>
+                                        <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Th6-B9-nAZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5QF-qT-bbc">
+                                        <rect key="frame" x="0.0" y="65.5" width="354" height="76"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your data has been saved successfully. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvd-Jf-vmC">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="44"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you like to scan again?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iD1-px-j4g">
+                                                <rect key="frame" x="0.0" y="54" width="354" height="22"/>
+                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mX7-sx-g69">
+                                        <rect key="frame" x="30" y="185" width="294" height="45"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzc-aH-I5X">
+                                                <rect key="frame" x="0.0" y="0.0" width="139.5" height="45"/>
+                                                <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="PDX-JF-mpB"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Scan again">
+                                                    <fontDescription key="titleFontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="scanAgainBtnClicked:" destination="MiL-ZE-f6L" eventType="touchUpInside" id="HF3-Dd-rL7"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOB-gL-19L">
+                                                <rect key="frame" x="154.5" y="0.0" width="139.5" height="45"/>
+                                                <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="fsw-N0-aNK"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Submit">
+                                                    <fontDescription key="titleFontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="submitBtnClicked:" destination="MiL-ZE-f6L" eventType="touchUpInside" id="Fht-W1-rlb"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Vic-qC-Y1C" firstAttribute="top" secondItem="T37-Gq-Y4W" secondAttribute="top" constant="15" id="5tk-Nh-wBr"/>
+                                    <constraint firstAttribute="bottom" secondItem="mX7-sx-g69" secondAttribute="bottom" constant="20" id="9Wp-wu-yL1"/>
+                                    <constraint firstItem="mX7-sx-g69" firstAttribute="leading" secondItem="T37-Gq-Y4W" secondAttribute="leading" constant="30" id="ACQ-xa-v3P"/>
+                                    <constraint firstItem="UKU-QK-EOm" firstAttribute="leading" secondItem="T37-Gq-Y4W" secondAttribute="leading" id="J4T-Ga-S38"/>
+                                    <constraint firstAttribute="trailing" secondItem="5QF-qT-bbc" secondAttribute="trailing" id="NLH-lW-DpA"/>
+                                    <constraint firstItem="5QF-qT-bbc" firstAttribute="top" secondItem="UKU-QK-EOm" secondAttribute="bottom" constant="10" id="NQy-hm-cjb"/>
+                                    <constraint firstAttribute="trailing" secondItem="mX7-sx-g69" secondAttribute="trailing" constant="30" id="Nz4-Rh-PzD"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vic-qC-Y1C" secondAttribute="trailing" constant="15" id="cBC-xI-cAz"/>
+                                    <constraint firstItem="5QF-qT-bbc" firstAttribute="leading" secondItem="T37-Gq-Y4W" secondAttribute="leading" id="d6J-ux-PeN"/>
+                                    <constraint firstItem="UKU-QK-EOm" firstAttribute="top" secondItem="Vic-qC-Y1C" secondAttribute="bottom" constant="10" id="id0-vA-slT"/>
+                                    <constraint firstItem="mX7-sx-g69" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5QF-qT-bbc" secondAttribute="bottom" constant="40" id="jd5-UX-a5b"/>
+                                    <constraint firstItem="Vic-qC-Y1C" firstAttribute="leading" secondItem="T37-Gq-Y4W" secondAttribute="leading" constant="15" id="m2C-p2-uhL"/>
+                                    <constraint firstAttribute="height" constant="250" id="nJl-TW-XxQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="UKU-QK-EOm" secondAttribute="trailing" id="p8R-0u-y3i"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1lf-Ud-mKa"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="T37-Gq-Y4W" firstAttribute="centerY" secondItem="eg9-uw-MC6" secondAttribute="centerY" id="SBl-Sl-UzY"/>
+                            <constraint firstItem="T37-Gq-Y4W" firstAttribute="leading" secondItem="eg9-uw-MC6" secondAttribute="leading" constant="30" id="cZP-fr-Vss"/>
+                            <constraint firstAttribute="trailing" secondItem="T37-Gq-Y4W" secondAttribute="trailing" constant="30" id="lt2-kf-ddY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="askScanAgainLbl" destination="iD1-px-j4g" id="AMI-AQ-GuS"/>
+                        <outlet property="popUpView" destination="T37-Gq-Y4W" id="Aau-do-F5u"/>
+                        <outlet property="scanAgainBtn" destination="Nzc-aH-I5X" id="V3n-Xv-ma1"/>
+                        <outlet property="submitBtn" destination="yOB-gL-19L" id="8a9-Gj-03N"/>
+                        <outlet property="successMsgLbl" destination="Gvd-Jf-vmC" id="ZXB-bR-HB7"/>
+                        <outlet property="titleLbl" destination="Vic-qC-Y1C" id="HPH-xB-2G6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CjF-wE-15p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1353.6231884057972" y="77.678571428571431"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="VKj-Kj-EiK">

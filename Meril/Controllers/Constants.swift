@@ -16,6 +16,11 @@ struct ColorConstant {
     static let mainThemeColor = UIColor(hexString: "#317ac3") ?? UIColor.systemBlue//"#4476BB"
 }
 
+struct DeviceConstant {
+    static let deviceWidth = UIScreen.main.bounds.width
+    static let deviceHeight = UIScreen.main.bounds.height
+}
+
 struct ApiConstant {
     static let baseUrl = "https://houseofgames.in/merillife/api/"
     static let loginApi = "login"

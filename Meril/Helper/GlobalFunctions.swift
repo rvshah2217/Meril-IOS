@@ -22,14 +22,32 @@ struct GlobalFunctions {
     
     static func setRootNavigationController(currentVC: UIViewController) -> UINavigationController {
         let navController = UINavigationController(rootViewController: currentVC)
-        navController.navigationBar.barTintColor = ColorConstant.mainThemeColor//UIColor(hexString: ColorConstant.mainThemeColor)
+    
+//        navController.navigationBar.barTintColor = ColorConstant.mainThemeColor//UIColor(hexString: ColorConstant.mainThemeColor)
         navController.navigationBar.tintColor = .white
-        navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navController.navigationBar.shadowImage = UIImage()
-        navController.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .medium)
-        ]
+//        navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navController.navigationBar.shadowImage = UIImage()
+        configureStatusNavBar(navController: navController, bgColor: .white, textColor: ColorConstant.mainThemeColor)
+//        navController.navigationBar.titleTextAttributes = [
+//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .medium)
+//        ]
         return navController
+    }
+    
+    static func configureStatusNavBar(navController: UINavigationController, bgColor: UIColor, textColor: UIColor) {
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithDefaultBackground()
+            navBarAppearance.backgroundColor = bgColor
+            navBarAppearance.shadowColor = .clear
+            navBarAppearance.titleTextAttributes = [
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .medium),
+                NSAttributedString.Key.foregroundColor: textColor
+            ]
+            navController.navigationBar.isTranslucent = false
+            navController.navigationBar.scrollEdgeAppearance = navBarAppearance
+            navController.navigationBar.standardAppearance = navBarAppearance
+        }
     }
     
     static func printToConsole(message : String) {

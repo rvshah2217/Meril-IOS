@@ -29,9 +29,15 @@ class HomeVC: UIViewController {
     }
 
     private func setNavBar() {
-        self.navigationController?.navigationBar.barTintColor = .white
         let menuBtn = UIBarButtonItem(image: UIImage(named: "ic_menu"), style: .plain, target: self, action: #selector(self.sideMenuBtnPressed))
         self.navigationItem.leftBarButtonItem = menuBtn
+        self.navigationItem.title = ""
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.backgroundColor = .white
+        GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: .white, textColor: ColorConstant.mainThemeColor)
     }
     
     private func setUI() {
@@ -95,6 +101,11 @@ extension HomeVC {
     @IBAction func listAllInventoriesBtnClicked(_ sender: Any) {
     }
 
+    @IBAction func syncDataBtnClicked(_ sender: Any) {
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
+        vc.isFromAddSurgery = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
 }
 

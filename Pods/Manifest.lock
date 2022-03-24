@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.5.0)
+  - Alamofire (5.0.5)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -11,12 +11,12 @@ PODS:
     - SDWebImage (>= 3.7)
   - iOSDropDown (0.3.4)
   - LGSideMenuController (3.1.2)
-  - SDWebImage (5.12.3):
-    - SDWebImage/Core (= 5.12.3)
-  - SDWebImage/Core (5.12.3)
+  - SDWebImage (5.12.5):
+    - SDWebImage/Core (= 5.12.5)
+  - SDWebImage/Core (5.12.5)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.5)
+  - Alamofire
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - ImageSlideshow (~> 1.9.0)
   - ImageSlideshow/SDWebImage
@@ -41,13 +41,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ViccAlexander/Chameleon.git
 
 SPEC CHECKSUMS:
-  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   LGSideMenuController: 0c7b155b0dbdf14bf8b88d5ac363c5fe1584bb23
-  SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
+  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
 
-PODFILE CHECKSUM: 6260770d2d17e6d627aee4ccd92f8d7c54256c9a
+PODFILE CHECKSUM: 5b5a5cad849d6e2e5b0ceb664ad6bd49c4af2a04
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.9.1

@@ -31,6 +31,17 @@
 		837192D927EAF4F300BE04A1 /* HomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192D827EAF4F300BE04A1 /* HomeServices.swift */; };
 		837192DB27EB7B1600BE04A1 /* BarCodeScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192DA27EB7B1600BE04A1 /* BarCodeScannerVC.swift */; };
 		83D05CF727EC0259005C24A8 /* Pods_Meril.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670968684A5D25B948E0B3F7 /* Pods_Meril.framework */; };
+		88CBA33827ECCDE2005C22FE /* PrivacyPolicyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA32C27ECCDE2005C22FE /* PrivacyPolicyViewController.xib */; };
+		88CBA33927ECCDE2005C22FE /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA32D27ECCDE2005C22FE /* PrivacyPolicyViewController.swift */; };
+		88CBA33A27ECCDE2005C22FE /* AddSurgerayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA32F27ECCDE2005C22FE /* AddSurgerayViewController.xib */; };
+		88CBA33B27ECCDE2005C22FE /* AddSurgerayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA33027ECCDE2005C22FE /* AddSurgerayViewController.swift */; };
+		88CBA33C27ECCDE2005C22FE /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA33227ECCDE2005C22FE /* EditProfileViewController.swift */; };
+		88CBA33D27ECCDE2005C22FE /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA33327ECCDE2005C22FE /* ProfileViewController.xib */; };
+		88CBA33E27ECCDE2005C22FE /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA33427ECCDE2005C22FE /* EditProfileViewController.xib */; };
+		88CBA33F27ECCDE2005C22FE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA33527ECCDE2005C22FE /* ProfileViewController.swift */; };
+		88CBA34027ECCDE2005C22FE /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA33627ECCDE2005C22FE /* SettingsViewController.xib */; };
+		88CBA34127ECCDE2005C22FE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA33727ECCDE2005C22FE /* SettingsViewController.swift */; };
+		88CBA34327ECCE1F005C22FE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA34227ECCE1F005C22FE /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +73,17 @@
 		837192D627EA581F00BE04A1 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		837192D827EAF4F300BE04A1 /* HomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
 		837192DA27EB7B1600BE04A1 /* BarCodeScannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeScannerVC.swift; sourceTree = "<group>"; };
+		88CBA32C27ECCDE2005C22FE /* PrivacyPolicyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivacyPolicyViewController.xib; sourceTree = "<group>"; };
+		88CBA32D27ECCDE2005C22FE /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		88CBA32F27ECCDE2005C22FE /* AddSurgerayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSurgerayViewController.xib; sourceTree = "<group>"; };
+		88CBA33027ECCDE2005C22FE /* AddSurgerayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSurgerayViewController.swift; sourceTree = "<group>"; };
+		88CBA33227ECCDE2005C22FE /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		88CBA33327ECCDE2005C22FE /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		88CBA33427ECCDE2005C22FE /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
+		88CBA33527ECCDE2005C22FE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		88CBA33627ECCDE2005C22FE /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		88CBA33727ECCDE2005C22FE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		88CBA34227ECCE1F005C22FE /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +153,9 @@
 		831A4F7C27E8509900BEF2E7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				88CBA32E27ECCDE2005C22FE /* AddSurgeray */,
+				88CBA32B27ECCDE2005C22FE /* PrivacyPolicy */,
+				88CBA33127ECCDE2005C22FE /* Profile */,
 				831A4F8827E8A09000BEF2E7 /* Authentication */,
 				831A4F8227E86C9200BEF2E7 /* SideMenu */,
 				831A4F6427E83CED00BEF2E7 /* HomeVC.swift */,
@@ -217,8 +242,40 @@
 				837192CB27EA026700BE04A1 /* LoginServices.swift */,
 				837192D227EA399C00BE04A1 /* loading.json */,
 				837192D827EAF4F300BE04A1 /* HomeServices.swift */,
+				88CBA34227ECCE1F005C22FE /* BaseViewController.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		88CBA32B27ECCDE2005C22FE /* PrivacyPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				88CBA32C27ECCDE2005C22FE /* PrivacyPolicyViewController.xib */,
+				88CBA32D27ECCDE2005C22FE /* PrivacyPolicyViewController.swift */,
+			);
+			path = PrivacyPolicy;
+			sourceTree = "<group>";
+		};
+		88CBA32E27ECCDE2005C22FE /* AddSurgeray */ = {
+			isa = PBXGroup;
+			children = (
+				88CBA32F27ECCDE2005C22FE /* AddSurgerayViewController.xib */,
+				88CBA33027ECCDE2005C22FE /* AddSurgerayViewController.swift */,
+			);
+			path = AddSurgeray;
+			sourceTree = "<group>";
+		};
+		88CBA33127ECCDE2005C22FE /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				88CBA33227ECCDE2005C22FE /* EditProfileViewController.swift */,
+				88CBA33327ECCDE2005C22FE /* ProfileViewController.xib */,
+				88CBA33427ECCDE2005C22FE /* EditProfileViewController.xib */,
+				88CBA33527ECCDE2005C22FE /* ProfileViewController.swift */,
+				88CBA33627ECCDE2005C22FE /* SettingsViewController.xib */,
+				88CBA33727ECCDE2005C22FE /* SettingsViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		C2DE1A9E27ADBB95EED04745 /* Pods */ = {
@@ -290,10 +347,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				831A4F7827E8481800BEF2E7 /* Sidemenu.storyboard in Resources */,
+				88CBA33A27ECCDE2005C22FE /* AddSurgerayViewController.xib in Resources */,
+				88CBA33D27ECCDE2005C22FE /* ProfileViewController.xib in Resources */,
 				831A4F7027E83CEE00BEF2E7 /* LaunchScreen.storyboard in Resources */,
 				831A4F6D27E83CEE00BEF2E7 /* Assets.xcassets in Resources */,
 				831A4F6827E83CED00BEF2E7 /* Main.storyboard in Resources */,
 				837192D327EA399C00BE04A1 /* loading.json in Resources */,
+				88CBA33827ECCDE2005C22FE /* PrivacyPolicyViewController.xib in Resources */,
+				88CBA33E27ECCDE2005C22FE /* EditProfileViewController.xib in Resources */,
+				88CBA34027ECCDE2005C22FE /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,20 +412,26 @@
 				837192CD27EA026700BE04A1 /* ApiEndPoints.swift in Sources */,
 				831A4F8127E8511F00BEF2E7 /* Constants.swift in Sources */,
 				831A4F8727E86E4F00BEF2E7 /* SideMenuCell.swift in Sources */,
+				88CBA33B27ECCDE2005C22FE /* AddSurgerayViewController.swift in Sources */,
+				88CBA34327ECCE1F005C22FE /* BaseViewController.swift in Sources */,
 				831A4F8A27E8A0A800BEF2E7 /* LoginVC.swift in Sources */,
+				88CBA33F27ECCDE2005C22FE /* ProfileViewController.swift in Sources */,
 				831A4F6527E83CED00BEF2E7 /* HomeVC.swift in Sources */,
 				831A4F8427E86CA900BEF2E7 /* SideMenuVC.swift in Sources */,
 				831A4F6127E83CED00BEF2E7 /* AppDelegate.swift in Sources */,
 				837192D527EA546D00BE04A1 /* LoginResponseModel.swift in Sources */,
 				831A4F7B27E8507600BEF2E7 /* GlobalFunctions.swift in Sources */,
 				837192D927EAF4F300BE04A1 /* HomeServices.swift in Sources */,
+				88CBA33927ECCDE2005C22FE /* PrivacyPolicyViewController.swift in Sources */,
 				837192DB27EB7B1600BE04A1 /* BarCodeScannerVC.swift in Sources */,
+				88CBA34127ECCDE2005C22FE /* SettingsViewController.swift in Sources */,
 				8326D89E27ECABD80081B4ED /* ScanAgainPopUpVC.swift in Sources */,
 				837192C827E9FCFD00BE04A1 /* ResponseModel.swift in Sources */,
 				837192CF27EA026700BE04A1 /* APIManager.swift in Sources */,
 				831A4F6B27E83CED00BEF2E7 /* Meril.xcdatamodeld in Sources */,
 				837192D727EA581F00BE04A1 /* Validation.swift in Sources */,
 				837192CE27EA026700BE04A1 /* LoginServices.swift in Sources */,
+				88CBA33C27ECCDE2005C22FE /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

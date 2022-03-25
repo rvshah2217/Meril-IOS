@@ -19,7 +19,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var displaySurgeriesBtn: UIButton!
     @IBOutlet weak var displayInventoriesBtn: UIButton!
     @IBOutlet weak var syncDataBtn: UIButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -27,7 +27,7 @@ class HomeVC: UIViewController {
         self.setUI()
         self.fetchBanners()
     }
-
+    
     private func setNavBar() {
         let menuBtn = UIBarButtonItem(image: UIImage(named: "ic_menu"), style: .plain, target: self, action: #selector(self.sideMenuBtnPressed))
         self.navigationItem.leftBarButtonItem = menuBtn
@@ -36,8 +36,8 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.backgroundColor = .white
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: .white, textColor: ColorConstant.mainThemeColor)
+//        self.navigationController?.navigationBar.barTintColor = .white
     }
     
     private func setUI() {
@@ -48,7 +48,7 @@ class HomeVC: UIViewController {
         self.bannerView.setViewCorner(radius: 20.0)
         self.imageSlidesView.setViewCorner(radius: 20.0)
         self.syncDataBtn.setViewCorner(radius: 10.0)
-
+        
         self.addSurgeryBtn.addBorderToView(borderWidth: 1.0, borderColor: ColorConstant.mainThemeColor)
         self.addInventoryBtn.addBorderToView(borderWidth: 1.0, borderColor: ColorConstant.mainThemeColor)
         self.displaySurgeriesBtn.addBorderToView(borderWidth: 1.0, borderColor: ColorConstant.mainThemeColor)
@@ -73,7 +73,7 @@ class HomeVC: UIViewController {
     func fetchBanners() {
         HomeServices.getBannerList { response, error in
             guard let responseData = response else {
-//                hide banner view if there is error
+                //                hide banner view if there is error
                 return
             }
             
@@ -90,22 +90,30 @@ extension HomeVC {
     
     
     @IBAction func addSurgeryBtnClicked(_ sender: Any) {
+        let vc = AddSurgerayViewController(nibName: "AddSurgerayViewController", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     @IBAction func addInventoryBtnClicked(_ sender: Any) {
+        let vc = AddInventoryViewController(nibName: "AddInventoryViewController", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     @IBAction func listAllSurgeriesBtnClicked(_ sender: Any) {
+        let vc = SurgerayListViewController(nibName: "SurgerayListViewController", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     @IBAction func listAllInventoriesBtnClicked(_ sender: Any) {
+//        let vc = SurgerayListViewController(nibName: "SurgerayListViewController", bundle: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     @IBAction func syncDataBtnClicked(_ sender: Any) {
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
         vc.isFromAddSurgery = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
 }
 

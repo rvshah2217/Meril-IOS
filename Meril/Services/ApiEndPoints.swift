@@ -35,6 +35,9 @@ enum EndPointsItem {
     case login
     case getHomeBanners
     case getUserTypesApi
+    case getFormData
+    case getProfile
+    case settings
 }
 
 //#MARK:- Extensions endpoints
@@ -61,12 +64,18 @@ extension EndPointsItem: EndPointType {
             return "banners"
         case .getUserTypesApi:
             return "userTypes"
+        case .getFormData:
+            return "form-data"
+        case .getProfile:
+            return "profile"
+        case .settings:
+            return "settings"
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .getUserTypesApi, .getHomeBanners:
+        case .getUserTypesApi, .getHomeBanners, .getFormData, .getProfile, .settings:
             return .get
         default:
             return .post
@@ -75,7 +84,7 @@ extension EndPointsItem: EndPointType {
     
     var tokenHeader : HTTPHeaders {
         if let token = UserDefaults.standard.string(forKey: "headerToken") {
-            return ["Authorization" : token, "Accept": "application/json"]//"Bearer \(token)"]
+            return ["Authorization" : "Bearer \(token)", "Accept": "application/json"]//"Bearer \(token)"]
         }else {
             return ["Accept": "application/json"]//[:]
         }

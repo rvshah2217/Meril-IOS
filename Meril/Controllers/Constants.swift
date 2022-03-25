@@ -12,6 +12,8 @@ let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 let sidemenuStoryboard = UIStoryboard(name: "Sidemenu", bundle: nil)
 let deviceToken = "123456"//UserDefaults.standard.string(forKey: "deviceToken")
 
+let errorDismissTime = 5.0
+
 struct ColorConstant {
     static let mainThemeColor = UIColor(hexString: "#317ac3") ?? UIColor.systemBlue//"#4476BB"
 }
@@ -32,4 +34,10 @@ struct ApiConstant {
 struct UserMessages {
     static let defaultAlertTitle = "Error"
     static let serverError = "Something went wrong! Please try again later."
+    static let emptyCityError = "Please select city."
+    static let emptyHospitalError = "Please select hospital."
+    static let emptyDoctorError = "Please select doctor."
+    static let emptyDistributorError = "Please select distributor."
+    static let emptySalesPersonError = "Please select sales person."
+    static let emptyDivisionError = "Please select division."
 }

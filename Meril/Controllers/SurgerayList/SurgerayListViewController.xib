@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -40,7 +41,7 @@
                                     </constraints>
                                 </view>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Agr-eV-lH3">
-                                    <rect key="frame" x="165.5" y="40" width="228.5" height="30"/>
+                                    <rect key="frame" x="165" y="40" width="229" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="lE3-Nm-r1k"/>
                                     </constraints>
@@ -48,7 +49,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surgeries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCe-ay-kGC">
-                                    <rect key="frame" x="60" y="45" width="75.5" height="20.5"/>
+                                    <rect key="frame" x="60" y="45" width="75" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -69,12 +70,12 @@
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uZZ-rQ-ruC">
                                                     <rect key="frame" x="0.0" y="30" width="384" height="100"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="5I5-Uq-1q0"/>
                                                     </constraints>
                                                 </tableView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXB-Vs-tCE">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXB-Vs-tCE">
                                                     <rect key="frame" x="142" y="160" width="100" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="lf8-3Y-byj"/>
@@ -103,8 +104,6 @@
                                         <constraint firstItem="WHM-EA-As3" firstAttribute="width" secondItem="FPw-Qh-izo" secondAttribute="width" id="gLm-hR-lXQ"/>
                                         <constraint firstItem="WHM-EA-As3" firstAttribute="top" secondItem="FPw-Qh-izo" secondAttribute="top" id="v2O-PQ-OWX"/>
                                     </constraints>
-                                    <viewLayoutGuide key="contentLayoutGuide" id="ZYP-Ke-tcM"/>
-                                    <viewLayoutGuide key="frameLayoutGuide" id="9lv-4C-lgj"/>
                                 </scrollView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -135,10 +134,9 @@
                         <constraint firstItem="mTK-w6-qMu" firstAttribute="height" secondItem="OYs-hA-l3L" secondAttribute="height" id="VPN-um-q8m"/>
                         <constraint firstItem="mTK-w6-qMu" firstAttribute="leading" secondItem="OYs-hA-l3L" secondAttribute="leading" id="c5g-0I-Xqm"/>
                     </constraints>
-                    <viewLayoutGuide key="contentLayoutGuide" id="cDX-Si-fPM"/>
-                    <viewLayoutGuide key="frameLayoutGuide" id="i6o-JH-v7r"/>
                 </scrollView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="OYs-hA-l3L" secondAttribute="bottom" constant="-30" id="7kw-D9-3zq"/>
@@ -146,11 +144,13 @@
                 <constraint firstItem="OYs-hA-l3L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="u7h-Gt-KKR"/>
                 <constraint firstItem="OYs-hA-l3L" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="uQc-dK-yU5"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="131.8840579710145" y="98.4375"/>
         </view>
     </objects>
     <resources>
         <image name="ic_back" width="30" height="30"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

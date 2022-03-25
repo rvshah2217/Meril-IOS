@@ -21,6 +21,8 @@
 		831A4F8A27E8A0A800BEF2E7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F8927E8A0A800BEF2E7 /* LoginVC.swift */; };
 		831A4F8D27E8A1B100BEF2E7 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F8C27E8A1B100BEF2E7 /* UITextField+Extension.swift */; };
 		8326D89E27ECABD80081B4ED /* ScanAgainPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D89D27ECABD80081B4ED /* ScanAgainPopUpVC.swift */; };
+		8326D8A027ED9CF50081B4ED /* SurgeryServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */; };
+		8326D8A427ED9F2B0081B4ED /* SurgeryInventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D8A327ED9F2B0081B4ED /* SurgeryInventoryModel.swift */; };
 		837192C827E9FCFD00BE04A1 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192C727E9FCFD00BE04A1 /* ResponseModel.swift */; };
 		837192CD27EA026700BE04A1 /* ApiEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CA27EA026700BE04A1 /* ApiEndPoints.swift */; };
 		837192CE27EA026700BE04A1 /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CB27EA026700BE04A1 /* LoginServices.swift */; };
@@ -70,6 +72,8 @@
 		831A4F8927E8A0A800BEF2E7 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		831A4F8C27E8A1B100BEF2E7 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		8326D89D27ECABD80081B4ED /* ScanAgainPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAgainPopUpVC.swift; sourceTree = "<group>"; };
+		8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryServices.swift; sourceTree = "<group>"; };
+		8326D8A327ED9F2B0081B4ED /* SurgeryInventoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryInventoryModel.swift; sourceTree = "<group>"; };
 		837192C727E9FCFD00BE04A1 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		837192CA27EA026700BE04A1 /* ApiEndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiEndPoints.swift; sourceTree = "<group>"; };
 		837192CB27EA026700BE04A1 /* LoginServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 		831A4F7927E8506200BEF2E7 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				88CBA34227ECCE1F005C22FE /* BaseViewController.swift */,
 				837192D627EA581F00BE04A1 /* Validation.swift */,
 				831A4F7A27E8507600BEF2E7 /* GlobalFunctions.swift */,
 			);
@@ -184,6 +189,7 @@
 			children = (
 				837192C727E9FCFD00BE04A1 /* ResponseModel.swift */,
 				837192D427EA546C00BE04A1 /* LoginResponseModel.swift */,
+				8326D8A327ED9F2B0081B4ED /* SurgeryInventoryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,7 +262,7 @@
 				837192CB27EA026700BE04A1 /* LoginServices.swift */,
 				837192D227EA399C00BE04A1 /* loading.json */,
 				837192D827EAF4F300BE04A1 /* HomeServices.swift */,
-				88CBA34227ECCE1F005C22FE /* BaseViewController.swift */,
+				8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -454,6 +460,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				831A4F8D27E8A1B100BEF2E7 /* UITextField+Extension.swift in Sources */,
+				8326D8A427ED9F2B0081B4ED /* SurgeryInventoryModel.swift in Sources */,
+				8326D8A027ED9CF50081B4ED /* SurgeryServices.swift in Sources */,
 				837192CD27EA026700BE04A1 /* ApiEndPoints.swift in Sources */,
 				831A4F8127E8511F00BEF2E7 /* Constants.swift in Sources */,
 				831A4F8727E86E4F00BEF2E7 /* SideMenuCell.swift in Sources */,
@@ -630,6 +638,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CPR2Y68PV8;
+				EXCLUDED_ARCHS = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meril/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -661,6 +670,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CPR2Y68PV8;
+				EXCLUDED_ARCHS = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meril/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -10,7 +10,7 @@ import Foundation
 struct ResponseModel : Codable {
     let success : Bool?
     let message : String?
-    let userTypes : [UserTypes]?
+    let userTypes : [UserTypes]?    
 
     enum CodingKeys: String, CodingKey {
 

@@ -11,6 +11,19 @@ import ChameleonFramework
 
 struct GlobalFunctions {
     
+    static func showToast(controller: UIViewController, message : String, seconds: Double) {
+        let alert = UIAlertController(title: "nil", message: message, preferredStyle: .actionSheet)
+        alert.view.backgroundColor = UIColor.black
+        alert.view.alpha = 0.6
+        alert.view.layer.cornerRadius = 15
+
+        controller.present(alert, animated: true)
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            alert.dismiss(animated: true)
+        }
+    }
+    
     static func setHomeVC() -> UIViewController {
         let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
         let leftVC = sidemenuStoryboard.instantiateViewController(withIdentifier: "SideMenuVC") as! SideMenuVC
@@ -23,14 +36,8 @@ struct GlobalFunctions {
     static func setRootNavigationController(currentVC: UIViewController) -> UINavigationController {
         let navController = UINavigationController(rootViewController: currentVC)
     
-//        navController.navigationBar.barTintColor = ColorConstant.mainThemeColor//UIColor(hexString: ColorConstant.mainThemeColor)
         navController.navigationBar.tintColor = .white
-//        navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        navController.navigationBar.shadowImage = UIImage()
         configureStatusNavBar(navController: navController, bgColor: .white, textColor: ColorConstant.mainThemeColor)
-//        navController.navigationBar.titleTextAttributes = [
-//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .medium)
-//        ]
         return navController
     }
     
@@ -47,6 +54,15 @@ struct GlobalFunctions {
             navController.navigationBar.isTranslucent = false
             navController.navigationBar.scrollEdgeAppearance = navBarAppearance
             navController.navigationBar.standardAppearance = navBarAppearance
+        } else {
+            navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navController.navigationBar.shadowImage = UIImage()
+            navController.navigationBar.barTintColor = bgColor//UIColor(hexString: ColorConstant.mainThemeColor)
+            navController.navigationBar.titleTextAttributes = [
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .medium),
+                NSAttributedString.Key.foregroundColor: textColor
+            ]
+
         }
     }
     

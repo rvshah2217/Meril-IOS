@@ -54,6 +54,8 @@ class LoginVC: UIViewController {
     }
     
     func setUI() {
+        GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)
+
         //        set rounded corner
         self.userTypeTxt.setViewCorner(radius: self.userTypeTxt.frame.height/2)
         self.departmentTypeTxt.setViewCorner(radius: self.departmentTypeTxt.frame.height/2)
@@ -131,7 +133,7 @@ extension LoginVC {
             UserDefaults.standard.set(response.loginUserData?.id, forKey: "userId")
             UserDefaults.standard.set(response.loginUserData?.user_type_id, forKey: "userTypeId")
             UserDefaults.standard.set(response.loginUserData?.unique_id, forKey: "userName")
-            UserDefaults.standard.set(response.loginUserData?.token, forKey: "userToken")
+            UserDefaults.standard.set(response.loginUserData?.token, forKey: "headerToken")
             
 //           Redirect to home screen
             GlobalFunctions.printToConsole(message: "Login successfully.")

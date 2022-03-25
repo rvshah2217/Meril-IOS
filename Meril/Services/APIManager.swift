@@ -37,7 +37,9 @@ class APIManager {
     //    Api request
     func call<T>(for: T.Type = T.self, type: EndPointType, params: Parameters? = nil, completionHandler: @escaping (T?, _ error: AlertMessage?) -> ()) where T: Decodable {
         GlobalFunctions.printToConsole(message: "api url:- \(type.url)")
-        
+        GlobalFunctions.printToConsole(message: "auth token:- \(type.headers)")
+        GlobalFunctions.printToConsole(message: "method:- \(type.httpMethod)")
+
         self.sessionManager.request(type.url,
                                     method: type.httpMethod,
                                     parameters: params,

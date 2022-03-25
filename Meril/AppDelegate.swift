@@ -21,14 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
 
         let vc: UIViewController
-//        if UserDefaults.standard.string(forKey: "userToken") != nil {
+        if UserDefaults.standard.string(forKey: "headerToken") != nil {
 //            vc = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-//        } else {
-//            vc = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-//        }
-//                    vc = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-        vc = SurgerayListViewController(nibName: "SurgerayListViewController", bundle: nil)
-        self.window?.rootViewController = GlobalFunctions.setRootNavigationController(currentVC: vc) //GlobalFunctions.setHomeVC()
+            vc = GlobalFunctions.setHomeVC()
+        } else {
+            let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+            vc = GlobalFunctions.setRootNavigationController(currentVC: loginVC)
+        }
+//        vc = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+//        vc = SurgerayListViewController(nibName: "SurgerayListViewController", bundle: nil)
+        self.window?.rootViewController = vc//
         self.window?.makeKeyAndVisible()
         return true
     }

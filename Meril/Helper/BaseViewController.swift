@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class BaseViewController: UIViewController {
     
     typealias completionBlock = (_ isCartButton:Bool)->()
@@ -43,6 +42,7 @@ class BaseViewController: UIViewController {
         leftBarButtonItems.addSubview(btnback)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButtonItems)
     }
+    
     func settupHeaderView(childView : UIView, constrain : NSLayoutConstraint , title : String){
         if IS_IPHONE_X() || IS_IPHONE_XR() || IS_IPHONE_PRO_MAX(){
             constrain.constant = 84

@@ -22,14 +22,14 @@ class SideMenuVC: UIViewController {
     }
     
     private func setItemsArr() {
-        itemsArr.append(["iconName": "ic_menu", "title": "Home"])
-        itemsArr.append(["iconName": "ic_menu", "title": "About Us"])
-        itemsArr.append(["iconName": "ic_menu", "title": "Contact Us"])
-        itemsArr.append(["iconName": "ic_menu", "title": "Rate App"])
-        itemsArr.append(["iconName": "ic_menu", "title": "Share"])
-        itemsArr.append(["iconName": "ic_menu", "title": "Privacy Policy"])
-        itemsArr.append(["iconName": "ic_menu", "title": "Settings"])
-        itemsArr.append(["iconName": "ic_menu", "title": "Signout"])
+        itemsArr.append(["iconName": "ic_home", "title": "Home"])
+        itemsArr.append(["iconName": "ic_aboutUs", "title": "About Us"])
+        itemsArr.append(["iconName": "ic_contactUs", "title": "Contact Us"])
+//        itemsArr.append(["iconName": "ic_rateApp", "title": "Rate App"])
+        itemsArr.append(["iconName": "ic_share", "title": "Share"])
+        itemsArr.append(["iconName": "ic_privacyPolicy", "title": "Privacy Policy"])
+        itemsArr.append(["iconName": "ic_settings", "title": "Settings"])
+        itemsArr.append(["iconName": "ic_signOut", "title": "Signout"])
     }
 }
 
@@ -43,10 +43,6 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? SideMenuCell {
             cell.item = itemsArr[indexPath.row]
-//            cell.textLabel?.text = itemsArr[indexPath.row]["title"]
-//            if let imgName = itemsArr[indexPath.row]["iconName"] {
-//                cell.imageView?.image = UIImage(named: imgName)
-//            }
             return cell
         }
         return UITableViewCell()
@@ -57,6 +53,6 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 65
     }
 }

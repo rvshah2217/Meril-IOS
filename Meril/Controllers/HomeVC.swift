@@ -110,9 +110,6 @@ extension HomeVC {
     }
     
     @IBAction func syncDataBtnClicked(_ sender: Any) {
-        let vc = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
-        vc.isFromAddSurgery = true
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

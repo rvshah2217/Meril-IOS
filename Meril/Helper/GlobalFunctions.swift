@@ -12,9 +12,9 @@ import ChameleonFramework
 struct GlobalFunctions {
     
     static func showToast(controller: UIViewController, message : String, seconds: Double) {
-        let alert = UIAlertController(title: "nil", message: message, preferredStyle: .actionSheet)
-        alert.view.backgroundColor = UIColor.black
-        alert.view.alpha = 0.6
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .actionSheet)
+//        alert.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)        
+//        alert.view.alpha = 0.6
         alert.view.layer.cornerRadius = 15
 
         controller.present(alert, animated: true)

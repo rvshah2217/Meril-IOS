@@ -137,9 +137,9 @@ extension LoginVC {
             
 //           Redirect to home screen
             GlobalFunctions.printToConsole(message: "Login successfully.")
-            let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-            let navVC = GlobalFunctions.setRootNavigationController(currentVC: homeVC)
-            self.view?.window?.rootViewController = navVC
+//            let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+//            let navVC = GlobalFunctions.setRootNavigationController(currentVC: homeVC)
+            self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()//navVC
 //            self.view.window?.makeKeyAndVisible()
 
         }

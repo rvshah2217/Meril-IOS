@@ -8,6 +8,10 @@
 import UIKit
 import AVFoundation
 
+protocol BarCodeScannerDelegate: AnyObject {
+    func submitScannedData()
+}
+
 class BarCodeScannerVC: UIViewController {
     
     @IBOutlet weak var cameraView: UIView!
@@ -15,6 +19,7 @@ class BarCodeScannerVC: UIViewController {
     var captureSession:AVCaptureSession!
     var videoPreviewLayer:AVCaptureVideoPreviewLayer!
     var isFromAddSurgery: Bool = false
+    weak var delegate: BarCodeScannerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,7 +166,7 @@ extension BarCodeScannerVC: ScanAgainViewDelegate {
   
     func submitScannedBarCodes() {
 //        TODO: submit stored barcodes
-        
+        delegate?.submitScannedData()
     }
     
     func scanAgain() {

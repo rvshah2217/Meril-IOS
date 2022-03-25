@@ -49,6 +49,13 @@ class AddSurgerayViewController: BaseViewController {
         }
     }
     
+    @IBOutlet weak var txtPatientScheme: DropDown! {
+        didSet {
+            self.txtPatientScheme.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+        }
+    }
+    
+    
     @IBOutlet weak var txtPatientName: UITextField!
     @IBOutlet weak var txtPatientNumber: UITextField!
     @IBOutlet weak var txtPatientAge: UITextField!
@@ -69,12 +76,14 @@ class AddSurgerayViewController: BaseViewController {
     var doctorsArr: [Hospitals] = []
     var distributorsArr: [Hospitals] = []
     var sales_personsArr: [Hospitals] = []
+    var schemeArr: [Schemes] = []
     
     var selectedCityId: Int?
     var selectedHospitalId: Int?
     var selectedDoctorId: Int?
     var selectedDistributorId: Int?
     var selectedSalesPaersonId: Int?
+    var selectedSchemeId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -197,6 +206,39 @@ class AddSurgerayViewController: BaseViewController {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptySalesPersonError, seconds: errorDismissTime)
             return
         }
+        
+        
+        let patientName = txtPatientName.text ?? ""
+        let patientNumber = txtPatientNumber.text ?? ""
+        let patientAge = txtPatientAge.text ?? ""
+        let ipCode = txtIpCode.text ?? ""
+       
+        if !Validation.sharedInstance.checkLength(testStr: patientName) {
+            GlobalFunctions.showToast(controller: self, message: "Please enter patient name.", seconds: errorDismissTime)
+            return
+        }
+        
+        if !Validation.sharedInstance.checkLength(testStr: patientNumber) {
+            GlobalFunctions.showToast(controller: self, message: "Please enter patient number.", seconds: errorDismissTime)
+            return
+        }
+        
+        if !Validation.sharedInstance.checkLength(testStr: patientName) {
+            GlobalFunctions.showToast(controller: self, message: "Please enter patient age.", seconds: errorDismissTime)
+            return
+        }
+        
+        if !Validation.sharedInstance.checkLength(testStr: patientName) {
+            GlobalFunctions.showToast(controller: self, message: "Please enter IP Code.", seconds: errorDismissTime)
+            return
+        }
+    }
+    
+    func redirectToScannerVC() {
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
+        vc.isFromAddSurgery = true
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -258,6 +300,16 @@ extension AddSurgerayViewController {
         self.txtSaleperson.didSelect { selectedText, index, id in
             self.selectedSalesPaersonId = self.sales_personsArr[index].id
         }
+        
+        //        set scheme array
+        self.schemeArr = formDataResponse.schemes ?? []
+        self.txtPatientScheme.isEnabled = !self.schemeArr.isEmpty
+        self.txtPatientScheme.optionArray = self.schemeArr.map({ item -> String in
+            item.scheme_name ?? ""
+        })
+        self.txtPatientScheme.didSelect { selectedText, index, id in
+            self.selectedSchemeId = self.schemeArr[index].id
+        }
     }
     
     //   reload hospitals by city selection
@@ -270,5 +322,13 @@ extension AddSurgerayViewController {
         self.txtHospital.didSelect { selectedText, index, id in
             self.selectedHospitalId = self.hospitalsArr[index].id
         }
+    }
+}
+
+extension AddSurgerayViewController: BarCodeScannerDelegate {
+    
+//TODO:    Call api to add surgery with scanned barcodes and then redirect to display surgeries
+    func submitScannedData() {
+        
     }
 }

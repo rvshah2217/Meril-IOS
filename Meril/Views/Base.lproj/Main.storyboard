@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,10 +30,10 @@
                                                         <subviews>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ojn-RE-gMX" customClass="ImageSlideshow" customModule="ImageSlideshow">
                                                                 <rect key="frame" x="5" y="5" width="364" height="235.5"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="Ojn-RE-gMX" secondAttribute="bottom" constant="5" id="Vhu-Yx-eIj"/>
                                                             <constraint firstAttribute="trailing" secondItem="Ojn-RE-gMX" secondAttribute="trailing" constant="5" id="bhJ-2t-ABm"/>
@@ -51,16 +50,13 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qyd-HH-6jG">
                                                                         <rect key="frame" x="0.0" y="0.0" width="157" height="166.5"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aX6-Zu-S0c">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aX6-Zu-S0c">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="157" height="142.5"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="aX6-Zu-S0c" secondAttribute="height" multiplier="1.1" id="anJ-IY-4ob"/>
                                                                                 </constraints>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain" title="">
-                                                                                    <backgroundConfiguration key="background" image="ic_addSurgery"/>
-                                                                                </buttonConfiguration>
                                                                                 <connections>
                                                                                     <action selector="addSurgeryBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MJb-9M-jkY"/>
                                                                                 </connections>
@@ -76,16 +72,13 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yCQ-aE-PqC">
                                                                         <rect key="frame" x="197" y="0.0" width="157" height="166.5"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ML3-HM-IAQ">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ML3-HM-IAQ">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="157" height="142.5"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="ML3-HM-IAQ" secondAttribute="height" multiplier="1.1" id="cRx-gX-N1W"/>
                                                                                 </constraints>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain">
-                                                                                    <backgroundConfiguration key="background" image="ic_listSurgeries"/>
-                                                                                </buttonConfiguration>
                                                                                 <connections>
                                                                                     <action selector="listAllSurgeriesBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7tz-xL-mzH"/>
                                                                                 </connections>
@@ -106,16 +99,13 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WiN-05-MpU">
                                                                         <rect key="frame" x="0.0" y="0.0" width="157" height="167"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oA-97-MpK">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oA-97-MpK">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="157" height="143"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="8oA-97-MpK" secondAttribute="height" multiplier="1.1" id="pEa-zn-0M7"/>
                                                                                 </constraints>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain">
-                                                                                    <backgroundConfiguration key="background" image="ic_addPhysicalInventory"/>
-                                                                                </buttonConfiguration>
                                                                                 <connections>
                                                                                     <action selector="addInventoryBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h33-kI-Fji"/>
                                                                                 </connections>
@@ -131,16 +121,13 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="045-Se-M3b">
                                                                         <rect key="frame" x="197" y="0.0" width="157" height="167"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xO-XT-Edz">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xO-XT-Edz">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="157" height="143"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="7xO-XT-Edz" secondAttribute="height" multiplier="1.1" id="n9p-g2-bBM"/>
                                                                                 </constraints>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain">
-                                                                                    <backgroundConfiguration key="background" image="ic_listPhysicalInventory"/>
-                                                                                </buttonConfiguration>
                                                                                 <connections>
                                                                                     <action selector="listAllInventoriesBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sau-tk-LeQ"/>
                                                                                 </connections>
@@ -157,17 +144,13 @@
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ud-LA-Kbe">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ud-LA-Kbe">
                                                         <rect key="frame" x="30" y="664" width="354" height="60"/>
                                                         <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="d2q-VZ-BJw"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Sync data">
-                                                            <fontDescription key="titleFontDescription" name="Verdana-Bold" family="Verdana" pointSize="24"/>
-                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </buttonConfiguration>
                                                         <connections>
                                                             <action selector="syncDataBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mYQ-6u-CGW"/>
                                                         </connections>
@@ -196,7 +179,7 @@
                                         </constraints>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="V7p-32-N0d" secondAttribute="trailing" id="1d9-gi-yih"/>
                                     <constraint firstItem="BS5-PG-k1v" firstAttribute="width" secondItem="zoA-bu-sGf" secondAttribute="width" id="8Eq-DW-fKp"/>
@@ -209,7 +192,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="zoA-bu-sGf" secondAttribute="trailing" id="Efh-oJ-SM0"/>
@@ -217,6 +199,7 @@
                             <constraint firstItem="zoA-bu-sGf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vmr-tA-VaY"/>
                             <constraint firstItem="zoA-bu-sGf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zUs-ye-Ee2"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="addInventoryBtn" destination="8oA-97-MpK" id="ddt-Vs-W41"/>
@@ -242,17 +225,17 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7A9-nw-5fq">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="iSk-wA-te2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="iSk-wA-te2" firstAttribute="trailing" secondItem="7A9-nw-5fq" secondAttribute="trailing" id="15x-Bf-CHC"/>
                             <constraint firstItem="7A9-nw-5fq" firstAttribute="leading" secondItem="iSk-wA-te2" secondAttribute="leading" id="C7u-qL-Aka"/>
                             <constraint firstItem="iSk-wA-te2" firstAttribute="bottom" secondItem="7A9-nw-5fq" secondAttribute="bottom" id="JJP-Uy-46H"/>
                             <constraint firstItem="7A9-nw-5fq" firstAttribute="top" secondItem="iSk-wA-te2" secondAttribute="top" id="etF-Gh-BSa"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="iSk-wA-te2"/>
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="7A9-nw-5fq" id="56s-F3-TjV"/>
@@ -309,32 +292,24 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mX7-sx-g69">
                                         <rect key="frame" x="30" y="185" width="294" height="45"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzc-aH-I5X">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzc-aH-I5X">
                                                 <rect key="frame" x="0.0" y="0.0" width="139.5" height="45"/>
                                                 <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="PDX-JF-mpB"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Scan again">
-                                                    <fontDescription key="titleFontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
-                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="scanAgainBtnClicked:" destination="MiL-ZE-f6L" eventType="touchUpInside" id="HF3-Dd-rL7"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOB-gL-19L">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOB-gL-19L">
                                                 <rect key="frame" x="154.5" y="0.0" width="139.5" height="45"/>
                                                 <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="fsw-N0-aNK"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Submit">
-                                                    <fontDescription key="titleFontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
-                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="submitBtnClicked:" destination="MiL-ZE-f6L" eventType="touchUpInside" id="Fht-W1-rlb"/>
                                                 </connections>
@@ -342,7 +317,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="Vic-qC-Y1C" firstAttribute="top" secondItem="T37-Gq-Y4W" secondAttribute="top" constant="15" id="5tk-Nh-wBr"/>
                                     <constraint firstAttribute="bottom" secondItem="mX7-sx-g69" secondAttribute="bottom" constant="20" id="9Wp-wu-yL1"/>
@@ -361,13 +336,13 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="1lf-Ud-mKa"/>
                         <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="T37-Gq-Y4W" firstAttribute="centerY" secondItem="eg9-uw-MC6" secondAttribute="centerY" id="SBl-Sl-UzY"/>
                             <constraint firstItem="T37-Gq-Y4W" firstAttribute="leading" secondItem="eg9-uw-MC6" secondAttribute="leading" constant="30" id="cZP-fr-Vss"/>
                             <constraint firstAttribute="trailing" secondItem="T37-Gq-Y4W" secondAttribute="trailing" constant="30" id="lt2-kf-ddY"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="1lf-Ud-mKa"/>
                     </view>
                     <connections>
                         <outlet property="askScanAgainLbl" destination="iD1-px-j4g" id="AMI-AQ-GuS"/>
@@ -458,30 +433,29 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xzw-d2-vRI">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xzw-d2-vRI">
                                         <rect key="frame" x="25" y="579" width="364" height="45"/>
                                         <color key="backgroundColor" red="0.90196073060000004" green="0.67450982329999998" blue="0.2352941036" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="EPP-U1-EE0"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Login">
-                                            <fontDescription key="titleFontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="loginBtnClicked:" destination="zdE-Xo-UUk" eventType="touchUpInside" id="0Rc-Bx-Pld"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Br7-5y-df0">
-                                        <rect key="frame" x="249.5" y="534" width="139.5" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Br7-5y-df0">
+                                        <rect key="frame" x="257" y="534" width="132" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="lzb-Rq-GDo"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Forgot Password?">
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Forgot password ?">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="forgotPasswordBtnClicked:" destination="zdE-Xo-UUk" eventType="touchUpInside" id="kyK-aW-vso"/>
                                         </connections>
@@ -503,7 +477,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="hV4-cR-QIq"/>
                         <color key="backgroundColor" red="0.26666666666666666" green="0.46274509803921571" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="hV4-cR-QIq" firstAttribute="bottom" secondItem="kcO-1N-r3p" secondAttribute="bottom" id="BVW-mt-zQI"/>
@@ -511,6 +484,7 @@
                             <constraint firstItem="kcO-1N-r3p" firstAttribute="top" secondItem="hV4-cR-QIq" secondAttribute="top" id="L1k-6z-ghz"/>
                             <constraint firstItem="kcO-1N-r3p" firstAttribute="leading" secondItem="hV4-cR-QIq" secondAttribute="leading" id="tnf-eg-fAs"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="hV4-cR-QIq"/>
                     </view>
                     <connections>
                         <outlet property="departmentTypeTxt" destination="uPV-kW-RZR" id="oG2-jb-i0h"/>
@@ -526,13 +500,4 @@
             <point key="canvasLocation" x="20" y="66"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="ic_addPhysicalInventory" width="2084" height="2084"/>
-        <image name="ic_addSurgery" width="11251" height="8334"/>
-        <image name="ic_listPhysicalInventory" width="2084" height="2084"/>
-        <image name="ic_listSurgeries" width="2085" height="2084"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

@@ -12,7 +12,8 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var settingsData : SettingsData?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = ColorConstant.mainThemeColor
@@ -20,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
 
+        FatchSettingsData()
+        
         let vc: UIViewController
         if UserDefaults.standard.string(forKey: "headerToken") != nil {
 //            vc = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
@@ -79,6 +82,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    func FatchSettingsData(){
+        SettingServices.getSettingsData{ response, error in
+            guard let responseData = response else {
+                //                hide banner view if there is error
+                return
+            }
+            self.settingsData = response?.settingsData
+        }
+    }
 }
 

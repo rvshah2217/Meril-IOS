@@ -38,8 +38,14 @@ enum EndPointsItem {
     case getFormData
     case getProfile
     case settings
+    case changePassword
+    case contactUs
+    case surgeryList
 }
-
+enum pageType {
+    case PrivacyPolicy
+    case AboutUs
+}
 //#MARK:- Extensions endpoints
 extension EndPointsItem: EndPointType {
     
@@ -70,6 +76,12 @@ extension EndPointsItem: EndPointType {
             return "profile"
         case .settings:
             return "settings"
+        case .changePassword:
+            return "change-password"
+        case .contactUs:
+            return "feedback"
+        case .surgeryList:
+            return "surgery"
         }
     }
     

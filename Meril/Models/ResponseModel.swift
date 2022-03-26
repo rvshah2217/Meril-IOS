@@ -81,7 +81,6 @@ struct UserTypes : Codable {
         link = try values.decodeIfPresent(String.self, forKey: .link)
         extra_parameter = try values.decodeIfPresent(String.self, forKey: .extra_parameter)
         image = try values.decodeIfPresent(String.self, forKey: .image)
-
     }
 
 }

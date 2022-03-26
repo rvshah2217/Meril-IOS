@@ -87,8 +87,6 @@ class HomeVC: UIViewController {
 }
 
 extension HomeVC {
-    
-    
     @IBAction func addSurgeryBtnClicked(_ sender: Any) {
         let vc = AddSurgerayViewController(nibName: "AddSurgerayViewController", bundle: nil)
         self.navigationController?.pushViewController(vc, animated: true)

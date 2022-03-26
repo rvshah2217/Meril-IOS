@@ -9,12 +9,14 @@
 import UIKit
 
 class PrivacyPolicyViewController: BaseViewController {
-
+    
     @IBOutlet weak var constrainViewHeight: NSLayoutConstraint!
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var txtView: UITextView!
     
-   override func viewDidLoad() {
+    var pageName : pageType?
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         // Do any additional setup after loading the view.
@@ -26,11 +28,17 @@ class PrivacyPolicyViewController: BaseViewController {
     //MARK:- Custome Method
     func setUI(){
         self.viewHeader.backgroundColor = ColorConstant.mainThemeColor
+        
+        if pageName == .some(.AboutUs){
+            txtView.text = appDelegate.settingsData?.app_desc
+        }else{
+            txtView.text = appDelegate.settingsData?.privay_policy
+        }
     }
     func setNavigation(){
-        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeight,title: "Privacy Policy")
+        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeight,title: pageName == .some(.AboutUs) ? "About Us" : "Privacy Policy")
         navigationController?.setNavigationBarHidden(true, animated: false)
-
+        
         setBackButtononNavigation()
         pressButtonOnNavigaion { (isBack) in
             if(isBack){
@@ -39,5 +47,5 @@ class PrivacyPolicyViewController: BaseViewController {
             }
         }
     }
-
+    
 }

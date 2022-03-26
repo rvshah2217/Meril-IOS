@@ -75,6 +75,7 @@ struct GlobalFunctions {
 let NAVIGATION_BAR_HEIGHT:CGFloat = 64
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 //Check IsiPhone Device
 func IS_IPHONE_DEVICE()->Bool{

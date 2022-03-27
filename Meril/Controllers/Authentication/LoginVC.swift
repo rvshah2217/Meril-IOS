@@ -103,7 +103,7 @@ extension LoginVC {
             return
         }
         
-        let obj = LoginRequesModel(userTypeId: userTypeId, username: userNameStr, password: passwordStr, fcmToken: deviceToken)
+        let obj = LoginRequestModel(userTypeId: userTypeId, username: userNameStr, password: passwordStr, fcmToken: deviceToken)
         self.callUserLoginApi(userObj: obj)
     }
     
@@ -121,11 +121,12 @@ extension LoginVC {
         }
     }
     
-    func callUserLoginApi(userObj: LoginRequesModel) {
+    func callUserLoginApi(userObj: LoginRequestModel) {
         LoginServices.userLogin(loginObj: userObj) { loginResponse, errorMessage in
             
             guard let response = loginResponse else {
                 GlobalFunctions.printToConsole(message: "login error: \(errorMessage)")
+                GlobalFunctions.showToast(controller: self, message: errorMessage ?? UserMessages.serverError, seconds: errorDismissTime) { }
                 return
             }
             
@@ -136,12 +137,9 @@ extension LoginVC {
             UserDefaults.standard.set(response.loginUserData?.token, forKey: "headerToken")
             
 //           Redirect to home screen
-            GlobalFunctions.printToConsole(message: "Login successfully.")
-//            let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-//            let navVC = GlobalFunctions.setRootNavigationController(currentVC: homeVC)
-            self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()//navVC
-//            self.view.window?.makeKeyAndVisible()
-
+            GlobalFunctions.showToast(controller: self, message: "Login successfully", seconds: successDismissTime) {
+                self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
+            }
         }
     }
 }

@@ -66,7 +66,7 @@ class HomeVC: UIViewController {
         imageSlidesView.contentScaleMode = .scaleToFill
     }
     
-    @objc func sideMenuBtnPressed() {
+    @objc func sideMenuBtnPressed() {        
         self.sideMenuController?.toggleLeftView()
     }
     
@@ -100,11 +100,14 @@ extension HomeVC {
     }
     
     @IBAction func listAllSurgeriesBtnClicked(_ sender: Any) {
-        let vc = SurgerayListViewController(nibName: "SurgerayListViewController", bundle: nil)
+        let vc = SurgeryListViewController(nibName: "SurgerayListViewController", bundle: nil)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func listAllInventoriesBtnClicked(_ sender: Any) {
+        
+        let vc = InventoryListVC(nibName: "InventoryListVC", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
 //        let vc = SurgerayListViewController(nibName: "SurgerayListViewController", bundle: nil)
 //        self.navigationController?.pushViewController(vc, animated: true)
     }

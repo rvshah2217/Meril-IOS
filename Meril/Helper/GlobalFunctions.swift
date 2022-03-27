@@ -11,7 +11,7 @@ import ChameleonFramework
 
 struct GlobalFunctions {
     
-    static func showToast(controller: UIViewController, message : String, seconds: Double) {
+    static func showToast(controller: UIViewController, message : String, seconds: Double, completionHandler: (() -> ())? = nil) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .actionSheet)
 //        alert.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)        
 //        alert.view.alpha = 0.6
@@ -21,6 +21,7 @@ struct GlobalFunctions {
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
             alert.dismiss(animated: true)
+            completionHandler?()
         }
     }
     
@@ -183,4 +184,54 @@ func setRightButton(_ textField: UITextField, image: UIImage) {
     view.addSubview(imageView)
     textField.rightView = view
     textField.rightView?.isUserInteractionEnabled = false
+}
+
+func convertDateToString() -> String {
+    let date = Date()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"//Format: Y-m-d H:i:s:- 2022-03-25 03:15:00
+    let str = dateFormatter.string(from: date)
+    GlobalFunctions.printToConsole(message: "Current date string: \(str)")
+    return str
+}
+
+func convertStringToDateStr(str: String?) -> String? {
+    guard let passedStr = str else {
+        return nil
+    }
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat =  "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"//2022-03-26T12:56:58.000000Z"
+    if let currentDate = dateFormatter.date(from: passedStr) {
+        dateFormatter.dateFormat = "dd/MM/yy"//Format: Y-m-d H:i:s:- 2022-03-25 03:15:00
+        let str = dateFormatter.string(from: currentDate)
+        GlobalFunctions.printToConsole(message: "Current date string: \(str)")
+        return str
+    }
+    return nil
+}
+
+//To store barcode object array
+class UserSessionManager
+{
+    // MARK:- Properties
+
+    public static var shared = UserSessionManager()
+
+    var barCodes: [BarCodeModel]
+    {
+        get
+        {
+            guard let data = UserDefaults.standard.data(forKey: "scannedBarcodes") else { return [] }
+            return (try? JSONDecoder().decode([BarCodeModel].self, from: data)) ?? []
+        }
+        set
+        {
+            guard let data = try? JSONEncoder().encode(newValue) else { return }
+            UserDefaults.standard.set(data, forKey: "scannedBarcodes")
+        }
+    }
+
+    // MARK:- Init
+
+    private init(){}
 }

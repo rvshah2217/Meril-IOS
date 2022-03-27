@@ -29,7 +29,7 @@ struct LoginResponseModel : Codable {
 
 }
 
-struct LoginRequesModel : Encodable {
+struct LoginRequestModel : Encodable {
     
     let userTypeId : Int?
     let username : String?
@@ -45,4 +45,7 @@ extension Encodable {
         guard let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] else { return nil }
         return json
     }
+//    Use above as movies.compactMap { $0.dict }
+
 }
+

@@ -21,7 +21,7 @@ class SideMenuVC: UIViewController {
         tableView.separatorStyle = .none
     }
     
-    private func setItemsArr() {
+    private func setItemsArr() {        
         itemsArr.append(["iconName": "ic_home", "title": "Home"])
         itemsArr.append(["iconName": "ic_aboutUs", "title": "About Us"])
         itemsArr.append(["iconName": "ic_contactUs", "title": "Contact Us"])

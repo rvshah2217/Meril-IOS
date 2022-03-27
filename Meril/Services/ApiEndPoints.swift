@@ -38,6 +38,11 @@ enum EndPointsItem {
     case getFormData
     case getProfile
     case settings
+    case addSurgery
+    case addStock
+    case getSurgeryList
+    case getStockList
+    case logout
 }
 
 //#MARK:- Extensions endpoints
@@ -70,12 +75,22 @@ extension EndPointsItem: EndPointType {
             return "profile"
         case .settings:
             return "settings"
+        case .addSurgery:
+            return "surgery"
+        case .getSurgeryList:
+            return "surgery"
+        case .addStock:
+            return "stock"
+        case .getStockList:
+            return "stock"
+        case .logout:
+            return "logout"
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .getUserTypesApi, .getHomeBanners, .getFormData, .getProfile, .settings:
+        case .getUserTypesApi, .getHomeBanners, .getFormData, .getProfile, .settings, .getSurgeryList, .getStockList:
             return .get
         default:
             return .post

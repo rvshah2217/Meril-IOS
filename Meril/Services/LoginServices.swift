@@ -29,8 +29,8 @@ class LoginServices {
         }
     }
     
-    //    Fetch user types
-    static func userLogin(loginObj: LoginRequesModel, completionHandler: @escaping (LoginResponseModel?, _ error: String?) -> ()) {
+    //    user login
+    static func userLogin(loginObj: LoginRequestModel, completionHandler: @escaping (LoginResponseModel?, _ error: String?) -> ()) {
                 
         APIManager.shared().call(for: LoginResponseModel.self, type: EndPointsItem.login, params: loginObj.dict) { (responseData, error) in
             
@@ -41,6 +41,29 @@ class LoginServices {
             
             //Check if server return success response or not
             if response.success ?? false {
+                return completionHandler(response, nil)
+            } else {
+                return completionHandler(nil, response.message ?? UserMessages.serverError)
+            }
+        }
+    }
+    
+    //    user login
+    static func userLogOut(completionHandler: @escaping (LoginResponseModel?, _ error: String?) -> ()) {
+                
+        APIManager.shared().call(for: LoginResponseModel.self, type: EndPointsItem.logout) { (responseData, error) in
+            
+            guard let response = responseData else {
+                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                return completionHandler(nil, error?.body)
+            }
+            
+            //Check if server return success response or not
+            if response.success ?? false {
+//                Remove data stored locally
+                let domain = Bundle.main.bundleIdentifier!
+                UserDefaults.standard.removePersistentDomain(forName: domain)
+                UserDefaults.standard.synchronize()
                 return completionHandler(response, nil)
             } else {
                 return completionHandler(nil, response.message ?? UserMessages.serverError)

@@ -23,6 +23,7 @@ class BarCodeScannerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 //        TODO: this is temporary
         UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
         self.navigationController?.navigationBar.backgroundColor = ColorConstant.mainThemeColor
@@ -114,12 +115,6 @@ class BarCodeScannerVC: UIViewController {
         present(ac, animated: true)
         captureSession = nil
     }
-    
-    @IBAction func scanAgainBtnClicked(_ sender: Any) {
-    }
-    
-    @IBAction func submitBtnClicked(_ sender: Any) {
-    }
 }
 
 extension BarCodeScannerVC: AVCaptureMetadataOutputObjectsDelegate {
@@ -140,13 +135,15 @@ extension BarCodeScannerVC: AVCaptureMetadataOutputObjectsDelegate {
     func barCodeFound(code: String) {
         print(code)
         print(UserDefaults.standard.array(forKey: "scannedBarcodes"))
-        var currentStoredArr: [String] = UserDefaults.standard.array(forKey: "scannedBarcodes") as? [String] ?? []
+        var currentStoredArr: [BarCodeModel] = UserSessionManager.shared.barCodes//UserDefaults.standard.array(forKey: "scannedBarcodes") as? [String] ?? []
         GlobalFunctions.printToConsole(message: "Total stored barcodes: \(currentStoredArr.count)")
         if ((currentStoredArr.count > 2) && (isFromAddSurgery)) {
             return
         }
-        currentStoredArr.append(code)
-        UserDefaults.standard.set(currentStoredArr, forKey: "scannedBarcodes")
+        currentStoredArr.append(BarCodeModel(barcode: code, dateTime: convertDateToString()))
+        UserSessionManager.shared.barCodes = currentStoredArr
+//        currentStoredArr.append(code)
+//        UserDefaults.standard.set(currentStoredArr, forKey: "scannedBarcodes")
         openScanAgainDialog()
 //        captureSession.startRunning()
     }

@@ -49,6 +49,12 @@ class AddSurgerayViewController: BaseViewController {
         }
     }
     
+    @IBOutlet weak var txtUDT: DropDown! {
+        didSet {
+            self.txtUDT.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+        }
+    }
+    
     @IBOutlet weak var txtPatientScheme: DropDown! {
         didSet {
             self.txtPatientScheme.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
@@ -60,10 +66,6 @@ class AddSurgerayViewController: BaseViewController {
     @IBOutlet weak var txtPatientNumber: UITextField!
     @IBOutlet weak var txtPatientAge: UITextField!
     @IBOutlet weak var txtIpCode: UITextField!
-    @IBOutlet weak var txtOther1: UITextField!
-    @IBOutlet weak var txtOther2: UITextField!
-    @IBOutlet weak var txtOther3: UITextField!
-    
     @IBOutlet weak var btnScanNow: UIButton!
     
     
@@ -77,6 +79,7 @@ class AddSurgerayViewController: BaseViewController {
     var distributorsArr: [Hospitals] = []
     var sales_personsArr: [Hospitals] = []
     var schemeArr: [Schemes] = []
+    var udtArr: [Schemes] = []
     
     var selectedCityId: Int?
     var selectedHospitalId: Int?
@@ -84,6 +87,8 @@ class AddSurgerayViewController: BaseViewController {
     var selectedDistributorId: Int?
     var selectedSalesPaersonId: Int?
     var selectedSchemeId: Int?
+    var selectedUdtId: Int?
+    var addSurgeryReqObj: AddSurgeryRequestModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +102,7 @@ class AddSurgerayViewController: BaseViewController {
     }
     //MARK:- Custome Method
     func setUI(){
+        self.navigationItem.title = ""
         for i in collectionViewBoarder{
             i.layer.borderColor = ColorConstant.mainThemeColor.cgColor
             i.layer.borderWidth = 1
@@ -122,31 +128,59 @@ class AddSurgerayViewController: BaseViewController {
         btnScanNow.layer.cornerRadius = btnScanNow.frame.height/2
         self.viewHeader.backgroundColor = ColorConstant.mainThemeColor
         
-        txtCity.attributedPlaceholder = NSAttributedString(
-            string: "Select City",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        )
-        txtHospital.attributedPlaceholder = NSAttributedString(
-            string: "Select Hospital",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        )
-        txtDoctor.attributedPlaceholder = NSAttributedString(
-            string: "Select Doctor",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        )
-        txtDistributor.attributedPlaceholder = NSAttributedString(
-            string: "Select Distributor",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        )
-        txtSaleperson.attributedPlaceholder = NSAttributedString(          string: "Select Saleperson",
-                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        )
+        txtCity.setPlaceholder(placeHolderStr: "Select City")
+        txtHospital.setPlaceholder(placeHolderStr: "Select Hospital")
+        txtDoctor.setPlaceholder(placeHolderStr: "Select Doctor")
+        txtDistributor.setPlaceholder(placeHolderStr: "Select Distributor")
+        txtSaleperson.setPlaceholder(placeHolderStr: "Select Saleperson")
+        txtPatientScheme.setPlaceholder(placeHolderStr: "Select Scheme")
+        txtUDT.setPlaceholder(placeHolderStr: "Select UDT")
+
+//        txtCity.attributedPlaceholder = NSAttributedString(
+//            string: "Select City",
+//            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        )
+//        txtHospital.attributedPlaceholder = NSAttributedString(
+//            string: "Select Hospital",
+//            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        )
+//        txtDoctor.attributedPlaceholder = NSAttributedString(
+//            string: "Select Doctor",
+//            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        )
+//        txtDistributor.attributedPlaceholder = NSAttributedString(
+//            string: "Select Distributor",
+//            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        )
+//        txtSaleperson.attributedPlaceholder = NSAttributedString(          string: "Select Saleperson",
+//                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        )
+//
+//        txtPatientScheme.attributedPlaceholder = NSAttributedString(          string: "Select Scheme",
+//                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        )
+//
+//        txtUDT.attributedPlaceholder = NSAttributedString(          string: "Select UDT",
+//                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        )
+        
+        
+        self.txtCity.rowHeight = 40
+        self.txtHospital.rowHeight = 40
+        self.txtDoctor.rowHeight = 40
+        self.txtDistributor.rowHeight = 40
+        self.txtSaleperson.rowHeight = 40
+        self.txtPatientScheme.rowHeight = 40
+        self.txtUDT.rowHeight = 40
+
         setRightButton(txtCity, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtHospital, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtDoctor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtDistributor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtSaleperson, image: UIImage(named: "ic_dropdown") ?? UIImage())
-        
+        setRightButton(txtPatientScheme, image: UIImage(named: "ic_dropdown") ?? UIImage())
+        setRightButton(txtUDT, image: UIImage(named: "ic_dropdown") ?? UIImage())
+
         txtPatientName.attributedPlaceholder = NSAttributedString(
             string: "Patient Name",
             attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
@@ -232,6 +266,15 @@ class AddSurgerayViewController: BaseViewController {
             GlobalFunctions.showToast(controller: self, message: "Please enter IP Code.", seconds: errorDismissTime)
             return
         }
+        
+        let userId = UserDefaults.standard.integer(forKey: "userId")
+        let surgeryId = "D\(Date.currentTimeStamp)U\(userId)"
+        addSurgeryReqObj = AddSurgeryRequestModel(cityId: selectedCityId, hospitalId: selectedHospitalId, distributorId: selectedDistributorId, doctorId: selectedDoctorId, surgeryId: surgeryId, schemeId: selectedSchemeId, udtId: selectedUdtId, patientName: patientName, patientMobile: patientNumber, age: Int(patientAge), ipCode: ipCode)
+        self.redirectToScannerVC()
+//        If there is no error while validation then redirect to scan the data
+//        let scannerVC = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
+//        scannerVC.delegate = self
+//        self.navigationController?.pushViewController(scannerVC, animated: true)
     }
     
     func redirectToScannerVC() {
@@ -310,6 +353,16 @@ extension AddSurgerayViewController {
         self.txtPatientScheme.didSelect { selectedText, index, id in
             self.selectedSchemeId = self.schemeArr[index].id
         }
+        
+        //        set scheme array
+        self.udtArr = formDataResponse.udt ?? []
+        self.txtUDT.isEnabled = !self.udtArr.isEmpty
+        self.txtUDT.optionArray = self.udtArr.map({ item -> String in
+            item.udt_name ?? ""
+        })
+        self.txtUDT.didSelect { selectedText, index, id in
+            self.selectedUdtId = self.udtArr[index].id
+        }
     }
     
     //   reload hospitals by city selection
@@ -329,6 +382,36 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
     
 //TODO:    Call api to add surgery with scanned barcodes and then redirect to display surgeries
     func submitScannedData() {
+        let barCodeArr: [BarCodeModel] = UserSessionManager.shared.barCodes
+
+        let dict = barCodeArr.compactMap { $0.dict }
         
+        func convertArrayToJsonString() {
+            if let theJSONData = try?  JSONSerialization.data(
+                withJSONObject: dict,
+                options: .prettyPrinted
+            ),
+               let theJSONText = String(data: theJSONData,
+                                        encoding: String.Encoding.ascii) {
+                print("JSON string = \n\(theJSONText)")
+                addSurgeryReqObj?.barcodes = theJSONText
+            }
+        }
+        
+        convertArrayToJsonString()
+        GlobalFunctions.printToConsole(message: "\(addSurgeryReqObj?.barcodes)")
+        self.callAddSurgeryApi()
+    }
+    
+    func callAddSurgeryApi() {
+        SurgeryServices.addSurgery(surgeryObj: addSurgeryReqObj!) { response, error in
+            guard let err = error else {                
+                UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
+                self.navigationController?.popViewController(animated: true)
+                return
+            }
+            GlobalFunctions.showToast(controller: self, message: err, seconds: errorDismissTime)
+            
+        }
     }
 }

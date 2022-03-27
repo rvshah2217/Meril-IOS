@@ -23,6 +23,8 @@
 		8326D89E27ECABD80081B4ED /* ScanAgainPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D89D27ECABD80081B4ED /* ScanAgainPopUpVC.swift */; };
 		8326D8A027ED9CF50081B4ED /* SurgeryServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */; };
 		8326D8A427ED9F2B0081B4ED /* SurgeryInventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D8A327ED9F2B0081B4ED /* SurgeryInventoryModel.swift */; };
+		8326D8AD27F02AC50081B4ED /* InventoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D8AB27F02AC50081B4ED /* InventoryListVC.swift */; };
+		8326D8AE27F02AC50081B4ED /* InventoryListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8326D8AC27F02AC50081B4ED /* InventoryListVC.xib */; };
 		837192C827E9FCFD00BE04A1 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192C727E9FCFD00BE04A1 /* ResponseModel.swift */; };
 		837192CD27EA026700BE04A1 /* ApiEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CA27EA026700BE04A1 /* ApiEndPoints.swift */; };
 		837192CE27EA026700BE04A1 /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CB27EA026700BE04A1 /* LoginServices.swift */; };
@@ -49,7 +51,7 @@
 		88CBA34C27ECDC49005C22FE /* SurgerayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA34A27ECDC49005C22FE /* SurgerayListViewController.swift */; };
 		88CBA34D27ECDC49005C22FE /* SurgerayListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA34B27ECDC49005C22FE /* SurgerayListViewController.xib */; };
 		88CBA35127ECDF74005C22FE /* SurgeriListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA34F27ECDF74005C22FE /* SurgeriListTableViewCell.swift */; };
-		88CBA35227ECDF74005C22FE /* SurgeriListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA35027ECDF74005C22FE /* SurgeriListTableViewCell.xib */; };
+		88CBA35227ECDF74005C22FE /* SurgeryListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA35027ECDF74005C22FE /* SurgeryListTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		8326D89D27ECABD80081B4ED /* ScanAgainPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAgainPopUpVC.swift; sourceTree = "<group>"; };
 		8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryServices.swift; sourceTree = "<group>"; };
 		8326D8A327ED9F2B0081B4ED /* SurgeryInventoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryInventoryModel.swift; sourceTree = "<group>"; };
+		8326D8AB27F02AC50081B4ED /* InventoryListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryListVC.swift; sourceTree = "<group>"; };
+		8326D8AC27F02AC50081B4ED /* InventoryListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InventoryListVC.xib; sourceTree = "<group>"; };
 		837192C727E9FCFD00BE04A1 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		837192CA27EA026700BE04A1 /* ApiEndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiEndPoints.swift; sourceTree = "<group>"; };
 		837192CB27EA026700BE04A1 /* LoginServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
@@ -99,7 +103,7 @@
 		88CBA34A27ECDC49005C22FE /* SurgerayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgerayListViewController.swift; sourceTree = "<group>"; };
 		88CBA34B27ECDC49005C22FE /* SurgerayListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurgerayListViewController.xib; sourceTree = "<group>"; };
 		88CBA34F27ECDF74005C22FE /* SurgeriListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeriListTableViewCell.swift; sourceTree = "<group>"; };
-		88CBA35027ECDF74005C22FE /* SurgeriListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurgeriListTableViewCell.xib; sourceTree = "<group>"; };
+		88CBA35027ECDF74005C22FE /* SurgeryListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurgeryListTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +174,8 @@
 		831A4F7C27E8509900BEF2E7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				88CBA34927ECD951005C22FE /* SurgerayList */,
+				8326D8A527F02A800081B4ED /* InventoryList */,
+				88CBA34927ECD951005C22FE /* SurgeryList */,
 				88CBA34427ECD4ED005C22FE /* AddInventory */,
 				88CBA32E27ECCDE2005C22FE /* AddSurgeray */,
 				88CBA32B27ECCDE2005C22FE /* PrivacyPolicy */,
@@ -254,6 +259,15 @@
 			path = ScanAgainView;
 			sourceTree = "<group>";
 		};
+		8326D8A527F02A800081B4ED /* InventoryList */ = {
+			isa = PBXGroup;
+			children = (
+				8326D8AB27F02AC50081B4ED /* InventoryListVC.swift */,
+				8326D8AC27F02AC50081B4ED /* InventoryListVC.xib */,
+			);
+			path = InventoryList;
+			sourceTree = "<group>";
+		};
 		837192C927EA025C00BE04A1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,21 +321,21 @@
 			path = AddInventory;
 			sourceTree = "<group>";
 		};
-		88CBA34927ECD951005C22FE /* SurgerayList */ = {
+		88CBA34927ECD951005C22FE /* SurgeryList */ = {
 			isa = PBXGroup;
 			children = (
 				88CBA34E27ECDF3D005C22FE /* Cell */,
 				88CBA34A27ECDC49005C22FE /* SurgerayListViewController.swift */,
 				88CBA34B27ECDC49005C22FE /* SurgerayListViewController.xib */,
 			);
-			path = SurgerayList;
+			path = SurgeryList;
 			sourceTree = "<group>";
 		};
 		88CBA34E27ECDF3D005C22FE /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				88CBA34F27ECDF74005C22FE /* SurgeriListTableViewCell.swift */,
-				88CBA35027ECDF74005C22FE /* SurgeriListTableViewCell.xib */,
+				88CBA35027ECDF74005C22FE /* SurgeryListTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -404,9 +418,10 @@
 				88CBA33827ECCDE2005C22FE /* PrivacyPolicyViewController.xib in Resources */,
 				88CBA34D27ECDC49005C22FE /* SurgerayListViewController.xib in Resources */,
 				88CBA33E27ECCDE2005C22FE /* EditProfileViewController.xib in Resources */,
-				88CBA35227ECDF74005C22FE /* SurgeriListTableViewCell.xib in Resources */,
+				88CBA35227ECDF74005C22FE /* SurgeryListTableViewCell.xib in Resources */,
 				88CBA34027ECCDE2005C22FE /* SettingsViewController.xib in Resources */,
 				88CBA34827ECD51E005C22FE /* AddInventoryViewController.xib in Resources */,
+				8326D8AE27F02AC50081B4ED /* InventoryListVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +483,7 @@
 				88CBA33B27ECCDE2005C22FE /* AddSurgerayViewController.swift in Sources */,
 				88CBA34327ECCE1F005C22FE /* BaseViewController.swift in Sources */,
 				831A4F8A27E8A0A800BEF2E7 /* LoginVC.swift in Sources */,
+				8326D8AD27F02AC50081B4ED /* InventoryListVC.swift in Sources */,
 				88CBA33F27ECCDE2005C22FE /* ProfileViewController.swift in Sources */,
 				831A4F6527E83CED00BEF2E7 /* HomeVC.swift in Sources */,
 				88CBA34727ECD51E005C22FE /* AddInventoryViewController.swift in Sources */,
@@ -638,7 +654,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CPR2Y68PV8;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meril/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -670,7 +686,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CPR2Y68PV8;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meril/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

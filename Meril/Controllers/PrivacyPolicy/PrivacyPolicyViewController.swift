@@ -9,28 +9,40 @@
 import UIKit
 
 class PrivacyPolicyViewController: BaseViewController {
-
-    @IBOutlet weak var constrainViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var viewHeader: UIView!
+    
+//    @IBOutlet weak var constrainViewHeight: NSLayoutConstraint!
+//    @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var txtView: UITextView!
     
-   override func viewDidLoad() {
+    var pageName : pageType?
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         // Do any additional setup after loading the view.
     }
+ 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigation()
+//        setNavigation()
+        GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)
     }
+    
     //MARK:- Custome Method
     func setUI(){
-        self.viewHeader.backgroundColor = ColorConstant.mainThemeColor
+        self.navigationItem.title = pageName == .some(.AboutUs) ? "About Us" : "Privacy Policy"        
+//        self.viewHeader.backgroundColor = ColorConstant.mainThemeColor
+        
+        if pageName == .some(.AboutUs){
+            txtView.text = appDelegate.settingsData?.app_desc
+        }else{
+            txtView.text = appDelegate.settingsData?.privay_policy
+        }
     }
     func setNavigation(){
-        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeight,title: "Privacy Policy")
+//        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeight,title: pageName == .some(.AboutUs) ? "About Us" : "Privacy Policy")
         navigationController?.setNavigationBarHidden(true, animated: false)
-
+        
         setBackButtononNavigation()
         pressButtonOnNavigaion { (isBack) in
             if(isBack){
@@ -39,5 +51,5 @@ class PrivacyPolicyViewController: BaseViewController {
             }
         }
     }
-
+    
 }

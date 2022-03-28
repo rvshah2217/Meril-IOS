@@ -10,7 +10,7 @@ import UIKit
 import ChameleonFramework
 
 struct GlobalFunctions {
-    
+        
     static func showToast(controller: UIViewController, message : String, seconds: Double, completionHandler: (() -> ())? = nil) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .actionSheet)
 //        alert.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)        
@@ -59,6 +59,7 @@ struct GlobalFunctions {
             navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
             navController.navigationBar.shadowImage = UIImage()
             navController.navigationBar.barTintColor = bgColor//UIColor(hexString: ColorConstant.mainThemeColor)
+            navController.navigationBar.tintColor = .white
             navController.navigationBar.titleTextAttributes = [
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .medium),
                 NSAttributedString.Key.foregroundColor: textColor
@@ -76,6 +77,7 @@ struct GlobalFunctions {
 let NAVIGATION_BAR_HEIGHT:CGFloat = 64
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 //Check IsiPhone Device
 func IS_IPHONE_DEVICE()->Bool{
@@ -228,6 +230,27 @@ class UserSessionManager
         {
             guard let data = try? JSONEncoder().encode(newValue) else { return }
             UserDefaults.standard.set(data, forKey: "scannedBarcodes")
+        }
+    }
+    
+    var userDetail: UserData? {
+        get {
+            if let userInfo = UserDefaults.standard.string(forKey: "userDetails") {
+                let userData = userInfo.data(using: .utf8)!
+                do {
+                    let json = try JSONDecoder().decode(UserData.self, from: userData)
+                    GlobalFunctions.printToConsole(message: "logged in user detail:- \(json)")
+                    return json
+                } catch {
+                    GlobalFunctions.printToConsole(message: error.localizedDescription)
+                }
+        }
+            return nil
+        }
+        set {
+            guard let user_data = try? JSONEncoder().encode(newValue) else { return }
+            let convertedString = String(data: user_data, encoding: String.Encoding.utf8) // the data will be converted to the string
+            UserDefaults.standard.set(convertedString, forKey: "userDetails")
         }
     }
 

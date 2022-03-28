@@ -51,16 +51,13 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qyd-HH-6jG">
                                                                         <rect key="frame" x="0.0" y="0.0" width="157" height="166.5"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aX6-Zu-S0c">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aX6-Zu-S0c">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="157" height="142.5"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="aX6-Zu-S0c" secondAttribute="height" multiplier="1.1" id="anJ-IY-4ob"/>
                                                                                 </constraints>
-                                                                                <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain" title="">
-                                                                                    <backgroundConfiguration key="background" image="ic_addSurgery"/>
-                                                                                </buttonConfiguration>
+                                                                                <state key="normal" backgroundImage="ic_addSurgery"/>
                                                                                 <connections>
                                                                                     <action selector="addSurgeryBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MJb-9M-jkY"/>
                                                                                 </connections>
@@ -76,16 +73,13 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yCQ-aE-PqC">
                                                                         <rect key="frame" x="197" y="0.0" width="157" height="166.5"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ML3-HM-IAQ">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ML3-HM-IAQ">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="157" height="142.5"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="ML3-HM-IAQ" secondAttribute="height" multiplier="1.1" id="cRx-gX-N1W"/>
                                                                                 </constraints>
-                                                                                <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain">
-                                                                                    <backgroundConfiguration key="background" image="ic_listSurgeries"/>
-                                                                                </buttonConfiguration>
+                                                                                <state key="normal" backgroundImage="ic_listSurgeries"/>
                                                                                 <connections>
                                                                                     <action selector="listAllSurgeriesBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7tz-xL-mzH"/>
                                                                                 </connections>
@@ -106,16 +100,13 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WiN-05-MpU">
                                                                         <rect key="frame" x="0.0" y="0.0" width="157" height="167"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oA-97-MpK">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oA-97-MpK">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="157" height="143"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="8oA-97-MpK" secondAttribute="height" multiplier="1.1" id="pEa-zn-0M7"/>
                                                                                 </constraints>
-                                                                                <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain">
-                                                                                    <backgroundConfiguration key="background" image="ic_addPhysicalInventory"/>
-                                                                                </buttonConfiguration>
+                                                                                <state key="normal" backgroundImage="ic_addPhysicalInventory"/>
                                                                                 <connections>
                                                                                     <action selector="addInventoryBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h33-kI-Fji"/>
                                                                                 </connections>
@@ -131,16 +122,13 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="045-Se-M3b">
                                                                         <rect key="frame" x="197" y="0.0" width="157" height="167"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xO-XT-Edz">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xO-XT-Edz">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="157" height="143"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="7xO-XT-Edz" secondAttribute="height" multiplier="1.1" id="n9p-g2-bBM"/>
                                                                                 </constraints>
-                                                                                <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain">
-                                                                                    <backgroundConfiguration key="background" image="ic_listPhysicalInventory"/>
-                                                                                </buttonConfiguration>
+                                                                                <state key="normal" backgroundImage="ic_listPhysicalInventory"/>
                                                                                 <connections>
                                                                                     <action selector="listAllInventoriesBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sau-tk-LeQ"/>
                                                                                 </connections>
@@ -163,11 +151,10 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="d2q-VZ-BJw"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Sync data">
-                                                            <fontDescription key="titleFontDescription" name="Verdana-Bold" family="Verdana" pointSize="24"/>
-                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </buttonConfiguration>
+                                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="22"/>
+                                                        <state key="normal" title="Sync ">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="syncDataBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mYQ-6u-CGW"/>
                                                         </connections>
@@ -316,10 +303,6 @@
                                                     <constraint firstAttribute="height" constant="45" id="PDX-JF-mpB"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Scan again">
-                                                    <fontDescription key="titleFontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
-                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="scanAgainBtnClicked:" destination="MiL-ZE-f6L" eventType="touchUpInside" id="HF3-Dd-rL7"/>
                                                 </connections>
@@ -331,10 +314,6 @@
                                                     <constraint firstAttribute="height" constant="45" id="fsw-N0-aNK"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Submit">
-                                                    <fontDescription key="titleFontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
-                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="submitBtnClicked:" destination="MiL-ZE-f6L" eventType="touchUpInside" id="Fht-W1-rlb"/>
                                                 </connections>
@@ -393,12 +372,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcO-1N-r3p">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meril" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1b-gt-SO1">
-                                        <rect key="frame" x="134.5" y="146" width="145" height="73"/>
-                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="60"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="utk-4e-jd7">
+                                        <rect key="frame" x="103.5" y="146" width="207" height="83"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="utk-4e-jd7" secondAttribute="height" multiplier="2.5" id="S8V-P4-nag"/>
+                                        </constraints>
+                                    </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lnZ-3f-fWy">
                                         <rect key="frame" x="25" y="289" width="364" height="240"/>
                                         <subviews>
@@ -464,24 +443,23 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="EPP-U1-EE0"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Login">
-                                            <fontDescription key="titleFontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="loginBtnClicked:" destination="zdE-Xo-UUk" eventType="touchUpInside" id="0Rc-Bx-Pld"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Br7-5y-df0">
-                                        <rect key="frame" x="249.5" y="534" width="139.5" height="40"/>
+                                        <rect key="frame" x="257" y="534" width="132" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="lzb-Rq-GDo"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Forgot Password?">
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Forgot password ?">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="forgotPasswordBtnClicked:" destination="zdE-Xo-UUk" eventType="touchUpInside" id="kyK-aW-vso"/>
                                         </connections>
@@ -493,12 +471,13 @@
                                     <constraint firstAttribute="trailing" secondItem="Br7-5y-df0" secondAttribute="trailing" constant="25" id="8Us-HP-rnw"/>
                                     <constraint firstItem="Xzw-d2-vRI" firstAttribute="top" secondItem="Br7-5y-df0" secondAttribute="bottom" constant="5" id="FYA-7Y-EZY"/>
                                     <constraint firstAttribute="trailing" secondItem="Xzw-d2-vRI" secondAttribute="trailing" constant="25" id="G8t-bu-xlw"/>
-                                    <constraint firstItem="x1b-gt-SO1" firstAttribute="centerX" secondItem="kcO-1N-r3p" secondAttribute="centerX" id="Res-8z-lht"/>
-                                    <constraint firstItem="lnZ-3f-fWy" firstAttribute="top" secondItem="x1b-gt-SO1" secondAttribute="bottom" constant="70" id="YXe-os-uI6"/>
+                                    <constraint firstItem="utk-4e-jd7" firstAttribute="centerX" secondItem="kcO-1N-r3p" secondAttribute="centerX" id="Q1Q-Zl-Kr0"/>
                                     <constraint firstItem="Br7-5y-df0" firstAttribute="top" secondItem="lnZ-3f-fWy" secondAttribute="bottom" constant="5" id="dtr-Ta-QlZ"/>
                                     <constraint firstItem="Br7-5y-df0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kcO-1N-r3p" secondAttribute="leading" constant="40" id="eKh-FT-bFy"/>
                                     <constraint firstItem="lnZ-3f-fWy" firstAttribute="centerY" secondItem="kcO-1N-r3p" secondAttribute="centerY" id="gSm-aB-dBQ"/>
                                     <constraint firstItem="Xzw-d2-vRI" firstAttribute="leading" secondItem="kcO-1N-r3p" secondAttribute="leading" constant="25" id="kHE-yQ-Fob"/>
+                                    <constraint firstItem="utk-4e-jd7" firstAttribute="width" secondItem="kcO-1N-r3p" secondAttribute="width" multiplier="0.5" id="kdp-dk-d0r"/>
+                                    <constraint firstItem="lnZ-3f-fWy" firstAttribute="top" secondItem="utk-4e-jd7" secondAttribute="bottom" constant="60" id="ljS-e3-chy"/>
                                     <constraint firstItem="lnZ-3f-fWy" firstAttribute="leading" secondItem="kcO-1N-r3p" secondAttribute="leading" constant="25" id="zgy-JH-ZQt"/>
                                 </constraints>
                             </view>
@@ -523,12 +502,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EQ0-96-K63" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="66"/>
+            <point key="canvasLocation" x="18.840579710144929" y="65.625"/>
         </scene>
     </scenes>
     <resources>
         <image name="ic_addPhysicalInventory" width="2084" height="2084"/>
         <image name="ic_addSurgery" width="11251" height="8334"/>
+        <image name="ic_launchIcon" width="127" height="55"/>
         <image name="ic_listPhysicalInventory" width="2084" height="2084"/>
         <image name="ic_listSurgeries" width="2085" height="2084"/>
         <systemColor name="systemBackgroundColor">

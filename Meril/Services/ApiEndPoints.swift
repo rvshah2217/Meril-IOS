@@ -43,8 +43,14 @@ enum EndPointsItem {
     case getSurgeryList
     case getStockList
     case logout
+    case changePassword
+    case contactUs
+    case surgeryList
 }
-
+enum pageType {
+    case PrivacyPolicy
+    case AboutUs
+}
 //#MARK:- Extensions endpoints
 extension EndPointsItem: EndPointType {
     
@@ -85,6 +91,12 @@ extension EndPointsItem: EndPointType {
             return "stock"
         case .logout:
             return "logout"
+        case .changePassword:
+            return "change-password"
+        case .contactUs:
+            return "feedback"
+        case .surgeryList:
+            return "surgery"
         }
     }
     

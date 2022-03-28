@@ -49,13 +49,17 @@ class LoginServices {
     }
     
     //    user login
-    static func userLogOut(completionHandler: @escaping (LoginResponseModel?, _ error: String?) -> ()) {
-                
+//    static func userLogOut(completionHandler: @escaping (LoginResponseModel?, _ error: String?) -> ()) {
+    static func userLogOut(navController: UINavigationController) {
+        let topController = navController.topViewController
         APIManager.shared().call(for: LoginResponseModel.self, type: EndPointsItem.logout) { (responseData, error) in
             
             guard let response = responseData else {
                 GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
-                return completionHandler(nil, error?.body)
+                if let vc = topController as? UIViewController {
+                    GlobalFunctions.showToast(controller: vc, message: error?.title ?? UserMessages.serverError, seconds: errorDismissTime, completionHandler: nil)
+                }
+                return
             }
             
             //Check if server return success response or not
@@ -64,9 +68,14 @@ class LoginServices {
                 let domain = Bundle.main.bundleIdentifier!
                 UserDefaults.standard.removePersistentDomain(forName: domain)
                 UserDefaults.standard.synchronize()
-                return completionHandler(response, nil)
+                let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                appDelegate.window?.rootViewController = GlobalFunctions.setRootNavigationController(currentVC: loginVC)
+                appDelegate.window?.makeKeyAndVisible()
+
             } else {
-                return completionHandler(nil, response.message ?? UserMessages.serverError)
+                if let vc = topController as? UIViewController {
+                    GlobalFunctions.showToast(controller: vc, message: response.message ?? UserMessages.serverError, seconds: errorDismissTime, completionHandler: nil)
+                }
             }
         }
     }

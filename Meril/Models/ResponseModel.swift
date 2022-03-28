@@ -34,7 +34,10 @@ struct UserTypes : Codable {
     let name : String?
     let created_at : String?
     let updated_at : String?
-    
+    let user_data : UserData?
+//    let sergeries : [Sergeries]?
+//    let stocks : [Stocks]?
+
 //    For login
     let user_type_id: String?
     let unique_id: String?
@@ -62,7 +65,9 @@ struct UserTypes : Codable {
         case link = "link"
         case extra_parameter = "extra_parameter"
         case image = "image"
-
+//        case sergeries = "sergeries"
+//        case stocks = "stocks"
+        case user_data = "user_data"
     }
 
     init(from decoder: Decoder) throws {
@@ -81,7 +86,55 @@ struct UserTypes : Codable {
         link = try values.decodeIfPresent(String.self, forKey: .link)
         extra_parameter = try values.decodeIfPresent(String.self, forKey: .extra_parameter)
         image = try values.decodeIfPresent(String.self, forKey: .image)
+        
+//        sergeries = try values.decodeIfPresent([Sergeries].self, forKey: .sergeries)
+//        stocks = try values.decodeIfPresent([Stocks].self, forKey: .stocks)
+        user_data = try values.decodeIfPresent(UserData.self, forKey: .user_data)
+    }
 
+}
+
+struct UserData : Codable {
+    let id : Int?
+    let unique_id : String?
+    let name : String?
+    let email : String?
+    let phone : String?
+    let city : String?
+    let state : String?
+    let country : String?
+    let pincode : String?
+    let profile : String?
+    let division_id : String?
+
+    enum CodingKeys: String, CodingKey {
+
+        case id = "id"
+        case unique_id = "unique_id"
+        case name = "name"
+        case email = "email"
+        case phone = "phone"
+        case city = "city"
+        case state = "state"
+        case country = "country"
+        case pincode = "pincode"
+        case profile = "profile"
+        case division_id = "division_id"
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decodeIfPresent(Int.self, forKey: .id)
+        unique_id = try values.decodeIfPresent(String.self, forKey: .unique_id)
+        name = try values.decodeIfPresent(String.self, forKey: .name)
+        email = try values.decodeIfPresent(String.self, forKey: .email)
+        phone = try values.decodeIfPresent(String.self, forKey: .phone)
+        city = try values.decodeIfPresent(String.self, forKey: .city)
+        state = try values.decodeIfPresent(String.self, forKey: .state)
+        country = try values.decodeIfPresent(String.self, forKey: .country)
+        pincode = try values.decodeIfPresent(String.self, forKey: .pincode)
+        profile = try values.decodeIfPresent(String.self, forKey: .profile)
+        division_id = try values.decodeIfPresent(String.self, forKey: .division_id)
     }
 
 }

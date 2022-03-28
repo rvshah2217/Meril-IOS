@@ -14,15 +14,18 @@ class SurgeryListTableViewCell: UITableViewCell {
     @IBOutlet weak var lblCode: UILabel!
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblBarCode: UILabel!
+    @IBOutlet weak var surgeryOrStockIdLbl: UILabel!
+    var isFromInventory: Bool = false
     
     var itemDetail: SurgeryData? = nil {
         didSet {
             guard let itemData = itemDetail else { return }
-            
+            self.surgeryOrStockIdLbl.text = isFromInventory ? "Stock ID: " + (itemData.stock_id ?? "N/A") : "Surgery ID: " + (itemData.surgery_id ?? "N/A")
             self.lblTitle.text = "Patient Name: " + (itemData.patient_name ?? "N/A")
             self.lblCode.text = "Hospital Code: " + (itemData.ip_code ?? "N/A")
             self.lblDate.text = "Date: " + (itemData.created_at ?? "N/A")
             var barCodeStr: String = ""
+            
             if let scanArr = itemData.scans, scanArr.count > 0 {
                 self.lblBarCode.isHidden = false
                 barCodeStr = "BarCode: "
@@ -36,6 +39,7 @@ class SurgeryListTableViewCell: UITableViewCell {
                 }
                 self.lblBarCode.text = barCodeStr
             } else {
+                self.lblBarCode.text = ""
                 self.lblBarCode.isHidden = true
             }
             
@@ -51,6 +55,7 @@ class SurgeryListTableViewCell: UITableViewCell {
         lblCode.textColor = ColorConstant.mainThemeColor
         lblDate.textColor = ColorConstant.mainThemeColor
         lblBarCode.textColor = ColorConstant.mainThemeColor
+        surgeryOrStockIdLbl.textColor = ColorConstant.mainThemeColor
         viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
         viewMain.layer.borderWidth = 1
     }

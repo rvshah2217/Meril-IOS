@@ -1,0 +1,822 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		831A4F6127E83CED00BEF2E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F6027E83CED00BEF2E7 /* AppDelegate.swift */; };
+		831A4F6527E83CED00BEF2E7 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F6427E83CED00BEF2E7 /* HomeVC.swift */; };
+		831A4F6827E83CED00BEF2E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831A4F6627E83CED00BEF2E7 /* Main.storyboard */; };
+		831A4F6B27E83CED00BEF2E7 /* Meril.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F6927E83CED00BEF2E7 /* Meril.xcdatamodeld */; };
+		831A4F6D27E83CEE00BEF2E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 831A4F6C27E83CEE00BEF2E7 /* Assets.xcassets */; };
+		831A4F7027E83CEE00BEF2E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831A4F6E27E83CEE00BEF2E7 /* LaunchScreen.storyboard */; };
+		831A4F7827E8481800BEF2E7 /* Sidemenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831A4F7727E8481800BEF2E7 /* Sidemenu.storyboard */; };
+		831A4F7B27E8507600BEF2E7 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F7A27E8507600BEF2E7 /* GlobalFunctions.swift */; };
+		831A4F8127E8511F00BEF2E7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F8027E8511F00BEF2E7 /* Constants.swift */; };
+		831A4F8427E86CA900BEF2E7 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F8327E86CA900BEF2E7 /* SideMenuVC.swift */; };
+		831A4F8727E86E4F00BEF2E7 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F8627E86E4F00BEF2E7 /* SideMenuCell.swift */; };
+		831A4F8A27E8A0A800BEF2E7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F8927E8A0A800BEF2E7 /* LoginVC.swift */; };
+		831A4F8D27E8A1B100BEF2E7 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F8C27E8A1B100BEF2E7 /* UITextField+Extension.swift */; };
+		8326D89E27ECABD80081B4ED /* ScanAgainPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D89D27ECABD80081B4ED /* ScanAgainPopUpVC.swift */; };
+		8326D8A027ED9CF50081B4ED /* SurgeryServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */; };
+		8326D8A427ED9F2B0081B4ED /* SurgeryInventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D8A327ED9F2B0081B4ED /* SurgeryInventoryModel.swift */; };
+		8326D8AD27F02AC50081B4ED /* InventoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D8AB27F02AC50081B4ED /* InventoryListVC.swift */; };
+		8326D8AE27F02AC50081B4ED /* InventoryListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8326D8AC27F02AC50081B4ED /* InventoryListVC.xib */; };
+		837192C827E9FCFD00BE04A1 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192C727E9FCFD00BE04A1 /* ResponseModel.swift */; };
+		837192CD27EA026700BE04A1 /* ApiEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CA27EA026700BE04A1 /* ApiEndPoints.swift */; };
+		837192CE27EA026700BE04A1 /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CB27EA026700BE04A1 /* LoginServices.swift */; };
+		837192CF27EA026700BE04A1 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CC27EA026700BE04A1 /* APIManager.swift */; };
+		837192D327EA399C00BE04A1 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 837192D227EA399C00BE04A1 /* loading.json */; };
+		837192D527EA546D00BE04A1 /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192D427EA546C00BE04A1 /* LoginResponseModel.swift */; };
+		837192D727EA581F00BE04A1 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192D627EA581F00BE04A1 /* Validation.swift */; };
+		837192D927EAF4F300BE04A1 /* HomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192D827EAF4F300BE04A1 /* HomeServices.swift */; };
+		837192DB27EB7B1600BE04A1 /* BarCodeScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192DA27EB7B1600BE04A1 /* BarCodeScannerVC.swift */; };
+		83D05CF727EC0259005C24A8 /* Pods_Meril.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670968684A5D25B948E0B3F7 /* Pods_Meril.framework */; };
+		880205EB27EF6C55002D3257 /* SurgeryListmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880205EA27EF6C55002D3257 /* SurgeryListmodel.swift */; };
+		887C7A3627EF193000A5A0FB /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A3427EF193000A5A0FB /* ContactUsViewController.swift */; };
+		887C7A3727EF193000A5A0FB /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887C7A3527EF193000A5A0FB /* ContactUsViewController.xib */; };
+		887C7A3B27EF246800A5A0FB /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A3927EF246800A5A0FB /* ChangePasswordViewController.swift */; };
+		887C7A3C27EF246800A5A0FB /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887C7A3A27EF246800A5A0FB /* ChangePasswordViewController.xib */; };
+		887C7A3E27EF2E5C00A5A0FB /* SettingServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A3D27EF2E5C00A5A0FB /* SettingServices.swift */; };
+		887C7A4027EF31C500A5A0FB /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A3F27EF31C500A5A0FB /* SettingsModel.swift */; };
+		887C7A4227EF436900A5A0FB /* ChangePasswordServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A4127EF436900A5A0FB /* ChangePasswordServices.swift */; };
+		887C7A4427EF459400A5A0FB /* ChangePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A4327EF459400A5A0FB /* ChangePasswordModel.swift */; };
+		887C7A4627EF4A9D00A5A0FB /* ContactUsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A4527EF4A9D00A5A0FB /* ContactUsModel.swift */; };
+		887C7A4827EF4B7E00A5A0FB /* ContactusServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A4727EF4B7E00A5A0FB /* ContactusServices.swift */; };
+		88CBA33827ECCDE2005C22FE /* PrivacyPolicyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA32C27ECCDE2005C22FE /* PrivacyPolicyViewController.xib */; };
+		88CBA33927ECCDE2005C22FE /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA32D27ECCDE2005C22FE /* PrivacyPolicyViewController.swift */; };
+		88CBA33A27ECCDE2005C22FE /* AddSurgerayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA32F27ECCDE2005C22FE /* AddSurgerayViewController.xib */; };
+		88CBA33B27ECCDE2005C22FE /* AddSurgerayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA33027ECCDE2005C22FE /* AddSurgerayViewController.swift */; };
+		88CBA33C27ECCDE2005C22FE /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA33227ECCDE2005C22FE /* EditProfileViewController.swift */; };
+		88CBA33D27ECCDE2005C22FE /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA33327ECCDE2005C22FE /* ProfileViewController.xib */; };
+		88CBA33E27ECCDE2005C22FE /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA33427ECCDE2005C22FE /* EditProfileViewController.xib */; };
+		88CBA33F27ECCDE2005C22FE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA33527ECCDE2005C22FE /* ProfileViewController.swift */; };
+		88CBA34027ECCDE2005C22FE /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA33627ECCDE2005C22FE /* SettingsViewController.xib */; };
+		88CBA34127ECCDE2005C22FE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA33727ECCDE2005C22FE /* SettingsViewController.swift */; };
+		88CBA34327ECCE1F005C22FE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA34227ECCE1F005C22FE /* BaseViewController.swift */; };
+		88CBA34727ECD51E005C22FE /* AddInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA34527ECD51E005C22FE /* AddInventoryViewController.swift */; };
+		88CBA34827ECD51E005C22FE /* AddInventoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA34627ECD51E005C22FE /* AddInventoryViewController.xib */; };
+		88CBA34C27ECDC49005C22FE /* SurgerayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA34A27ECDC49005C22FE /* SurgerayListViewController.swift */; };
+		88CBA34D27ECDC49005C22FE /* SurgerayListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA34B27ECDC49005C22FE /* SurgerayListViewController.xib */; };
+		88CBA35127ECDF74005C22FE /* SurgeriListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA34F27ECDF74005C22FE /* SurgeriListTableViewCell.swift */; };
+		88CBA35227ECDF74005C22FE /* SurgeryListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA35027ECDF74005C22FE /* SurgeryListTableViewCell.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		255DE97B9CBEA6D5EB3BEDAD /* Pods-Meril.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meril.debug.xcconfig"; path = "Target Support Files/Pods-Meril/Pods-Meril.debug.xcconfig"; sourceTree = "<group>"; };
+		59D932FF9AB499D412011A07 /* Pods-Meril.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meril.release.xcconfig"; path = "Target Support Files/Pods-Meril/Pods-Meril.release.xcconfig"; sourceTree = "<group>"; };
+		670968684A5D25B948E0B3F7 /* Pods_Meril.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meril.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		831A4F5D27E83CED00BEF2E7 /* Meril.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meril.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		831A4F6027E83CED00BEF2E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		831A4F6427E83CED00BEF2E7 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		831A4F6727E83CED00BEF2E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		831A4F6A27E83CED00BEF2E7 /* Meril.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Meril.xcdatamodel; sourceTree = "<group>"; };
+		831A4F6C27E83CEE00BEF2E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		831A4F6F27E83CEE00BEF2E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		831A4F7127E83CEE00BEF2E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		831A4F7727E8481800BEF2E7 /* Sidemenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sidemenu.storyboard; sourceTree = "<group>"; };
+		831A4F7A27E8507600BEF2E7 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
+		831A4F8027E8511F00BEF2E7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		831A4F8327E86CA900BEF2E7 /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
+		831A4F8627E86E4F00BEF2E7 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
+		831A4F8927E8A0A800BEF2E7 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		831A4F8C27E8A1B100BEF2E7 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		8326D89D27ECABD80081B4ED /* ScanAgainPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAgainPopUpVC.swift; sourceTree = "<group>"; };
+		8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryServices.swift; sourceTree = "<group>"; };
+		8326D8A327ED9F2B0081B4ED /* SurgeryInventoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryInventoryModel.swift; sourceTree = "<group>"; };
+		8326D8AB27F02AC50081B4ED /* InventoryListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryListVC.swift; sourceTree = "<group>"; };
+		8326D8AC27F02AC50081B4ED /* InventoryListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InventoryListVC.xib; sourceTree = "<group>"; };
+		837192C727E9FCFD00BE04A1 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		837192CA27EA026700BE04A1 /* ApiEndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiEndPoints.swift; sourceTree = "<group>"; };
+		837192CB27EA026700BE04A1 /* LoginServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
+		837192CC27EA026700BE04A1 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		837192D227EA399C00BE04A1 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		837192D427EA546C00BE04A1 /* LoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
+		837192D627EA581F00BE04A1 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		837192D827EAF4F300BE04A1 /* HomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
+		837192DA27EB7B1600BE04A1 /* BarCodeScannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeScannerVC.swift; sourceTree = "<group>"; };
+		880205EA27EF6C55002D3257 /* SurgeryListmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryListmodel.swift; sourceTree = "<group>"; };
+		887C7A3427EF193000A5A0FB /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
+		887C7A3527EF193000A5A0FB /* ContactUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsViewController.xib; sourceTree = "<group>"; };
+		887C7A3927EF246800A5A0FB /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		887C7A3A27EF246800A5A0FB /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
+		887C7A3D27EF2E5C00A5A0FB /* SettingServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingServices.swift; sourceTree = "<group>"; };
+		887C7A3F27EF31C500A5A0FB /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		887C7A4127EF436900A5A0FB /* ChangePasswordServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordServices.swift; sourceTree = "<group>"; };
+		887C7A4327EF459400A5A0FB /* ChangePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModel.swift; sourceTree = "<group>"; };
+		887C7A4527EF4A9D00A5A0FB /* ContactUsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsModel.swift; sourceTree = "<group>"; };
+		887C7A4727EF4B7E00A5A0FB /* ContactusServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactusServices.swift; sourceTree = "<group>"; };
+		88CBA32C27ECCDE2005C22FE /* PrivacyPolicyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivacyPolicyViewController.xib; sourceTree = "<group>"; };
+		88CBA32D27ECCDE2005C22FE /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		88CBA32F27ECCDE2005C22FE /* AddSurgerayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSurgerayViewController.xib; sourceTree = "<group>"; };
+		88CBA33027ECCDE2005C22FE /* AddSurgerayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSurgerayViewController.swift; sourceTree = "<group>"; };
+		88CBA33227ECCDE2005C22FE /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		88CBA33327ECCDE2005C22FE /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		88CBA33427ECCDE2005C22FE /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
+		88CBA33527ECCDE2005C22FE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		88CBA33627ECCDE2005C22FE /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		88CBA33727ECCDE2005C22FE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		88CBA34227ECCE1F005C22FE /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		88CBA34527ECD51E005C22FE /* AddInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInventoryViewController.swift; sourceTree = "<group>"; };
+		88CBA34627ECD51E005C22FE /* AddInventoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddInventoryViewController.xib; sourceTree = "<group>"; };
+		88CBA34A27ECDC49005C22FE /* SurgerayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgerayListViewController.swift; sourceTree = "<group>"; };
+		88CBA34B27ECDC49005C22FE /* SurgerayListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurgerayListViewController.xib; sourceTree = "<group>"; };
+		88CBA34F27ECDF74005C22FE /* SurgeriListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeriListTableViewCell.swift; sourceTree = "<group>"; };
+		88CBA35027ECDF74005C22FE /* SurgeryListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurgeryListTableViewCell.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		831A4F5A27E83CED00BEF2E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83D05CF727EC0259005C24A8 /* Pods_Meril.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7D927AD53B24D1A652E98AB3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				670968684A5D25B948E0B3F7 /* Pods_Meril.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		831A4F5427E83CED00BEF2E7 = {
+			isa = PBXGroup;
+			children = (
+				831A4F5F27E83CED00BEF2E7 /* Meril */,
+				831A4F5E27E83CED00BEF2E7 /* Products */,
+				C2DE1A9E27ADBB95EED04745 /* Pods */,
+				7D927AD53B24D1A652E98AB3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		831A4F5E27E83CED00BEF2E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				831A4F5D27E83CED00BEF2E7 /* Meril.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		831A4F5F27E83CED00BEF2E7 /* Meril */ = {
+			isa = PBXGroup;
+			children = (
+				837192C927EA025C00BE04A1 /* Services */,
+				831A4F8B27E8A19700BEF2E7 /* Extension */,
+				831A4F7F27E850CA00BEF2E7 /* Config */,
+				831A4F7E27E850A900BEF2E7 /* Views */,
+				831A4F7D27E850A000BEF2E7 /* Models */,
+				831A4F7C27E8509900BEF2E7 /* Controllers */,
+				831A4F7927E8506200BEF2E7 /* Helper */,
+				831A4F6027E83CED00BEF2E7 /* AppDelegate.swift */,
+				831A4F6C27E83CEE00BEF2E7 /* Assets.xcassets */,
+				831A4F6927E83CED00BEF2E7 /* Meril.xcdatamodeld */,
+			);
+			path = Meril;
+			sourceTree = "<group>";
+		};
+		831A4F7927E8506200BEF2E7 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				88CBA34227ECCE1F005C22FE /* BaseViewController.swift */,
+				837192D627EA581F00BE04A1 /* Validation.swift */,
+				831A4F7A27E8507600BEF2E7 /* GlobalFunctions.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		831A4F7C27E8509900BEF2E7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+<<<<<<< HEAD
+				8326D8A527F02A800081B4ED /* InventoryList */,
+				88CBA34927ECD951005C22FE /* SurgeryList */,
+=======
+				887C7A3827EF245400A5A0FB /* ChangePassword */,
+				887C7A3327EF190900A5A0FB /* ContactUs */,
+				88CBA34927ECD951005C22FE /* SurgerayList */,
+>>>>>>> f22051185e06aebd5e15fdb9dd75be24865e7fd7
+				88CBA34427ECD4ED005C22FE /* AddInventory */,
+				88CBA32E27ECCDE2005C22FE /* AddSurgeray */,
+				88CBA32B27ECCDE2005C22FE /* PrivacyPolicy */,
+				88CBA33127ECCDE2005C22FE /* Profile */,
+				831A4F8827E8A09000BEF2E7 /* Authentication */,
+				831A4F8227E86C9200BEF2E7 /* SideMenu */,
+				831A4F6427E83CED00BEF2E7 /* HomeVC.swift */,
+				831A4F8027E8511F00BEF2E7 /* Constants.swift */,
+				837192DA27EB7B1600BE04A1 /* BarCodeScannerVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		831A4F7D27E850A000BEF2E7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				837192C727E9FCFD00BE04A1 /* ResponseModel.swift */,
+				887C7A4327EF459400A5A0FB /* ChangePasswordModel.swift */,
+				887C7A4527EF4A9D00A5A0FB /* ContactUsModel.swift */,
+				887C7A3F27EF31C500A5A0FB /* SettingsModel.swift */,
+				837192D427EA546C00BE04A1 /* LoginResponseModel.swift */,
+				8326D8A327ED9F2B0081B4ED /* SurgeryInventoryModel.swift */,
+				880205EA27EF6C55002D3257 /* SurgeryListmodel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		831A4F7E27E850A900BEF2E7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8326D89A27ECA8640081B4ED /* ScanAgainView */,
+				831A4F8527E86E3A00BEF2E7 /* TableViewCells */,
+				831A4F6627E83CED00BEF2E7 /* Main.storyboard */,
+				831A4F7727E8481800BEF2E7 /* Sidemenu.storyboard */,
+				831A4F6E27E83CEE00BEF2E7 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		831A4F7F27E850CA00BEF2E7 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				831A4F7127E83CEE00BEF2E7 /* Info.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		831A4F8227E86C9200BEF2E7 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				831A4F8327E86CA900BEF2E7 /* SideMenuVC.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		831A4F8527E86E3A00BEF2E7 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				831A4F8627E86E4F00BEF2E7 /* SideMenuCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		831A4F8827E8A09000BEF2E7 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				831A4F8927E8A0A800BEF2E7 /* LoginVC.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		831A4F8B27E8A19700BEF2E7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				831A4F8C27E8A1B100BEF2E7 /* UITextField+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		8326D89A27ECA8640081B4ED /* ScanAgainView */ = {
+			isa = PBXGroup;
+			children = (
+				8326D89D27ECABD80081B4ED /* ScanAgainPopUpVC.swift */,
+			);
+			path = ScanAgainView;
+			sourceTree = "<group>";
+		};
+		8326D8A527F02A800081B4ED /* InventoryList */ = {
+			isa = PBXGroup;
+			children = (
+				8326D8AB27F02AC50081B4ED /* InventoryListVC.swift */,
+				8326D8AC27F02AC50081B4ED /* InventoryListVC.xib */,
+			);
+			path = InventoryList;
+			sourceTree = "<group>";
+		};
+		837192C927EA025C00BE04A1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				837192CA27EA026700BE04A1 /* ApiEndPoints.swift */,
+				837192CC27EA026700BE04A1 /* APIManager.swift */,
+				837192CB27EA026700BE04A1 /* LoginServices.swift */,
+				837192D227EA399C00BE04A1 /* loading.json */,
+				837192D827EAF4F300BE04A1 /* HomeServices.swift */,
+				8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */,
+				887C7A3D27EF2E5C00A5A0FB /* SettingServices.swift */,
+				887C7A4127EF436900A5A0FB /* ChangePasswordServices.swift */,
+				887C7A4727EF4B7E00A5A0FB /* ContactusServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		887C7A3327EF190900A5A0FB /* ContactUs */ = {
+			isa = PBXGroup;
+			children = (
+				887C7A3427EF193000A5A0FB /* ContactUsViewController.swift */,
+				887C7A3527EF193000A5A0FB /* ContactUsViewController.xib */,
+			);
+			path = ContactUs;
+			sourceTree = "<group>";
+		};
+		887C7A3827EF245400A5A0FB /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				887C7A3927EF246800A5A0FB /* ChangePasswordViewController.swift */,
+				887C7A3A27EF246800A5A0FB /* ChangePasswordViewController.xib */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		88CBA32B27ECCDE2005C22FE /* PrivacyPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				88CBA32C27ECCDE2005C22FE /* PrivacyPolicyViewController.xib */,
+				88CBA32D27ECCDE2005C22FE /* PrivacyPolicyViewController.swift */,
+			);
+			path = PrivacyPolicy;
+			sourceTree = "<group>";
+		};
+		88CBA32E27ECCDE2005C22FE /* AddSurgeray */ = {
+			isa = PBXGroup;
+			children = (
+				88CBA32F27ECCDE2005C22FE /* AddSurgerayViewController.xib */,
+				88CBA33027ECCDE2005C22FE /* AddSurgerayViewController.swift */,
+			);
+			path = AddSurgeray;
+			sourceTree = "<group>";
+		};
+		88CBA33127ECCDE2005C22FE /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				88CBA33227ECCDE2005C22FE /* EditProfileViewController.swift */,
+				88CBA33327ECCDE2005C22FE /* ProfileViewController.xib */,
+				88CBA33427ECCDE2005C22FE /* EditProfileViewController.xib */,
+				88CBA33527ECCDE2005C22FE /* ProfileViewController.swift */,
+				88CBA33627ECCDE2005C22FE /* SettingsViewController.xib */,
+				88CBA33727ECCDE2005C22FE /* SettingsViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		88CBA34427ECD4ED005C22FE /* AddInventory */ = {
+			isa = PBXGroup;
+			children = (
+				88CBA34527ECD51E005C22FE /* AddInventoryViewController.swift */,
+				88CBA34627ECD51E005C22FE /* AddInventoryViewController.xib */,
+			);
+			path = AddInventory;
+			sourceTree = "<group>";
+		};
+		88CBA34927ECD951005C22FE /* SurgeryList */ = {
+			isa = PBXGroup;
+			children = (
+				88CBA34E27ECDF3D005C22FE /* Cell */,
+				88CBA34A27ECDC49005C22FE /* SurgerayListViewController.swift */,
+				88CBA34B27ECDC49005C22FE /* SurgerayListViewController.xib */,
+			);
+			path = SurgeryList;
+			sourceTree = "<group>";
+		};
+		88CBA34E27ECDF3D005C22FE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				88CBA34F27ECDF74005C22FE /* SurgeriListTableViewCell.swift */,
+				88CBA35027ECDF74005C22FE /* SurgeryListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C2DE1A9E27ADBB95EED04745 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				255DE97B9CBEA6D5EB3BEDAD /* Pods-Meril.debug.xcconfig */,
+				59D932FF9AB499D412011A07 /* Pods-Meril.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		831A4F5C27E83CED00BEF2E7 /* Meril */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 831A4F7427E83CEE00BEF2E7 /* Build configuration list for PBXNativeTarget "Meril" */;
+			buildPhases = (
+				673CC31A750B7C34514CAF4D /* [CP] Check Pods Manifest.lock */,
+				831A4F5927E83CED00BEF2E7 /* Sources */,
+				831A4F5A27E83CED00BEF2E7 /* Frameworks */,
+				831A4F5B27E83CED00BEF2E7 /* Resources */,
+				32F39B25B6AEDB6949E52839 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Meril;
+			productName = Meril;
+			productReference = 831A4F5D27E83CED00BEF2E7 /* Meril.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		831A4F5527E83CED00BEF2E7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					831A4F5C27E83CED00BEF2E7 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 831A4F5827E83CED00BEF2E7 /* Build configuration list for PBXProject "Meril" */;
+			compatibilityVersion = "Xcode 11.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 831A4F5427E83CED00BEF2E7;
+			productRefGroup = 831A4F5E27E83CED00BEF2E7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				831A4F5C27E83CED00BEF2E7 /* Meril */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		831A4F5B27E83CED00BEF2E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				831A4F7827E8481800BEF2E7 /* Sidemenu.storyboard in Resources */,
+				88CBA33A27ECCDE2005C22FE /* AddSurgerayViewController.xib in Resources */,
+				88CBA33D27ECCDE2005C22FE /* ProfileViewController.xib in Resources */,
+				831A4F7027E83CEE00BEF2E7 /* LaunchScreen.storyboard in Resources */,
+				831A4F6D27E83CEE00BEF2E7 /* Assets.xcassets in Resources */,
+				831A4F6827E83CED00BEF2E7 /* Main.storyboard in Resources */,
+				837192D327EA399C00BE04A1 /* loading.json in Resources */,
+				887C7A3C27EF246800A5A0FB /* ChangePasswordViewController.xib in Resources */,
+				88CBA33827ECCDE2005C22FE /* PrivacyPolicyViewController.xib in Resources */,
+				88CBA34D27ECDC49005C22FE /* SurgerayListViewController.xib in Resources */,
+				88CBA33E27ECCDE2005C22FE /* EditProfileViewController.xib in Resources */,
+<<<<<<< HEAD
+				88CBA35227ECDF74005C22FE /* SurgeryListTableViewCell.xib in Resources */,
+=======
+				88CBA35227ECDF74005C22FE /* SurgeriListTableViewCell.xib in Resources */,
+				887C7A3727EF193000A5A0FB /* ContactUsViewController.xib in Resources */,
+>>>>>>> f22051185e06aebd5e15fdb9dd75be24865e7fd7
+				88CBA34027ECCDE2005C22FE /* SettingsViewController.xib in Resources */,
+				88CBA34827ECD51E005C22FE /* AddInventoryViewController.xib in Resources */,
+				8326D8AE27F02AC50081B4ED /* InventoryListVC.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		32F39B25B6AEDB6949E52839 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meril/Pods-Meril-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meril/Pods-Meril-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Meril/Pods-Meril-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		673CC31A750B7C34514CAF4D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Meril-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		831A4F5927E83CED00BEF2E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				831A4F8D27E8A1B100BEF2E7 /* UITextField+Extension.swift in Sources */,
+				8326D8A427ED9F2B0081B4ED /* SurgeryInventoryModel.swift in Sources */,
+				887C7A4227EF436900A5A0FB /* ChangePasswordServices.swift in Sources */,
+				8326D8A027ED9CF50081B4ED /* SurgeryServices.swift in Sources */,
+				837192CD27EA026700BE04A1 /* ApiEndPoints.swift in Sources */,
+				831A4F8127E8511F00BEF2E7 /* Constants.swift in Sources */,
+				831A4F8727E86E4F00BEF2E7 /* SideMenuCell.swift in Sources */,
+				887C7A4827EF4B7E00A5A0FB /* ContactusServices.swift in Sources */,
+				88CBA33B27ECCDE2005C22FE /* AddSurgerayViewController.swift in Sources */,
+				880205EB27EF6C55002D3257 /* SurgeryListmodel.swift in Sources */,
+				88CBA34327ECCE1F005C22FE /* BaseViewController.swift in Sources */,
+				831A4F8A27E8A0A800BEF2E7 /* LoginVC.swift in Sources */,
+<<<<<<< HEAD
+				8326D8AD27F02AC50081B4ED /* InventoryListVC.swift in Sources */,
+=======
+				887C7A4427EF459400A5A0FB /* ChangePasswordModel.swift in Sources */,
+>>>>>>> f22051185e06aebd5e15fdb9dd75be24865e7fd7
+				88CBA33F27ECCDE2005C22FE /* ProfileViewController.swift in Sources */,
+				831A4F6527E83CED00BEF2E7 /* HomeVC.swift in Sources */,
+				88CBA34727ECD51E005C22FE /* AddInventoryViewController.swift in Sources */,
+				887C7A3B27EF246800A5A0FB /* ChangePasswordViewController.swift in Sources */,
+				831A4F8427E86CA900BEF2E7 /* SideMenuVC.swift in Sources */,
+				831A4F6127E83CED00BEF2E7 /* AppDelegate.swift in Sources */,
+				837192D527EA546D00BE04A1 /* LoginResponseModel.swift in Sources */,
+				831A4F7B27E8507600BEF2E7 /* GlobalFunctions.swift in Sources */,
+				88CBA35127ECDF74005C22FE /* SurgeriListTableViewCell.swift in Sources */,
+				887C7A3E27EF2E5C00A5A0FB /* SettingServices.swift in Sources */,
+				887C7A3627EF193000A5A0FB /* ContactUsViewController.swift in Sources */,
+				837192D927EAF4F300BE04A1 /* HomeServices.swift in Sources */,
+				88CBA33927ECCDE2005C22FE /* PrivacyPolicyViewController.swift in Sources */,
+				88CBA34C27ECDC49005C22FE /* SurgerayListViewController.swift in Sources */,
+				837192DB27EB7B1600BE04A1 /* BarCodeScannerVC.swift in Sources */,
+				887C7A4027EF31C500A5A0FB /* SettingsModel.swift in Sources */,
+				88CBA34127ECCDE2005C22FE /* SettingsViewController.swift in Sources */,
+				8326D89E27ECABD80081B4ED /* ScanAgainPopUpVC.swift in Sources */,
+				837192C827E9FCFD00BE04A1 /* ResponseModel.swift in Sources */,
+				837192CF27EA026700BE04A1 /* APIManager.swift in Sources */,
+				831A4F6B27E83CED00BEF2E7 /* Meril.xcdatamodeld in Sources */,
+				887C7A4627EF4A9D00A5A0FB /* ContactUsModel.swift in Sources */,
+				837192D727EA581F00BE04A1 /* Validation.swift in Sources */,
+				837192CE27EA026700BE04A1 /* LoginServices.swift in Sources */,
+				88CBA33C27ECCDE2005C22FE /* EditProfileViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		831A4F6627E83CED00BEF2E7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				831A4F6727E83CED00BEF2E7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		831A4F6E27E83CEE00BEF2E7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				831A4F6F27E83CEE00BEF2E7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		831A4F7227E83CEE00BEF2E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		831A4F7327E83CEE00BEF2E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		831A4F7527E83CEE00BEF2E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 255DE97B9CBEA6D5EB3BEDAD /* Pods-Meril.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEVELOPMENT_TEAM = CPR2Y68PV8;
+				EXCLUDED_ARCHS = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Meril/Config/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App requires camera to scan bar codes.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.meril;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		831A4F7627E83CEE00BEF2E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59D932FF9AB499D412011A07 /* Pods-Meril.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEVELOPMENT_TEAM = CPR2Y68PV8;
+				EXCLUDED_ARCHS = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Meril/Config/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App requires camera to scan bar codes.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.meril;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		831A4F5827E83CED00BEF2E7 /* Build configuration list for PBXProject "Meril" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				831A4F7227E83CEE00BEF2E7 /* Debug */,
+				831A4F7327E83CEE00BEF2E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		831A4F7427E83CEE00BEF2E7 /* Build configuration list for PBXNativeTarget "Meril" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				831A4F7527E83CEE00BEF2E7 /* Debug */,
+				831A4F7627E83CEE00BEF2E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		831A4F6927E83CED00BEF2E7 /* Meril.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				831A4F6A27E83CED00BEF2E7 /* Meril.xcdatamodel */,
+			);
+			currentVersion = 831A4F6A27E83CED00BEF2E7 /* Meril.xcdatamodel */;
+			path = Meril.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 831A4F5527E83CED00BEF2E7 /* Project object */;
+}

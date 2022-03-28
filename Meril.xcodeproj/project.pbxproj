@@ -22,9 +22,10 @@
 		831A4F8D27E8A1B100BEF2E7 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F8C27E8A1B100BEF2E7 /* UITextField+Extension.swift */; };
 		8326D89E27ECABD80081B4ED /* ScanAgainPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D89D27ECABD80081B4ED /* ScanAgainPopUpVC.swift */; };
 		8326D8A027ED9CF50081B4ED /* SurgeryServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */; };
-		8326D8A427ED9F2B0081B4ED /* SurgeryInventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D8A327ED9F2B0081B4ED /* SurgeryInventoryModel.swift */; };
-		8326D8AD27F02AC50081B4ED /* InventoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D8AB27F02AC50081B4ED /* InventoryListVC.swift */; };
-		8326D8AE27F02AC50081B4ED /* InventoryListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8326D8AC27F02AC50081B4ED /* InventoryListVC.xib */; };
+		834ED70127F06CAE0059B30C /* SurgeryInventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834ED70027F06CAE0059B30C /* SurgeryInventoryModel.swift */; };
+		834ED70B27F06E9F0059B30C /* InventoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834ED70927F06E9F0059B30C /* InventoryListVC.swift */; };
+		834ED70C27F06E9F0059B30C /* InventoryListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 834ED70A27F06E9F0059B30C /* InventoryListVC.xib */; };
+		834ED70E27F06FCF0059B30C /* AILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834ED70D27F06FCF0059B30C /* AILoader.swift */; };
 		837192C827E9FCFD00BE04A1 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192C727E9FCFD00BE04A1 /* ResponseModel.swift */; };
 		837192CD27EA026700BE04A1 /* ApiEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CA27EA026700BE04A1 /* ApiEndPoints.swift */; };
 		837192CE27EA026700BE04A1 /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CB27EA026700BE04A1 /* LoginServices.swift */; };
@@ -35,6 +36,16 @@
 		837192D927EAF4F300BE04A1 /* HomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192D827EAF4F300BE04A1 /* HomeServices.swift */; };
 		837192DB27EB7B1600BE04A1 /* BarCodeScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192DA27EB7B1600BE04A1 /* BarCodeScannerVC.swift */; };
 		83D05CF727EC0259005C24A8 /* Pods_Meril.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670968684A5D25B948E0B3F7 /* Pods_Meril.framework */; };
+		887C7A3627EF193000A5A0FB /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A3427EF193000A5A0FB /* ContactUsViewController.swift */; };
+		887C7A3727EF193000A5A0FB /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887C7A3527EF193000A5A0FB /* ContactUsViewController.xib */; };
+		887C7A3B27EF246800A5A0FB /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A3927EF246800A5A0FB /* ChangePasswordViewController.swift */; };
+		887C7A3C27EF246800A5A0FB /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887C7A3A27EF246800A5A0FB /* ChangePasswordViewController.xib */; };
+		887C7A3E27EF2E5C00A5A0FB /* SettingServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A3D27EF2E5C00A5A0FB /* SettingServices.swift */; };
+		887C7A4027EF31C500A5A0FB /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A3F27EF31C500A5A0FB /* SettingsModel.swift */; };
+		887C7A4227EF436900A5A0FB /* ChangePasswordServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A4127EF436900A5A0FB /* ChangePasswordServices.swift */; };
+		887C7A4427EF459400A5A0FB /* ChangePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A4327EF459400A5A0FB /* ChangePasswordModel.swift */; };
+		887C7A4627EF4A9D00A5A0FB /* ContactUsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A4527EF4A9D00A5A0FB /* ContactUsModel.swift */; };
+		887C7A4827EF4B7E00A5A0FB /* ContactusServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A4727EF4B7E00A5A0FB /* ContactusServices.swift */; };
 		88CBA33827ECCDE2005C22FE /* PrivacyPolicyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA32C27ECCDE2005C22FE /* PrivacyPolicyViewController.xib */; };
 		88CBA33927ECCDE2005C22FE /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA32D27ECCDE2005C22FE /* PrivacyPolicyViewController.swift */; };
 		88CBA33A27ECCDE2005C22FE /* AddSurgerayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA32F27ECCDE2005C22FE /* AddSurgerayViewController.xib */; };
@@ -75,9 +86,10 @@
 		831A4F8C27E8A1B100BEF2E7 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		8326D89D27ECABD80081B4ED /* ScanAgainPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAgainPopUpVC.swift; sourceTree = "<group>"; };
 		8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryServices.swift; sourceTree = "<group>"; };
-		8326D8A327ED9F2B0081B4ED /* SurgeryInventoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryInventoryModel.swift; sourceTree = "<group>"; };
-		8326D8AB27F02AC50081B4ED /* InventoryListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryListVC.swift; sourceTree = "<group>"; };
-		8326D8AC27F02AC50081B4ED /* InventoryListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InventoryListVC.xib; sourceTree = "<group>"; };
+		834ED70027F06CAE0059B30C /* SurgeryInventoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryInventoryModel.swift; sourceTree = "<group>"; };
+		834ED70927F06E9F0059B30C /* InventoryListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryListVC.swift; sourceTree = "<group>"; };
+		834ED70A27F06E9F0059B30C /* InventoryListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InventoryListVC.xib; sourceTree = "<group>"; };
+		834ED70D27F06FCF0059B30C /* AILoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILoader.swift; sourceTree = "<group>"; };
 		837192C727E9FCFD00BE04A1 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		837192CA27EA026700BE04A1 /* ApiEndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiEndPoints.swift; sourceTree = "<group>"; };
 		837192CB27EA026700BE04A1 /* LoginServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
@@ -87,6 +99,16 @@
 		837192D627EA581F00BE04A1 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		837192D827EAF4F300BE04A1 /* HomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
 		837192DA27EB7B1600BE04A1 /* BarCodeScannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeScannerVC.swift; sourceTree = "<group>"; };
+		887C7A3427EF193000A5A0FB /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
+		887C7A3527EF193000A5A0FB /* ContactUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsViewController.xib; sourceTree = "<group>"; };
+		887C7A3927EF246800A5A0FB /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		887C7A3A27EF246800A5A0FB /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
+		887C7A3D27EF2E5C00A5A0FB /* SettingServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingServices.swift; sourceTree = "<group>"; };
+		887C7A3F27EF31C500A5A0FB /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		887C7A4127EF436900A5A0FB /* ChangePasswordServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordServices.swift; sourceTree = "<group>"; };
+		887C7A4327EF459400A5A0FB /* ChangePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModel.swift; sourceTree = "<group>"; };
+		887C7A4527EF4A9D00A5A0FB /* ContactUsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsModel.swift; sourceTree = "<group>"; };
+		887C7A4727EF4B7E00A5A0FB /* ContactusServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactusServices.swift; sourceTree = "<group>"; };
 		88CBA32C27ECCDE2005C22FE /* PrivacyPolicyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivacyPolicyViewController.xib; sourceTree = "<group>"; };
 		88CBA32D27ECCDE2005C22FE /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		88CBA32F27ECCDE2005C22FE /* AddSurgerayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSurgerayViewController.xib; sourceTree = "<group>"; };
@@ -164,6 +186,7 @@
 		831A4F7927E8506200BEF2E7 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				834ED70D27F06FCF0059B30C /* AILoader.swift */,
 				88CBA34227ECCE1F005C22FE /* BaseViewController.swift */,
 				837192D627EA581F00BE04A1 /* Validation.swift */,
 				831A4F7A27E8507600BEF2E7 /* GlobalFunctions.swift */,
@@ -174,7 +197,9 @@
 		831A4F7C27E8509900BEF2E7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8326D8A527F02A800081B4ED /* InventoryList */,
+				834ED70627F06E5F0059B30C /* InventoryList */,
+				887C7A3827EF245400A5A0FB /* ChangePassword */,
+				887C7A3327EF190900A5A0FB /* ContactUs */,
 				88CBA34927ECD951005C22FE /* SurgeryList */,
 				88CBA34427ECD4ED005C22FE /* AddInventory */,
 				88CBA32E27ECCDE2005C22FE /* AddSurgeray */,
@@ -193,8 +218,11 @@
 			isa = PBXGroup;
 			children = (
 				837192C727E9FCFD00BE04A1 /* ResponseModel.swift */,
+				887C7A4327EF459400A5A0FB /* ChangePasswordModel.swift */,
+				887C7A4527EF4A9D00A5A0FB /* ContactUsModel.swift */,
+				887C7A3F27EF31C500A5A0FB /* SettingsModel.swift */,
 				837192D427EA546C00BE04A1 /* LoginResponseModel.swift */,
-				8326D8A327ED9F2B0081B4ED /* SurgeryInventoryModel.swift */,
+				834ED70027F06CAE0059B30C /* SurgeryInventoryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,11 +287,11 @@
 			path = ScanAgainView;
 			sourceTree = "<group>";
 		};
-		8326D8A527F02A800081B4ED /* InventoryList */ = {
+		834ED70627F06E5F0059B30C /* InventoryList */ = {
 			isa = PBXGroup;
 			children = (
-				8326D8AB27F02AC50081B4ED /* InventoryListVC.swift */,
-				8326D8AC27F02AC50081B4ED /* InventoryListVC.xib */,
+				834ED70927F06E9F0059B30C /* InventoryListVC.swift */,
+				834ED70A27F06E9F0059B30C /* InventoryListVC.xib */,
 			);
 			path = InventoryList;
 			sourceTree = "<group>";
@@ -277,8 +305,29 @@
 				837192D227EA399C00BE04A1 /* loading.json */,
 				837192D827EAF4F300BE04A1 /* HomeServices.swift */,
 				8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */,
+				887C7A3D27EF2E5C00A5A0FB /* SettingServices.swift */,
+				887C7A4127EF436900A5A0FB /* ChangePasswordServices.swift */,
+				887C7A4727EF4B7E00A5A0FB /* ContactusServices.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		887C7A3327EF190900A5A0FB /* ContactUs */ = {
+			isa = PBXGroup;
+			children = (
+				887C7A3427EF193000A5A0FB /* ContactUsViewController.swift */,
+				887C7A3527EF193000A5A0FB /* ContactUsViewController.xib */,
+			);
+			path = ContactUs;
+			sourceTree = "<group>";
+		};
+		887C7A3827EF245400A5A0FB /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				887C7A3927EF246800A5A0FB /* ChangePasswordViewController.swift */,
+				887C7A3A27EF246800A5A0FB /* ChangePasswordViewController.xib */,
+			);
+			path = ChangePassword;
 			sourceTree = "<group>";
 		};
 		88CBA32B27ECCDE2005C22FE /* PrivacyPolicy */ = {
@@ -415,13 +464,15 @@
 				831A4F6D27E83CEE00BEF2E7 /* Assets.xcassets in Resources */,
 				831A4F6827E83CED00BEF2E7 /* Main.storyboard in Resources */,
 				837192D327EA399C00BE04A1 /* loading.json in Resources */,
+				834ED70C27F06E9F0059B30C /* InventoryListVC.xib in Resources */,
+				887C7A3C27EF246800A5A0FB /* ChangePasswordViewController.xib in Resources */,
 				88CBA33827ECCDE2005C22FE /* PrivacyPolicyViewController.xib in Resources */,
 				88CBA34D27ECDC49005C22FE /* SurgerayListViewController.xib in Resources */,
 				88CBA33E27ECCDE2005C22FE /* EditProfileViewController.xib in Resources */,
 				88CBA35227ECDF74005C22FE /* SurgeryListTableViewCell.xib in Resources */,
+				887C7A3727EF193000A5A0FB /* ContactUsViewController.xib in Resources */,
 				88CBA34027ECCDE2005C22FE /* SettingsViewController.xib in Resources */,
 				88CBA34827ECD51E005C22FE /* AddInventoryViewController.xib in Resources */,
-				8326D8AE27F02AC50081B4ED /* InventoryListVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,32 +526,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				831A4F8D27E8A1B100BEF2E7 /* UITextField+Extension.swift in Sources */,
-				8326D8A427ED9F2B0081B4ED /* SurgeryInventoryModel.swift in Sources */,
+				887C7A4227EF436900A5A0FB /* ChangePasswordServices.swift in Sources */,
 				8326D8A027ED9CF50081B4ED /* SurgeryServices.swift in Sources */,
 				837192CD27EA026700BE04A1 /* ApiEndPoints.swift in Sources */,
 				831A4F8127E8511F00BEF2E7 /* Constants.swift in Sources */,
 				831A4F8727E86E4F00BEF2E7 /* SideMenuCell.swift in Sources */,
+				887C7A4827EF4B7E00A5A0FB /* ContactusServices.swift in Sources */,
 				88CBA33B27ECCDE2005C22FE /* AddSurgerayViewController.swift in Sources */,
 				88CBA34327ECCE1F005C22FE /* BaseViewController.swift in Sources */,
 				831A4F8A27E8A0A800BEF2E7 /* LoginVC.swift in Sources */,
-				8326D8AD27F02AC50081B4ED /* InventoryListVC.swift in Sources */,
+				887C7A4427EF459400A5A0FB /* ChangePasswordModel.swift in Sources */,
+				834ED70B27F06E9F0059B30C /* InventoryListVC.swift in Sources */,
 				88CBA33F27ECCDE2005C22FE /* ProfileViewController.swift in Sources */,
 				831A4F6527E83CED00BEF2E7 /* HomeVC.swift in Sources */,
 				88CBA34727ECD51E005C22FE /* AddInventoryViewController.swift in Sources */,
+				887C7A3B27EF246800A5A0FB /* ChangePasswordViewController.swift in Sources */,
 				831A4F8427E86CA900BEF2E7 /* SideMenuVC.swift in Sources */,
 				831A4F6127E83CED00BEF2E7 /* AppDelegate.swift in Sources */,
 				837192D527EA546D00BE04A1 /* LoginResponseModel.swift in Sources */,
 				831A4F7B27E8507600BEF2E7 /* GlobalFunctions.swift in Sources */,
 				88CBA35127ECDF74005C22FE /* SurgeriListTableViewCell.swift in Sources */,
+				887C7A3E27EF2E5C00A5A0FB /* SettingServices.swift in Sources */,
+				887C7A3627EF193000A5A0FB /* ContactUsViewController.swift in Sources */,
 				837192D927EAF4F300BE04A1 /* HomeServices.swift in Sources */,
+				834ED70E27F06FCF0059B30C /* AILoader.swift in Sources */,
 				88CBA33927ECCDE2005C22FE /* PrivacyPolicyViewController.swift in Sources */,
 				88CBA34C27ECDC49005C22FE /* SurgerayListViewController.swift in Sources */,
 				837192DB27EB7B1600BE04A1 /* BarCodeScannerVC.swift in Sources */,
+				887C7A4027EF31C500A5A0FB /* SettingsModel.swift in Sources */,
 				88CBA34127ECCDE2005C22FE /* SettingsViewController.swift in Sources */,
 				8326D89E27ECABD80081B4ED /* ScanAgainPopUpVC.swift in Sources */,
 				837192C827E9FCFD00BE04A1 /* ResponseModel.swift in Sources */,
 				837192CF27EA026700BE04A1 /* APIManager.swift in Sources */,
 				831A4F6B27E83CED00BEF2E7 /* Meril.xcdatamodeld in Sources */,
+				834ED70127F06CAE0059B30C /* SurgeryInventoryModel.swift in Sources */,
+				887C7A4627EF4A9D00A5A0FB /* ContactUsModel.swift in Sources */,
 				837192D727EA581F00BE04A1 /* Validation.swift in Sources */,
 				837192CE27EA026700BE04A1 /* LoginServices.swift in Sources */,
 				88CBA33C27ECCDE2005C22FE /* EditProfileViewController.swift in Sources */,

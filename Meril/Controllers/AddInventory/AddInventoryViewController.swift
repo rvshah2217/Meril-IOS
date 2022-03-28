@@ -9,6 +9,7 @@ import UIKit
 import iOSDropDown
 
 class AddInventoryViewController: BaseViewController {
+    
     @IBOutlet weak var viewBC: UIView!
     
     @IBOutlet weak var scrollOuterView: UIView!
@@ -40,14 +41,9 @@ class AddInventoryViewController: BaseViewController {
             self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
-
+    
     
     @IBOutlet weak var btnScanNow: UIButton!
-    
-    
-    //    var schemeArr: [Schemes] = []
-    //    var udtArr: [Schemes] = []
-    //    var departmentsArr: [Schemes] = []
     
     var hospitalsArr: [Hospitals] = []
     var doctorsArr: [Hospitals] = []
@@ -66,6 +62,7 @@ class AddInventoryViewController: BaseViewController {
         self.fetchFormData()
         // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigation()
@@ -73,23 +70,24 @@ class AddInventoryViewController: BaseViewController {
     //MARK:- Custome Method
     func setUI(){
         self.navigationItem.title = ""
-
+        
         for i in collectionViewBackground{
             i.backgroundColor = ColorConstant.mainThemeColor
             i.layer.cornerRadius = i.frame.height/2
         }
-        scrollOuterView.layer.cornerRadius = 20
-        scrollOuterView.layer.borderWidth = 0.5
-        scrollOuterView.layer.borderColor = UIColor.lightGray.cgColor
+//        scrollOuterView.layer.cornerRadius = 20
+//        scrollOuterView.layer.borderWidth = 0.5
+//        scrollOuterView.layer.borderColor = UIColor.lightGray.cgColor
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            let rectShape = CAShapeLayer()
-            rectShape.bounds = self.viewBC.frame
-            rectShape.position = self.viewBC.center
-            rectShape.path = UIBezierPath(roundedRect: self.viewBC.bounds, byRoundingCorners: [.bottomLeft , .bottomRight], cornerRadii: CGSize(width: 50, height: 50)).cgPath
-            self.viewBC.layer.mask = rectShape
-        }
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+        //            let rectShape = CAShapeLayer()
+        //            rectShape.bounds = self.viewBC.frame
+        //            rectShape.position = self.viewBC.center
+        //            rectShape.path = UIBezierPath(roundedRect: self.viewBC.bounds, byRoundingCorners: [.bottomLeft , .bottomRight], cornerRadii: CGSize(width: 50, height: 50)).cgPath
+        //            self.viewBC.layer.mask = rectShape
+        //        }
         viewBC.backgroundColor = ColorConstant.mainThemeColor
+        viewBC.addCornerAtBotttoms(radius: 30)
         
         btnScanNow.layer.cornerRadius = btnScanNow.frame.height/2
         self.viewHeader.backgroundColor = ColorConstant.mainThemeColor
@@ -98,17 +96,26 @@ class AddInventoryViewController: BaseViewController {
         txtDoctor.setPlaceholder(placeHolderStr: "Select Doctor")
         txtDistributor.setPlaceholder(placeHolderStr: "Select Distributor")
         txtSaleperson.setPlaceholder(placeHolderStr: "Select Saleperson")
-
+        
         
         self.txtHospital.rowHeight = 40
         self.txtDoctor.rowHeight = 40
         self.txtDistributor.rowHeight = 40
         self.txtSaleperson.rowHeight = 40
-
+        
         setRightButton(txtHospital, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtDoctor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtDistributor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtSaleperson, image: UIImage(named: "ic_dropdown") ?? UIImage())
+     
+        DetailsScrollView.addCornerAtTops(radius: 20)
+        
+//        Add Shadow
+        scrollOuterView.layer.masksToBounds = false
+        scrollOuterView.layer.shadowRadius = 3
+        scrollOuterView.layer.shadowOpacity = 0.5
+        scrollOuterView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        scrollOuterView.layer.shadowColor = UIColor.black.cgColor
 
     }
     
@@ -156,10 +163,10 @@ class AddInventoryViewController: BaseViewController {
         let stockId = "D\(Date.currentTimeStamp)U\(userId)"
         addSurgeryReqObj = AddSurgeryRequestModel(hospitalId: selectedHospitalId, distributorId: selectedDistributorId, doctorId: selectedDoctorId, salesPersonId: selectedSalesPersonId, stockId: stockId)
         self.redirectToScannerVC()
-//        If there is no error while validation then redirect to scan the data
-//        let scannerVC = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
-//        scannerVC.delegate = self
-//        self.navigationController?.pushViewController(scannerVC, animated: true)
+        //        If there is no error while validation then redirect to scan the data
+        //        let scannerVC = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
+        //        scannerVC.delegate = self
+        //        self.navigationController?.pushViewController(scannerVC, animated: true)
     }
     
     func redirectToScannerVC() {
@@ -224,16 +231,16 @@ extension AddInventoryViewController {
         self.txtHospital.didSelect { selectedText, index, id in
             self.selectedHospitalId = self.hospitalsArr[index].id
         }
-
+        
     }
 }
 
 extension AddInventoryViewController: BarCodeScannerDelegate {
     
-//TODO:    Call api to add surgery with scanned barcodes and then redirect to display surgeries
+    // Call api to add Inventory with scanned barcodes and then redirect to display inventories
     func submitScannedData() {
         let barCodeArr: [BarCodeModel] = UserSessionManager.shared.barCodes
-
+        
         let dict = barCodeArr.compactMap { $0.dict }
         
         func convertArrayToJsonString() {

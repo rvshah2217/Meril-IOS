@@ -12,12 +12,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddInventoryViewController" customModule="Meril" customModuleProvider="target">
             <connections>
                 <outlet property="DetailsScrollView" destination="jGp-8C-bVR" id="bf4-XT-Ngx"/>
+                <outlet property="btnScanNow" destination="604-pY-tH3" id="cls-Yk-5XV"/>
                 <outlet property="constrainViewHeaderHeight" destination="EYe-hM-Wmn" id="l3h-Dd-S80"/>
                 <outlet property="scrollOuterView" destination="wND-qX-u4i" id="bb1-VY-TWK"/>
                 <outlet property="txtDistributor" destination="Mlf-uX-ddH" id="Hta-Wz-BPu"/>
                 <outlet property="txtDoctor" destination="5Ht-lS-l21" id="V8v-cI-HcK"/>
                 <outlet property="txtHospital" destination="HRs-C9-Nq4" id="Opw-jW-Q8d"/>
                 <outlet property="txtSaleperson" destination="aAg-OV-8SZ" id="zLx-v6-lKI"/>
+                <outlet property="view" destination="ibk-R4-4Vj" id="yS9-Sy-Yjv"/>
                 <outlet property="viewBC" destination="cG8-LA-dNS" id="tcF-14-Xzp"/>
                 <outlet property="viewHeader" destination="wSz-OV-lwV" id="e2B-Xm-Ehd"/>
                 <outletCollection property="collectionViewBackground" destination="y6X-uz-SJq" collectionClass="NSMutableArray" id="bZP-MM-VML"/>
@@ -42,14 +44,14 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cG8-LA-dNS">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="204.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="245.5"/>
                             <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wND-qX-u4i">
-                            <rect key="frame" x="15" y="15" width="384" height="783"/>
+                            <rect key="frame" x="15" y="15" width="384" height="813"/>
                             <subviews>
                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGp-8C-bVR">
-                                    <rect key="frame" x="0.0" y="0.0" width="384" height="783"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="384" height="803"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl0-JG-cqn">
                                             <rect key="frame" x="0.0" y="0.0" width="384" height="400"/>
@@ -152,6 +154,9 @@
                                                     <state key="normal" title="Scan Now">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="OnClickScanNow:" destination="-1" eventType="touchUpInside" id="zoO-be-bWw"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -165,7 +170,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="bl0-JG-cqn" secondAttribute="trailing" id="R7e-kz-Kff"/>
                                         <constraint firstItem="bl0-JG-cqn" firstAttribute="top" secondItem="jGp-8C-bVR" secondAttribute="top" id="job-Y6-Ksc"/>
@@ -174,9 +179,9 @@
                                     </constraints>
                                 </scrollView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="jGp-8C-bVR" secondAttribute="bottom" id="JTp-25-Ewv"/>
+                                <constraint firstAttribute="bottom" secondItem="jGp-8C-bVR" secondAttribute="bottom" constant="10" id="JTp-25-Ewv"/>
                                 <constraint firstItem="bl0-JG-cqn" firstAttribute="height" secondItem="wND-qX-u4i" secondAttribute="height" priority="250" id="TV8-YQ-WJP"/>
                                 <constraint firstItem="jGp-8C-bVR" firstAttribute="top" secondItem="wND-qX-u4i" secondAttribute="top" id="XTE-KL-iRa"/>
                                 <constraint firstItem="jGp-8C-bVR" firstAttribute="leading" secondItem="wND-qX-u4i" secondAttribute="leading" id="ZeQ-TL-P1P"/>
@@ -189,12 +194,12 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="cG8-LA-dNS" firstAttribute="leading" secondItem="R7h-eS-m5J" secondAttribute="leading" id="0YX-Na-k1g"/>
-                        <constraint firstAttribute="bottom" secondItem="wND-qX-u4i" secondAttribute="bottom" constant="20" id="0ZZ-5J-R8F"/>
+                        <constraint firstAttribute="bottom" secondItem="wND-qX-u4i" secondAttribute="bottom" constant="-10" id="0ZZ-5J-R8F"/>
                         <constraint firstAttribute="trailing" secondItem="wND-qX-u4i" secondAttribute="trailing" constant="15" id="ChZ-lV-ihd"/>
                         <constraint firstItem="cG8-LA-dNS" firstAttribute="top" secondItem="R7h-eS-m5J" secondAttribute="top" id="Gsc-sq-w40"/>
                         <constraint firstAttribute="trailing" secondItem="cG8-LA-dNS" secondAttribute="trailing" id="Xmu-4E-7aB"/>
                         <constraint firstItem="wND-qX-u4i" firstAttribute="top" secondItem="R7h-eS-m5J" secondAttribute="top" constant="15" id="aFO-sn-7DE"/>
-                        <constraint firstItem="cG8-LA-dNS" firstAttribute="height" secondItem="R7h-eS-m5J" secondAttribute="height" multiplier="0.25" id="p60-KS-2v8"/>
+                        <constraint firstItem="cG8-LA-dNS" firstAttribute="height" secondItem="R7h-eS-m5J" secondAttribute="height" multiplier="0.3" id="p60-KS-2v8"/>
                         <constraint firstItem="wND-qX-u4i" firstAttribute="leading" secondItem="R7h-eS-m5J" secondAttribute="leading" constant="15" id="suq-aX-Dcr"/>
                     </constraints>
                 </view>

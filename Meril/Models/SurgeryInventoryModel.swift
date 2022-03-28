@@ -2,8 +2,9 @@
 //  SurgeryInventoryModel.swift
 //  Meril
 //
-//  Created by Nidhi Suhagiya on 25/03/22.
+//  Created by Nidhi Suhagiya on 27/03/22.
 //
+
 
 import Foundation
 
@@ -272,7 +273,8 @@ struct SurgeryData : Codable {
     let doctor_id : String?
     let sales_person_id: String?
     let scans : [Scans]?
-
+    let stock_id: String?
+    
     enum CodingKeys: String, CodingKey {
 
         case id = "id"
@@ -299,6 +301,7 @@ struct SurgeryData : Codable {
         case doctor_id = "doctor_id"
         case scans = "scans"
         case sales_person_id = "sales_person_id"
+        case stock_id = "stock_id"
     }
 
     init(from decoder: Decoder) throws {
@@ -328,6 +331,7 @@ struct SurgeryData : Codable {
         doctor_id = try values.decodeIfPresent(String.self, forKey: .doctor_id)
         scans = try values.decodeIfPresent([Scans].self, forKey: .scans)
         sales_person_id = try values.decodeIfPresent(String.self, forKey: .sales_person_id)
+        stock_id = try values.decodeIfPresent(String.self, forKey: .stock_id)
     }
 }
 
@@ -335,6 +339,7 @@ struct Scans : Codable {
     let id : Int?
     let zoho_id : String?
     let surgery_id : String?
+    let stock_id : String?
     let barcode : String?
     let product_code : String?
     let gtin : String?
@@ -345,12 +350,14 @@ struct Scans : Codable {
     let serial_no : String?
     let created_at : String?
     let updated_at : String?
+    let product_data : Product_data?
 
     enum CodingKeys: String, CodingKey {
 
         case id = "id"
         case zoho_id = "zoho_id"
         case surgery_id = "surgery_id"
+        case stock_id = "stock_id"
         case barcode = "barcode"
         case product_code = "product_code"
         case gtin = "gtin"
@@ -361,6 +368,7 @@ struct Scans : Codable {
         case serial_no = "serial_no"
         case created_at = "created_at"
         case updated_at = "updated_at"
+        case product_data = "product_data"
     }
 
     init(from decoder: Decoder) throws {
@@ -368,6 +376,7 @@ struct Scans : Codable {
         id = try values.decodeIfPresent(Int.self, forKey: .id)
         zoho_id = try values.decodeIfPresent(String.self, forKey: .zoho_id)
         surgery_id = try values.decodeIfPresent(String.self, forKey: .surgery_id)
+        stock_id = try values.decodeIfPresent(String.self, forKey: .stock_id)
         barcode = try values.decodeIfPresent(String.self, forKey: .barcode)
         product_code = try values.decodeIfPresent(String.self, forKey: .product_code)
         gtin = try values.decodeIfPresent(String.self, forKey: .gtin)
@@ -376,6 +385,97 @@ struct Scans : Codable {
         batch_no = try values.decodeIfPresent(String.self, forKey: .batch_no)
         scan_datetime = try values.decodeIfPresent(String.self, forKey: .scan_datetime)
         serial_no = try values.decodeIfPresent(String.self, forKey: .serial_no)
+        created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
+        updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
+        product_data = try values.decodeIfPresent(Product_data.self, forKey: .product_data)
+    }
+
+}
+
+struct Product_data : Codable {
+    let id : Int?
+    let zoho_id : String?
+    let name : String?
+    let description : String?
+    let product_category : String?
+    let price : String?
+    let gtin : String?
+    let product_code : String?
+    let barcode : String?
+    let serial_no : String?
+    let batch_no : String?
+    let mfg_date : String?
+    let exp_date : String?
+    let tax : String?
+    let division_id : String?
+    let mrp : String?
+    let list_price : String?
+    let std_cost : String?
+    let uom : String?
+    let segment : String?
+    let speciality : String?
+    let company_id : String?
+    let hsn_code_short : String?
+    let hsn_code : String?
+    let created_at : String?
+    let updated_at : String?
+
+    enum CodingKeys: String, CodingKey {
+
+        case id = "id"
+        case zoho_id = "zoho_id"
+        case name = "name"
+        case description = "description"
+        case product_category = "product_category"
+        case price = "price"
+        case gtin = "gtin"
+        case product_code = "product_code"
+        case barcode = "barcode"
+        case serial_no = "serial_no"
+        case batch_no = "batch_no"
+        case mfg_date = "mfg_date"
+        case exp_date = "exp_date"
+        case tax = "tax"
+        case division_id = "division_id"
+        case mrp = "mrp"
+        case list_price = "list_price"
+        case std_cost = "std_cost"
+        case uom = "uom"
+        case segment = "segment"
+        case speciality = "speciality"
+        case company_id = "company_id"
+        case hsn_code_short = "hsn_code_short"
+        case hsn_code = "hsn_code"
+        case created_at = "created_at"
+        case updated_at = "updated_at"
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decodeIfPresent(Int.self, forKey: .id)
+        zoho_id = try values.decodeIfPresent(String.self, forKey: .zoho_id)
+        name = try values.decodeIfPresent(String.self, forKey: .name)
+        description = try values.decodeIfPresent(String.self, forKey: .description)
+        product_category = try values.decodeIfPresent(String.self, forKey: .product_category)
+        price = try values.decodeIfPresent(String.self, forKey: .price)
+        gtin = try values.decodeIfPresent(String.self, forKey: .gtin)
+        product_code = try values.decodeIfPresent(String.self, forKey: .product_code)
+        barcode = try values.decodeIfPresent(String.self, forKey: .barcode)
+        serial_no = try values.decodeIfPresent(String.self, forKey: .serial_no)
+        batch_no = try values.decodeIfPresent(String.self, forKey: .batch_no)
+        mfg_date = try values.decodeIfPresent(String.self, forKey: .mfg_date)
+        exp_date = try values.decodeIfPresent(String.self, forKey: .exp_date)
+        tax = try values.decodeIfPresent(String.self, forKey: .tax)
+        division_id = try values.decodeIfPresent(String.self, forKey: .division_id)
+        mrp = try values.decodeIfPresent(String.self, forKey: .mrp)
+        list_price = try values.decodeIfPresent(String.self, forKey: .list_price)
+        std_cost = try values.decodeIfPresent(String.self, forKey: .std_cost)
+        uom = try values.decodeIfPresent(String.self, forKey: .uom)
+        segment = try values.decodeIfPresent(String.self, forKey: .segment)
+        speciality = try values.decodeIfPresent(String.self, forKey: .speciality)
+        company_id = try values.decodeIfPresent(String.self, forKey: .company_id)
+        hsn_code_short = try values.decodeIfPresent(String.self, forKey: .hsn_code_short)
+        hsn_code = try values.decodeIfPresent(String.self, forKey: .hsn_code)
         created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
         updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
     }

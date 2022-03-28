@@ -112,18 +112,12 @@ class AddSurgerayViewController: BaseViewController {
             i.backgroundColor = ColorConstant.mainThemeColor
             i.layer.cornerRadius = i.frame.height/2
         }
-        scrollOuterView.layer.cornerRadius = 20
-        scrollOuterView.layer.borderWidth = 0.5
-        scrollOuterView.layer.borderColor = UIColor.lightGray.cgColor
+//        scrollOuterView.layer.cornerRadius = 20
+//        scrollOuterView.layer.borderWidth = 0.5
+//        scrollOuterView.layer.borderColor = UIColor.lightGray.cgColor
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            let rectShape = CAShapeLayer()
-            rectShape.bounds = self.viewBC.frame
-            rectShape.position = self.viewBC.center
-            rectShape.path = UIBezierPath(roundedRect: self.viewBC.bounds, byRoundingCorners: [.bottomLeft , .bottomRight], cornerRadii: CGSize(width: 50, height: 50)).cgPath
-            self.viewBC.layer.mask = rectShape
-        }
         viewBC.backgroundColor = ColorConstant.mainThemeColor
+        viewBC.addCornerAtBotttoms(radius: 30)
         
         btnScanNow.layer.cornerRadius = btnScanNow.frame.height/2
         self.viewHeader.backgroundColor = ColorConstant.mainThemeColor
@@ -135,34 +129,34 @@ class AddSurgerayViewController: BaseViewController {
         txtSaleperson.setPlaceholder(placeHolderStr: "Select Saleperson")
         txtPatientScheme.setPlaceholder(placeHolderStr: "Select Scheme")
         txtUDT.setPlaceholder(placeHolderStr: "Select UDT")
-
-//        txtCity.attributedPlaceholder = NSAttributedString(
-//            string: "Select City",
-//            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        )
-//        txtHospital.attributedPlaceholder = NSAttributedString(
-//            string: "Select Hospital",
-//            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        )
-//        txtDoctor.attributedPlaceholder = NSAttributedString(
-//            string: "Select Doctor",
-//            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        )
-//        txtDistributor.attributedPlaceholder = NSAttributedString(
-//            string: "Select Distributor",
-//            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        )
-//        txtSaleperson.attributedPlaceholder = NSAttributedString(          string: "Select Saleperson",
-//                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        )
-//
-//        txtPatientScheme.attributedPlaceholder = NSAttributedString(          string: "Select Scheme",
-//                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        )
-//
-//        txtUDT.attributedPlaceholder = NSAttributedString(          string: "Select UDT",
-//                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        )
+        
+        //        txtCity.attributedPlaceholder = NSAttributedString(
+        //            string: "Select City",
+        //            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //        )
+        //        txtHospital.attributedPlaceholder = NSAttributedString(
+        //            string: "Select Hospital",
+        //            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //        )
+        //        txtDoctor.attributedPlaceholder = NSAttributedString(
+        //            string: "Select Doctor",
+        //            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //        )
+        //        txtDistributor.attributedPlaceholder = NSAttributedString(
+        //            string: "Select Distributor",
+        //            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //        )
+        //        txtSaleperson.attributedPlaceholder = NSAttributedString(          string: "Select Saleperson",
+        //                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //        )
+        //
+        //        txtPatientScheme.attributedPlaceholder = NSAttributedString(          string: "Select Scheme",
+        //                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //        )
+        //
+        //        txtUDT.attributedPlaceholder = NSAttributedString(          string: "Select UDT",
+        //                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //        )
         
         
         self.txtCity.rowHeight = 40
@@ -172,7 +166,7 @@ class AddSurgerayViewController: BaseViewController {
         self.txtSaleperson.rowHeight = 40
         self.txtPatientScheme.rowHeight = 40
         self.txtUDT.rowHeight = 40
-
+        
         setRightButton(txtCity, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtHospital, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtDoctor, image: UIImage(named: "ic_dropdown") ?? UIImage())
@@ -180,7 +174,7 @@ class AddSurgerayViewController: BaseViewController {
         setRightButton(txtSaleperson, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtPatientScheme, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtUDT, image: UIImage(named: "ic_dropdown") ?? UIImage())
-
+        
         txtPatientName.attributedPlaceholder = NSAttributedString(
             string: "Patient Name",
             attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
@@ -195,6 +189,15 @@ class AddSurgerayViewController: BaseViewController {
             string: "Ip Code",
             attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
         )
+        
+        DetailsScrollView.addCornerAtTops(radius: 20)
+        
+//        Add Shadow
+        scrollOuterView.layer.masksToBounds = false
+        scrollOuterView.layer.shadowRadius = 3
+        scrollOuterView.layer.shadowOpacity = 0.5
+        scrollOuterView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        scrollOuterView.layer.shadowColor = UIColor.black.cgColor
     }
     
     func setNavigation(){
@@ -246,7 +249,7 @@ class AddSurgerayViewController: BaseViewController {
         let patientNumber = txtPatientNumber.text ?? ""
         let patientAge = txtPatientAge.text ?? ""
         let ipCode = txtIpCode.text ?? ""
-       
+        
         if !Validation.sharedInstance.checkLength(testStr: patientName) {
             GlobalFunctions.showToast(controller: self, message: "Please enter patient name.", seconds: errorDismissTime)
             return
@@ -271,10 +274,10 @@ class AddSurgerayViewController: BaseViewController {
         let surgeryId = "D\(Date.currentTimeStamp)U\(userId)"
         addSurgeryReqObj = AddSurgeryRequestModel(cityId: selectedCityId, hospitalId: selectedHospitalId, distributorId: selectedDistributorId, doctorId: selectedDoctorId, surgeryId: surgeryId, schemeId: selectedSchemeId, udtId: selectedUdtId, patientName: patientName, patientMobile: patientNumber, age: Int(patientAge), ipCode: ipCode)
         self.redirectToScannerVC()
-//        If there is no error while validation then redirect to scan the data
-//        let scannerVC = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
-//        scannerVC.delegate = self
-//        self.navigationController?.pushViewController(scannerVC, animated: true)
+        //        If there is no error while validation then redirect to scan the data
+        //        let scannerVC = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
+        //        scannerVC.delegate = self
+        //        self.navigationController?.pushViewController(scannerVC, animated: true)
     }
     
     func redirectToScannerVC() {
@@ -380,10 +383,10 @@ extension AddSurgerayViewController {
 
 extension AddSurgerayViewController: BarCodeScannerDelegate {
     
-//TODO:    Call api to add surgery with scanned barcodes and then redirect to display surgeries
+    //    Call api to add surgery with scanned barcodes and then redirect to display surgeries
     func submitScannedData() {
         let barCodeArr: [BarCodeModel] = UserSessionManager.shared.barCodes
-
+        
         let dict = barCodeArr.compactMap { $0.dict }
         
         func convertArrayToJsonString() {
@@ -405,7 +408,7 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
     
     func callAddSurgeryApi() {
         SurgeryServices.addSurgery(surgeryObj: addSurgeryReqObj!) { response, error in
-            guard let err = error else {                
+            guard let err = error else {
                 UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
                 self.navigationController?.popViewController(animated: true)
                 return

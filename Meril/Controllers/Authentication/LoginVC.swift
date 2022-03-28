@@ -74,6 +74,7 @@ class LoginVC: UIViewController {
         }
         self.userTypeTxt.rowHeight = 40
         self.departmentTypeTxt.isHidden = true
+        self.forgotPasswordBtn.isHidden = true
     }
     
     @IBAction func forgotPasswordBtnClicked(_ sender: Any) {
@@ -131,9 +132,10 @@ extension LoginVC {
             }
             
 //            store user data into UserDefaults
-            UserDefaults.standard.set(response.loginUserData?.id, forKey: "userId")
-            UserDefaults.standard.set(response.loginUserData?.user_type_id, forKey: "userTypeId")
-            UserDefaults.standard.set(response.loginUserData?.unique_id, forKey: "userName")
+            UserSessionManager.shared.userDetail = response.loginUserData?.user_data
+//            UserDefaults.standard.set(response.loginUserData?.id, forKey: "userId")
+//            UserDefaults.standard.set(response.loginUserData?.user_type_id, forKey: "userTypeId")
+//            UserDefaults.standard.set(response.loginUserData?.unique_id, forKey: "userName")
             UserDefaults.standard.set(response.loginUserData?.token, forKey: "headerToken")
             
 //           Redirect to home screen

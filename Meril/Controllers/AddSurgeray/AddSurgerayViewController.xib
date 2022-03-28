@@ -58,14 +58,14 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DrX-y8-Eie">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="204.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="245.5"/>
                             <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="se9-XT-gHi">
-                            <rect key="frame" x="15" y="15" width="384" height="783"/>
+                            <rect key="frame" x="15" y="15" width="384" height="813"/>
                             <subviews>
                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sl7-Qh-p72">
-                                    <rect key="frame" x="0.0" y="0.0" width="384" height="783"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="384" height="803"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1XE-Go-nJg">
                                             <rect key="frame" x="0.0" y="0.0" width="384" height="820"/>
@@ -320,7 +320,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="1XE-Go-nJg" secondAttribute="trailing" id="3vq-up-tVC"/>
                                         <constraint firstItem="1XE-Go-nJg" firstAttribute="top" secondItem="Sl7-Qh-p72" secondAttribute="top" id="4Fg-On-pmy"/>
@@ -329,11 +329,11 @@
                                     </constraints>
                                 </scrollView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Sl7-Qh-p72" firstAttribute="centerX" secondItem="se9-XT-gHi" secondAttribute="centerX" id="32M-Jl-Hlb"/>
                                 <constraint firstItem="1XE-Go-nJg" firstAttribute="width" secondItem="se9-XT-gHi" secondAttribute="width" id="HL2-sg-E5I"/>
-                                <constraint firstAttribute="bottom" secondItem="Sl7-Qh-p72" secondAttribute="bottom" id="Ra2-jo-dCk"/>
+                                <constraint firstAttribute="bottom" secondItem="Sl7-Qh-p72" secondAttribute="bottom" constant="10" id="Ra2-jo-dCk"/>
                                 <constraint firstAttribute="trailing" secondItem="Sl7-Qh-p72" secondAttribute="trailing" id="SCr-5U-Ugf"/>
                                 <constraint firstItem="1XE-Go-nJg" firstAttribute="height" secondItem="se9-XT-gHi" secondAttribute="height" priority="250" id="b6I-Xm-pQn"/>
                                 <constraint firstItem="Sl7-Qh-p72" firstAttribute="top" secondItem="se9-XT-gHi" secondAttribute="top" id="d5s-kt-OFe"/>
@@ -343,8 +343,8 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="DrX-y8-Eie" firstAttribute="height" secondItem="7IX-Sy-kKN" secondAttribute="height" multiplier="0.25" id="JvH-xd-GUO"/>
-                        <constraint firstAttribute="bottom" secondItem="se9-XT-gHi" secondAttribute="bottom" constant="20" id="ZIB-TG-Cc3"/>
+                        <constraint firstItem="DrX-y8-Eie" firstAttribute="height" secondItem="7IX-Sy-kKN" secondAttribute="height" multiplier="0.3" id="JvH-xd-GUO"/>
+                        <constraint firstAttribute="bottom" secondItem="se9-XT-gHi" secondAttribute="bottom" constant="-10" id="ZIB-TG-Cc3"/>
                         <constraint firstItem="DrX-y8-Eie" firstAttribute="top" secondItem="7IX-Sy-kKN" secondAttribute="top" id="ctY-jI-4Gu"/>
                         <constraint firstItem="se9-XT-gHi" firstAttribute="leading" secondItem="7IX-Sy-kKN" secondAttribute="leading" constant="15" id="gCY-7e-DSm"/>
                         <constraint firstItem="se9-XT-gHi" firstAttribute="top" secondItem="7IX-Sy-kKN" secondAttribute="top" constant="15" id="h7P-9o-X1w"/>

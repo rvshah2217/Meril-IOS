@@ -34,18 +34,21 @@
                                             <color key="tintColor" red="0.33333333333333331" green="0.36862745098039218" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" image="ic_close"/>
+                                            <connections>
+                                                <action selector="closeBtnClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ntc-JK-zqQ"/>
+                                            </connections>
                                         </button>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uBi-H3-JDP">
-                                            <rect key="frame" x="324" y="10" width="80" height="80"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uBi-H3-JDP">
+                                            <rect key="frame" x="334" y="10" width="70" height="70"/>
                                             <color key="tintColor" red="0.33333333333333331" green="0.36862745098039218" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="80" id="3BM-NF-Brt"/>
-                                                <constraint firstAttribute="width" constant="80" id="QiI-SK-prI"/>
+                                                <constraint firstAttribute="height" constant="70" id="3BM-NF-Brt"/>
+                                                <constraint firstAttribute="width" constant="70" id="QiI-SK-prI"/>
                                             </constraints>
                                             <imageReference key="image" image="ic_addSurgery" symbolScale="small"/>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fND-LY-5e3">
-                                            <rect key="frame" x="25" y="95" width="113" height="44"/>
+                                            <rect key="frame" x="25" y="85" width="113" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kX-uW-AST">
                                                     <rect key="frame" x="0.0" y="0.0" width="113" height="24.5"/>
@@ -121,6 +124,9 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="SQ0-gv-Qes" id="CAh-Mf-4zt"/>
+                        <outlet property="userEmailLbl" destination="fM4-X8-Hlu" id="v4M-k8-oBd"/>
+                        <outlet property="userNameLbl" destination="9kX-uW-AST" id="0uy-g5-TdH"/>
+                        <outlet property="userProfileImgVIew" destination="uBi-H3-JDP" id="iqi-Q2-BLP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -130,7 +136,7 @@
     </scenes>
     <resources>
         <image name="ic_addSurgery" width="11251" height="8334"/>
-        <image name="ic_close" width="30" height="30"/>
+        <image name="ic_close" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

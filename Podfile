@@ -9,8 +9,9 @@ target 'Meril' do
   pod 'iOSDropDown'
   pod 'LGSideMenuController'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
-  pod 'Alamofire'
   pod 'IQKeyboardManagerSwift'
   pod 'ImageSlideshow', '~> 1.9.0'
   pod "ImageSlideshow/SDWebImage"
+  pod 'Alamofire'
+  pod 'FullMaterialLoader'
 end

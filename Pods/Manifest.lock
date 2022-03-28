@@ -1,8 +1,9 @@
 PODS:
-  - Alamofire (5.0.5)
+  - Alamofire (5.5.0)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - FullMaterialLoader (0.2.3)
   - ImageSlideshow (1.9.2):
     - ImageSlideshow/Core (= 1.9.2)
   - ImageSlideshow/Core (1.9.2)
@@ -19,6 +20,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - FullMaterialLoader
   - ImageSlideshow (~> 1.9.0)
   - ImageSlideshow/SDWebImage
   - iOSDropDown
@@ -28,6 +30,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FullMaterialLoader
     - ImageSlideshow
     - iOSDropDown
     - IQKeyboardManagerSwift
@@ -44,14 +47,15 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ViccAlexander/Chameleon.git
 
 SPEC CHECKSUMS:
-  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  FullMaterialLoader: e42901936b13600524f590e740ef359b72a4693f
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   LGSideMenuController: 0c7b155b0dbdf14bf8b88d5ac363c5fe1584bb23
   SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
 
-PODFILE CHECKSUM: 4079949a90b733673ce1a8b404eef734638aeaca
+PODFILE CHECKSUM: 98b34f6d9841be349d2b19ac4dba2ece12c864ec
 
 COCOAPODS: 1.11.3

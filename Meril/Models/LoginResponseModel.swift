@@ -11,7 +11,7 @@ struct LoginResponseModel : Codable {
     
     let success : Bool?
     let message : String?
-    let loginUserData: UserTypes?
+    let loginUserData: UserTypesModel?
 
     enum CodingKeys: String, CodingKey {
 
@@ -24,7 +24,7 @@ struct LoginResponseModel : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        loginUserData = try values.decodeIfPresent(UserTypes.self, forKey: .loginUserData)
+        loginUserData = try values.decodeIfPresent(UserTypesModel.self, forKey: .loginUserData)
     }
 
 }

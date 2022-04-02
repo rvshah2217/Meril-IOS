@@ -65,7 +65,6 @@ struct SurgeryInventoryModel : Codable {
         distributors = try values.decodeIfPresent([Hospitals].self, forKey: .distributors)
         sales_persons = try values.decodeIfPresent([Hospitals].self, forKey: .sales_persons)
     }
-
 }
 
 struct Schemes : Codable {
@@ -89,7 +88,6 @@ struct Schemes : Codable {
         
         case udt_name = "udt_name"
         case dept_name = "dept_name"
-
     }
 
     init(from decoder: Decoder) throws {
@@ -141,10 +139,11 @@ struct Hospitals : Codable {
 }
 
 struct Cities : Codable {
+  
     let id : Int?
-    let zoho_id : String?
-    let country_id : String?
-    let state_id : String?
+    let zoho_id : Int?
+    let country_id : Int?
+    let state_id : Int?
     let name : String?
     let created_at : String?
     let updated_at : String?
@@ -165,9 +164,9 @@ struct Cities : Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
-        zoho_id = try values.decodeIfPresent(String.self, forKey: .zoho_id)
-        country_id = try values.decodeIfPresent(String.self, forKey: .country_id)
-        state_id = try values.decodeIfPresent(String.self, forKey: .state_id)
+        zoho_id = try values.decodeIfPresent(Int.self, forKey: .zoho_id)
+        country_id = try values.decodeIfPresent(Int.self, forKey: .country_id)
+        state_id = try values.decodeIfPresent(Int.self, forKey: .state_id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
         updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
@@ -176,7 +175,7 @@ struct Cities : Codable {
 
 }
 
-struct AddSurgeryRequestModel : Encodable {
+struct AddSurgeryRequestModel : Codable {
     
     let cityId : Int?
     let hospitalId : Int?

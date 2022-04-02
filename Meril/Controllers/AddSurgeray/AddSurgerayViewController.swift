@@ -89,9 +89,10 @@ class AddSurgerayViewController: BaseViewController {
     var selectedSchemeId: Int?
     var selectedUdtId: Int?
     var addSurgeryReqObj: AddSurgeryRequestModel?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.internetConnectionLost), name: .networkLost, object: nil)
         setUI()
         self.fetchFormData()
         // Do any additional setup after loading the view.
@@ -100,6 +101,12 @@ class AddSurgerayViewController: BaseViewController {
         super.viewWillAppear(animated)
         setNavigation()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .networkLost, object: nil)
+    }
+ 
     //MARK:- Custome Method
     func setUI(){
         self.navigationItem.title = ""
@@ -289,8 +296,17 @@ class AddSurgerayViewController: BaseViewController {
 }
 
 extension AddSurgerayViewController {
-    
+   
     func fetchFormData() {
+        if let formDataObj = StoreFormData.sharedInstance.fetchFormData() {
+            self.setAllDropDownData(formDataResponse: formDataObj)
+            return
+        }
+        self.fetchFormDataFromServer()
+    }
+    
+    
+    func fetchFormDataFromServer() {
         SurgeryServices.getAllFormData { response, error in
             guard let responseData = response else {
                 GlobalFunctions.printToConsole(message: "Fetch form-data failed: \(error)")
@@ -298,6 +314,8 @@ extension AddSurgerayViewController {
             }
             if let formDataObj = responseData.suregeryInventoryData {
                 self.setAllDropDownData(formDataResponse: formDataObj)
+//                Save response of Form data to core data
+                StoreFormData.sharedInstance.saveFormData(schemeData: formDataObj)
             }
         }
     }
@@ -407,14 +425,34 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
     }
     
     func callAddSurgeryApi() {
-        SurgeryServices.addSurgery(surgeryObj: addSurgeryReqObj!) { response, error in
+        guard let surgeryObj = addSurgeryReqObj else { return }
+        SurgeryServices.addSurgery(surgeryObj: surgeryObj) { response, error in
             guard let err = error else {
+//                update isSync status of surgery to core data
+                AddSurgeryToCoreData.sharedInstance.updateSurgeryStatus(surgeryId: surgeryObj.surgeryId!)
+                
+                for _ in 0..<5 {
+                    self.saveSurgeryToCoreData()
+                }
+//                Remove scanned barcodes from userdefaults
                 UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
                 self.navigationController?.popViewController(animated: true)
                 return
             }
             GlobalFunctions.showToast(controller: self, message: err, seconds: errorDismissTime)
-            
         }
     }
+    
+    func saveSurgeryToCoreData() {
+        guard let surgeryObj = addSurgeryReqObj else { return }
+        //        Save records to Core data
+        AddSurgeryToCoreData.sharedInstance.saveSurgeryData(surgeryData: surgeryObj)
+    }
+    
+    @objc func internetConnectionLost() {
+        self.saveSurgeryToCoreData()
+    }
+//
 }
+
+

@@ -258,3 +258,26 @@ class UserSessionManager
 
     private init(){}
 }
+
+struct AddSurgeryInventory {
+    func fetchSurgeryBySyncStatus() {
+        let surgeryArr = AddSurgeryToCoreData.sharedInstance.fetchSurgeries() ?? []
+        let group = DispatchGroup()
+        for surgery in surgeryArr {
+            group.enter()
+            SurgeryServices.addSurgery(surgeryObj: surgery) { response, error in
+                group.leave()
+                guard let _ = error else {
+    //                update isSync status of surgery to core data
+//                    AddSurgeryToCoreData.sharedInstance.updateSurgeryStatus(surgeryId: surgeryObj.surgeryId!)
+                    AddSurgeryToCoreData.sharedInstance.deleteSergeryBySurgeryId(surgeryId: surgery.surgeryId!)
+                    return
+                }
+            }
+//            AddSurgeryToCoreData.sharedInstance.updateSurgeryStatus(surgeryId: <#T##String#>)
+        }
+        group.notify(queue: .main) {
+            GlobalFunctions.printToConsole(message: "All request completed")
+        }
+    }
+}

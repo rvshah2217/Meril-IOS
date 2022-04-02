@@ -2,6 +2,30 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Meril/Models/CoreDataModels/FormData+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/FormData+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/AddSurgeryEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/AddSurgeryEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/AddStockEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/AddStockEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/UserTypesEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/UserTypesEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:Meril.xcodeproj">
    </FileRef>
    <FileRef

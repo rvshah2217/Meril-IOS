@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AddStock" representedClassName="AddStockEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="addStockStr" optional="YES" attributeType="String"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSyncedWithServer" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="AddSurgery" representedClassName="AddSurgeryEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="addSurgeryStr" optional="YES" attributeType="String"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSyncedWithServer" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="surgeryId" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="FormData" representedClassName="FormData" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="responseStr" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="UserTypes" representedClassName="UserTypesEntity" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="AddStock" positionX="27" positionY="171" width="128" height="74"/>
+        <element name="AddSurgery" positionX="18" positionY="108" width="128" height="89"/>
+        <element name="FormData" positionX="-18" positionY="135" width="128" height="59"/>
+        <element name="UserTypes" positionX="-63" positionY="-18" width="128" height="59"/>
+    </elements>
 </model>

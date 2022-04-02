@@ -180,6 +180,14 @@ class AddInventoryViewController: BaseViewController {
 extension AddInventoryViewController {
     
     func fetchFormData() {
+        if let formDataObj = StoreFormData.sharedInstance.fetchFormData() {
+            self.setAllDropDownData(formDataResponse: formDataObj)
+            return
+        }
+        self.fetchFormDataFromServer()
+    }
+    
+    func fetchFormDataFromServer() {
         SurgeryServices.getAllFormData { response, error in
             guard let responseData = response else {
                 GlobalFunctions.printToConsole(message: "Fetch form-data failed: \(error)")
@@ -187,6 +195,8 @@ extension AddInventoryViewController {
             }
             if let formDataObj = responseData.suregeryInventoryData {
                 self.setAllDropDownData(formDataResponse: formDataObj)
+                //                Save response of Form data to core data
+                StoreFormData.sharedInstance.saveFormData(schemeData: formDataObj)
             }
         }
     }

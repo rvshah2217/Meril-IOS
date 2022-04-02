@@ -8,13 +8,15 @@
 import UIKit
 import CoreData
 import IQKeyboardManagerSwift
+import Reachability
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var settingsData : SettingsData?
-    
+    let reachability = try! Reachability()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
 //        Config IQKeyboardManager
@@ -26,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
 
+        self.addNetworkReachability()
         FatchSettingsData()
         
         let vc: UIViewController
@@ -43,6 +46,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func addNetworkReachability() {
+        do{
+            try reachability.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+
+      let reachability = note.object as! Reachability
+
+      switch reachability.connection {
+      case .unavailable:
+          NotificationCenter.default.post(name: .networkLost, object: nil)
+//          notify to send the data to server which are not synced yet
+        print("Network not reachable")
+      case .wifi, .cellular:
+          AddSurgeryInventory().fetchSurgeryBySyncStatus()
+          print("Network reachable")
+      default:
+          print("None")
+//          Notify that network connection lost and store data to local if needed
+      }
+    }
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {
@@ -53,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentContainer(name: "Meril")
+        
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -68,6 +99,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
+            GlobalFunctions.printToConsole(message: container.name)
+            GlobalFunctions.printToConsole(message: container.debugDescription)
         })
         return container
     }()
@@ -87,6 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
     func FatchSettingsData(){
         SettingServices.getSettingsData{ response, error in
             guard let responseData = response else {

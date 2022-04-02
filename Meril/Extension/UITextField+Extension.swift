@@ -109,3 +109,7 @@ extension Dictionary {
     }
 
 }
+
+extension Notification.Name {
+    static let networkLost = Notification.Name("InternetConnectionLost")
+}

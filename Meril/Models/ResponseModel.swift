@@ -10,7 +10,7 @@ import Foundation
 struct ResponseModel : Codable {
     let success : Bool?
     let message : String?
-    let userTypes : [UserTypes]?    
+    let userTypes : [UserTypesModel]?    
 
     enum CodingKeys: String, CodingKey {
 
@@ -23,12 +23,12 @@ struct ResponseModel : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        userTypes = try values.decodeIfPresent([UserTypes].self, forKey: .userTypes)
+        userTypes = try values.decodeIfPresent([UserTypesModel].self, forKey: .userTypes)
     }
 
 }
 
-struct UserTypes : Codable {
+struct UserTypesModel : Codable {
     let id : Int?
     let zoho_id : Int?
     let name : String?
@@ -39,7 +39,7 @@ struct UserTypes : Codable {
 //    let stocks : [Stocks]?
 
 //    For login
-    let user_type_id: String?
+    let user_type_id: Int?
     let unique_id: String?
     let token: String?
     
@@ -78,7 +78,7 @@ struct UserTypes : Codable {
         created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
         updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
       
-        user_type_id = try values.decodeIfPresent(String.self, forKey: .user_type_id)
+        user_type_id = try values.decodeIfPresent(Int.self, forKey: .user_type_id)
         unique_id = try values.decodeIfPresent(String.self, forKey: .unique_id)
         token = try values.decodeIfPresent(String.self, forKey: .token)
 
@@ -103,7 +103,7 @@ struct UserData : Codable {
     let city : String?
     let state : String?
     let country : String?
-    let pincode : String?
+    let pincode : Int?//String?
     let profile : String?
     let division_id : String?
 
@@ -132,7 +132,7 @@ struct UserData : Codable {
         city = try values.decodeIfPresent(String.self, forKey: .city)
         state = try values.decodeIfPresent(String.self, forKey: .state)
         country = try values.decodeIfPresent(String.self, forKey: .country)
-        pincode = try values.decodeIfPresent(String.self, forKey: .pincode)
+        pincode = try values.decodeIfPresent(Int.self, forKey: .pincode)
         profile = try values.decodeIfPresent(String.self, forKey: .profile)
         division_id = try values.decodeIfPresent(String.self, forKey: .division_id)
     }

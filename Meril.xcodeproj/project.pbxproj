@@ -10,7 +10,6 @@
 		831A4F6127E83CED00BEF2E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F6027E83CED00BEF2E7 /* AppDelegate.swift */; };
 		831A4F6527E83CED00BEF2E7 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F6427E83CED00BEF2E7 /* HomeVC.swift */; };
 		831A4F6827E83CED00BEF2E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831A4F6627E83CED00BEF2E7 /* Main.storyboard */; };
-		831A4F6B27E83CED00BEF2E7 /* Meril.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F6927E83CED00BEF2E7 /* Meril.xcdatamodeld */; };
 		831A4F6D27E83CEE00BEF2E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 831A4F6C27E83CEE00BEF2E7 /* Assets.xcassets */; };
 		831A4F7027E83CEE00BEF2E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831A4F6E27E83CEE00BEF2E7 /* LaunchScreen.storyboard */; };
 		831A4F7827E8481800BEF2E7 /* Sidemenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831A4F7727E8481800BEF2E7 /* Sidemenu.storyboard */; };
@@ -30,11 +29,14 @@
 		837192CD27EA026700BE04A1 /* ApiEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CA27EA026700BE04A1 /* ApiEndPoints.swift */; };
 		837192CE27EA026700BE04A1 /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CB27EA026700BE04A1 /* LoginServices.swift */; };
 		837192CF27EA026700BE04A1 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192CC27EA026700BE04A1 /* APIManager.swift */; };
-		837192D327EA399C00BE04A1 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 837192D227EA399C00BE04A1 /* loading.json */; };
 		837192D527EA546D00BE04A1 /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192D427EA546C00BE04A1 /* LoginResponseModel.swift */; };
 		837192D727EA581F00BE04A1 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192D627EA581F00BE04A1 /* Validation.swift */; };
 		837192D927EAF4F300BE04A1 /* HomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192D827EAF4F300BE04A1 /* HomeServices.swift */; };
 		837192DB27EB7B1600BE04A1 /* BarCodeScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837192DA27EB7B1600BE04A1 /* BarCodeScannerVC.swift */; };
+		8382F16B27F44E2F00DD3AB7 /* StoreFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382F16A27F44E2F00DD3AB7 /* StoreFormData.swift */; };
+		8382F16E27F4718500DD3AB7 /* Meril.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8382F16C27F4718500DD3AB7 /* Meril.xcdatamodeld */; };
+		8382F17027F5DA4300DD3AB7 /* AddSurgeryToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382F16F27F5DA4300DD3AB7 /* AddSurgeryToCoreData.swift */; };
+		838AA28F27F348C500258455 /* UserTypeCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA28E27F348C500258455 /* UserTypeCoreData.swift */; };
 		83D05CF727EC0259005C24A8 /* Pods_Meril.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670968684A5D25B948E0B3F7 /* Pods_Meril.framework */; };
 		887C7A3627EF193000A5A0FB /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A3427EF193000A5A0FB /* ContactUsViewController.swift */; };
 		887C7A3727EF193000A5A0FB /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887C7A3527EF193000A5A0FB /* ContactUsViewController.xib */; };
@@ -73,7 +75,6 @@
 		831A4F6027E83CED00BEF2E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		831A4F6427E83CED00BEF2E7 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		831A4F6727E83CED00BEF2E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		831A4F6A27E83CED00BEF2E7 /* Meril.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Meril.xcdatamodel; sourceTree = "<group>"; };
 		831A4F6C27E83CEE00BEF2E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		831A4F6F27E83CEE00BEF2E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		831A4F7127E83CEE00BEF2E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,11 +95,14 @@
 		837192CA27EA026700BE04A1 /* ApiEndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiEndPoints.swift; sourceTree = "<group>"; };
 		837192CB27EA026700BE04A1 /* LoginServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
 		837192CC27EA026700BE04A1 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		837192D227EA399C00BE04A1 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		837192D427EA546C00BE04A1 /* LoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
 		837192D627EA581F00BE04A1 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		837192D827EAF4F300BE04A1 /* HomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
 		837192DA27EB7B1600BE04A1 /* BarCodeScannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeScannerVC.swift; sourceTree = "<group>"; };
+		8382F16A27F44E2F00DD3AB7 /* StoreFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFormData.swift; sourceTree = "<group>"; };
+		8382F16D27F4718500DD3AB7 /* Meril.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Meril.xcdatamodel; sourceTree = "<group>"; };
+		8382F16F27F5DA4300DD3AB7 /* AddSurgeryToCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSurgeryToCoreData.swift; sourceTree = "<group>"; };
+		838AA28E27F348C500258455 /* UserTypeCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeCoreData.swift; sourceTree = "<group>"; };
 		887C7A3427EF193000A5A0FB /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		887C7A3527EF193000A5A0FB /* ContactUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsViewController.xib; sourceTree = "<group>"; };
 		887C7A3927EF246800A5A0FB /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 		831A4F5F27E83CED00BEF2E7 /* Meril */ = {
 			isa = PBXGroup;
 			children = (
+				8382F16C27F4718500DD3AB7 /* Meril.xcdatamodeld */,
 				837192C927EA025C00BE04A1 /* Services */,
 				831A4F8B27E8A19700BEF2E7 /* Extension */,
 				831A4F7F27E850CA00BEF2E7 /* Config */,
@@ -178,7 +183,6 @@
 				831A4F7927E8506200BEF2E7 /* Helper */,
 				831A4F6027E83CED00BEF2E7 /* AppDelegate.swift */,
 				831A4F6C27E83CEE00BEF2E7 /* Assets.xcassets */,
-				831A4F6927E83CED00BEF2E7 /* Meril.xcdatamodeld */,
 			);
 			path = Meril;
 			sourceTree = "<group>";
@@ -186,6 +190,7 @@
 		831A4F7927E8506200BEF2E7 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				8382F16927F44E0B00DD3AB7 /* CoreDataClasses */,
 				834ED70D27F06FCF0059B30C /* AILoader.swift */,
 				88CBA34227ECCE1F005C22FE /* BaseViewController.swift */,
 				837192D627EA581F00BE04A1 /* Validation.swift */,
@@ -217,6 +222,7 @@
 		831A4F7D27E850A000BEF2E7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8382F16827F4187100DD3AB7 /* CoreDataModels */,
 				837192C727E9FCFD00BE04A1 /* ResponseModel.swift */,
 				887C7A4327EF459400A5A0FB /* ChangePasswordModel.swift */,
 				887C7A4527EF4A9D00A5A0FB /* ContactUsModel.swift */,
@@ -302,7 +308,6 @@
 				837192CA27EA026700BE04A1 /* ApiEndPoints.swift */,
 				837192CC27EA026700BE04A1 /* APIManager.swift */,
 				837192CB27EA026700BE04A1 /* LoginServices.swift */,
-				837192D227EA399C00BE04A1 /* loading.json */,
 				837192D827EAF4F300BE04A1 /* HomeServices.swift */,
 				8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */,
 				887C7A3D27EF2E5C00A5A0FB /* SettingServices.swift */,
@@ -310,6 +315,23 @@
 				887C7A4727EF4B7E00A5A0FB /* ContactusServices.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		8382F16827F4187100DD3AB7 /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		8382F16927F44E0B00DD3AB7 /* CoreDataClasses */ = {
+			isa = PBXGroup;
+			children = (
+				838AA28E27F348C500258455 /* UserTypeCoreData.swift */,
+				8382F16A27F44E2F00DD3AB7 /* StoreFormData.swift */,
+				8382F16F27F5DA4300DD3AB7 /* AddSurgeryToCoreData.swift */,
+			);
+			path = CoreDataClasses;
 			sourceTree = "<group>";
 		};
 		887C7A3327EF190900A5A0FB /* ContactUs */ = {
@@ -463,7 +485,6 @@
 				831A4F7027E83CEE00BEF2E7 /* LaunchScreen.storyboard in Resources */,
 				831A4F6D27E83CEE00BEF2E7 /* Assets.xcassets in Resources */,
 				831A4F6827E83CED00BEF2E7 /* Main.storyboard in Resources */,
-				837192D327EA399C00BE04A1 /* loading.json in Resources */,
 				834ED70C27F06E9F0059B30C /* InventoryListVC.xib in Resources */,
 				887C7A3C27EF246800A5A0FB /* ChangePasswordViewController.xib in Resources */,
 				88CBA33827ECCDE2005C22FE /* PrivacyPolicyViewController.xib in Resources */,
@@ -544,7 +565,9 @@
 				831A4F8427E86CA900BEF2E7 /* SideMenuVC.swift in Sources */,
 				831A4F6127E83CED00BEF2E7 /* AppDelegate.swift in Sources */,
 				837192D527EA546D00BE04A1 /* LoginResponseModel.swift in Sources */,
+				8382F16B27F44E2F00DD3AB7 /* StoreFormData.swift in Sources */,
 				831A4F7B27E8507600BEF2E7 /* GlobalFunctions.swift in Sources */,
+				8382F17027F5DA4300DD3AB7 /* AddSurgeryToCoreData.swift in Sources */,
 				88CBA35127ECDF74005C22FE /* SurgeriListTableViewCell.swift in Sources */,
 				887C7A3E27EF2E5C00A5A0FB /* SettingServices.swift in Sources */,
 				887C7A3627EF193000A5A0FB /* ContactUsViewController.swift in Sources */,
@@ -556,9 +579,10 @@
 				887C7A4027EF31C500A5A0FB /* SettingsModel.swift in Sources */,
 				88CBA34127ECCDE2005C22FE /* SettingsViewController.swift in Sources */,
 				8326D89E27ECABD80081B4ED /* ScanAgainPopUpVC.swift in Sources */,
+				838AA28F27F348C500258455 /* UserTypeCoreData.swift in Sources */,
+				8382F16E27F4718500DD3AB7 /* Meril.xcdatamodeld in Sources */,
 				837192C827E9FCFD00BE04A1 /* ResponseModel.swift in Sources */,
 				837192CF27EA026700BE04A1 /* APIManager.swift in Sources */,
-				831A4F6B27E83CED00BEF2E7 /* Meril.xcdatamodeld in Sources */,
 				834ED70127F06CAE0059B30C /* SurgeryInventoryModel.swift in Sources */,
 				887C7A4627EF4A9D00A5A0FB /* ContactUsModel.swift in Sources */,
 				837192D727EA581F00BE04A1 /* Validation.swift in Sources */,
@@ -795,12 +819,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		831A4F6927E83CED00BEF2E7 /* Meril.xcdatamodeld */ = {
+		8382F16C27F4718500DD3AB7 /* Meril.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				831A4F6A27E83CED00BEF2E7 /* Meril.xcdatamodel */,
+				8382F16D27F4718500DD3AB7 /* Meril.xcdatamodel */,
 			);
-			currentVersion = 831A4F6A27E83CED00BEF2E7 /* Meril.xcdatamodel */;
+			currentVersion = 8382F16D27F4718500DD3AB7 /* Meril.xcdatamodel */;
 			path = Meril.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -8,6 +8,7 @@
 import iOSDropDown
 import UIKit
 import Alamofire
+import CoreData
 
 class LoginVC: UIViewController {
     
@@ -44,7 +45,7 @@ class LoginVC: UIViewController {
     }
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var forgotPasswordBtn: UIButton!
-    var userTypesArr: [UserTypes] = []
+    var userTypesArr: [UserTypesModel] = []
     var selectedUserTypeId: Int?
     
     override func viewDidLoad() {
@@ -109,17 +110,39 @@ extension LoginVC {
     }
     
     func fetchUserType() {
+        userTypesArr = UserTypeCoreData.sharedInstance.fetchUserTypes() ?? []
+        if self.userTypesArr.isEmpty {
+            self.fetchUserTypesFromServer()
+            return
+        }
+        self.setUserTypeTxtData()
+    }
+    
+    private func fetchUserTypesFromServer() {
         LoginServices.getUserTypes { responseModel, errorMessage in
             guard let response = responseModel else {
                 GlobalFunctions.printToConsole(message: "login error: \(errorMessage)")
                 return
             }
             self.userTypesArr = response.userTypes ?? []
-            self.userTypeTxt.isEnabled = !self.userTypesArr.isEmpty
-            self.userTypeTxt.optionArray = self.userTypesArr.map({ item -> String in
-                item.name ?? ""
-            })
+            self.setUserTypeTxtData()
+            //                save userTypes to Coredata
+                            self.saveUserTypes()
         }
+    }
+    
+    private func setUserTypeTxtData() {
+        self.userTypeTxt.isEnabled = !self.userTypesArr.isEmpty
+        self.userTypeTxt.optionArray = self.userTypesArr.map({ item -> String in
+            item.name ?? ""
+        })
+    }
+    
+    private func saveUserTypes() {
+        for user in userTypesArr {
+            UserTypeCoreData.sharedInstance.saveData(userData: user)
+        }
+        UserTypeCoreData.sharedInstance.fetchUserTypes()
     }
     
     func callUserLoginApi(userObj: LoginRequestModel) {

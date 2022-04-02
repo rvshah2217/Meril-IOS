@@ -14,4 +14,6 @@ target 'Meril' do
   pod "ImageSlideshow/SDWebImage"
   pod 'Alamofire'
   pod 'FullMaterialLoader'
+  pod 'ReachabilitySwift'
+
 end

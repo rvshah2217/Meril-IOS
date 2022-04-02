@@ -13,6 +13,7 @@ PODS:
   - iOSDropDown (0.3.4)
   - IQKeyboardManagerSwift (6.5.9)
   - LGSideMenuController (3.1.2)
+  - ReachabilitySwift (5.0.0)
   - SDWebImage (5.12.3):
     - SDWebImage/Core (= 5.12.3)
   - SDWebImage/Core (5.12.3)
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - iOSDropDown
   - IQKeyboardManagerSwift
   - LGSideMenuController
+  - ReachabilitySwift
 
 SPEC REPOS:
   trunk:
@@ -35,6 +37,7 @@ SPEC REPOS:
     - iOSDropDown
     - IQKeyboardManagerSwift
     - LGSideMenuController
+    - ReachabilitySwift
     - SDWebImage
 
 EXTERNAL SOURCES:
@@ -54,8 +57,9 @@ SPEC CHECKSUMS:
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   LGSideMenuController: 0c7b155b0dbdf14bf8b88d5ac363c5fe1584bb23
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
 
-PODFILE CHECKSUM: 98b34f6d9841be349d2b19ac4dba2ece12c864ec
+PODFILE CHECKSUM: 5d97038aaebe29bd33086118081dd2424c3bb0e3
 
 COCOAPODS: 1.11.3

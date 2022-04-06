@@ -16,12 +16,12 @@ protocol ScanAgainViewDelegate: AnyObject {
 class ScanAgainPopUpVC: UIViewController {
     
     @IBOutlet weak var popUpView: UIView!
-    @IBOutlet weak var titleLbl: UIView!
-    @IBOutlet weak var successMsgLbl: UIView!
-    @IBOutlet weak var askScanAgainLbl: UIView!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var successMsgLbl: UILabel!
+    @IBOutlet weak var askScanAgainLbl: UILabel!
     
-    @IBOutlet weak var scanAgainBtn: UIView!
-    @IBOutlet weak var submitBtn: UIView!
+    @IBOutlet weak var scanAgainBtn: UIButton!
+    @IBOutlet weak var submitBtn: UIButton!
     
     weak var delegate: ScanAgainViewDelegate?
     
@@ -45,7 +45,9 @@ class ScanAgainPopUpVC: UIViewController {
         self.willMove(toParent: nil)
         self.view.removeFromSuperview()
         self.removeFromParent()
-        self.delegate?.scanAgain()
+//        if scanAgainBtn.title(for: .normal) != "Cancel" {
+            self.delegate?.scanAgain()
+//        }
     }
     
     @IBAction func submitBtnClicked(_ sender: Any) {

@@ -12,8 +12,8 @@ let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 let sidemenuStoryboard = UIStoryboard(name: "Sidemenu", bundle: nil)
 let deviceToken = "123456"//UserDefaults.standard.string(forKey: "deviceToken")
 
-let errorDismissTime = 3.0
-let successDismissTime = 0.5
+let errorDismissTime = 1.5
+let successDismissTime = 0.4
 
 struct ColorConstant {
     static let mainThemeColor = UIColor(hexString: "#317ac3") ?? UIColor.systemBlue//"#4476BB"
@@ -41,4 +41,7 @@ struct UserMessages {
     static let emptyDistributorError = "Please select distributor."
     static let emptySalesPersonError = "Please select sales person."
     static let emptyDivisionError = "Please select division."
+    static let emptyGenderError = "Please select gender."
+    static let emptyDateError = "Please select deployment date."
+
 }

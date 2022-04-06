@@ -268,16 +268,38 @@ struct AddSurgeryInventory {
             SurgeryServices.addSurgery(surgeryObj: surgery) { response, error in
                 group.leave()
                 guard let _ = error else {
-    //                update isSync status of surgery to core data
-//                    AddSurgeryToCoreData.sharedInstance.updateSurgeryStatus(surgeryId: surgeryObj.surgeryId!)
+    //                delete record from core data if surgery sync successfully
                     AddSurgeryToCoreData.sharedInstance.deleteSergeryBySurgeryId(surgeryId: surgery.surgeryId!)
+                    NotificationCenter.default.post(name: .surgeryAdded, object: nil, userInfo: ["surgeryId": surgery.surgeryId!])
                     return
                 }
             }
-//            AddSurgeryToCoreData.sharedInstance.updateSurgeryStatus(surgeryId: <#T##String#>)
         }
         group.notify(queue: .main) {
+            NotificationCenter.default.post(name: .stopSyncBtnAnimation, object: nil, userInfo: nil)
+            AddSurgeryInventory().fetchInventoryBySyncStatus()
             GlobalFunctions.printToConsole(message: "All request completed")
+        }
+    }
+    
+    func fetchInventoryBySyncStatus() {
+        let stockArr = AddStockToCoreData.sharedInstance.fetchStocks() ?? []
+        let stockGroup = DispatchGroup()
+        for stock in stockArr {
+            stockGroup.enter()
+            SurgeryServices.addInventoryStock(surgeryObj: stock) { response, error in
+                stockGroup.leave()
+                guard let _ = error else {
+                    //                delete record from core data if inventory sync successfully
+                    AddStockToCoreData.sharedInstance.deleteStockByStockId(stockId: stock.stockId!)
+                    NotificationCenter.default.post(name: .stockAdded, object: nil, userInfo: ["stockId": stock.stockId!])
+                    return
+                }
+            }
+        }
+        stockGroup.notify(queue: .main) {
+            GlobalFunctions.printToConsole(message: "All request completed")
+            NotificationCenter.default.post(name: .stopSyncBtnAnimation, object: nil, userInfo: nil)
         }
     }
 }

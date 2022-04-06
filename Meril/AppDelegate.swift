@@ -14,7 +14,7 @@ import Reachability
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var settingsData : SettingsData?
+//    var settingsData : SettingsData?
     let reachability = try! Reachability()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -29,7 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
 
         self.addNetworkReachability()
-        FatchSettingsData()
+        fetchSettingsData()
+//        self.getUserProfile()
         
         let vc: UIViewController
         if UserDefaults.standard.string(forKey: "headerToken") != nil {
@@ -54,6 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
 
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return .portrait
     }
     
     @objc func reachabilityChanged(note: Notification) {
@@ -121,14 +126,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func FatchSettingsData(){
+    func fetchSettingsData(){
         SettingServices.getSettingsData{ response, error in
             guard let responseData = response else {
                 //                hide banner view if there is error
                 return
             }
-            self.settingsData = response?.settingsData
+//            self.settingsData = response?.settingsData
+            do {
+                let encodedData = try JSONEncoder().encode(response?.settingsData)
+                let jsonStr = String(data: encodedData, encoding: String.Encoding.utf8)
+                UserDefaults.standard.set(jsonStr, forKey: "settingsData")
+            } catch {
+                GlobalFunctions.printToConsole(message: "Error to store user profile data: \(error.localizedDescription)")
+            }
         }
     }
+    
+//    func getUserProfile() {
+//        LoginServices.getUserProfile { response, error in
+//            guard let responseData = response else {
+//                //                hide banner view if there is error
+//                GlobalFunctions.printToConsole(message: "Fail to fetch user profile")
+//                return
+//            }
+//            do {
+//                let encodedData = try JSONEncoder().encode(responseData.userProfile)
+//                let jsonStr = String(data: encodedData, encoding: String.Encoding.utf8)
+//
+//                UserDefaults.standard.set(jsonStr, forKey: "UserProfileData")
+//            } catch {
+//                GlobalFunctions.printToConsole(message: "Error to store user profile data: \(error.localizedDescription)")
+//            }
+//            GlobalFunctions.printToConsole(message: "User profile data: \(responseData.userProfile)")
+//        }
+//    }
 }
 

@@ -35,7 +35,8 @@ struct UserTypesModel : Codable {
     let created_at : String?
     let updated_at : String?
     let user_data : UserData?
-//    let sergeries : [Sergeries]?
+    let is_default_password: Int?
+    //    let sergeries : [Sergeries]?
 //    let stocks : [Stocks]?
 
 //    For login
@@ -68,6 +69,7 @@ struct UserTypesModel : Codable {
 //        case sergeries = "sergeries"
 //        case stocks = "stocks"
         case user_data = "user_data"
+        case is_default_password = "is_default_password"
     }
 
     init(from decoder: Decoder) throws {
@@ -90,6 +92,7 @@ struct UserTypesModel : Codable {
 //        sergeries = try values.decodeIfPresent([Sergeries].self, forKey: .sergeries)
 //        stocks = try values.decodeIfPresent([Stocks].self, forKey: .stocks)
         user_data = try values.decodeIfPresent(UserData.self, forKey: .user_data)
+        is_default_password = try values.decodeIfPresent(Int.self, forKey: .is_default_password)
     }
 
 }
@@ -106,6 +109,8 @@ struct UserData : Codable {
     let pincode : Int?//String?
     let profile : String?
     let division_id : String?
+    let gender : String?
+    let bio: String?
 
     enum CodingKeys: String, CodingKey {
 
@@ -120,6 +125,8 @@ struct UserData : Codable {
         case pincode = "pincode"
         case profile = "profile"
         case division_id = "division_id"
+        case gender = "gender"
+        case bio = "bio"
     }
 
     init(from decoder: Decoder) throws {
@@ -135,6 +142,30 @@ struct UserData : Codable {
         pincode = try values.decodeIfPresent(Int.self, forKey: .pincode)
         profile = try values.decodeIfPresent(String.self, forKey: .profile)
         division_id = try values.decodeIfPresent(String.self, forKey: .division_id)
+        gender = try values.decodeIfPresent(String.self, forKey: .gender)
+        bio = try values.decodeIfPresent(String.self, forKey: .bio)
     }
 
 }
+
+struct UserProfileResponseModel : Codable {
+    let success : Bool?
+    let message : String?
+    let userProfile : UserData?
+
+    enum CodingKeys: String, CodingKey {
+
+        case success = "success"
+        case message = "message"
+        case userProfile = "data"
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        success = try values.decodeIfPresent(Bool.self, forKey: .success)
+        message = try values.decodeIfPresent(String.self, forKey: .message)
+        userProfile = try values.decodeIfPresent(UserData.self, forKey: .userProfile)
+    }
+
+}
+

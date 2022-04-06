@@ -48,8 +48,8 @@ class StoreFormData {
         //            let predicate = NSPredicate(format: "(creationDate == %@)", Date() as! NSDate)
         //            fetchRequest.predicate = predicate
         do {
-            let userTypesData = try managedContext.fetch(fetchRequest).first as! FormData
-            GlobalFunctions.printToConsole(message: "json str:- \(userTypesData.responseStr)")
+            let userTypesData = try managedContext.fetch(fetchRequest).first as? FormData
+            GlobalFunctions.printToConsole(message: "json str:- \(userTypesData?.responseStr)")
             return userTypesData
         } catch {
             GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
@@ -61,9 +61,9 @@ class StoreFormData {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FormData")
 //        fetchRequest.resultType = .dictionaryResultType
         do {
-            let userTypesData = try managedContext.fetch(fetchRequest).first as! FormData //else {
-//                return nil
-//            }
+            guard let userTypesData = try managedContext.fetch(fetchRequest).first as? FormData else {
+                return nil
+            }
             GlobalFunctions.printToConsole(message: "json fetch fromdata str:- \(userTypesData.responseStr)")
             let jsonData = (userTypesData.responseStr ?? "").data(using: .utf8)!//try JSONEncoder().encode(userTypesData.responseStr!)
 

@@ -20,12 +20,13 @@ class AddSurgeryToCoreData {
             let encodedData = try JSONEncoder().encode(surgeryData)
             let jsonStr = String(data: encodedData, encoding: String.Encoding.utf8)
             
-            let entityFormData = NSEntityDescription.entity(forEntityName: "FormData", in: managedContext)!
-           
+            let entityFormData = NSEntityDescription.entity(forEntityName: "AddSurgeries", in: managedContext)!
+            
             let surgeryObj = NSManagedObject(entity: entityFormData, insertInto: managedContext)
             surgeryObj.setValue(jsonStr, forKey: "addSurgeryStr")
             surgeryObj.setValue(Date(), forKey: "creationDate")
             surgeryObj.setValue(false, forKey: "isSyncedWithServer")
+            surgeryObj.setValue(surgeryData.surgeryId, forKey: "surgeryId")
             
             try managedContext.save()
         } catch {
@@ -34,15 +35,25 @@ class AddSurgeryToCoreData {
     }
     
     func fetchSurgeries() -> [AddSurgeryRequestModel]? {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddSurgery")
-        fetchRequest.resultType = .dictionaryResultType
-        fetchRequest.predicate = NSPredicate(format: "isSyncedWithServer == %@", false)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddSurgeries")
+        fetchRequest.predicate = NSPredicate(format: "isSyncedWithServer == %@", NSNumber(value: false))
         do {
-            let userTypesData = try managedContext.fetch(fetchRequest)
-            let jsonData = try JSONSerialization.data(withJSONObject: userTypesData, options: .prettyPrinted)
-            let userTypeObj = try JSONDecoder().decode([AddSurgeryRequestModel].self, from: jsonData)
-            return userTypeObj
-//            GlobalFunctions.printToConsole(message: "Total fetch userTypes data: \(userTypesData.count)")
+            let surgeryTypesData = try managedContext.fetch(fetchRequest) as? [AddSurgeries]
+            var addedSurgeryArr: [AddSurgeryRequestModel] = []
+            for surgery in surgeryTypesData ?? [] {
+                GlobalFunctions.printToConsole(message: "SurgeryObj: \(surgery.isEqual(AddSurgeries.self))")
+                
+                let jsonData = (surgery.addSurgeryStr ?? "").data(using: .utf8)!
+                var surgeryObj = try JSONDecoder().decode(AddSurgeryRequestModel.self, from: jsonData)
+                
+                //                Convert barcode array
+                let barcodeJsonData = (surgeryObj.barcodes ?? "").data(using: .utf8)!
+                let barcodeObj = try JSONDecoder().decode([BarCodeModel].self, from: barcodeJsonData)
+                surgeryObj.coreDataBarcodes = barcodeObj
+                addedSurgeryArr.append(surgeryObj)
+                GlobalFunctions.printToConsole(message: "SurgeryObj: \(surgeryTypesData?.count)")
+            }
+            return addedSurgeryArr
         } catch {
             GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
         }
@@ -50,12 +61,11 @@ class AddSurgeryToCoreData {
     }
     
     func updateSurgeryStatus(surgeryId: String) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddSurgery")
-        fetchRequest.resultType = .dictionaryResultType
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddSurgeries")
         fetchRequest.predicate = NSPredicate(format: "surgeryId == %@", surgeryId)
         do {
-            let sergeryData = try managedContext.fetch(fetchRequest).first as! AddSurgeryEntity
-            sergeryData.isSyncedWithServer = true
+            let sergeryData = try managedContext.fetch(fetchRequest).first as? AddSurgeries
+            sergeryData?.isSyncedWithServer = true
             try managedContext.save()
         } catch {
             GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
@@ -63,16 +73,14 @@ class AddSurgeryToCoreData {
     }
     
     func deleteSergeryBySurgeryId(surgeryId: String) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddSurgery")
-        fetchRequest.resultType = .dictionaryResultType
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddSurgeries")
         fetchRequest.predicate = NSPredicate(format: "surgeryId == %@", surgeryId)
         do {
-            let surgeryData = try managedContext.fetch(fetchRequest)  as! [NSManagedObject]
-            for surgery in surgeryData {
-                managedContext.delete(surgery)
+            if let sergeryData = try managedContext.fetch(fetchRequest).first as? AddSurgeries {
+                managedContext.delete(sergeryData)
             }
             try managedContext.save()
-            GlobalFunctions.printToConsole(message: "Item deleted successfully.")
+            GlobalFunctions.printToConsole(message: "Deleted Surgery id is: \(surgeryId)")
         } catch {
             GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
         }

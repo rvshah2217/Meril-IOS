@@ -8,6 +8,7 @@
 
 import UIKit
 import iOSDropDown
+import Reachability
 
 class AddSurgerayViewController: BaseViewController {
     @IBOutlet weak var viewBC: UIView!
@@ -18,6 +19,12 @@ class AddSurgerayViewController: BaseViewController {
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var constrainViewHeaderHeight: NSLayoutConstraint!
     @IBOutlet weak var DetailsScrollView: UIScrollView!
+        
+    @IBOutlet weak var genderDropDown: DropDown! {
+        didSet {
+            self.genderDropDown.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+        }
+    }
     
     @IBOutlet weak var txtCity: DropDown! {
         didSet {
@@ -49,11 +56,11 @@ class AddSurgerayViewController: BaseViewController {
         }
     }
     
-    @IBOutlet weak var txtUDT: DropDown! {
-        didSet {
-            self.txtUDT.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-        }
-    }
+//    @IBOutlet weak var txtUDT: DropDown! {
+//        didSet {
+//            self.txtUDT.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+//        }
+//    }
     
     @IBOutlet weak var txtPatientScheme: DropDown! {
         didSet {
@@ -67,7 +74,7 @@ class AddSurgerayViewController: BaseViewController {
     @IBOutlet weak var txtPatientAge: UITextField!
     @IBOutlet weak var txtIpCode: UITextField!
     @IBOutlet weak var btnScanNow: UIButton!
-    
+    @IBOutlet weak var deploymentDateTxt: UITextField!
     
     //    var schemeArr: [Schemes] = []
     //    var udtArr: [Schemes] = []
@@ -79,7 +86,8 @@ class AddSurgerayViewController: BaseViewController {
     var distributorsArr: [Hospitals] = []
     var sales_personsArr: [Hospitals] = []
     var schemeArr: [Schemes] = []
-    var udtArr: [Schemes] = []
+//    var udtArr: [Schemes] = []
+    var genderArr: [String] = ["Male", "Female"]
     
     var selectedCityId: Int?
     var selectedHospitalId: Int?
@@ -87,16 +95,24 @@ class AddSurgerayViewController: BaseViewController {
     var selectedDistributorId: Int?
     var selectedSalesPaersonId: Int?
     var selectedSchemeId: Int?
-    var selectedUdtId: Int?
+//    var selectedUdtId: Int?
+    var selectedGender: String?
     var addSurgeryReqObj: AddSurgeryRequestModel?
-
+    var datePicker: UIDatePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.internetConnectionLost), name: .networkLost, object: nil)
         setUI()
+        self.setDatePicker()
         self.fetchFormData()
         // Do any additional setup after loading the view.
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .networkLost, object: nil)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigation()
@@ -135,36 +151,8 @@ class AddSurgerayViewController: BaseViewController {
         txtDistributor.setPlaceholder(placeHolderStr: "Select Distributor")
         txtSaleperson.setPlaceholder(placeHolderStr: "Select Saleperson")
         txtPatientScheme.setPlaceholder(placeHolderStr: "Select Scheme")
-        txtUDT.setPlaceholder(placeHolderStr: "Select UDT")
-        
-        //        txtCity.attributedPlaceholder = NSAttributedString(
-        //            string: "Select City",
-        //            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        //        )
-        //        txtHospital.attributedPlaceholder = NSAttributedString(
-        //            string: "Select Hospital",
-        //            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        //        )
-        //        txtDoctor.attributedPlaceholder = NSAttributedString(
-        //            string: "Select Doctor",
-        //            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        //        )
-        //        txtDistributor.attributedPlaceholder = NSAttributedString(
-        //            string: "Select Distributor",
-        //            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        //        )
-        //        txtSaleperson.attributedPlaceholder = NSAttributedString(          string: "Select Saleperson",
-        //                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        //        )
-        //
-        //        txtPatientScheme.attributedPlaceholder = NSAttributedString(          string: "Select Scheme",
-        //                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        //        )
-        //
-        //        txtUDT.attributedPlaceholder = NSAttributedString(          string: "Select UDT",
-        //                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        //        )
-        
+//        txtUDT.setPlaceholder(placeHolderStr: "Select UDT")
+        genderDropDown.setPlaceholder(placeHolderStr: "Select Gender")
         
         self.txtCity.rowHeight = 40
         self.txtHospital.rowHeight = 40
@@ -172,23 +160,32 @@ class AddSurgerayViewController: BaseViewController {
         self.txtDistributor.rowHeight = 40
         self.txtSaleperson.rowHeight = 40
         self.txtPatientScheme.rowHeight = 40
-        self.txtUDT.rowHeight = 40
-        
+//        self.txtUDT.rowHeight = 40
+        self.genderDropDown.rowHeight = 40
+
         setRightButton(txtCity, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtHospital, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtDoctor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtDistributor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtSaleperson, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtPatientScheme, image: UIImage(named: "ic_dropdown") ?? UIImage())
-        setRightButton(txtUDT, image: UIImage(named: "ic_dropdown") ?? UIImage())
+//        setRightButton(txtUDT, image: UIImage(named: "ic_dropdown") ?? UIImage())
+        setRightButton(genderDropDown, image: UIImage(named: "ic_dropdown") ?? UIImage())
+
+        deploymentDateTxt.attributedPlaceholder = NSAttributedString(
+            string: "Select deployment date",
+            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
+        )
         
         txtPatientName.attributedPlaceholder = NSAttributedString(
             string: "Patient Name",
             attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
         )
+        
         txtPatientNumber.attributedPlaceholder = NSAttributedString(          string: "Patient Mobile Number",
                                                                               attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
         )
+        
         txtPatientAge.attributedPlaceholder = NSAttributedString(          string: "Patient Age",
                                                                            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
         )
@@ -207,18 +204,39 @@ class AddSurgerayViewController: BaseViewController {
         scrollOuterView.layer.shadowColor = UIColor.black.cgColor
     }
     
-    func setNavigation(){
-        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeaderHeight,title: "Add Surgeray")
-        //        navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        setBackButtononNavigation()
-        pressButtonOnNavigaion { (isBack) in
-            if(isBack){
-            }else{
-                _ =  self.navigationController?.popViewController(animated: true)
-            }
+    func setDatePicker() {
+        let datePickerWidth = self.view.frame.width - 40
+        let datePickerHeight = self.view.frame.height * 0.4
+    datePicker = UIDatePicker(frame: CGRect(x: (self.view.frame.width / 2) - (datePickerWidth / 2), y: (self.view.frame.height / 2) - (datePickerHeight / 2), width: datePickerWidth, height: datePickerHeight))
+        datePicker.datePickerMode = .date
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
         }
+        self.deploymentDateTxt.inputView = datePicker
+        self.datePicker.backgroundColor = .white
+        self.datePicker.addTarget(self, action: #selector(self.handleDatePicker(_:)), for: .valueChanged)
+    }
+    
+    @objc func handleDatePicker(_ sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+//        GlobalFunctions.printToConsole(message: "Selected date: \(dateFormatter.string(from: datePicker.date))")
+        self.deploymentDateTxt.text = dateFormatter.string(from: datePicker.date)
+    }
+    
+    func setNavigation(){
+//        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeaderHeight,title: "Add Surgeray")
+//        //        navigationController?.setNavigationBarHidden(true, animated: false)
+//
+//        setBackButtononNavigation()
+//        pressButtonOnNavigaion { (isBack) in
+//            if(isBack){
+//            }else{
+//                _ =  self.navigationController?.popViewController(animated: true)
+//            }
+//        }
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)
+        self.navigationItem.title = "Add Surgery"
     }
     
     @IBAction func OnClickScanNow(_ sender: UIButton) {
@@ -250,36 +268,23 @@ class AddSurgerayViewController: BaseViewController {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptySalesPersonError, seconds: errorDismissTime)
             return
         }
+       
+        guard let _ = selectedGender else {
+            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyGenderError, seconds: errorDismissTime)
+            return
+        }
         
-        
+        let selectedDate = deploymentDateTxt.text ?? ""
+        if !Validation.sharedInstance.checkLength(testStr: selectedDate) {
+            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDateError, seconds: errorDismissTime)
+        }
         let patientName = txtPatientName.text ?? ""
         let patientNumber = txtPatientNumber.text ?? ""
         let patientAge = txtPatientAge.text ?? ""
         let ipCode = txtIpCode.text ?? ""
-        
-        if !Validation.sharedInstance.checkLength(testStr: patientName) {
-            GlobalFunctions.showToast(controller: self, message: "Please enter patient name.", seconds: errorDismissTime)
-            return
-        }
-        
-        if !Validation.sharedInstance.checkLength(testStr: patientNumber) {
-            GlobalFunctions.showToast(controller: self, message: "Please enter patient number.", seconds: errorDismissTime)
-            return
-        }
-        
-        if !Validation.sharedInstance.checkLength(testStr: patientName) {
-            GlobalFunctions.showToast(controller: self, message: "Please enter patient age.", seconds: errorDismissTime)
-            return
-        }
-        
-        if !Validation.sharedInstance.checkLength(testStr: patientName) {
-            GlobalFunctions.showToast(controller: self, message: "Please enter IP Code.", seconds: errorDismissTime)
-            return
-        }
-        
         let userId = UserDefaults.standard.integer(forKey: "userId")
         let surgeryId = "D\(Date.currentTimeStamp)U\(userId)"
-        addSurgeryReqObj = AddSurgeryRequestModel(cityId: selectedCityId, hospitalId: selectedHospitalId, distributorId: selectedDistributorId, doctorId: selectedDoctorId, surgeryId: surgeryId, schemeId: selectedSchemeId, udtId: selectedUdtId, patientName: patientName, patientMobile: patientNumber, age: Int(patientAge), ipCode: ipCode)
+        addSurgeryReqObj = AddSurgeryRequestModel(cityId: selectedCityId, hospitalId: selectedHospitalId, distributorId: selectedDistributorId, doctorId: selectedDoctorId, surgeryId: surgeryId, schemeId: selectedSchemeId, patientName: patientName, patientMobile: patientNumber, age: Int(patientAge), ipCode: ipCode, salesPersonId: selectedSalesPaersonId, gender: selectedGender, DeploymentDate: selectedDate)
         self.redirectToScannerVC()
         //        If there is no error while validation then redirect to scan the data
         //        let scannerVC = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
@@ -321,6 +326,13 @@ extension AddSurgerayViewController {
     }
     
     func setAllDropDownData(formDataResponse: SurgeryInventoryModel) {
+//        Gender dropdown
+        self.genderDropDown.isEnabled = !self.genderArr.isEmpty
+        self.genderDropDown.optionArray = self.genderArr
+        self.genderDropDown.didSelect { selectedText, index, id in
+            self.selectedGender = self.genderArr[index]
+        }
+        
         //        City dropdown
         self.citiesArr = formDataResponse.cities ?? []
         self.txtCity.isEnabled = !self.citiesArr.isEmpty
@@ -376,14 +388,14 @@ extension AddSurgerayViewController {
         }
         
         //        set scheme array
-        self.udtArr = formDataResponse.udt ?? []
-        self.txtUDT.isEnabled = !self.udtArr.isEmpty
-        self.txtUDT.optionArray = self.udtArr.map({ item -> String in
-            item.udt_name ?? ""
-        })
-        self.txtUDT.didSelect { selectedText, index, id in
-            self.selectedUdtId = self.udtArr[index].id
-        }
+//        self.udtArr = formDataResponse.udt ?? []
+//        self.txtUDT.isEnabled = !self.udtArr.isEmpty
+//        self.txtUDT.optionArray = self.udtArr.map({ item -> String in
+//            item.udt_name ?? ""
+//        })
+//        self.txtUDT.didSelect { selectedText, index, id in
+//            self.selectedUdtId = self.udtArr[index].id
+//        }
     }
     
     //   reload hospitals by city selection
@@ -403,6 +415,7 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
     
     //    Call api to add surgery with scanned barcodes and then redirect to display surgeries
     func submitScannedData() {
+        SHOW_CUSTOM_LOADER()
         let barCodeArr: [BarCodeModel] = UserSessionManager.shared.barCodes
         
         let dict = barCodeArr.compactMap { $0.dict }
@@ -421,36 +434,42 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
         
         convertArrayToJsonString()
         GlobalFunctions.printToConsole(message: "\(addSurgeryReqObj?.barcodes)")
-        self.callAddSurgeryApi()
+        if appDelegate.reachability.connection == .unavailable {
+            self.saveSurgeryToCoreData(onSubmitAction: true)
+        } else {
+            self.callAddSurgeryApi()
+        }
+        
     }
     
     func callAddSurgeryApi() {
         guard let surgeryObj = addSurgeryReqObj else { return }
         SurgeryServices.addSurgery(surgeryObj: surgeryObj) { response, error in
+            HIDE_CUSTOM_LOADER()
             guard let err = error else {
-//                update isSync status of surgery to core data
-                AddSurgeryToCoreData.sharedInstance.updateSurgeryStatus(surgeryId: surgeryObj.surgeryId!)
-                
-                for _ in 0..<5 {
-                    self.saveSurgeryToCoreData()
-                }
 //                Remove scanned barcodes from userdefaults
                 UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
-                self.navigationController?.popViewController(animated: true)
+//                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
                 return
             }
             GlobalFunctions.showToast(controller: self, message: err, seconds: errorDismissTime)
         }
     }
     
-    func saveSurgeryToCoreData() {
+    func saveSurgeryToCoreData(onSubmitAction: Bool = false) {
         guard let surgeryObj = addSurgeryReqObj else { return }
         //        Save records to Core data
         AddSurgeryToCoreData.sharedInstance.saveSurgeryData(surgeryData: surgeryObj)
+        if onSubmitAction {
+            GlobalFunctions.showToast(controller: self, message: "Record saved successfully.", seconds: successDismissTime) {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
     }
     
     @objc func internetConnectionLost() {
-        self.saveSurgeryToCoreData()
+//        self.saveSurgeryToCoreData()
     }
 //
 }

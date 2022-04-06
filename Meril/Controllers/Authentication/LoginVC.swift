@@ -12,19 +12,19 @@ import CoreData
 
 class LoginVC: UIViewController {
     
-    @IBOutlet weak var userTypeTxt: DropDown! {
-        didSet {
-            self.userTypeTxt.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-            self.userTypeTxt.setIcon(imgName: "ic_star")//addImageViewToLeft(imgName: "ic_user")
-        }
-    }
-    
-    @IBOutlet weak var departmentTypeTxt: DropDown! {
-        didSet {
-            self.departmentTypeTxt.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-            self.departmentTypeTxt.setIcon(imgName: "ic_star")//addImageViewToLeft(imgName: "ic_user")
-        }
-    }
+    //    @IBOutlet weak var userTypeTxt: DropDown! {
+    //        didSet {
+    //            self.userTypeTxt.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+    //            self.userTypeTxt.setIcon(imgName: "ic_star")//addImageViewToLeft(imgName: "ic_user")
+    //        }
+    //    }
+    //
+    //    @IBOutlet weak var departmentTypeTxt: DropDown! {
+    //        didSet {
+    //            self.departmentTypeTxt.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+    //            self.departmentTypeTxt.setIcon(imgName: "ic_star")//addImageViewToLeft(imgName: "ic_user")
+    //        }
+    //    }
     
     @IBOutlet weak var userNameTxt: UITextField! {
         didSet {
@@ -45,36 +45,19 @@ class LoginVC: UIViewController {
     }
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var forgotPasswordBtn: UIButton!
-    var userTypesArr: [UserTypesModel] = []
-    var selectedUserTypeId: Int?
+    //    var userTypesArr: [UserTypesModel] = []
+    //    var selectedUserTypeId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUI()
-        self.fetchUserType()
     }
     
     func setUI() {
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)
-
+        
         //        set rounded corner
-        self.userTypeTxt.setViewCorner(radius: self.userTypeTxt.frame.height/2)
-        self.departmentTypeTxt.setViewCorner(radius: self.departmentTypeTxt.frame.height/2)
         self.loginBtn.setViewCorner(radius: self.loginBtn.frame.height/2)
-        
-        //        Set textfield border
-        self.userTypeTxt.addBorderToView(borderWidth: 1.0, borderColor: .white)
-        self.departmentTypeTxt.addBorderToView(borderWidth: 1.0, borderColor: .white)
-        
-        //        set place holder
-        self.userTypeTxt.setPlaceholder(placeHolderStr: "Select Type")
-        self.departmentTypeTxt.setPlaceholder(placeHolderStr: "Select Department")
-                
-        self.userTypeTxt.didSelect { selectedText, index, id in
-            self.selectedUserTypeId = self.userTypesArr[index].id
-        }
-        self.userTypeTxt.rowHeight = 40
-        self.departmentTypeTxt.isHidden = true
         self.forgotPasswordBtn.isHidden = true
     }
     
@@ -90,80 +73,53 @@ class LoginVC: UIViewController {
 extension LoginVC {
     
     func fieldsValidation() {
-        guard let userTypeId = selectedUserTypeId else { return }
+        //        guard let userTypeId = selectedUserTypeId else { return }
         let userNameStr = userNameTxt.text ?? ""
         let passwordStr = passwordTxt.text ?? ""
         
-        if !Validation.sharedInstance.validateUserName(testStr: userNameStr) {
-//TODO:             Display error message
-            return
-        }
-        
-//        if !Validation.sharedInstance.validatePassword(testStr: passwordStr) {
+//        if !Validation.sharedInstance.validateUserName(testStr: userNameStr) {
         if !Validation.sharedInstance.checkLength(testStr: passwordStr) {
-//TODO:             Display error message
+            GlobalFunctions.showToast(controller: self, message: "Please enter username", seconds: errorDismissTime, completionHandler: {})
             return
         }
         
-        let obj = LoginRequestModel(userTypeId: userTypeId, username: userNameStr, password: passwordStr, fcmToken: deviceToken)
+        //        if !Validation.sharedInstance.validatePassword(testStr: passwordStr) {
+        if !Validation.sharedInstance.checkLength(testStr: passwordStr) {
+            GlobalFunctions.showToast(controller: self, message: "Please enter password", seconds: errorDismissTime, completionHandler: {})
+            return
+        }
+        
+        let obj = LoginRequestModel(username: userNameStr, password: passwordStr, fcmToken: deviceToken)
         self.callUserLoginApi(userObj: obj)
     }
     
-    func fetchUserType() {
-        userTypesArr = UserTypeCoreData.sharedInstance.fetchUserTypes() ?? []
-        if self.userTypesArr.isEmpty {
-            self.fetchUserTypesFromServer()
-            return
-        }
-        self.setUserTypeTxtData()
-    }
-    
-    private func fetchUserTypesFromServer() {
-        LoginServices.getUserTypes { responseModel, errorMessage in
-            guard let response = responseModel else {
-                GlobalFunctions.printToConsole(message: "login error: \(errorMessage)")
-                return
-            }
-            self.userTypesArr = response.userTypes ?? []
-            self.setUserTypeTxtData()
-            //                save userTypes to Coredata
-                            self.saveUserTypes()
-        }
-    }
-    
-    private func setUserTypeTxtData() {
-        self.userTypeTxt.isEnabled = !self.userTypesArr.isEmpty
-        self.userTypeTxt.optionArray = self.userTypesArr.map({ item -> String in
-            item.name ?? ""
-        })
-    }
-    
-    private func saveUserTypes() {
-        for user in userTypesArr {
-            UserTypeCoreData.sharedInstance.saveData(userData: user)
-        }
-        UserTypeCoreData.sharedInstance.fetchUserTypes()
-    }
-    
     func callUserLoginApi(userObj: LoginRequestModel) {
+        SHOW_CUSTOM_LOADER()
         LoginServices.userLogin(loginObj: userObj) { loginResponse, errorMessage in
-            
+            HIDE_CUSTOM_LOADER()
             guard let response = loginResponse else {
                 GlobalFunctions.printToConsole(message: "login error: \(errorMessage)")
                 GlobalFunctions.showToast(controller: self, message: errorMessage ?? UserMessages.serverError, seconds: errorDismissTime) { }
                 return
             }
             
-//            store user data into UserDefaults
+            //            store user data into UserDefaults
             UserSessionManager.shared.userDetail = response.loginUserData?.user_data
-//            UserDefaults.standard.set(response.loginUserData?.id, forKey: "userId")
-//            UserDefaults.standard.set(response.loginUserData?.user_type_id, forKey: "userTypeId")
-//            UserDefaults.standard.set(response.loginUserData?.unique_id, forKey: "userName")
+            //            UserDefaults.standard.set(response.loginUserData?.id, forKey: "userId")
+            //            UserDefaults.standard.set(response.loginUserData?.user_type_id, forKey: "userTypeId")
+            //            UserDefaults.standard.set(response.loginUserData?.unique_id, forKey: "userName")
             UserDefaults.standard.set(response.loginUserData?.token, forKey: "headerToken")
             
-//           Redirect to home screen
+            //           Redirect to home screen
             GlobalFunctions.showToast(controller: self, message: "Login successfully", seconds: successDismissTime) {
-                self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
+                if (response.loginUserData?.is_default_password == 1) {
+//                    Redirect to change password
+                    let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
+                    vc.isFromLogin = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
+                }
             }
         }
     }

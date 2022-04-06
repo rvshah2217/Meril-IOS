@@ -24,12 +24,12 @@ class AddInventoryViewController: BaseViewController {
         }
     }
     
-    @IBOutlet weak var txtDoctor: DropDown! {
-        didSet {
-            self.txtDoctor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-        }
-    }
-    
+//    @IBOutlet weak var txtDoctor: DropDown! {
+//        didSet {
+//            self.txtDoctor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+//        }
+//    }
+//
     @IBOutlet weak var txtDistributor: DropDown! {
         didSet {
             self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
@@ -46,27 +46,33 @@ class AddInventoryViewController: BaseViewController {
     @IBOutlet weak var btnScanNow: UIButton!
     
     var hospitalsArr: [Hospitals] = []
-    var doctorsArr: [Hospitals] = []
+//    var doctorsArr: [Hospitals] = []
     var distributorsArr: [Hospitals] = []
     var sales_personsArr: [Hospitals] = []
     
     var selectedHospitalId: Int?
-    var selectedDoctorId: Int?
+//    var selectedDoctorId: Int?
     var selectedDistributorId: Int?
     var selectedSalesPersonId: Int?
-    var addSurgeryReqObj: AddSurgeryRequestModel?
+    var addInventoryReqObj: AddSurgeryRequestModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.internetConnectionLost), name: .networkLost, object: nil)
         setUI()
         self.fetchFormData()
         // Do any additional setup after loading the view.
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .networkLost, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigation()
     }
+    
     //MARK:- Custome Method
     func setUI(){
         self.navigationItem.title = ""
@@ -75,17 +81,6 @@ class AddInventoryViewController: BaseViewController {
             i.backgroundColor = ColorConstant.mainThemeColor
             i.layer.cornerRadius = i.frame.height/2
         }
-//        scrollOuterView.layer.cornerRadius = 20
-//        scrollOuterView.layer.borderWidth = 0.5
-//        scrollOuterView.layer.borderColor = UIColor.lightGray.cgColor
-        
-        //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-        //            let rectShape = CAShapeLayer()
-        //            rectShape.bounds = self.viewBC.frame
-        //            rectShape.position = self.viewBC.center
-        //            rectShape.path = UIBezierPath(roundedRect: self.viewBC.bounds, byRoundingCorners: [.bottomLeft , .bottomRight], cornerRadii: CGSize(width: 50, height: 50)).cgPath
-        //            self.viewBC.layer.mask = rectShape
-        //        }
         viewBC.backgroundColor = ColorConstant.mainThemeColor
         viewBC.addCornerAtBotttoms(radius: 30)
         
@@ -93,18 +88,18 @@ class AddInventoryViewController: BaseViewController {
         self.viewHeader.backgroundColor = ColorConstant.mainThemeColor
         
         txtHospital.setPlaceholder(placeHolderStr: "Select Hospital")
-        txtDoctor.setPlaceholder(placeHolderStr: "Select Doctor")
+//        txtDoctor.setPlaceholder(placeHolderStr: "Select Doctor")
         txtDistributor.setPlaceholder(placeHolderStr: "Select Distributor")
         txtSaleperson.setPlaceholder(placeHolderStr: "Select Saleperson")
         
         
         self.txtHospital.rowHeight = 40
-        self.txtDoctor.rowHeight = 40
+//        self.txtDoctor.rowHeight = 40
         self.txtDistributor.rowHeight = 40
         self.txtSaleperson.rowHeight = 40
         
         setRightButton(txtHospital, image: UIImage(named: "ic_dropdown") ?? UIImage())
-        setRightButton(txtDoctor, image: UIImage(named: "ic_dropdown") ?? UIImage())
+//        setRightButton(txtDoctor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtDistributor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtSaleperson, image: UIImage(named: "ic_dropdown") ?? UIImage())
      
@@ -120,17 +115,18 @@ class AddInventoryViewController: BaseViewController {
     }
     
     func setNavigation(){
-        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeaderHeight,title: "Add Surgeray")
-        //        navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        setBackButtononNavigation()
-        pressButtonOnNavigaion { (isBack) in
-            if(isBack){
-            }else{
-                _ =  self.navigationController?.popViewController(animated: true)
-            }
-        }
+//        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeaderHeight,title: "Add Surgeray")
+//        //        navigationController?.setNavigationBarHidden(true, animated: false)
+//
+//        setBackButtononNavigation()
+//        pressButtonOnNavigaion { (isBack) in
+//            if(isBack){
+//            }else{
+//                _ =  self.navigationController?.popViewController(animated: true)
+//            }
+//        }
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)
+        self.navigationItem.title = "Add Inventory"
     }
     
     @IBAction func OnClickScanNow(_ sender: UIButton) {
@@ -143,11 +139,11 @@ class AddInventoryViewController: BaseViewController {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptyHospitalError, seconds: errorDismissTime)
             return
         }
-        
-        guard let _ = selectedDoctorId else {
-            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDoctorError, seconds: errorDismissTime)
-            return
-        }
+//
+//        guard let _ = selectedDoctorId else {
+//            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDoctorError, seconds: errorDismissTime)
+//            return
+//        }
         
         guard let _ = selectedDistributorId else {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDistributorError, seconds: errorDismissTime)
@@ -161,7 +157,7 @@ class AddInventoryViewController: BaseViewController {
         
         let userId = UserDefaults.standard.integer(forKey: "userId")
         let stockId = "D\(Date.currentTimeStamp)U\(userId)"
-        addSurgeryReqObj = AddSurgeryRequestModel(hospitalId: selectedHospitalId, distributorId: selectedDistributorId, doctorId: selectedDoctorId, salesPersonId: selectedSalesPersonId, stockId: stockId)
+        addInventoryReqObj = AddSurgeryRequestModel(hospitalId: selectedHospitalId, distributorId: selectedDistributorId, salesPersonId: selectedSalesPersonId, stockId: stockId)
         self.redirectToScannerVC()
         //        If there is no error while validation then redirect to scan the data
         //        let scannerVC = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
@@ -204,14 +200,14 @@ extension AddInventoryViewController {
     func setAllDropDownData(formDataResponse: SurgeryInventoryModel) {
         
         //        set doctor array
-        self.doctorsArr = formDataResponse.doctors ?? []
-        self.txtDoctor.isEnabled = !self.doctorsArr.isEmpty
-        self.txtDoctor.optionArray = self.doctorsArr.map({ item -> String in
-            item.fullname ?? ""
-        })
-        self.txtDoctor.didSelect { selectedText, index, id in
-            self.selectedDoctorId = self.doctorsArr[index].id
-        }
+//        self.doctorsArr = formDataResponse.doctors ?? []
+//        self.txtDoctor.isEnabled = !self.doctorsArr.isEmpty
+//        self.txtDoctor.optionArray = self.doctorsArr.map({ item -> String in
+//            item.fullname ?? ""
+//        })
+//        self.txtDoctor.didSelect { selectedText, index, id in
+//            self.selectedDoctorId = self.doctorsArr[index].id
+//        }
         
         //        set distributor array
         self.distributorsArr = formDataResponse.distributors ?? []
@@ -249,6 +245,7 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
     
     // Call api to add Inventory with scanned barcodes and then redirect to display inventories
     func submitScannedData() {
+        SHOW_CUSTOM_LOADER()
         let barCodeArr: [BarCodeModel] = UserSessionManager.shared.barCodes
         
         let dict = barCodeArr.compactMap { $0.dict }
@@ -261,24 +258,47 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
                let theJSONText = String(data: theJSONData,
                                         encoding: String.Encoding.ascii) {
                 print("JSON string = \n\(theJSONText)")
-                addSurgeryReqObj?.barcodes = theJSONText
+                addInventoryReqObj?.barcodes = theJSONText
             }
         }
         
         convertArrayToJsonString()
-        GlobalFunctions.printToConsole(message: "\(addSurgeryReqObj?.barcodes)")
-        self.callAddSurgeryApi()
+        GlobalFunctions.printToConsole(message: "\(addInventoryReqObj?.barcodes)")
+        if appDelegate.reachability.connection == .unavailable {
+            self.saveInventoryToCoreData(onSubmitAction: true)
+        } else {
+        self.callAddInventoryApi()
+        }
     }
     
-    func callAddSurgeryApi() {
-        SurgeryServices.addInventoryStock(surgeryObj: addSurgeryReqObj!) { response, error in
+    func callAddInventoryApi() {
+        guard let inventoryObj = addInventoryReqObj else { return }
+        SurgeryServices.addInventoryStock(surgeryObj: inventoryObj) { response, error in
+            HIDE_CUSTOM_LOADER()
             guard let err = error else {
                 UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
-                self.navigationController?.popViewController(animated: true)
+//                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
                 return
             }
             GlobalFunctions.showToast(controller: self, message: err, seconds: errorDismissTime)
             
         }
+    }
+    
+    func saveInventoryToCoreData(onSubmitAction: Bool = false) {
+        guard let stockObj = addInventoryReqObj else { return }
+        //        Save records to Core data
+        AddStockToCoreData.sharedInstance.saveStockData(stockData: stockObj)
+        if onSubmitAction {
+            HIDE_CUSTOM_LOADER()
+            GlobalFunctions.showToast(controller: self, message: "Record saved successfully.", seconds: successDismissTime) {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
+    }
+    
+    @objc func internetConnectionLost() {
+//        self.saveInventoryToCoreData()
     }
 }

@@ -114,6 +114,10 @@ struct Hospitals : Codable {
 //    For Doctors
     let fullname : String?
     
+//    For inventory and surgeryList
+    let Account_Name: String?
+    let Full_Name: String?//Can't make it common because android demo already given
+
     enum CodingKeys: String, CodingKey {
 
         case id = "id"
@@ -123,6 +127,8 @@ struct Hospitals : Codable {
         case city = "city"
         
         case fullname = "fullname"
+        case Account_Name = "Account_Name"
+        case Full_Name = "Full_Name"
     }
 
     init(from decoder: Decoder) throws {
@@ -134,6 +140,8 @@ struct Hospitals : Codable {
         city = try values.decodeIfPresent(String.self, forKey: .city)
         
         fullname = try values.decodeIfPresent(String.self, forKey: .fullname)
+        Account_Name = try values.decodeIfPresent(String.self, forKey: .Account_Name)
+        Full_Name = try values.decodeIfPresent(String.self, forKey: .Full_Name)
     }
 
 }
@@ -177,40 +185,43 @@ struct Cities : Codable {
 
 struct AddSurgeryRequestModel : Codable {
     
-    let cityId : Int?
-    let hospitalId : Int?
-    let distributorId: Int?
-    let doctorId: Int?
+    var cityId : Int?
+    var hospitalId : Int?
+    var distributorId: Int?
+    var doctorId: Int?
 
-    let schemeId : Int?
-    let surgeryId: String?
-    let udtId: Int?
-    let patientName : String?
-    let patientMobile: String?
-    let age: Int?
+    var schemeId : Int?
+    var surgeryId: String?
+//    var udtId: Int?
+    var patientName : String?
+    var patientMobile: String?
+    var age: Int?
     
-    let ipCode: String?
+    var ipCode: String?
     var barcodes: String?//[BarCodeModel]?
-    let salesPersonId: Int?
-    let stockId: String?
-
-//    init(hospitalId : Int?,  distributorId: Int?, doctorId: Int?, salesPersonId: Int?, stockId: String?, barcodes: String?) {
-//        self.hospitalId = hospitalId
+    var salesPersonId: Int?
+    var stockId: String?
+    var gender: String?
+    var DeploymentDate: String?
+    var coreDataBarcodes: [BarCodeModel]?
+   
+    init(hospitalId : Int?,  distributorId: Int?, salesPersonId: Int?, stockId: String?, barcodes: String? = nil) {
+        self.hospitalId = hospitalId
 //        self.doctorId = doctorId
-//        self.distributorId = distributorId
-//        self.salesPersonId = salesPersonId
-//        self.stockId = stockId
-//        self.barcodes = barcodes
-//    }
+        self.distributorId = distributorId
+        self.salesPersonId = salesPersonId
+        self.stockId = stockId
+        self.barcodes = barcodes
+    }
 //
-    init(cityId : Int? = nil, hospitalId : Int?,  distributorId: Int?, doctorId: Int?, surgeryId: String? = nil, schemeId : Int? = nil, udtId: Int? = nil, patientName : String? = nil, patientMobile: String? = nil, age: Int? = nil, ipCode: String? = nil, barcodes: String? = nil, salesPersonId: Int? = nil, stockId: String? = nil) {
+    init(cityId : Int? = nil, hospitalId : Int?,  distributorId: Int?, doctorId: Int?, surgeryId: String? = nil, schemeId : Int? = nil, patientName : String? = nil, patientMobile: String? = nil, age: Int? = nil, ipCode: String? = nil, barcodes: String? = nil, salesPersonId: Int? = nil, stockId: String? = nil, gender: String? = nil, DeploymentDate: String? = nil) {
         self.cityId = cityId
         self.hospitalId = hospitalId
         self.doctorId = doctorId
         self.distributorId = distributorId
         self.surgeryId = surgeryId
         self.schemeId = schemeId
-        self.udtId = udtId
+//        self.udtId = udtId
         self.patientMobile = patientMobile
         self.age = age
         self.ipCode = ipCode
@@ -218,6 +229,8 @@ struct AddSurgeryRequestModel : Codable {
         self.patientName = patientName
         self.salesPersonId = salesPersonId
         self.stockId = stockId
+        self.gender = gender
+        self.DeploymentDate = DeploymentDate
     }
 }
 
@@ -248,31 +261,36 @@ struct SurgeryListResponseModel : Codable {
 }
 
 struct SurgeryData : Codable {
-    let id : Int?
-    let zoho_id : String?
-    let surgery_id : String?
-    let user_id : String?
-    let unique_id : String?
-    let city_id : String?
-    let hospital_id : String?
-    let distri_id : String?
-    let division_id : String?
-    let patient_name : String?
-    let age : String?
-    let scheme_id : String?
-    let udt_id : String?
-    let ip_code : String?
-    let p_phone : String?
-    let p_email : String?
-    let company_id : String?
-    let manager_id : String?
-    let status : String?
-    let created_at : String?
-    let updated_at : String?
-    let doctor_id : String?
-    let sales_person_id: String?
-    let scans : [Scans]?
-    let stock_id: String?
+    var id : Int?
+    var zoho_id : String?
+    var surgery_id : String?
+    var user_id : Int?
+    var unique_id : String?
+    var city_id : Int?
+    var hospital_id : Int?
+    var distri_id : Int?
+    var division_id : Int?
+    var patient_name : String?
+    var age : Int?
+    var scheme_id : Int?
+    var udt_id : Int?
+    var ip_code : String?
+    var p_phone : String?
+    var p_email : String?
+    var company_id : Int?
+    var manager_id : Int?
+    var status : String?
+    var created_at : String?
+    var updated_at : String?
+    var doctor_id : Int?
+    var sales_person_id: Int?
+    var scans : [Scans] = []
+    var stock_id: String?
+    var hospital: Hospitals?
+    var doctor: Hospitals?
+    var sales_person: Hospitals?
+    
+    var addSurgeryTempObj: AddSurgeryRequestModel?
     
     enum CodingKeys: String, CodingKey {
 
@@ -301,44 +319,56 @@ struct SurgeryData : Codable {
         case scans = "scans"
         case sales_person_id = "sales_person_id"
         case stock_id = "stock_id"
+        case hospital = "hospital"
+        case doctor = "doctor"
+        case sales_person = "sales_person"
     }
 
+    init() { }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
         zoho_id = try values.decodeIfPresent(String.self, forKey: .zoho_id)
         surgery_id = try values.decodeIfPresent(String.self, forKey: .surgery_id)
-        user_id = try values.decodeIfPresent(String.self, forKey: .user_id)
+        user_id = try values.decodeIfPresent(Int.self, forKey: .user_id)
         unique_id = try values.decodeIfPresent(String.self, forKey: .unique_id)
-        city_id = try values.decodeIfPresent(String.self, forKey: .city_id)
-        hospital_id = try values.decodeIfPresent(String.self, forKey: .hospital_id)
-        distri_id = try values.decodeIfPresent(String.self, forKey: .distri_id)
-        division_id = try values.decodeIfPresent(String.self, forKey: .division_id)
+        city_id = try values.decodeIfPresent(Int.self, forKey: .city_id)
+        hospital_id = try values.decodeIfPresent(Int.self, forKey: .hospital_id)
+        distri_id = try values.decodeIfPresent(Int.self, forKey: .distri_id)
+        division_id = try values.decodeIfPresent(Int.self, forKey: .division_id)
         patient_name = try values.decodeIfPresent(String.self, forKey: .patient_name)
-        age = try values.decodeIfPresent(String.self, forKey: .age)
-        scheme_id = try values.decodeIfPresent(String.self, forKey: .scheme_id)
-        udt_id = try values.decodeIfPresent(String.self, forKey: .udt_id)
+        age = try values.decodeIfPresent(Int.self, forKey: .age)
+        scheme_id = try values.decodeIfPresent(Int.self, forKey: .scheme_id)
+        udt_id = try values.decodeIfPresent(Int.self, forKey: .udt_id)
         ip_code = try values.decodeIfPresent(String.self, forKey: .ip_code)
         p_phone = try values.decodeIfPresent(String.self, forKey: .p_phone)
         p_email = try values.decodeIfPresent(String.self, forKey: .p_email)
-        company_id = try values.decodeIfPresent(String.self, forKey: .company_id)
-        manager_id = try values.decodeIfPresent(String.self, forKey: .manager_id)
+        company_id = try values.decodeIfPresent(Int.self, forKey: .company_id)
+        manager_id = try values.decodeIfPresent(Int.self, forKey: .manager_id)
         status = try values.decodeIfPresent(String.self, forKey: .status)
-        let currentDate: String? = try values.decodeIfPresent(String.self, forKey: .created_at)
-        created_at = convertStringToDateStr(str: currentDate)
+//        if appDelegate.reachability.connection == .unavailable {
+//            created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
+//        } else {
+            let currentDate: String? = try values.decodeIfPresent(String.self, forKey: .created_at)
+            created_at = (convertStringToDateStr(str: currentDate) == nil) ? currentDate : convertStringToDateStr(str: currentDate)
+//        }
         updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
-        doctor_id = try values.decodeIfPresent(String.self, forKey: .doctor_id)
-        scans = try values.decodeIfPresent([Scans].self, forKey: .scans)
-        sales_person_id = try values.decodeIfPresent(String.self, forKey: .sales_person_id)
+        doctor_id = try values.decodeIfPresent(Int.self, forKey: .doctor_id)
+        scans = try values.decodeIfPresent([Scans].self, forKey: .scans) ?? []
+        sales_person_id = try values.decodeIfPresent(Int.self, forKey: .sales_person_id)
         stock_id = try values.decodeIfPresent(String.self, forKey: .stock_id)
+        hospital = try values.decodeIfPresent(Hospitals.self, forKey: .hospital)
+        doctor = try values.decodeIfPresent(Hospitals.self, forKey: .doctor)
+        sales_person = try values.decodeIfPresent(Hospitals.self, forKey: .sales_person)
     }
 }
 
 struct Scans : Codable {
     let id : Int?
     let zoho_id : String?
-    let surgery_id : String?
-    let stock_id : String?
+    let surgery_id : Int?
+    let stock_id : Int?
     let barcode : String?
     let product_code : String?
     let gtin : String?
@@ -350,7 +380,8 @@ struct Scans : Codable {
     let created_at : String?
     let updated_at : String?
     let product_data : Product_data?
-
+    var status: String? = "invalid_barcode"
+    
     enum CodingKeys: String, CodingKey {
 
         case id = "id"
@@ -368,14 +399,15 @@ struct Scans : Codable {
         case created_at = "created_at"
         case updated_at = "updated_at"
         case product_data = "product_data"
+        case status = "status"
     }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
         zoho_id = try values.decodeIfPresent(String.self, forKey: .zoho_id)
-        surgery_id = try values.decodeIfPresent(String.self, forKey: .surgery_id)
-        stock_id = try values.decodeIfPresent(String.self, forKey: .stock_id)
+        surgery_id = try values.decodeIfPresent(Int.self, forKey: .surgery_id)
+        stock_id = try values.decodeIfPresent(Int.self, forKey: .stock_id)
         barcode = try values.decodeIfPresent(String.self, forKey: .barcode)
         product_code = try values.decodeIfPresent(String.self, forKey: .product_code)
         gtin = try values.decodeIfPresent(String.self, forKey: .gtin)
@@ -385,6 +417,7 @@ struct Scans : Codable {
         scan_datetime = try values.decodeIfPresent(String.self, forKey: .scan_datetime)
         serial_no = try values.decodeIfPresent(String.self, forKey: .serial_no)
         created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
+        status = try values.decodeIfPresent(String.self, forKey: .status)
         updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
         product_data = try values.decodeIfPresent(Product_data.self, forKey: .product_data)
     }
@@ -413,7 +446,7 @@ struct Product_data : Codable {
     let uom : String?
     let segment : String?
     let speciality : String?
-    let company_id : String?
+    let company_id : Int?
     let hsn_code_short : String?
     let hsn_code : String?
     let created_at : String?
@@ -472,7 +505,7 @@ struct Product_data : Codable {
         uom = try values.decodeIfPresent(String.self, forKey: .uom)
         segment = try values.decodeIfPresent(String.self, forKey: .segment)
         speciality = try values.decodeIfPresent(String.self, forKey: .speciality)
-        company_id = try values.decodeIfPresent(String.self, forKey: .company_id)
+        company_id = try values.decodeIfPresent(Int.self, forKey: .company_id)
         hsn_code_short = try values.decodeIfPresent(String.self, forKey: .hsn_code_short)
         hsn_code = try values.decodeIfPresent(String.self, forKey: .hsn_code)
         created_at = try values.decodeIfPresent(String.self, forKey: .created_at)

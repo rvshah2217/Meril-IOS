@@ -20,18 +20,48 @@ class HomeVC: UIViewController {
     @IBOutlet weak var displayInventoriesBtn: UIButton!
     @IBOutlet weak var syncDataBtn: UIButton!
     
+    var bannerArr: [UserTypesModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.stopSyncButtonAnimation), name: .stopSyncBtnAnimation, object: nil)
         // Do any additional setup after loading the view.
         self.setNavBar()
         self.setUI()
         self.fetchBanners()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .stopSyncBtnAnimation, object: nil)
+    }
+    
     private func setNavBar() {
         let menuBtn = UIBarButtonItem(image: UIImage(named: "ic_menu"), style: .plain, target: self, action: #selector(self.sideMenuBtnPressed))
         self.navigationItem.leftBarButtonItem = menuBtn
+        
+        let profileBtn = UIBarButtonItem(image: UIImage(named: "ic_homeProfile"), style: .plain, target: self, action: #selector(self.profileBtnPressed))
+        self.navigationItem.rightBarButtonItem = profileBtn
+        
         self.navigationItem.title = ""
+        self.navigationItem.titleView = navTitleView()
+
+        //Set navigation header
+        func navTitleView() -> UIView {
+            let titleView = UIView(frame: CGRect(x: (DeviceConstant.deviceWidth / 2) - 70, y: 0, width: 130, height: 40))
+            
+            let logo = UIImage(named: "ic_launchIcon")
+            let imageView = UIImageView(image: logo)
+            imageView.clipsToBounds = true
+            imageView.contentMode = .scaleAspectFit
+            imageView.frame = titleView.bounds
+            
+            titleView.addSubview(imageView)
+            titleView.backgroundColor = ColorConstant.mainThemeColor
+            imageView.frame.size.height = 25
+            imageView.frame.origin.y = 7.5
+            return titleView
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,24 +94,57 @@ class HomeVC: UIViewController {
         imageSlidesView.activityIndicator = DefaultActivityIndicator()
         imageSlidesView.contentMode = .scaleToFill
         imageSlidesView.contentScaleMode = .scaleToFill
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.bannerImageViewTapped))
+        imageSlidesView.addGestureRecognizer(gestureRecognizer)
     }
     
     @objc func sideMenuBtnPressed() {        
         self.sideMenuController?.toggleLeftView()
     }
     
+    @objc func profileBtnPressed() {
+        let profileVC = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
+        self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
     func fetchBanners() {
-        HomeServices.getBannerList { response, error in
-            guard let responseData = response else {
-                //                hide banner view if there is error
-                return
+        SHOW_CUSTOM_LOADER()
+//        Fetch banners from local database
+        bannerArr = HomeBanners_CoreData.sharedInstance.fetchBanners() ?? []
+//        if it is empty then fetch it from server
+        if bannerArr.isEmpty {
+            HomeServices.getBannerList { response, error in
+                HIDE_CUSTOM_LOADER()
+                guard let responseData = response else {
+                    //                hide banner view if there is error
+                    return
+                }
+                self.bannerArr = responseData.userTypes ?? []
+    //            save bannerresponse to coreData
+                HomeBanners_CoreData.sharedInstance.saveBanners(schemeData: responseData.userTypes ?? [])
+                self.setBannerImages()
             }
-            
-            var images: [SDWebImageSource] = []
-            for item in responseData.userTypes ?? [] {
-                images.append(SDWebImageSource(urlString: item.image ?? "")!)
+            return
+        }
+        HIDE_CUSTOM_LOADER()
+        self.setBannerImages()
+    }
+    
+    func setBannerImages() {
+        var images: [SDWebImageSource] = []
+        for item in bannerArr {
+            images.append(SDWebImageSource(urlString: item.image ?? "")!)
+        }
+        self.imageSlidesView.setImageInputs(images)
+    }
+    
+//    Handle banner click
+    @objc func bannerImageViewTapped() {
+        let selectedIndex = self.imageSlidesView.currentPage
+        if let urlStr = bannerArr[selectedIndex].link, let url = URL(string: urlStr) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.openURL(url)
             }
-            self.imageSlidesView.setImageInputs(images)
         }
     }
 }
@@ -111,7 +174,14 @@ extension HomeVC {
     }
     
     @IBAction func syncDataBtnClicked(_ sender: Any) {
+        self.syncDataBtn.imageView?.rotate()
+        AddSurgeryInventory().fetchSurgeryBySyncStatus()
     }
     
+    @objc func stopSyncButtonAnimation() {
+            // Put your code which should be executed with a delay here
+            self.syncDataBtn.imageView?.stopRotation()
+    }
 }
+
 

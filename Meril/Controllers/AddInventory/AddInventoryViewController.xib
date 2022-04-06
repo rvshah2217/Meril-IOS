@@ -16,7 +16,6 @@
                 <outlet property="constrainViewHeaderHeight" destination="EYe-hM-Wmn" id="l3h-Dd-S80"/>
                 <outlet property="scrollOuterView" destination="wND-qX-u4i" id="bb1-VY-TWK"/>
                 <outlet property="txtDistributor" destination="Mlf-uX-ddH" id="Hta-Wz-BPu"/>
-                <outlet property="txtDoctor" destination="5Ht-lS-l21" id="V8v-cI-HcK"/>
                 <outlet property="txtHospital" destination="HRs-C9-Nq4" id="Opw-jW-Q8d"/>
                 <outlet property="txtSaleperson" destination="aAg-OV-8SZ" id="zLx-v6-lKI"/>
                 <outlet property="view" destination="ibk-R4-4Vj" id="yS9-Sy-Yjv"/>
@@ -25,7 +24,6 @@
                 <outletCollection property="collectionViewBackground" destination="y6X-uz-SJq" collectionClass="NSMutableArray" id="bZP-MM-VML"/>
                 <outletCollection property="collectionViewBackground" destination="MUW-Cm-z82" collectionClass="NSMutableArray" id="xlX-hq-wQB"/>
                 <outletCollection property="collectionViewBackground" destination="RfY-1h-GzG" collectionClass="NSMutableArray" id="Qnu-lA-fab"/>
-                <outletCollection property="collectionViewBackground" destination="J21-Bh-aUp" collectionClass="NSMutableArray" id="A8I-xG-HJe"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -54,10 +52,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="384" height="803"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl0-JG-cqn">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="400"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="340"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2fm-uv-MRV">
-                                                    <rect key="frame" x="20" y="40" width="344" height="225"/>
+                                                    <rect key="frame" x="20" y="40" width="344" height="165"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6X-uz-SJq">
                                                             <rect key="frame" x="0.0" y="0.0" width="344" height="45"/>
@@ -79,27 +77,8 @@
                                                                 <constraint firstItem="HRs-C9-Nq4" firstAttribute="top" secondItem="y6X-uz-SJq" secondAttribute="top" id="LPG-bV-gWe"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J21-Bh-aUp">
-                                                            <rect key="frame" x="0.0" y="60" width="344" height="45"/>
-                                                            <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Doctor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Ht-lS-l21" customClass="DropDown" customModule="iOSDropDown">
-                                                                    <rect key="frame" x="15" y="0.0" width="324" height="45"/>
-                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
-                                                                </textField>
-                                                            </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <constraints>
-                                                                <constraint firstItem="5Ht-lS-l21" firstAttribute="leading" secondItem="J21-Bh-aUp" secondAttribute="leading" constant="15" id="Zbv-qz-NTs"/>
-                                                                <constraint firstItem="5Ht-lS-l21" firstAttribute="top" secondItem="J21-Bh-aUp" secondAttribute="top" id="cII-ZA-GA3"/>
-                                                                <constraint firstAttribute="bottom" secondItem="5Ht-lS-l21" secondAttribute="bottom" id="eeh-bd-my0"/>
-                                                                <constraint firstAttribute="trailing" secondItem="5Ht-lS-l21" secondAttribute="trailing" constant="5" id="hlI-GH-sD6"/>
-                                                            </constraints>
-                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUW-Cm-z82">
-                                                            <rect key="frame" x="0.0" y="120" width="344" height="45"/>
+                                                            <rect key="frame" x="0.0" y="60" width="344" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Distributor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mlf-uX-ddH" customClass="DropDown" customModule="iOSDropDown">
                                                                     <rect key="frame" x="15" y="0.0" width="324" height="45"/>
@@ -118,7 +97,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfY-1h-GzG">
-                                                            <rect key="frame" x="0.0" y="180" width="344" height="45"/>
+                                                            <rect key="frame" x="0.0" y="120" width="344" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Saleperson" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aAg-OV-8SZ" customClass="DropDown" customModule="iOSDropDown">
                                                                     <rect key="frame" x="15" y="0.0" width="324" height="45"/>
@@ -138,13 +117,11 @@
                                                         </view>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="MUW-Cm-z82" firstAttribute="height" secondItem="J21-Bh-aUp" secondAttribute="height" id="1Vc-zX-OVu"/>
                                                         <constraint firstItem="RfY-1h-GzG" firstAttribute="height" secondItem="MUW-Cm-z82" secondAttribute="height" id="F5z-dy-yCy"/>
-                                                        <constraint firstItem="J21-Bh-aUp" firstAttribute="height" secondItem="y6X-uz-SJq" secondAttribute="height" id="icd-je-BIm"/>
                                                     </constraints>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="604-pY-tH3">
-                                                    <rect key="frame" x="102" y="315" width="180" height="45"/>
+                                                    <rect key="frame" x="102" y="255" width="180" height="45"/>
                                                     <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="fLU-2p-43l"/>

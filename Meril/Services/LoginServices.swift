@@ -80,3 +80,24 @@ class LoginServices {
         }
     }
 }
+
+extension LoginServices {
+    //    Fetch user types
+    static func getUserProfile(completionHandler: @escaping (UserProfileResponseModel?, _ error: String?) -> ()) {
+        
+        //        let params: [String:Any] = [:]
+        APIManager.shared().call(for: UserProfileResponseModel.self, type: EndPointsItem.getProfile) { (responseData, error) in
+            
+            guard let response = responseData else {
+                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                return completionHandler(nil, error?.body)
+            }
+            //Check if server return success response or not
+            if response.success ?? false {
+                return completionHandler(response, nil)
+            } else {
+                return completionHandler(nil, response.message ?? UserMessages.serverError)
+            }
+        }
+    }
+}

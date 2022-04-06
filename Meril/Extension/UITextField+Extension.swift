@@ -42,6 +42,19 @@ extension UITextField {
 
 extension UIView {
     
+    func rotate() {
+           let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+           rotation.toValue = NSNumber(value: Double.pi * 2)
+           rotation.duration = 4
+           rotation.isCumulative = true
+           rotation.repeatCount = Float.greatestFiniteMagnitude
+           self.layer.add(rotation, forKey: "rotationAnimation")
+       }
+    
+    func stopRotation() {
+        self.layer.removeAnimation(forKey: "rotationAnimation")
+    }
+    
     func addShadowPath(radius: CGFloat){
         self.layer.cornerRadius = radius
 //        self.borderColor = UIColor.colorFromHex("#cccccc")
@@ -112,4 +125,8 @@ extension Dictionary {
 
 extension Notification.Name {
     static let networkLost = Notification.Name("InternetConnectionLost")
+    static let surgeryAdded = Notification.Name("SurgeryAddedNotification")
+    static let stockAdded = Notification.Name("StockAddedNotification")
+    static let stopSyncBtnAnimation = Notification.Name("stopSyncBtnAnimation")
 }
+

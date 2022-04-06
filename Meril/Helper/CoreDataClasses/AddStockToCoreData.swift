@@ -1,0 +1,87 @@
+//
+//  AddStockToCoreData.swift
+//  Meril
+//
+//  Created by Nidhi Suhagiya on 06/04/22.
+//
+
+import CoreData
+
+class AddStockToCoreData {
+    
+    static let sharedInstance = AddStockToCoreData()
+    
+    let managedContext = appDelegate.persistentContainer.viewContext
+    
+    func saveStockData(stockData: AddSurgeryRequestModel) {
+        
+        do {
+            let encodedData = try JSONEncoder().encode(stockData)
+            let jsonStr = String(data: encodedData, encoding: String.Encoding.utf8)
+            
+            let entityFormData = NSEntityDescription.entity(forEntityName: "AddStock", in: managedContext)!
+            
+            let surgeryObj = NSManagedObject(entity: entityFormData, insertInto: managedContext)
+            surgeryObj.setValue(jsonStr, forKey: "addStockStr")
+            surgeryObj.setValue(Date(), forKey: "creationDate")
+            surgeryObj.setValue(false, forKey: "isSyncedWithServer")
+            surgeryObj.setValue(stockData.stockId, forKey: "stockId")
+            
+            try managedContext.save()
+        } catch {
+            GlobalFunctions.printToConsole(message: "Unable to save stock data: \(error.localizedDescription)")
+        }
+    }
+    
+    func fetchStocks() -> [AddSurgeryRequestModel]? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddStock")
+        fetchRequest.predicate = NSPredicate(format: "isSyncedWithServer == %@", NSNumber(value: false))
+        do {
+            let surgeryTypesData = try managedContext.fetch(fetchRequest) as? [AddStock]
+            var addedSurgeryArr: [AddSurgeryRequestModel] = []
+            for surgery in surgeryTypesData ?? [] {
+                GlobalFunctions.printToConsole(message: "stock obj: \(surgery.isEqual(AddSurgeries.self))")
+                
+                let jsonData = (surgery.addStockStr ?? "").data(using: .utf8)!
+                var surgeryObj = try JSONDecoder().decode(AddSurgeryRequestModel.self, from: jsonData)
+                
+                //                Convert barcode array
+                let barcodeJsonData = (surgeryObj.barcodes ?? "").data(using: .utf8)!
+                let barcodeObj = try JSONDecoder().decode([BarCodeModel].self, from: barcodeJsonData)
+                surgeryObj.coreDataBarcodes = barcodeObj
+                addedSurgeryArr.append(surgeryObj)
+                GlobalFunctions.printToConsole(message: "StockObj: \(surgeryTypesData?.count)")
+            }
+            return addedSurgeryArr
+        } catch {
+            GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
+        }
+        return nil
+    }
+    
+    func updateStockStatus(stockId: String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddStock")
+        fetchRequest.predicate = NSPredicate(format: "stockId == %@", stockId)
+        do {
+            let sergeryData = try managedContext.fetch(fetchRequest).first as? AddStock
+            sergeryData?.isSyncedWithServer = true
+            try managedContext.save()
+        } catch {
+            GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
+        }
+    }
+    
+    func deleteStockByStockId(stockId: String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddStock")
+        fetchRequest.predicate = NSPredicate(format: "stockId == %@", stockId)
+        do {
+            let sergeryData = try managedContext.fetch(fetchRequest).first as? AddStock
+            managedContext.delete(sergeryData!)
+            try managedContext.save()
+            GlobalFunctions.printToConsole(message: "Deleted Surgery id is: \(stockId)")
+        } catch {
+            GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
+        }
+    }
+}
+

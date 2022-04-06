@@ -19,6 +19,8 @@ class ChangePasswordViewController: BaseViewController {
     @IBOutlet weak var btnSubmit: UIButton!
     @IBOutlet var collectionTextField: [UITextField]!
 
+    var isFromLogin: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -59,11 +61,13 @@ class ChangePasswordViewController: BaseViewController {
     func setNavigation(){
         settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeaderHeight,title: "Change password")
         navigationController?.setNavigationBarHidden(true, animated: false)
-        setBackButtononNavigation()
-        pressButtonOnNavigaion { (isBack) in
-            if(isBack){
-            }else{
-                _ =  self.navigationController?.popViewController(animated: true)
+        if !isFromLogin {
+            setBackButtononNavigation()
+            pressButtonOnNavigaion { (isBack) in
+                if(isBack){
+                }else{
+                    _ =  self.navigationController?.popViewController(animated: true)
+                }
             }
         }
     }
@@ -105,7 +109,11 @@ extension ChangePasswordViewController{
             if isSuccess{
                 GlobalFunctions.showToast(controller: self, message: "Password change successfully", seconds: errorDismissTime)
                 DispatchQueue.main.asyncAfter(deadline: .now() + errorDismissTime + 0.5){
-                    self.navigationController?.popViewController(animated: true)
+                    if self.isFromLogin {
+                        self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }                    
                 }
                 
             }else{

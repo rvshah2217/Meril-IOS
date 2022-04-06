@@ -19,15 +19,14 @@ class BarCodeScannerVC: UIViewController {
     var captureSession:AVCaptureSession!
     var videoPreviewLayer:AVCaptureVideoPreviewLayer!
     var isFromAddSurgery: Bool = false
+    var isBarCodeAvailable: Bool = false
     weak var delegate: BarCodeScannerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        TODO: this is temporary
-        UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
-        self.navigationController?.navigationBar.backgroundColor = ColorConstant.mainThemeColor
-        self.navigationItem.title = "Scan"
+        setNavBar()
+////        TODO: this is temporary
+//        UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
         self.setBackCamera()
 //        checkCameraPermission()
     }
@@ -38,6 +37,33 @@ class BarCodeScannerVC: UIViewController {
 
         if (captureSession?.isRunning == false) {
             captureSession.startRunning()
+        }
+    }
+    
+    func setNavBar() {
+        self.navigationController?.navigationBar.backgroundColor = ColorConstant.mainThemeColor
+        self.navigationItem.title = "Scan"
+
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_back"), style: .plain, target: self, action: #selector(self.backButtonPressed))
+    }
+    
+    @objc func backButtonPressed() {
+        if (captureSession?.isRunning == true) {
+            captureSession.stopRunning()
+        }
+        if isBarCodeAvailable {
+            let alertController = UIAlertController(title: "Warning", message: "Would you like to save data?", preferredStyle: .alert)
+            let yesAction = UIAlertAction(title: "YES", style: .default) { _ in
+                self.submitScannedBarCodes()
+            }
+            let noAction = UIAlertAction(title: "NO", style: .default) { _ in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alertController.addAction(yesAction)
+            alertController.addAction(noAction)
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -67,7 +93,8 @@ class BarCodeScannerVC: UIViewController {
                print("Access authorized")
            case .denied, .restricted:
                print("restricted")
-
+           default:
+               print("Miscellaneous")
            }
     }
     
@@ -125,35 +152,76 @@ extension BarCodeScannerVC: AVCaptureMetadataOutputObjectsDelegate {
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
-            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            barCodeFound(code: stringValue)
+            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
+//            barCodeFound(code: stringValue)
+            
+//            If network available then check barcode is valid or not, otherwise store it into local database or core data
+            if appDelegate.reachability.connection == .unavailable {
+                self.saveBarCodeToUserDefaults(code: stringValue)
+            } else {
+                self.checkBarCodeStatus(scannedBarCode: stringValue)
+            }
         }
         
         dismiss(animated: true)
     }
     
-    func barCodeFound(code: String) {
-        print(code)
-        print(UserDefaults.standard.array(forKey: "scannedBarcodes"))
+//    func barCodeFound(code: String) {
+//        print(code)
+//        print(UserDefaults.standard.array(forKey: "scannedBarcodes"))
+//        self.checkBarCodeStatus(scannedBarCode: code)
+//    }
+    
+    func checkBarCodeStatus(scannedBarCode: String) {
+        ShowLoaderWithMessage(message: "Please wait...")
+        SurgeryServices.checkBarcodeStatus(barCode: scannedBarCode) { response, error in
+            HIDE_CUSTOM_LOADER()
+            guard let responseData = response else {
+                self.showInvalidBarCodeError()
+                return
+            }
+
+            if let barCodeStatus = responseData.barCodeStatusModel, barCodeStatus.status != "invalid_barcode" {
+                self.saveBarCodeToUserDefaults(code: scannedBarCode)
+            } else {
+                self.showInvalidBarCodeError()
+            }
+        }
+    }
+    
+    func showInvalidBarCodeError() {
+        GlobalFunctions.showToast(controller: self, message: "Invalid barcode. Please scan again", seconds: errorDismissTime) {
+            self.captureSession.startRunning()
+        }
+    }
+    
+    func saveBarCodeToUserDefaults(code: String) {
+        isBarCodeAvailable = true
         var currentStoredArr: [BarCodeModel] = UserSessionManager.shared.barCodes//UserDefaults.standard.array(forKey: "scannedBarcodes") as? [String] ?? []
-        GlobalFunctions.printToConsole(message: "Total stored barcodes: \(currentStoredArr.count)")
-        if ((currentStoredArr.count > 2) && (isFromAddSurgery)) {
+//        When user scan for Surgery then he/she allows to scan maximum 10 barcodes
+        if ((currentStoredArr.count > 0) && (isFromAddSurgery)) {
+            openScanAgainDialog(isShowWarning: true)
             return
         }
         currentStoredArr.append(BarCodeModel(barcode: code, dateTime: convertDateToString()))
         UserSessionManager.shared.barCodes = currentStoredArr
-//        currentStoredArr.append(code)
-//        UserDefaults.standard.set(currentStoredArr, forKey: "scannedBarcodes")
-        openScanAgainDialog()
-//        captureSession.startRunning()
+        openScanAgainDialog(isShowWarning: false)
+
     }
     
-    func openScanAgainDialog() {
+    func openScanAgainDialog(isShowWarning: Bool) {
         let popUpVC = mainStoryboard.instantiateViewController(withIdentifier: "ScanAgainPopUpVC") as! ScanAgainPopUpVC
         popUpVC.delegate = self
         self.addChild(popUpVC)
         popUpVC.view.frame = CGRect(x: 0, y: 0, width: DeviceConstant.deviceWidth, height: self.view.frame.height)
         self.view.addSubview(popUpVC.view)
+        if isShowWarning {
+            popUpVC.successMsgLbl.text = "You are not allowed to scan more than 10 barcodes."
+            popUpVC.askScanAgainLbl.text = "Would you like to submit your data?"
+            popUpVC.askScanAgainLbl.numberOfLines = 2
+            popUpVC.titleLbl.text = "Warning"
+            popUpVC.scanAgainBtn.setTitle("Cancel", for: .normal)
+        }
         popUpVC.didMove(toParent: self)
     }
         
@@ -162,7 +230,6 @@ extension BarCodeScannerVC: AVCaptureMetadataOutputObjectsDelegate {
 extension BarCodeScannerVC: ScanAgainViewDelegate {
   
     func submitScannedBarCodes() {
-//        TODO: submit stored barcodes
         delegate?.submitScannedData()
     }
     

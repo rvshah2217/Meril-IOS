@@ -123,6 +123,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="closeBtn" destination="gfe-ZP-ta4" id="M6W-I7-lWt"/>
                         <outlet property="tableView" destination="SQ0-gv-Qes" id="CAh-Mf-4zt"/>
                         <outlet property="userEmailLbl" destination="fM4-X8-Hlu" id="v4M-k8-oBd"/>
                         <outlet property="userNameLbl" destination="9kX-uW-AST" id="0uy-g5-TdH"/>

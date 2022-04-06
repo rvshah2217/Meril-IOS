@@ -30,15 +30,20 @@ class PrivacyPolicyViewController: BaseViewController {
     
     //MARK:- Custome Method
     func setUI(){
-        self.navigationItem.title = pageName == .some(.AboutUs) ? "About Us" : "Privacy Policy"        
-//        self.viewHeader.backgroundColor = ColorConstant.mainThemeColor
+        self.navigationItem.title = pageName == .some(.AboutUs) ? "About Us" : "Privacy Policy"
+        //        self.viewHeader.backgroundColor = ColorConstant.mainThemeColor
         
-        if pageName == .some(.AboutUs){
-            txtView.text = appDelegate.settingsData?.app_desc
-        }else{
-            txtView.text = appDelegate.settingsData?.privay_policy
+        let settingsData = UserDefaults.standard.string(forKey: "settingsData")
+        let jsonData = (settingsData ?? "").data(using: .utf8)!
+        if let settingsInfo = try? JSONDecoder().decode(SettingsData.self, from: jsonData) {
+            if pageName == .some(.AboutUs){
+                txtView.text = settingsInfo.app_desc
+            }else{
+                txtView.text = settingsInfo.privay_policy
+            }
         }
     }
+    
     func setNavigation(){
 //        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeight,title: pageName == .some(.AboutUs) ? "About Us" : "Privacy Policy")
         navigationController?.setNavigationBarHidden(true, animated: false)

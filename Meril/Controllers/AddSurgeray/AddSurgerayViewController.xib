@@ -14,6 +14,8 @@
                 <outlet property="DetailsScrollView" destination="Sl7-Qh-p72" id="uRy-fe-zV0"/>
                 <outlet property="btnScanNow" destination="DRS-Kp-mwb" id="egw-Jt-dsa"/>
                 <outlet property="constrainViewHeaderHeight" destination="fpa-6D-2Eq" id="ERu-cH-0WJ"/>
+                <outlet property="deploymentDateTxt" destination="OtE-1N-nrT" id="ULp-Xa-Axb"/>
+                <outlet property="genderDropDown" destination="fbC-fF-lAI" id="lPQ-UZ-b02"/>
                 <outlet property="scrollOuterView" destination="se9-XT-gHi" id="YSZ-Af-w0T"/>
                 <outlet property="txtCity" destination="5E5-RB-K1P" id="tJy-UX-1lV"/>
                 <outlet property="txtDistributor" destination="6qd-g9-Bnd" id="DAZ-f5-vdR"/>
@@ -25,7 +27,6 @@
                 <outlet property="txtPatientNumber" destination="OiS-Dq-TRt" id="Kku-Zg-w2o"/>
                 <outlet property="txtPatientScheme" destination="krF-kS-3Th" id="Dj8-uv-64b"/>
                 <outlet property="txtSaleperson" destination="IuG-Lq-84X" id="emk-oS-aUq"/>
-                <outlet property="txtUDT" destination="iHG-cw-Peb" id="xTK-hr-JN6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewBC" destination="DrX-y8-Eie" id="QvO-lE-mxZ"/>
                 <outlet property="viewHeader" destination="kYN-VD-k8l" id="gM3-qX-Xa3"/>
@@ -39,7 +40,8 @@
                 <outletCollection property="collectionViewBoarder" destination="NGF-WH-oZm" collectionClass="NSMutableArray" id="UKf-OJ-Dqc"/>
                 <outletCollection property="collectionViewBoarder" destination="cij-De-xHO" collectionClass="NSMutableArray" id="dBb-Tj-uPy"/>
                 <outletCollection property="collectionViewBackground" destination="60s-7w-HrH" collectionClass="NSMutableArray" id="pBN-kG-4dT"/>
-                <outletCollection property="collectionViewBackground" destination="7ln-Hy-bkK" collectionClass="NSMutableArray" id="R9f-f6-6NX"/>
+                <outletCollection property="collectionViewBackground" destination="vhd-Xp-aFk" collectionClass="NSMutableArray" id="yb9-AR-9oY"/>
+                <outletCollection property="collectionViewBoarder" destination="VUs-VG-oJ7" collectionClass="NSMutableArray" id="oJa-Eb-Jzg"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -68,10 +70,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="384" height="803"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1XE-Go-nJg">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="820"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="880"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xDS-pp-hJb">
-                                                    <rect key="frame" x="20" y="40" width="344" height="645"/>
+                                                    <rect key="frame" x="20" y="40" width="344" height="705"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2JR-k1-cRC">
                                                             <rect key="frame" x="0.0" y="0.0" width="344" height="45"/>
@@ -188,10 +190,10 @@
                                                                 <constraint firstAttribute="bottom" secondItem="krF-kS-3Th" secondAttribute="bottom" id="WFj-ce-2ge"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ln-Hy-bkK">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhd-Xp-aFk">
                                                             <rect key="frame" x="0.0" y="360" width="344" height="45"/>
                                                             <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select UDT" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iHG-cw-Peb" customClass="DropDown" customModule="iOSDropDown">
+                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fbC-fF-lAI" customClass="DropDown" customModule="iOSDropDown">
                                                                     <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -201,14 +203,32 @@
                                                             </subviews>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="iHG-cw-Peb" secondAttribute="bottom" id="5h4-a6-Wym"/>
-                                                                <constraint firstItem="iHG-cw-Peb" firstAttribute="leading" secondItem="7ln-Hy-bkK" secondAttribute="leading" constant="15" id="j5R-ky-iNa"/>
-                                                                <constraint firstAttribute="trailing" secondItem="iHG-cw-Peb" secondAttribute="trailing" constant="5" id="wyf-G7-x98"/>
-                                                                <constraint firstItem="iHG-cw-Peb" firstAttribute="top" secondItem="7ln-Hy-bkK" secondAttribute="top" id="xPR-8a-YXN"/>
+                                                                <constraint firstItem="fbC-fF-lAI" firstAttribute="leading" secondItem="vhd-Xp-aFk" secondAttribute="leading" constant="15" id="5Un-7A-6lx"/>
+                                                                <constraint firstAttribute="bottom" secondItem="fbC-fF-lAI" secondAttribute="bottom" id="ZxG-X8-UIk"/>
+                                                                <constraint firstAttribute="trailing" secondItem="fbC-fF-lAI" secondAttribute="trailing" constant="5" id="s41-0T-cUj"/>
+                                                                <constraint firstItem="fbC-fF-lAI" firstAttribute="top" secondItem="vhd-Xp-aFk" secondAttribute="top" id="tXc-UC-wKH"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUs-VG-oJ7">
+                                                            <rect key="frame" x="0.0" y="420" width="344" height="45"/>
+                                                            <subviews>
+                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select deployment date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OtE-1N-nrT">
+                                                                    <rect key="frame" x="15" y="0.0" width="314" height="45"/>
+                                                                    <color key="textColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="OtE-1N-nrT" secondAttribute="bottom" id="2dN-hF-1eX"/>
+                                                                <constraint firstAttribute="trailing" secondItem="OtE-1N-nrT" secondAttribute="trailing" constant="15" id="4k8-qc-LlG"/>
+                                                                <constraint firstItem="OtE-1N-nrT" firstAttribute="top" secondItem="VUs-VG-oJ7" secondAttribute="top" id="HfE-7n-PAV"/>
+                                                                <constraint firstItem="OtE-1N-nrT" firstAttribute="leading" secondItem="VUs-VG-oJ7" secondAttribute="leading" constant="15" id="wKJ-My-oYZ"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyz-pr-7TF">
-                                                            <rect key="frame" x="0.0" y="420" width="344" height="45"/>
+                                                            <rect key="frame" x="0.0" y="480" width="344" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Patient Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s4U-VV-SfC">
                                                                     <rect key="frame" x="15" y="0.0" width="314" height="45"/>
@@ -226,13 +246,13 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQu-RQ-ctc">
-                                                            <rect key="frame" x="0.0" y="480" width="344" height="45"/>
+                                                            <rect key="frame" x="0.0" y="540" width="344" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Patient Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OiS-Dq-TRt">
                                                                     <rect key="frame" x="15" y="0.0" width="314" height="45"/>
                                                                     <color key="textColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                                 </textField>
                                                             </subviews>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -244,7 +264,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NGF-WH-oZm">
-                                                            <rect key="frame" x="0.0" y="540" width="344" height="45"/>
+                                                            <rect key="frame" x="0.0" y="600" width="344" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Patient Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HsX-u9-qzL">
                                                                     <rect key="frame" x="15" y="0.0" width="314" height="45"/>
@@ -262,13 +282,13 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cij-De-xHO">
-                                                            <rect key="frame" x="0.0" y="600" width="344" height="45"/>
+                                                            <rect key="frame" x="0.0" y="660" width="344" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DEf-4T-hGL">
                                                                     <rect key="frame" x="15" y="0.0" width="314" height="45"/>
                                                                     <color key="textColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                                                                 </textField>
                                                             </subviews>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -287,14 +307,13 @@
                                                         <constraint firstItem="PCg-mm-bcX" firstAttribute="height" secondItem="2JR-k1-cRC" secondAttribute="height" id="Yv5-Nb-lst"/>
                                                         <constraint firstItem="ccg-dH-V6z" firstAttribute="height" secondItem="PCg-mm-bcX" secondAttribute="height" id="ZDW-Se-xhG"/>
                                                         <constraint firstItem="NGF-WH-oZm" firstAttribute="height" secondItem="OQu-RQ-ctc" secondAttribute="height" id="bQE-Hc-ach"/>
-                                                        <constraint firstItem="7ln-Hy-bkK" firstAttribute="height" secondItem="60s-7w-HrH" secondAttribute="height" id="hap-ZO-mf1"/>
                                                         <constraint firstItem="uyz-pr-7TF" firstAttribute="height" secondItem="Zyq-5E-GBv" secondAttribute="height" id="ofd-VD-2vG"/>
                                                         <constraint firstItem="cij-De-xHO" firstAttribute="height" secondItem="NGF-WH-oZm" secondAttribute="height" id="vLO-ur-b7s"/>
                                                         <constraint firstItem="06J-Qt-Uqr" firstAttribute="height" secondItem="ccg-dH-V6z" secondAttribute="height" id="xZx-hH-LxX"/>
                                                     </constraints>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRS-Kp-mwb">
-                                                    <rect key="frame" x="102" y="735" width="180" height="45"/>
+                                                    <rect key="frame" x="102" y="795" width="180" height="45"/>
                                                     <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="6uP-76-JF3"/>

@@ -2,28 +2,40 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Meril/Models/CoreDataModels/AddStock+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/AddStock+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/InventoryList+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/InventoryList+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/HomeBanners+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/HomeBanners+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/SurgeryList+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/SurgeryList+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/AddSurgeries+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Meril/Models/CoreDataModels/AddSurgeries+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:Meril/Models/CoreDataModels/FormData+CoreDataClass.swift">
    </FileRef>
    <FileRef
       location = "group:Meril/Models/CoreDataModels/FormData+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Meril/Models/CoreDataModels/AddSurgeryEntity+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Meril/Models/CoreDataModels/AddSurgeryEntity+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Meril/Models/CoreDataModels/AddStockEntity+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Meril/Models/CoreDataModels/AddStockEntity+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Meril/Models/CoreDataModels/UserTypesEntity+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Meril/Models/CoreDataModels/UserTypesEntity+CoreDataProperties.swift">
    </FileRef>
    <FileRef
       location = "group:Meril.xcodeproj">

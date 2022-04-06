@@ -13,11 +13,13 @@ class SideMenuVC: UIViewController {
     @IBOutlet weak var userProfileImgVIew: UIImageView!
     @IBOutlet weak var userEmailLbl: UILabel!
     @IBOutlet weak var userNameLbl: UILabel!
+    @IBOutlet weak var closeBtn: UIButton!
     
     var itemsArr = [[String:String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        closeBtn.setTitle("", for: .normal)
         self.setUserData()
         self.setItemsArr()
         tableView.delegate = self
@@ -94,8 +96,18 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
             vc.pageName = .PrivacyPolicy
             navVC.pushViewController(vc, animated: true)
         }else if indexPath.row == 5{
-            LoginServices.userLogOut(navController: navVC)
+            self.userLogoutConfirmationDialog()
         }
+    }
+    
+    func userLogoutConfirmationDialog() {
+        let alertVC = UIAlertController(title: "Confirmation", message: "Are you sure, you want to logout?", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            let navVC = self.sideMenuController?.rootViewController as! UINavigationController
+            LoginServices.userLogOut(navController: navVC)
+        }))
+        alertVC.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

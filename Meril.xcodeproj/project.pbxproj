@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,8 +36,13 @@
 		8382F16B27F44E2F00DD3AB7 /* StoreFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382F16A27F44E2F00DD3AB7 /* StoreFormData.swift */; };
 		8382F16E27F4718500DD3AB7 /* Meril.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8382F16C27F4718500DD3AB7 /* Meril.xcdatamodeld */; };
 		8382F17027F5DA4300DD3AB7 /* AddSurgeryToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382F16F27F5DA4300DD3AB7 /* AddSurgeryToCoreData.swift */; };
-		838AA28F27F348C500258455 /* UserTypeCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA28E27F348C500258455 /* UserTypeCoreData.swift */; };
+		838AA28F27F348C500258455 /* HomeBanners_CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA28E27F348C500258455 /* HomeBanners_CoreData.swift */; };
 		83D05CF727EC0259005C24A8 /* Pods_Meril.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670968684A5D25B948E0B3F7 /* Pods_Meril.framework */; };
+		83D14C3A27FB604A008A1D80 /* SurgeryList_CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D14C3927FB604A008A1D80 /* SurgeryList_CoreData.swift */; };
+		83D14C3C27FC3143008A1D80 /* SyncCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D14C3B27FC3143008A1D80 /* SyncCell.xib */; };
+		83D14C3E27FC314C008A1D80 /* SyncCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D14C3D27FC314C008A1D80 /* SyncCell.swift */; };
+		83D14C4027FCC553008A1D80 /* AddStockToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D14C3F27FCC553008A1D80 /* AddStockToCoreData.swift */; };
+		83D14C4227FCC632008A1D80 /* StockList_CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D14C4127FCC632008A1D80 /* StockList_CoreData.swift */; };
 		887C7A3627EF193000A5A0FB /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A3427EF193000A5A0FB /* ContactUsViewController.swift */; };
 		887C7A3727EF193000A5A0FB /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887C7A3527EF193000A5A0FB /* ContactUsViewController.xib */; };
 		887C7A3B27EF246800A5A0FB /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A3927EF246800A5A0FB /* ChangePasswordViewController.swift */; };
@@ -102,7 +107,12 @@
 		8382F16A27F44E2F00DD3AB7 /* StoreFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFormData.swift; sourceTree = "<group>"; };
 		8382F16D27F4718500DD3AB7 /* Meril.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Meril.xcdatamodel; sourceTree = "<group>"; };
 		8382F16F27F5DA4300DD3AB7 /* AddSurgeryToCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSurgeryToCoreData.swift; sourceTree = "<group>"; };
-		838AA28E27F348C500258455 /* UserTypeCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeCoreData.swift; sourceTree = "<group>"; };
+		838AA28E27F348C500258455 /* HomeBanners_CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBanners_CoreData.swift; sourceTree = "<group>"; };
+		83D14C3927FB604A008A1D80 /* SurgeryList_CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryList_CoreData.swift; sourceTree = "<group>"; };
+		83D14C3B27FC3143008A1D80 /* SyncCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncCell.xib; sourceTree = "<group>"; };
+		83D14C3D27FC314C008A1D80 /* SyncCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncCell.swift; sourceTree = "<group>"; };
+		83D14C3F27FCC553008A1D80 /* AddStockToCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStockToCoreData.swift; sourceTree = "<group>"; };
+		83D14C4127FCC632008A1D80 /* StockList_CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockList_CoreData.swift; sourceTree = "<group>"; };
 		887C7A3427EF193000A5A0FB /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		887C7A3527EF193000A5A0FB /* ContactUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsViewController.xib; sourceTree = "<group>"; };
 		887C7A3927EF246800A5A0FB /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -327,9 +337,12 @@
 		8382F16927F44E0B00DD3AB7 /* CoreDataClasses */ = {
 			isa = PBXGroup;
 			children = (
-				838AA28E27F348C500258455 /* UserTypeCoreData.swift */,
+				838AA28E27F348C500258455 /* HomeBanners_CoreData.swift */,
 				8382F16A27F44E2F00DD3AB7 /* StoreFormData.swift */,
 				8382F16F27F5DA4300DD3AB7 /* AddSurgeryToCoreData.swift */,
+				83D14C3927FB604A008A1D80 /* SurgeryList_CoreData.swift */,
+				83D14C3F27FCC553008A1D80 /* AddStockToCoreData.swift */,
+				83D14C4127FCC632008A1D80 /* StockList_CoreData.swift */,
 			);
 			path = CoreDataClasses;
 			sourceTree = "<group>";
@@ -407,6 +420,8 @@
 			children = (
 				88CBA34F27ECDF74005C22FE /* SurgeriListTableViewCell.swift */,
 				88CBA35027ECDF74005C22FE /* SurgeryListTableViewCell.xib */,
+				83D14C3B27FC3143008A1D80 /* SyncCell.xib */,
+				83D14C3D27FC314C008A1D80 /* SyncCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -457,7 +472,7 @@
 				};
 			};
 			buildConfigurationList = 831A4F5827E83CED00BEF2E7 /* Build configuration list for PBXProject "Meril" */;
-			compatibilityVersion = "Xcode 11.0";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -489,6 +504,7 @@
 				887C7A3C27EF246800A5A0FB /* ChangePasswordViewController.xib in Resources */,
 				88CBA33827ECCDE2005C22FE /* PrivacyPolicyViewController.xib in Resources */,
 				88CBA34D27ECDC49005C22FE /* SurgerayListViewController.xib in Resources */,
+				83D14C3C27FC3143008A1D80 /* SyncCell.xib in Resources */,
 				88CBA33E27ECCDE2005C22FE /* EditProfileViewController.xib in Resources */,
 				88CBA35227ECDF74005C22FE /* SurgeryListTableViewCell.xib in Resources */,
 				887C7A3727EF193000A5A0FB /* ContactUsViewController.xib in Resources */,
@@ -556,7 +572,9 @@
 				88CBA33B27ECCDE2005C22FE /* AddSurgerayViewController.swift in Sources */,
 				88CBA34327ECCE1F005C22FE /* BaseViewController.swift in Sources */,
 				831A4F8A27E8A0A800BEF2E7 /* LoginVC.swift in Sources */,
+				83D14C3E27FC314C008A1D80 /* SyncCell.swift in Sources */,
 				887C7A4427EF459400A5A0FB /* ChangePasswordModel.swift in Sources */,
+				83D14C3A27FB604A008A1D80 /* SurgeryList_CoreData.swift in Sources */,
 				834ED70B27F06E9F0059B30C /* InventoryListVC.swift in Sources */,
 				88CBA33F27ECCDE2005C22FE /* ProfileViewController.swift in Sources */,
 				831A4F6527E83CED00BEF2E7 /* HomeVC.swift in Sources */,
@@ -567,6 +585,7 @@
 				837192D527EA546D00BE04A1 /* LoginResponseModel.swift in Sources */,
 				8382F16B27F44E2F00DD3AB7 /* StoreFormData.swift in Sources */,
 				831A4F7B27E8507600BEF2E7 /* GlobalFunctions.swift in Sources */,
+				83D14C4027FCC553008A1D80 /* AddStockToCoreData.swift in Sources */,
 				8382F17027F5DA4300DD3AB7 /* AddSurgeryToCoreData.swift in Sources */,
 				88CBA35127ECDF74005C22FE /* SurgeriListTableViewCell.swift in Sources */,
 				887C7A3E27EF2E5C00A5A0FB /* SettingServices.swift in Sources */,
@@ -579,7 +598,7 @@
 				887C7A4027EF31C500A5A0FB /* SettingsModel.swift in Sources */,
 				88CBA34127ECCDE2005C22FE /* SettingsViewController.swift in Sources */,
 				8326D89E27ECABD80081B4ED /* ScanAgainPopUpVC.swift in Sources */,
-				838AA28F27F348C500258455 /* UserTypeCoreData.swift in Sources */,
+				838AA28F27F348C500258455 /* HomeBanners_CoreData.swift in Sources */,
 				8382F16E27F4718500DD3AB7 /* Meril.xcdatamodeld in Sources */,
 				837192C827E9FCFD00BE04A1 /* ResponseModel.swift in Sources */,
 				837192CF27EA026700BE04A1 /* APIManager.swift in Sources */,
@@ -588,6 +607,7 @@
 				837192D727EA581F00BE04A1 /* Validation.swift in Sources */,
 				837192CE27EA026700BE04A1 /* LoginServices.swift in Sources */,
 				88CBA33C27ECCDE2005C22FE /* EditProfileViewController.swift in Sources */,
+				83D14C4227FCC632008A1D80 /* StockList_CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

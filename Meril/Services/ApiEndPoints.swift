@@ -45,6 +45,7 @@ enum EndPointsItem {
     case logout
     case changePassword
     case contactUs
+    case barcode
     case surgeryList
 }
 enum pageType {
@@ -95,6 +96,8 @@ extension EndPointsItem: EndPointType {
             return "change-password"
         case .contactUs:
             return "feedback"
+        case .barcode:
+            return "barcode"
         case .surgeryList:
             return "surgery"
         }
@@ -102,7 +105,7 @@ extension EndPointsItem: EndPointType {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .getUserTypesApi, .getHomeBanners, .getFormData, .getProfile, .settings, .getSurgeryList, .getStockList:
+        case .getUserTypesApi, .getHomeBanners, .getFormData, .getProfile, .settings, .getSurgeryList, .getStockList, .barcode:
             return .get
         default:
             return .post
@@ -137,6 +140,8 @@ extension EndPointsItem: EndPointType {
 //    If the API requires body or querystring encoding, it can be specified here
     var encoding: ParameterEncoding {
         switch self {
+        case .barcode:
+            return URLEncoding.queryString
         default:
             return JSONEncoding.default
         }

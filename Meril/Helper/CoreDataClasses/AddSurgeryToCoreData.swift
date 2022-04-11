@@ -15,7 +15,7 @@ class AddSurgeryToCoreData {
     let managedContext = appDelegate.persistentContainer.viewContext
     
     func saveSurgeryData(surgeryData: AddSurgeryRequestModel) {
-        
+//    func saveSurgeryData(surgeryData: SurgeryData) {
         do {
             let encodedData = try JSONEncoder().encode(surgeryData)
             let jsonStr = String(data: encodedData, encoding: String.Encoding.utf8)
@@ -34,24 +34,25 @@ class AddSurgeryToCoreData {
         }
     }
     
-    func fetchSurgeries() -> [AddSurgeryRequestModel]? {
+    func fetchSurgeries() -> [SurgeryData]? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddSurgeries")
         fetchRequest.predicate = NSPredicate(format: "isSyncedWithServer == %@", NSNumber(value: false))
         do {
             let surgeryTypesData = try managedContext.fetch(fetchRequest) as? [AddSurgeries]
-            var addedSurgeryArr: [AddSurgeryRequestModel] = []
+            var addedSurgeryArr: [SurgeryData] = []
             for surgery in surgeryTypesData ?? [] {
-                GlobalFunctions.printToConsole(message: "SurgeryObj: \(surgery.isEqual(AddSurgeries.self))")
-                
                 let jsonData = (surgery.addSurgeryStr ?? "").data(using: .utf8)!
                 var surgeryObj = try JSONDecoder().decode(AddSurgeryRequestModel.self, from: jsonData)
                 
                 //                Convert barcode array
-                let barcodeJsonData = (surgeryObj.barcodes ?? "").data(using: .utf8)!
-                let barcodeObj = try JSONDecoder().decode([BarCodeModel].self, from: barcodeJsonData)
-                surgeryObj.coreDataBarcodes = barcodeObj
-                addedSurgeryArr.append(surgeryObj)
-                GlobalFunctions.printToConsole(message: "SurgeryObj: \(surgeryTypesData?.count)")
+                    let barcodeJsonData = (surgeryObj.barcodes ?? "").data(using: .utf8)!
+                    let barcodeObj = try JSONDecoder().decode([BarCodeModel].self, from: barcodeJsonData)
+                    surgeryObj.coreDataBarcodes = barcodeObj
+                
+//                Use Surgery data Object for easy handling on UI
+                var surgeryDataObj = SurgeryData(addSurgeryTempObj: surgeryObj)
+                surgeryDataObj.surgery_id = surgeryObj.surgeryId
+                    addedSurgeryArr.append(surgeryDataObj)
             }
             return addedSurgeryArr
         } catch {

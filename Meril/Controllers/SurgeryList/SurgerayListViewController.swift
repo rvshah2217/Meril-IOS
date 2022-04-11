@@ -99,7 +99,7 @@ class SurgeryListViewController: UIViewController {
     }
     
     func fetchSurgeryListFromCoreData(isUpdateUsingNotification: Bool) {
-        SHOW_CUSTOM_LOADER()
+        SHOW_CUSTOM_LOADER()        
         self.surgeryArr = SurgeryList_CoreData.sharedInstance.fetchSurgeryData() ?? []
         if self.surgeryArr.isEmpty {
             self.fetchSurgeryListFromServer(isUpdateUsingNotification: isUpdateUsingNotification)
@@ -149,12 +149,21 @@ class SurgeryListViewController: UIViewController {
     //    Fetch surgery data from server whose sync status is false and then append it to the current surgeryArr to make it easier to handle UI
     func fetchAddSurgeryDataWithoutSync() {
         GlobalFunctions.printToConsole(message: "before self.surgeryArr.count: \(self.surgeryArr.count)")
-        surgeryArrWithSyncFalse = AddSurgeryToCoreData.sharedInstance.fetchSurgeries() ?? []
-        for surgery in surgeryArrWithSyncFalse {//.reversed() {
-            var surgeryObj = SurgeryData()
-            surgeryObj.addSurgeryTempObj = surgery
-            self.surgeryArr.insert(surgeryObj, at: 0)
+        var surgeryOfflineData = AddSurgeryToCoreData.sharedInstance.fetchSurgeries() ?? []
+        if self.surgeryArr.isEmpty {
+            self.surgeryArr = surgeryOfflineData
+        } else {
+            GlobalFunctions.printToConsole(message: "before merging total rows: \(surgeryArr.count)")
+            surgeryOfflineData += surgeryArr
+            surgeryArr = surgeryOfflineData
+            GlobalFunctions.printToConsole(message: "After merging total rows: \(surgeryArr.count)")
         }
+//        surgeryArrWithSyncFalse = AddSurgeryToCoreData.sharedInstance.fetchSurgeries() ?? []
+//        for surgery in surgeryArrWithSyncFalse {//.reversed() {
+//            var surgeryObj = SurgeryData()
+//            surgeryObj.addSurgeryTempObj = surgery
+//            self.surgeryArr.insert(surgeryObj, at: 0)
+//        }
         GlobalFunctions.printToConsole(message: "self.surgeryArr.count: \(self.surgeryArr.count)")
         self.tblView.reloadData()
     }
@@ -171,7 +180,7 @@ extension SurgeryListViewController: UITableViewDelegate,UITableViewDataSource{
         if let addSurgeryObj = item.addSurgeryTempObj {
             return (addSurgeryObj.coreDataBarcodes ?? []).count
         }
-        return item.scans.count
+        return (item.scans ?? []).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -197,6 +206,9 @@ extension SurgeryListViewController: UITableViewDelegate,UITableViewDataSource{
 
             //            Set sales person name
             cell.salesPersonLbl.text = "Sales person: " + (itemSectionData.sales_person?.name ?? "N/A")
+            cell.lblBarCode.isHidden = true
+            cell.barCodeStatus.isHidden = true
+
 //            if let index = salesPersonsArr.firstIndex(where: { $0.id == itemSectionData.id }) {
 //                cell.salesPersonLbl.text = "Sales person: " + (salesPersonsArr[index].name ?? "N/A")
 //            }
@@ -207,15 +219,15 @@ extension SurgeryListViewController: UITableViewDelegate,UITableViewDataSource{
 //                cell.doctorNameLbl.text = "Doctor: " + (doctorsArr[index].name ?? "N/A")
 //            }
 
-            let itemSubData = itemSectionData.scans[indexPath.row]
-            cell.lblBarCode.text = "Barcode: " + (itemSubData.barcode ?? "N/A")
-            if let barCodeStatus = itemSubData.status, barCodeStatus == "invalid_barcode" {
-                cell.viewMain.layer.borderColor = UIColor.red.cgColor
-                cell.barCodeStatus.isHidden = false
-            } else {
-                cell.viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
-                cell.barCodeStatus.isHidden = true
-            }
+//            let itemSubData = itemSectionData.scans[indexPath.row]
+//            cell.lblBarCode.text = "Barcode: " + (itemSubData.barcode ?? "N/A")
+//            if let barCodeStatus = itemSubData.status, barCodeStatus == "invalid_barcode" {
+//                cell.viewMain.layer.borderColor = UIColor.red.cgColor
+//                cell.barCodeStatus.isHidden = false
+//            } else {
+//                cell.viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
+//                cell.barCodeStatus.isHidden = true
+//            }
             return cell
         }
     }
@@ -226,6 +238,16 @@ extension SurgeryListViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = isFilterApplied ? filteredSurgeryArr[indexPath.section] : surgeryArr[indexPath.section]
+
+        if item.addSurgeryTempObj == nil {
+            let vc = BarCodeListVC()//nibName: "BarCodeListVC", bundle: nil)
+            vc.barCodesArr = item.scans ?? []
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 

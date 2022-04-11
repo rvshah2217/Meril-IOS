@@ -21,65 +21,47 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vG-ea-Zgs">
                         <rect key="frame" x="10" y="10" width="300" height="229"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZfB-Qw-42G">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZfB-Qw-42G">
                                 <rect key="frame" x="10" y="10" width="280" height="209"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surgery Id: 102" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BfQ-b0-vTs">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="hPc-o5-9bV"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="18.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date: 19/3/22" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpm-1m-ihJ">
-                                        <rect key="frame" x="0.0" y="25" width="280" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="EgQ-8x-Avb"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="26.5" width="280" height="18.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doctor name : Sagar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdg-jy-EHM">
-                                        <rect key="frame" x="0.0" y="50" width="280" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="aax-13-zH9"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="53" width="280" height="18.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital name : 123456" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKB-yo-Mvh">
-                                        <rect key="frame" x="0.0" y="75" width="280" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="CQO-qK-uJv"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="79.5" width="280" height="18.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salesperson name : 123456" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ms-1a-3fi">
-                                        <rect key="frame" x="0.0" y="100" width="280" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="0Ys-p7-ZdI"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="106" width="280" height="18.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patient name : 123456" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frf-nu-j4v">
-                                        <rect key="frame" x="0.0" y="125" width="280" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="UMS-8B-Cch"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="132.5" width="280" height="18.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR: Erto9p0o8u7" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOp-bj-86p">
-                                        <rect key="frame" x="0.0" y="150" width="280" height="34"/>
+                                        <rect key="frame" x="0.0" y="159" width="280" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Niy-u7-K1y"/>
                                         </constraints>

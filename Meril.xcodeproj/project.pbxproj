@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8313DF6B2803ED1200DB0EF6 /* BarCodeListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8313DF6A2803ED1200DB0EF6 /* BarCodeListVC.xib */; };
+		8313DF6D2803ED3A00DB0EF6 /* BarCodeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313DF6C2803ED3A00DB0EF6 /* BarCodeListVC.swift */; };
 		831A4F6127E83CED00BEF2E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F6027E83CED00BEF2E7 /* AppDelegate.swift */; };
 		831A4F6527E83CED00BEF2E7 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F6427E83CED00BEF2E7 /* HomeVC.swift */; };
 		831A4F6827E83CED00BEF2E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831A4F6627E83CED00BEF2E7 /* Main.storyboard */; };
@@ -76,6 +78,8 @@
 		255DE97B9CBEA6D5EB3BEDAD /* Pods-Meril.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meril.debug.xcconfig"; path = "Target Support Files/Pods-Meril/Pods-Meril.debug.xcconfig"; sourceTree = "<group>"; };
 		59D932FF9AB499D412011A07 /* Pods-Meril.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meril.release.xcconfig"; path = "Target Support Files/Pods-Meril/Pods-Meril.release.xcconfig"; sourceTree = "<group>"; };
 		670968684A5D25B948E0B3F7 /* Pods_Meril.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meril.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8313DF6A2803ED1200DB0EF6 /* BarCodeListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarCodeListVC.xib; sourceTree = "<group>"; };
+		8313DF6C2803ED3A00DB0EF6 /* BarCodeListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeListVC.swift; sourceTree = "<group>"; };
 		831A4F5D27E83CED00BEF2E7 /* Meril.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meril.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		831A4F6027E83CED00BEF2E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		831A4F6427E83CED00BEF2E7 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -162,6 +166,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8313DF692803ECFC00DB0EF6 /* BarCodeList */ = {
+			isa = PBXGroup;
+			children = (
+				8313DF6A2803ED1200DB0EF6 /* BarCodeListVC.xib */,
+				8313DF6C2803ED3A00DB0EF6 /* BarCodeListVC.swift */,
+			);
+			path = BarCodeList;
+			sourceTree = "<group>";
+		};
 		831A4F5427E83CED00BEF2E7 = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +225,7 @@
 		831A4F7C27E8509900BEF2E7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8313DF692803ECFC00DB0EF6 /* BarCodeList */,
 				834ED70627F06E5F0059B30C /* InventoryList */,
 				887C7A3827EF245400A5A0FB /* ChangePassword */,
 				887C7A3327EF190900A5A0FB /* ContactUs */,
@@ -508,6 +522,7 @@
 				88CBA33E27ECCDE2005C22FE /* EditProfileViewController.xib in Resources */,
 				88CBA35227ECDF74005C22FE /* SurgeryListTableViewCell.xib in Resources */,
 				887C7A3727EF193000A5A0FB /* ContactUsViewController.xib in Resources */,
+				8313DF6B2803ED1200DB0EF6 /* BarCodeListVC.xib in Resources */,
 				88CBA34027ECCDE2005C22FE /* SettingsViewController.xib in Resources */,
 				88CBA34827ECD51E005C22FE /* AddInventoryViewController.xib in Resources */,
 			);
@@ -580,6 +595,7 @@
 				831A4F6527E83CED00BEF2E7 /* HomeVC.swift in Sources */,
 				88CBA34727ECD51E005C22FE /* AddInventoryViewController.swift in Sources */,
 				887C7A3B27EF246800A5A0FB /* ChangePasswordViewController.swift in Sources */,
+				8313DF6D2803ED3A00DB0EF6 /* BarCodeListVC.swift in Sources */,
 				831A4F8427E86CA900BEF2E7 /* SideMenuVC.swift in Sources */,
 				831A4F6127E83CED00BEF2E7 /* AppDelegate.swift in Sources */,
 				837192D527EA546D00BE04A1 /* LoginResponseModel.swift in Sources */,

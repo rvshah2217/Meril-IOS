@@ -169,7 +169,7 @@ extension InventoryListVC:UITableViewDelegate,UITableViewDataSource{
         if let addSurgeryObj = item.addSurgeryTempObj {
             return (addSurgeryObj.coreDataBarcodes ?? []).count
         }
-        return item.scans.count
+        return (item.scans ?? []).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -192,14 +192,16 @@ extension InventoryListVC:UITableViewDelegate,UITableViewDataSource{
             
             //            Set sales person name
             cell.salesPersonLbl.text = "Sales person: " + (itemSectionData.sales_person?.name ?? "N/A")
-            let itemSubData = itemSectionData.scans[indexPath.row]
-            cell.lblBarCode.text = "Barcode: " + (itemSubData.barcode ?? "N/A")
-            if let barCodeStatus = itemSubData.status, barCodeStatus == "invalid_barcode" {
-                cell.viewMain.layer.borderColor = UIColor.red.cgColor
-                cell.barCodeStatus.isHidden = false
-            } else {
-                cell.viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
-                cell.barCodeStatus.isHidden = true
+            if let scans = itemSectionData.scans {
+                let itemSubData = scans[indexPath.row] 
+                cell.lblBarCode.text = "Barcode: " + (itemSubData.barcode ?? "N/A")
+                if let barCodeStatus = itemSubData.status, barCodeStatus == "invalid_barcode" {
+                    cell.viewMain.layer.borderColor = UIColor.red.cgColor
+                    cell.barCodeStatus.isHidden = false
+                } else {
+                    cell.viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
+                    cell.barCodeStatus.isHidden = true
+                }
             }
             return cell
         }

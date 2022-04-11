@@ -264,14 +264,16 @@ struct AddSurgeryInventory {
         let surgeryArr = AddSurgeryToCoreData.sharedInstance.fetchSurgeries() ?? []
         let group = DispatchGroup()
         for surgery in surgeryArr {
-            group.enter()
-            SurgeryServices.addSurgery(surgeryObj: surgery) { response, error in
-                group.leave()
-                guard let _ = error else {
-    //                delete record from core data if surgery sync successfully
-                    AddSurgeryToCoreData.sharedInstance.deleteSergeryBySurgeryId(surgeryId: surgery.surgeryId!)
-                    NotificationCenter.default.post(name: .surgeryAdded, object: nil, userInfo: ["surgeryId": surgery.surgeryId!])
-                    return
+            if let addSurgeryObj = surgery.addSurgeryTempObj {
+                group.enter()
+                SurgeryServices.addSurgery(surgeryObj: addSurgeryObj) { response, error in
+                    group.leave()
+                    guard let _ = error else {
+        //                delete record from core data if surgery sync successfully
+                        AddSurgeryToCoreData.sharedInstance.deleteSergeryBySurgeryId(surgeryId: addSurgeryObj.surgeryId!)
+                        NotificationCenter.default.post(name: .surgeryAdded, object: nil, userInfo: ["surgeryId": addSurgeryObj.surgeryId!])
+                        return
+                    }
                 }
             }
         }

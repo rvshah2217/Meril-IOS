@@ -13,7 +13,7 @@ let sidemenuStoryboard = UIStoryboard(name: "Sidemenu", bundle: nil)
 let deviceToken = "123456"//UserDefaults.standard.string(forKey: "deviceToken")
 
 let errorDismissTime = 1.5
-let successDismissTime = 0.4
+let successDismissTime = 0.3
 
 struct ColorConstant {
     static let mainThemeColor = UIColor(hexString: "#317ac3") ?? UIColor.systemBlue//"#4476BB"

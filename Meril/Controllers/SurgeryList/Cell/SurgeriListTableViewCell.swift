@@ -21,6 +21,28 @@ class SurgeryListTableViewCell: UITableViewCell {
     
     var isFromInventory: Bool = false
     
+    var barCodeDetail: Scans? = nil {
+        didSet {
+            guard let barCodeData = barCodeDetail else {
+                return
+            }
+            self.surgeryOrStockIdLbl.text = "Barcode: " + (barCodeData.barcode ?? "N/A")
+            self.lblDate.text = "Product Code: " + (barCodeData.product_code ?? "N/A")
+            self.doctorNameLbl.text = "Description: " + (barCodeData.product_data?.description ?? "N/A")
+            self.hospitalNameLbl.text = "Batch no: " + (barCodeData.batch_no ?? "N/A")
+            self.salesPersonLbl.text = "Serial no: " + (barCodeData.serial_no ?? "N/A")
+            self.patientNameLbl.text = "Expiry date: " + (barCodeData.exp_date ?? "N/A")
+            self.lblBarCode.isHidden = true
+            if let barCodeStatus = barCodeData.status, barCodeStatus == "invalid_barcode" {
+                self.viewMain.layer.borderColor = UIColor.red.cgColor
+                self.barCodeStatus.isHidden = false
+            } else {
+                self.viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
+                self.barCodeStatus.isHidden = true
+            }
+
+        }
+    }
 //    var itemDetail: SurgeryData? = nil {
 //        didSet {
 //            guard let itemData = itemDetail else { return }

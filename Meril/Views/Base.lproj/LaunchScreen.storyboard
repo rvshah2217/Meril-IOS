@@ -16,10 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="EsA-ci-fGj">
-                                <rect key="frame" x="83" y="393" width="248" height="110"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_splashLogo" translatesAutoresizingMaskIntoConstraints="NO" id="EsA-ci-fGj">
+                                <rect key="frame" x="83" y="398.5" width="248" height="99"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="EsA-ci-fGj" secondAttribute="height" multiplier="18:8" id="EqW-Ix-xsd"/>
+                                    <constraint firstAttribute="width" secondItem="EsA-ci-fGj" secondAttribute="height" multiplier="20:8" id="EqW-Ix-xsd"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_launchIcon" width="127" height="55"/>
+        <image name="ic_splashLogo" width="2004" height="794"/>
     </resources>
 </document>

@@ -51,12 +51,10 @@ class ScanAgainPopUpVC: UIViewController {
     }
     
     @IBAction func submitBtnClicked(_ sender: Any) {
+        self.delegate?.submitScannedBarCodes()
         self.willMove(toParent: nil)
         self.view.removeFromSuperview()
         self.removeFromParent()
-        
-        self.delegate?.submitScannedBarCodes()
-        
     }
     
 }

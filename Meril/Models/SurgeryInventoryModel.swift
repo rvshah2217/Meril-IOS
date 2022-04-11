@@ -284,13 +284,17 @@ struct SurgeryData : Codable {
     var updated_at : String?
     var doctor_id : Int?
     var sales_person_id: Int?
-    var scans : [Scans] = []
+    var scans : [Scans]?//? = []
     var stock_id: String?
     var hospital: Hospitals?
     var doctor: Hospitals?
     var sales_person: Hospitals?
     
     var addSurgeryTempObj: AddSurgeryRequestModel?
+    
+    init(addSurgeryTempObj: AddSurgeryRequestModel) {
+        self.addSurgeryTempObj = addSurgeryTempObj
+    }
     
     enum CodingKeys: String, CodingKey {
 
@@ -361,6 +365,7 @@ struct SurgeryData : Codable {
         hospital = try values.decodeIfPresent(Hospitals.self, forKey: .hospital)
         doctor = try values.decodeIfPresent(Hospitals.self, forKey: .doctor)
         sales_person = try values.decodeIfPresent(Hospitals.self, forKey: .sales_person)
+//        addSurgeryTempObj = try values.decodeIfPresent(AddSurgeryRequestModel.self, forKey: .addSurgeryTempObj)
     }
 }
 

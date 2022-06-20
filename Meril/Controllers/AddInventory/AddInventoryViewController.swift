@@ -20,6 +20,7 @@ class AddInventoryViewController: BaseViewController {
     
     @IBOutlet weak var txtHospital: DropDown! {
         didSet {
+            self.txtHospital.isSearchEnable = false
             self.txtHospital.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
@@ -32,12 +33,14 @@ class AddInventoryViewController: BaseViewController {
 //
     @IBOutlet weak var txtDistributor: DropDown! {
         didSet {
+            self.txtDistributor.isSearchEnable = false
             self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtSaleperson: DropDown! {
         didSet {
+            self.txtSaleperson.isSearchEnable = false
             self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
@@ -48,12 +51,12 @@ class AddInventoryViewController: BaseViewController {
     var hospitalsArr: [Hospitals] = []
 //    var doctorsArr: [Hospitals] = []
     var distributorsArr: [Hospitals] = []
-    var sales_personsArr: [Hospitals] = []
+    var sales_personsArr: [SalesPerson] = []
     
     var selectedHospitalId: Int?
 //    var selectedDoctorId: Int?
     var selectedDistributorId: Int?
-    var selectedSalesPersonId: Int?
+    var selectedSalesPersonId: String?
     var addInventoryReqObj: AddSurgeryRequestModel?
     
     override func viewDidLoad() {
@@ -75,7 +78,7 @@ class AddInventoryViewController: BaseViewController {
     
     //MARK:- Custome Method
     func setUI(){
-        self.navigationItem.title = ""
+        self.navigationItem.title = "Physical Inventory Count"
         
         for i in collectionViewBackground{
             i.backgroundColor = ColorConstant.mainThemeColor
@@ -126,7 +129,7 @@ class AddInventoryViewController: BaseViewController {
 //            }
 //        }
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)
-        self.navigationItem.title = "Add Inventory"
+        self.navigationItem.title = "Physical Inventory Verification"
     }
     
     @IBAction func OnClickScanNow(_ sender: UIButton) {
@@ -184,30 +187,13 @@ extension AddInventoryViewController {
     }
     
     func fetchFormDataFromServer() {
-        SurgeryServices.getAllFormData { response, error in
-            guard let responseData = response else {
-                GlobalFunctions.printToConsole(message: "Fetch form-data failed: \(error)")
-                return
-            }
-            if let formDataObj = responseData.suregeryInventoryData {
-                self.setAllDropDownData(formDataResponse: formDataObj)
-                //                Save response of Form data to core data
-                StoreFormData.sharedInstance.saveFormData(schemeData: formDataObj)
-            }
+        CommonFunctions.getAllFormData { response in
+            guard let surgeryObj = response else { return }
+            self.setAllDropDownData(formDataResponse: surgeryObj)
         }
     }
     
     func setAllDropDownData(formDataResponse: SurgeryInventoryModel) {
-        
-        //        set doctor array
-//        self.doctorsArr = formDataResponse.doctors ?? []
-//        self.txtDoctor.isEnabled = !self.doctorsArr.isEmpty
-//        self.txtDoctor.optionArray = self.doctorsArr.map({ item -> String in
-//            item.fullname ?? ""
-//        })
-//        self.txtDoctor.didSelect { selectedText, index, id in
-//            self.selectedDoctorId = self.doctorsArr[index].id
-//        }
         
         //        set distributor array
         self.distributorsArr = formDataResponse.distributors ?? []
@@ -237,7 +223,22 @@ extension AddInventoryViewController {
         self.txtHospital.didSelect { selectedText, index, id in
             self.selectedHospitalId = self.hospitalsArr[index].id
         }
+        setDefaultData()
+    }
+    
+    private func setDefaultData() {
+        let userDefault = UserDefaults.standard
+        //        set distributor
+        selectedDistributorId = userDefault.integer(forKey: "defaultDistributorId")
+        self.txtDistributor.text = distributorsArr.filter({ item in
+            item.id == selectedDistributorId
+        }).first?.name
         
+        //        set sales person
+        selectedSalesPersonId = userDefault.string(forKey: "defaultSalesPersonId")
+        self.txtSaleperson.text = sales_personsArr.filter({ item in
+            item.id == selectedSalesPersonId
+        }).first?.name
     }
 }
 

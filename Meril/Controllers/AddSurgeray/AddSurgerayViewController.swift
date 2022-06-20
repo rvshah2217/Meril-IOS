@@ -22,36 +22,42 @@ class AddSurgerayViewController: BaseViewController {
         
     @IBOutlet weak var genderDropDown: DropDown! {
         didSet {
+            self.genderDropDown.isSearchEnable = false
             self.genderDropDown.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtCity: DropDown! {
         didSet {
+            self.txtCity.isSearchEnable = false
             self.txtCity.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtHospital: DropDown! {
         didSet {
+            self.txtHospital.isSearchEnable = false
             self.txtHospital.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtDoctor: DropDown! {
         didSet {
+            self.txtDoctor.isSearchEnable = false
             self.txtDoctor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtDistributor: DropDown! {
         didSet {
+            self.txtDistributor.isSearchEnable = false
             self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtSaleperson: DropDown! {
         didSet {
+            self.txtSaleperson.isSearchEnable = false
             self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
@@ -64,6 +70,7 @@ class AddSurgerayViewController: BaseViewController {
     
     @IBOutlet weak var txtPatientScheme: DropDown! {
         didSet {
+            self.txtPatientScheme.isSearchEnable = false
             self.txtPatientScheme.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
@@ -84,7 +91,7 @@ class AddSurgerayViewController: BaseViewController {
     var hospitalsArr: [Hospitals] = []
     var doctorsArr: [Hospitals] = []
     var distributorsArr: [Hospitals] = []
-    var sales_personsArr: [Hospitals] = []
+    var sales_personsArr: [SalesPerson] = []
     var schemeArr: [Schemes] = []
 //    var udtArr: [Schemes] = []
     var genderArr: [String] = ["Male", "Female"]
@@ -93,7 +100,7 @@ class AddSurgerayViewController: BaseViewController {
     var selectedHospitalId: Int?
     var selectedDoctorId: Int?
     var selectedDistributorId: Int?
-    var selectedSalesPaersonId: Int?
+    var selectedSalesPersonId: String?
     var selectedSchemeId: Int?
 //    var selectedUdtId: Int?
     var selectedGender: String?
@@ -202,6 +209,8 @@ class AddSurgerayViewController: BaseViewController {
         scrollOuterView.layer.shadowOpacity = 0.5
         scrollOuterView.layer.shadowOffset = CGSize(width: 0, height: 0)
         scrollOuterView.layer.shadowColor = UIColor.black.cgColor
+        
+        self.convertDateToStr(date: Date())
     }
     
     func setDatePicker() {
@@ -218,10 +227,14 @@ class AddSurgerayViewController: BaseViewController {
     }
     
     @objc func handleDatePicker(_ sender: UIDatePicker) {
+        self.convertDateToStr(date: datePicker.date)
+    }
+    
+    private func convertDateToStr(date: Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
 //        GlobalFunctions.printToConsole(message: "Selected date: \(dateFormatter.string(from: datePicker.date))")
-        self.deploymentDateTxt.text = dateFormatter.string(from: datePicker.date)
+        self.deploymentDateTxt.text = dateFormatter.string(from: date)
     }
     
     func setNavigation(){
@@ -264,7 +277,7 @@ class AddSurgerayViewController: BaseViewController {
             return
         }
         
-        guard let _ = selectedSalesPaersonId else {
+        guard let _ = selectedSalesPersonId else {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptySalesPersonError, seconds: errorDismissTime)
             return
         }
@@ -277,6 +290,7 @@ class AddSurgerayViewController: BaseViewController {
         let selectedDate = deploymentDateTxt.text ?? ""
         if !Validation.sharedInstance.checkLength(testStr: selectedDate) {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDateError, seconds: errorDismissTime)
+            return
         }
         let patientName = txtPatientName.text ?? ""
         let patientNumber = txtPatientNumber.text ?? ""
@@ -284,7 +298,7 @@ class AddSurgerayViewController: BaseViewController {
         let ipCode = txtIpCode.text ?? ""
         let userId = UserDefaults.standard.integer(forKey: "userId")
         let surgeryId = "D\(Date.currentTimeStamp)U\(userId)"
-        addSurgeryReqObj = AddSurgeryRequestModel(cityId: selectedCityId, hospitalId: selectedHospitalId, distributorId: selectedDistributorId, doctorId: selectedDoctorId, surgeryId: surgeryId, schemeId: selectedSchemeId, patientName: patientName, patientMobile: patientNumber, age: Int(patientAge), ipCode: ipCode, salesPersonId: selectedSalesPaersonId, gender: selectedGender, DeploymentDate: selectedDate)
+        addSurgeryReqObj = AddSurgeryRequestModel(cityId: selectedCityId, hospitalId: selectedHospitalId, distributorId: selectedDistributorId, doctorId: selectedDoctorId, surgeryId: surgeryId, schemeId: selectedSchemeId, patientName: patientName, patientMobile: patientNumber, age: Int(patientAge), ipCode: ipCode, salesPersonId: selectedSalesPersonId, gender: selectedGender, DeploymentDate: selectedDate)
         self.redirectToScannerVC()
         //        If there is no error while validation then redirect to scan the data
         //        let scannerVC = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
@@ -301,7 +315,7 @@ class AddSurgerayViewController: BaseViewController {
 }
 
 extension AddSurgerayViewController {
-   
+    
     func fetchFormData() {
         if let formDataObj = StoreFormData.sharedInstance.fetchFormData() {
             self.setAllDropDownData(formDataResponse: formDataObj)
@@ -312,21 +326,25 @@ extension AddSurgerayViewController {
     
     
     func fetchFormDataFromServer() {
-        SurgeryServices.getAllFormData { response, error in
-            guard let responseData = response else {
-                GlobalFunctions.printToConsole(message: "Fetch form-data failed: \(error)")
-                return
-            }
-            if let formDataObj = responseData.suregeryInventoryData {
-                self.setAllDropDownData(formDataResponse: formDataObj)
-//                Save response of Form data to core data
-                StoreFormData.sharedInstance.saveFormData(schemeData: formDataObj)
-            }
+        CommonFunctions.getAllFormData { response in
+            guard let surgeryObj = response else { return }
+            self.setAllDropDownData(formDataResponse: surgeryObj)
         }
+        //        SurgeryServices.getAllFormData { response, error in
+        //            guard let responseData = response else {
+        //                GlobalFunctions.printToConsole(message: "Fetch form-data failed: \(error)")
+        //                return
+        //            }
+        //            if let formDataObj = responseData.suregeryInventoryData {
+        //                self.setAllDropDownData(formDataResponse: formDataObj)
+        ////                Save response of Form data to core data
+        //                StoreFormData.sharedInstance.saveFormData(schemeData: formDataObj)
+        //            }
+        //        }
     }
     
     func setAllDropDownData(formDataResponse: SurgeryInventoryModel) {
-//        Gender dropdown
+        //        Gender dropdown
         self.genderDropDown.isEnabled = !self.genderArr.isEmpty
         self.genderDropDown.optionArray = self.genderArr
         self.genderDropDown.didSelect { selectedText, index, id in
@@ -374,7 +392,7 @@ extension AddSurgerayViewController {
             item.name ?? ""
         })
         self.txtSaleperson.didSelect { selectedText, index, id in
-            self.selectedSalesPaersonId = self.sales_personsArr[index].id
+            self.selectedSalesPersonId = self.sales_personsArr[index].id
         }
         
         //        set scheme array
@@ -387,15 +405,8 @@ extension AddSurgerayViewController {
             self.selectedSchemeId = self.schemeArr[index].id
         }
         
-        //        set scheme array
-//        self.udtArr = formDataResponse.udt ?? []
-//        self.txtUDT.isEnabled = !self.udtArr.isEmpty
-//        self.txtUDT.optionArray = self.udtArr.map({ item -> String in
-//            item.udt_name ?? ""
-//        })
-//        self.txtUDT.didSelect { selectedText, index, id in
-//            self.selectedUdtId = self.udtArr[index].id
-//        }
+        setDefaultData()
+        
     }
     
     //   reload hospitals by city selection
@@ -408,6 +419,27 @@ extension AddSurgerayViewController {
         self.txtHospital.didSelect { selectedText, index, id in
             self.selectedHospitalId = self.hospitalsArr[index].id
         }
+        
+    }
+    
+    private func setDefaultData() {
+        let userDefault = UserDefaults.standard
+        selectedDoctorId = userDefault.integer(forKey: "defaultDoctorId")
+        self.txtDoctor.text = doctorsArr.filter({ item in
+            item.id == selectedDoctorId
+        }).first?.fullname
+        
+        //        set distributor
+        selectedDistributorId = userDefault.integer(forKey: "defaultDistributorId")
+        self.txtDistributor.text = distributorsArr.filter({ item in
+            item.id == selectedDistributorId
+        }).first?.name
+        
+        //        set sales person
+        selectedSalesPersonId = userDefault.string(forKey: "defaultSalesPersonId")
+        self.txtSaleperson.text = sales_personsArr.filter({ item in
+            item.id == selectedSalesPersonId
+        }).first?.name
     }
 }
 
@@ -416,24 +448,32 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
     //    Call api to add surgery with scanned barcodes and then redirect to display surgeries
     func submitScannedData() {
         SHOW_CUSTOM_LOADER()
+        
+        let manualEntryArr: [ManualEntryModel] = UserSessionManager.shared.manualEntryData
+
         let barCodeArr: [BarCodeModel] = UserSessionManager.shared.barCodes
         
-        let dict = barCodeArr.compactMap { $0.dict }
-        
-        func convertArrayToJsonString() {
-            if let theJSONData = try?  JSONSerialization.data(
+        let barCodeDict = barCodeArr.compactMap { $0.dict }
+        let manualDataDict = manualEntryArr.compactMap { $0.dict }
+
+        func convertArrayToJsonString(dict: [[String:Any]]) -> String? {
+            if let theJSONData = try? JSONSerialization.data(
                 withJSONObject: dict,
                 options: .prettyPrinted
             ),
                let theJSONText = String(data: theJSONData,
                                         encoding: String.Encoding.ascii) {
                 print("JSON string = \n\(theJSONText)")
-                addSurgeryReqObj?.barcodes = theJSONText
+                return theJSONText
             }
+            return nil
         }
         
-        convertArrayToJsonString()
+        addSurgeryReqObj?.manualEntry = convertArrayToJsonString(dict: manualDataDict)
+        addSurgeryReqObj?.barcodes = convertArrayToJsonString(dict: barCodeDict)
+
         GlobalFunctions.printToConsole(message: "\(addSurgeryReqObj?.barcodes)")
+        GlobalFunctions.printToConsole(message: "\(addSurgeryReqObj?.manualEntry)")
         if appDelegate.reachability.connection == .unavailable {
             self.saveSurgeryToCoreData(onSubmitAction: true)
         } else {

@@ -15,5 +15,6 @@ target 'Meril' do
   pod 'Alamofire'
   pod 'FullMaterialLoader'
   pod 'ReachabilitySwift'
+  pod 'Firebase/Messaging'
 
 end

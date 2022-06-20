@@ -24,7 +24,7 @@ class HomeBanners_CoreData {
         do {
             let encodedData = try JSONEncoder().encode(schemeData)
             let jsonStr = String(data: encodedData, encoding: String.Encoding.utf8)
-            
+                        
             let entityFormData = NSEntityDescription.entity(forEntityName: "HomeBanners", in: managedContext)!
             //            If record exist then update it else insert it
             if lastStoredFormData != nil {

@@ -10,7 +10,7 @@ import UIKit
 
 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 let sidemenuStoryboard = UIStoryboard(name: "Sidemenu", bundle: nil)
-let deviceToken = "123456"//UserDefaults.standard.string(forKey: "deviceToken")
+let deviceToken = UserDefaults.standard.string(forKey: "fcmToken") ?? "12345"//UserDefaults.standard.string(forKey: "deviceToken")
 
 let errorDismissTime = 1.5
 let successDismissTime = 0.3
@@ -43,5 +43,8 @@ struct UserMessages {
     static let emptyDivisionError = "Please select division."
     static let emptyGenderError = "Please select gender."
     static let emptyDateError = "Please select deployment date."
+    static let productCode = "Please enter product code"
+    static let batchNo = "Please enter batch number"
+    static let serialNo = "Please enter serial number"
 
 }

@@ -103,24 +103,60 @@ extension LoginVC {
                 return
             }
             
+            
             //            store user data into UserDefaults
             UserSessionManager.shared.userDetail = response.loginUserData?.user_data
-            //            UserDefaults.standard.set(response.loginUserData?.id, forKey: "userId")
-            //            UserDefaults.standard.set(response.loginUserData?.user_type_id, forKey: "userTypeId")
-            //            UserDefaults.standard.set(response.loginUserData?.unique_id, forKey: "userName")
+
+            let isDefaultPassword = (response.loginUserData?.is_default_password == "1") ? true : false
+            UserDefaults.standard.set(isDefaultPassword, forKey: "isDefaultPassword")
             UserDefaults.standard.set(response.loginUserData?.token, forKey: "headerToken")
             
-            //           Redirect to home screen
-            GlobalFunctions.showToast(controller: self, message: "Login successfully", seconds: successDismissTime) {
-                if (response.loginUserData?.is_default_password == 1) {
-//                    Redirect to change password
-                    let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
-                    vc.isFromLogin = true
-                    self.navigationController?.pushViewController(vc, animated: true)
-                } else {
-                    self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
-                }
+//            save loggedin user's surgeries and stocks in local database
+            SurgeryList_CoreData.sharedInstance.saveSurgeriesToCoreData(schemeData: response.loginUserData?.surgeries ?? [], isForceSave: true)
+            StockList_CoreData.sharedInstance.saveStocksToCoreData(schemeData: response.loginUserData?.stocks ?? [], isForceSave: true)
+            
+            self.redirectToVC(isDefaultPassword: response.loginUserData?.is_default_password ?? "0")
+        }
+    }
+    
+//    If is_default_password is true then redirect to Change password otherwise redirect to the Home screen
+    func redirectToVC(isDefaultPassword: String) {
+        //           Redirect to home screen
+        GlobalFunctions.showToast(controller: self, message: "Login successfully", seconds: successDismissTime) {
+            
+            
+            //                if its first time login then allow user to select default doctor, distributor and sales person
+            if  !UserDefaults.standard.bool(forKey: "isFirstTimeLogInDone") {
+                let vc = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
+                self.navigationController!.pushViewController(vc, animated: true)
+            } else if (isDefaultPassword == "1") {
+                //                    Redirect to change password
+                let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
+                vc.isFromLogin = true
+                self.navigationController!.pushViewController(vc, animated: true)
+            } else {
+                appDelegate.fetchAndStoredDataLocally()
+                self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
+                self.view?.window?.makeKeyAndVisible()
             }
+            
+//            if (isDefaultPassword == "1") {
+////                    Redirect to change password
+//                let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
+//                vc.isFromLogin = true
+//                self.navigationController!.pushViewController(vc, animated: true)
+//            } else {
+//
+////                if its first time login then allow user to select default doctor, distributor and sales person
+//                if UserDefaults.standard.bool(forKey: "isFirstTimeLogIn") {
+//                    let vc = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
+//                    self.navigationController!.pushViewController(vc, animated: true)
+//                } else {
+//                    appDelegate.fetchAndStoredDataLocally()
+//                    self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
+//                    self.view?.window?.makeKeyAndVisible()
+//                }
+//            }
         }
     }
 }

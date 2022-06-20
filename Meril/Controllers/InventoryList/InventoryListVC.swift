@@ -20,7 +20,7 @@ class InventoryListVC: UIViewController {
     var filteredInventoryArr: [SurgeryData] = []
     var isFilterApplied: Bool = false
    
-    var stockArrWithSyncFalse: [AddSurgeryRequestModel] = []
+//    var stockArrWithSyncFalse: [AddSurgeryRequestModel] = []
 //    var hospitalsArr: [Hospitals] = []
 //    var doctorsArr: [Hospitals] = []
 //    var salesPersonsArr: [Hospitals] = []
@@ -60,6 +60,7 @@ class InventoryListVC: UIViewController {
     
     //MARK:- Custome Method
     func setUI() {
+        self.navigationItem.title = "Physical Inventory Report"
         txtSearch.delegate = self
         txtSearch.returnKeyType = .done
 
@@ -147,13 +148,21 @@ class InventoryListVC: UIViewController {
     
     //    Fetch stock data from server whose sync status is false and then append it to the current stockArr to make it easier to handle UI
     func fetchAddStockDataWithoutSync() {
-        stockArrWithSyncFalse = AddStockToCoreData.sharedInstance.fetchStocks() ?? []
-        for surgery in stockArrWithSyncFalse { //.reversed() {
-            var surgeryObj = SurgeryData()
-            surgeryObj.addSurgeryTempObj = surgery
-            self.inventoryArr.insert(surgeryObj, at: 0)
+        var stockArrWithSyncFalse = AddStockToCoreData.sharedInstance.fetchStocks() ?? []
+        if self.inventoryArr.isEmpty {
+            self.inventoryArr = stockArrWithSyncFalse
+        } else {
+            GlobalFunctions.printToConsole(message: "before merging total rows: \(inventoryArr.count)")
+            stockArrWithSyncFalse += inventoryArr
+            inventoryArr = stockArrWithSyncFalse
+            GlobalFunctions.printToConsole(message: "After merging total rows: \(inventoryArr.count)")
         }
-        GlobalFunctions.printToConsole(message: "self.surgeryArr.count: \(self.inventoryArr.count)")
+//        for surgery in stockArrWithSyncFalse { //.reversed() {
+//            var surgeryObj = SurgeryData()
+//            surgeryObj.addSurgeryTempObj = surgery
+//            self.inventoryArr.insert(surgeryObj, at: 0)
+//        }
+//        GlobalFunctions.printToConsole(message: "self.surgeryArr.count: \(self.inventoryArr.count)")
         self.tblView.reloadData()
     }
 }
@@ -185,7 +194,7 @@ extension InventoryListVC:UITableViewDelegate,UITableViewDataSource{
             cell.doctorNameLbl.isHidden = true
             //        cell.itemDetail = isFilterApplied ? filteredInventoryArr[indexPath.row] : inventoryArr[indexPath.row]
             cell.surgeryOrStockIdLbl.text = "Stock id: " + (itemSectionData.unique_id ?? "N/A")
-            cell.lblDate.text = "Date: " + (itemSectionData.created_at ?? "N/A")
+            cell.lblDate.text = "Date: " + (itemSectionData.created_at ?? "\(Date())")
             
             //            Set hospital name
             cell.hospitalNameLbl.text = "Hospital: " + (itemSectionData.hospital?.Account_Name ?? "N/A")

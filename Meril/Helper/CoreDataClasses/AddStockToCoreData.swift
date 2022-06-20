@@ -33,12 +33,12 @@ class AddStockToCoreData {
         }
     }
     
-    func fetchStocks() -> [AddSurgeryRequestModel]? {
+    func fetchStocks() -> [SurgeryData]? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddStock")
         fetchRequest.predicate = NSPredicate(format: "isSyncedWithServer == %@", NSNumber(value: false))
         do {
             let surgeryTypesData = try managedContext.fetch(fetchRequest) as? [AddStock]
-            var addedSurgeryArr: [AddSurgeryRequestModel] = []
+            var addedSurgeryArr: [SurgeryData] = []
             for surgery in surgeryTypesData ?? [] {
                 GlobalFunctions.printToConsole(message: "stock obj: \(surgery.isEqual(AddSurgeries.self))")
                 
@@ -49,8 +49,13 @@ class AddStockToCoreData {
                 let barcodeJsonData = (surgeryObj.barcodes ?? "").data(using: .utf8)!
                 let barcodeObj = try JSONDecoder().decode([BarCodeModel].self, from: barcodeJsonData)
                 surgeryObj.coreDataBarcodes = barcodeObj
-                addedSurgeryArr.append(surgeryObj)
-                GlobalFunctions.printToConsole(message: "StockObj: \(surgeryTypesData?.count)")
+                
+                //                Use Stock data Object for easy handling on UI
+                                var surgeryDataObj = SurgeryData(addSurgeryTempObj: surgeryObj)
+                                surgeryDataObj.surgery_id = surgeryObj.surgeryId
+                                    addedSurgeryArr.append(surgeryDataObj)
+
+                addedSurgeryArr.append(surgeryDataObj)
             }
             return addedSurgeryArr
         } catch {

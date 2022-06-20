@@ -31,7 +31,6 @@ class SurgeryServices {
     //    Fetch user types
     static func addSurgery(surgeryObj: AddSurgeryRequestModel, completionHandler: @escaping (ResponseModel?, _ error: String?) -> ()) {
                 
-        GlobalFunctions.printToConsole(message: "surgeryData: \(surgeryObj)")
         APIManager.shared().call(for: ResponseModel.self, type: EndPointsItem.addSurgery, params: surgeryObj.dict) { (responseData, error) in
             
             guard let response = responseData else {
@@ -51,7 +50,6 @@ class SurgeryServices {
     //    Add inventory stock
     static func addInventoryStock(surgeryObj: AddSurgeryRequestModel, completionHandler: @escaping (ResponseModel?, _ error: String?) -> ()) {
                 
-        GlobalFunctions.printToConsole(message: "stockData: \(surgeryObj)")
         APIManager.shared().call(for: ResponseModel.self, type: EndPointsItem.addStock, params: surgeryObj.dict) { (responseData, error) in
             
             guard let response = responseData else {

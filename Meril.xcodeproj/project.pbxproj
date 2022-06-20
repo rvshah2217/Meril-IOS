@@ -45,6 +45,9 @@
 		83D14C3E27FC314C008A1D80 /* SyncCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D14C3D27FC314C008A1D80 /* SyncCell.swift */; };
 		83D14C4027FCC553008A1D80 /* AddStockToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D14C3F27FCC553008A1D80 /* AddStockToCoreData.swift */; };
 		83D14C4227FCC632008A1D80 /* StockList_CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D14C4127FCC632008A1D80 /* StockList_CoreData.swift */; };
+		83DF1A14285B20BD008B4B01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83DF1A13285B20BC008B4B01 /* GoogleService-Info.plist */; };
+		83DF1A16285CA00B008B4B01 /* DefaultLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DF1A15285CA00B008B4B01 /* DefaultLoginData.swift */; };
+		83DF1A19285DADFF008B4B01 /* ManualScanEntryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DF1A18285DADFF008B4B01 /* ManualScanEntryVC.swift */; };
 		887C7A3627EF193000A5A0FB /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A3427EF193000A5A0FB /* ContactUsViewController.swift */; };
 		887C7A3727EF193000A5A0FB /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887C7A3527EF193000A5A0FB /* ContactUsViewController.xib */; };
 		887C7A3B27EF246800A5A0FB /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C7A3927EF246800A5A0FB /* ChangePasswordViewController.swift */; };
@@ -112,11 +115,15 @@
 		8382F16D27F4718500DD3AB7 /* Meril.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Meril.xcdatamodel; sourceTree = "<group>"; };
 		8382F16F27F5DA4300DD3AB7 /* AddSurgeryToCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSurgeryToCoreData.swift; sourceTree = "<group>"; };
 		838AA28E27F348C500258455 /* HomeBanners_CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBanners_CoreData.swift; sourceTree = "<group>"; };
+		83C2588A28609CF700FE179D /* Meril.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meril.entitlements; sourceTree = "<group>"; };
 		83D14C3927FB604A008A1D80 /* SurgeryList_CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryList_CoreData.swift; sourceTree = "<group>"; };
 		83D14C3B27FC3143008A1D80 /* SyncCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncCell.xib; sourceTree = "<group>"; };
 		83D14C3D27FC314C008A1D80 /* SyncCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncCell.swift; sourceTree = "<group>"; };
 		83D14C3F27FCC553008A1D80 /* AddStockToCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStockToCoreData.swift; sourceTree = "<group>"; };
 		83D14C4127FCC632008A1D80 /* StockList_CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockList_CoreData.swift; sourceTree = "<group>"; };
+		83DF1A13285B20BC008B4B01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		83DF1A15285CA00B008B4B01 /* DefaultLoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLoginData.swift; sourceTree = "<group>"; };
+		83DF1A18285DADFF008B4B01 /* ManualScanEntryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualScanEntryVC.swift; sourceTree = "<group>"; };
 		887C7A3427EF193000A5A0FB /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		887C7A3527EF193000A5A0FB /* ContactUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsViewController.xib; sourceTree = "<group>"; };
 		887C7A3927EF246800A5A0FB /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +203,7 @@
 		831A4F5F27E83CED00BEF2E7 /* Meril */ = {
 			isa = PBXGroup;
 			children = (
+				83C2588A28609CF700FE179D /* Meril.entitlements */,
 				8382F16C27F4718500DD3AB7 /* Meril.xcdatamodeld */,
 				837192C927EA025C00BE04A1 /* Services */,
 				831A4F8B27E8A19700BEF2E7 /* Extension */,
@@ -225,6 +233,7 @@
 		831A4F7C27E8509900BEF2E7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				83DF1A17285DADE3008B4B01 /* Scanner */,
 				8313DF692803ECFC00DB0EF6 /* BarCodeList */,
 				834ED70627F06E5F0059B30C /* InventoryList */,
 				887C7A3827EF245400A5A0FB /* ChangePassword */,
@@ -238,7 +247,6 @@
 				831A4F8227E86C9200BEF2E7 /* SideMenu */,
 				831A4F6427E83CED00BEF2E7 /* HomeVC.swift */,
 				831A4F8027E8511F00BEF2E7 /* Constants.swift */,
-				837192DA27EB7B1600BE04A1 /* BarCodeScannerVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -272,6 +280,7 @@
 		831A4F7F27E850CA00BEF2E7 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				83DF1A13285B20BC008B4B01 /* GoogleService-Info.plist */,
 				831A4F7127E83CEE00BEF2E7 /* Info.plist */,
 			);
 			path = Config;
@@ -297,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				831A4F8927E8A0A800BEF2E7 /* LoginVC.swift */,
+				83DF1A15285CA00B008B4B01 /* DefaultLoginData.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -359,6 +369,15 @@
 				83D14C4127FCC632008A1D80 /* StockList_CoreData.swift */,
 			);
 			path = CoreDataClasses;
+			sourceTree = "<group>";
+		};
+		83DF1A17285DADE3008B4B01 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				837192DA27EB7B1600BE04A1 /* BarCodeScannerVC.swift */,
+				83DF1A18285DADFF008B4B01 /* ManualScanEntryVC.swift */,
+			);
+			path = Scanner;
 			sourceTree = "<group>";
 		};
 		887C7A3327EF190900A5A0FB /* ContactUs */ = {
@@ -519,6 +538,7 @@
 				88CBA33827ECCDE2005C22FE /* PrivacyPolicyViewController.xib in Resources */,
 				88CBA34D27ECDC49005C22FE /* SurgerayListViewController.xib in Resources */,
 				83D14C3C27FC3143008A1D80 /* SyncCell.xib in Resources */,
+				83DF1A14285B20BD008B4B01 /* GoogleService-Info.plist in Resources */,
 				88CBA33E27ECCDE2005C22FE /* EditProfileViewController.xib in Resources */,
 				88CBA35227ECDF74005C22FE /* SurgeryListTableViewCell.xib in Resources */,
 				887C7A3727EF193000A5A0FB /* ContactUsViewController.xib in Resources */,
@@ -586,6 +606,7 @@
 				887C7A4827EF4B7E00A5A0FB /* ContactusServices.swift in Sources */,
 				88CBA33B27ECCDE2005C22FE /* AddSurgerayViewController.swift in Sources */,
 				88CBA34327ECCE1F005C22FE /* BaseViewController.swift in Sources */,
+				83DF1A16285CA00B008B4B01 /* DefaultLoginData.swift in Sources */,
 				831A4F8A27E8A0A800BEF2E7 /* LoginVC.swift in Sources */,
 				83D14C3E27FC314C008A1D80 /* SyncCell.swift in Sources */,
 				887C7A4427EF459400A5A0FB /* ChangePasswordModel.swift in Sources */,
@@ -597,6 +618,7 @@
 				887C7A3B27EF246800A5A0FB /* ChangePasswordViewController.swift in Sources */,
 				8313DF6D2803ED3A00DB0EF6 /* BarCodeListVC.swift in Sources */,
 				831A4F8427E86CA900BEF2E7 /* SideMenuVC.swift in Sources */,
+				83DF1A19285DADFF008B4B01 /* ManualScanEntryVC.swift in Sources */,
 				831A4F6127E83CED00BEF2E7 /* AppDelegate.swift in Sources */,
 				837192D527EA546D00BE04A1 /* LoginResponseModel.swift in Sources */,
 				8382F16B27F44E2F00DD3AB7 /* StoreFormData.swift in Sources */,
@@ -771,9 +793,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = Meril/Meril.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.0.0;
-				DEVELOPMENT_TEAM = CPR2Y68PV8;
+				DEVELOPMENT_TEAM = 646VCF93GY;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meril/Config/Info.plist;
@@ -790,8 +814,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.app.meril;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meril.meritrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = meril_dev_prov;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -804,9 +829,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = Meril/Meril.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.0.0;
-				DEVELOPMENT_TEAM = CPR2Y68PV8;
+				DEVELOPMENT_TEAM = 646VCF93GY;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meril/Config/Info.plist;
@@ -823,8 +850,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.app.meril;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meril.meritrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = meril_distribution_prov;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

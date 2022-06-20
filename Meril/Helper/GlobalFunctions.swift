@@ -20,8 +20,9 @@ struct GlobalFunctions {
         controller.present(alert, animated: true)
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
-            alert.dismiss(animated: true)
-            completionHandler?()
+            alert.dismiss(animated: true) {
+                completionHandler?()
+            }
         }
     }
     
@@ -219,6 +220,20 @@ class UserSessionManager
 
     public static var shared = UserSessionManager()
 
+    var manualEntryData: [ManualEntryModel]
+    {
+        get
+        {
+            guard let data = UserDefaults.standard.data(forKey: "manualEntryData") else { return [] }
+            return (try? JSONDecoder().decode([ManualEntryModel].self, from: data)) ?? []
+        }
+        set
+        {
+            guard let data = try? JSONEncoder().encode(newValue) else { return }
+            UserDefaults.standard.set(data, forKey: "manualEntryData")
+        }
+    }
+    
     var barCodes: [BarCodeModel]
     {
         get
@@ -288,20 +303,41 @@ struct AddSurgeryInventory {
         let stockArr = AddStockToCoreData.sharedInstance.fetchStocks() ?? []
         let stockGroup = DispatchGroup()
         for stock in stockArr {
-            stockGroup.enter()
-            SurgeryServices.addInventoryStock(surgeryObj: stock) { response, error in
-                stockGroup.leave()
-                guard let _ = error else {
-                    //                delete record from core data if inventory sync successfully
-                    AddStockToCoreData.sharedInstance.deleteStockByStockId(stockId: stock.stockId!)
-                    NotificationCenter.default.post(name: .stockAdded, object: nil, userInfo: ["stockId": stock.stockId!])
-                    return
+            if let addStockObj = stock.addSurgeryTempObj {
+                stockGroup.enter()
+                SurgeryServices.addInventoryStock(surgeryObj: addStockObj) { response, error in
+                    stockGroup.leave()
+                    guard let _ = error else {
+                        //                delete record from core data if inventory sync successfully
+                        AddStockToCoreData.sharedInstance.deleteStockByStockId(stockId: addStockObj.stockId!)
+                        NotificationCenter.default.post(name: .stockAdded, object: nil, userInfo: ["stockId": addStockObj.stockId!])
+                        return
+                    }
                 }
             }
         }
         stockGroup.notify(queue: .main) {
             GlobalFunctions.printToConsole(message: "All request completed")
             NotificationCenter.default.post(name: .stopSyncBtnAnimation, object: nil, userInfo: nil)
+        }
+    }
+}
+
+struct CommonFunctions {
+    
+    static func getAllFormData(completionHandler: @escaping (SurgeryInventoryModel?) -> ()) {
+        SurgeryServices.getAllFormData { response, error in
+            guard let responseData = response else {
+                GlobalFunctions.printToConsole(message: "Fetch form-data failed: \(error)")
+                return
+            }
+            if let formDataObj = responseData.suregeryInventoryData {
+                //                Save response of Form data to core data
+                DispatchQueue.main.async {
+                    completionHandler(formDataObj)
+                    StoreFormData.sharedInstance.saveFormData(schemeData: formDataObj)
+                }
+            }
         }
     }
 }

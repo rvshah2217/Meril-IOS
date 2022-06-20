@@ -22,12 +22,20 @@
                                     <constraint firstAttribute="width" secondItem="EsA-ci-fGj" secondAttribute="height" multiplier="20:8" id="EqW-Ix-xsd"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dug-dR-LW1">
+                                <rect key="frame" x="364" y="825" width="30" height="27"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.19215686274509802" green="0.47843137254901957" blue="0.76470588235294112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EsA-ci-fGj" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.6" id="U3y-i3-dsv"/>
                             <constraint firstItem="EsA-ci-fGj" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dt2-fC-fmC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Dug-dR-LW1" secondAttribute="bottom" constant="10" id="gm0-0d-6bL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Dug-dR-LW1" secondAttribute="trailing" constant="20" id="rCk-eX-1zW"/>
                             <constraint firstItem="EsA-ci-fGj" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vyv-yB-i8J"/>
                         </constraints>
                     </view>

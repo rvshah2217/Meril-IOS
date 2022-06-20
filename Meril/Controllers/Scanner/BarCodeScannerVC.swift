@@ -45,6 +45,19 @@ class BarCodeScannerVC: UIViewController {
         self.navigationItem.title = "Scan"
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_back"), style: .plain, target: self, action: #selector(self.backButtonPressed))
+        
+        if isFromAddSurgery {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_add"), style: .plain, target: self, action: #selector(self.addManualSurgeryBtnCicked))
+        }
+    }
+    
+    @objc func addManualSurgeryBtnCicked() {
+        let nextVC = mainStoryboard.instantiateViewController(withIdentifier: "ManualScanEntryVC") as! ManualScanEntryVC
+        nextVC.modalPresentationStyle = .overCurrentContext
+        nextVC.modalTransitionStyle = .crossDissolve
+        nextVC.view.backgroundColor = .black.withAlphaComponent(0.5)
+        nextVC.delegate = self
+        self.navigationController?.present(nextVC, animated: true, completion: nil)
     }
     
     @objc func backButtonPressed() {
@@ -199,7 +212,7 @@ extension BarCodeScannerVC: AVCaptureMetadataOutputObjectsDelegate {
         isBarCodeAvailable = true
         var currentStoredArr: [BarCodeModel] = UserSessionManager.shared.barCodes//UserDefaults.standard.array(forKey: "scannedBarcodes") as? [String] ?? []
 //        When user scan for Surgery then he/she allows to scan maximum 10 barcodes
-        if ((currentStoredArr.count > 0) && (isFromAddSurgery)) {
+        if ((currentStoredArr.count > 10) && (isFromAddSurgery)) {
             openScanAgainDialog(isShowWarning: true)
             return
         }
@@ -237,4 +250,26 @@ extension BarCodeScannerVC: ScanAgainViewDelegate {
         captureSession.startRunning()
     }
     
+}
+
+extension BarCodeScannerVC: ManualEntryDelegate {
+    
+    func addManualSurgeryData(manuallyAddedData: ManualEntryModel) {
+        isBarCodeAvailable = true
+        var currentManualEntryArr: [ManualEntryModel] = UserSessionManager.shared.manualEntryData
+        let currentStoredArr: [BarCodeModel] = UserSessionManager.shared.barCodes
+//        When user scan for Surgery then he/she allows to scan maximum 10 barcodes
+        
+        let totalArr = currentStoredArr.count + currentManualEntryArr.count
+        
+        if ((totalArr > 10) && (isFromAddSurgery)) {
+            openScanAgainDialog(isShowWarning: true)
+            return
+        }
+        
+        currentManualEntryArr.append(manuallyAddedData)
+        UserSessionManager.shared.manualEntryData = currentManualEntryArr
+        GlobalFunctions.showToast(controller: self, message: "Your data has been saved successfully.", seconds: successDismissTime, completionHandler: nil)
+        openScanAgainDialog(isShowWarning: false)
+    }
 }

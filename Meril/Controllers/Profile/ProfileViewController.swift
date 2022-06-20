@@ -99,7 +99,7 @@ class ProfileViewController: BaseViewController {
             self.txtGender.text = userInfo.gender ?? "Male"
             self.txtBio.text = userInfo.bio ?? "N/A"
             var address = (userInfo.city ?? "City") + ", " + (userInfo.state ?? "State") + ", "
-            address = address + (userInfo.country ?? "Country") + "-" + "\(userInfo.pincode ?? 0)"
+            address = address + (userInfo.country ?? "Country") + "-" + (userInfo.pincode ?? "")
             self.txtLocation.text = address
         }
 //        self.imgProfile.image = UIImage

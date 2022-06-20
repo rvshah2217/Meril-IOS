@@ -59,6 +59,7 @@ class SurgeryListViewController: UIViewController {
     
     //MARK:- Custome Method
     func setUI(){
+        self.navigationItem.title = "Surgery Tracker"
         txtSearch.delegate = self
         txtSearch.returnKeyType = .done
         
@@ -99,7 +100,7 @@ class SurgeryListViewController: UIViewController {
     }
     
     func fetchSurgeryListFromCoreData(isUpdateUsingNotification: Bool) {
-        SHOW_CUSTOM_LOADER()        
+        SHOW_CUSTOM_LOADER()
         self.surgeryArr = SurgeryList_CoreData.sharedInstance.fetchSurgeryData() ?? []
         if self.surgeryArr.isEmpty {
             self.fetchSurgeryListFromServer(isUpdateUsingNotification: isUpdateUsingNotification)
@@ -129,17 +130,17 @@ class SurgeryListViewController: UIViewController {
                 self.surgeryArr = response?.surgeryData ?? []
                 self.fetchAddSurgeryDataWithoutSync()
                 self.noDataFoundLbl.isHidden = !self.surgeryArr.isEmpty
-                if isUpdateUsingNotification {
-                    DispatchQueue.global(qos: .background).async {
+//                if isUpdateUsingNotification {
+//                    DispatchQueue.global(qos: .background).async {
                         self.tblView.reloadData()
                         //                save response to the coreData
                         SurgeryList_CoreData.sharedInstance.saveSurgeriesToCoreData(schemeData: self.surgeryArr, isForceSave: true)
-                    }
-                } else {
-                    self.tblView.reloadData()
-                    //                save response to the coreData
-                    SurgeryList_CoreData.sharedInstance.saveSurgeriesToCoreData(schemeData: self.surgeryArr, isForceSave: true)
-                }
+//                    }
+//                } else {
+//                    self.tblView.reloadData()
+//                    //                save response to the coreData
+//                    SurgeryList_CoreData.sharedInstance.saveSurgeriesToCoreData(schemeData: self.surgeryArr, isForceSave: true)
+//                }
                 return
             }
             GlobalFunctions.printToConsole(message: "Unable to fetch surgeries: \(err)")

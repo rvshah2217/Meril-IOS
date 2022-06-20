@@ -108,14 +108,13 @@ extension ChangePasswordViewController{
         ChangePasswordServices.changepassword(loginObj: userObj) { isSuccess, errorMessage in
             if isSuccess{
                 GlobalFunctions.showToast(controller: self, message: "Password change successfully", seconds: errorDismissTime)
-                DispatchQueue.main.asyncAfter(deadline: .now() + errorDismissTime + 0.5){
+                UserDefaults.standard.set(false, forKey: "isDefaultPassword")
                     if self.isFromLogin {
+                        appDelegate.fetchAndStoredDataLocally()
                         self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
                     } else {
                         self.navigationController?.popViewController(animated: true)
-                    }                    
-                }
-                
+                    }
             }else{
                 GlobalFunctions.showToast(controller: self, message: errorMessage ?? "", seconds: errorDismissTime)
             }

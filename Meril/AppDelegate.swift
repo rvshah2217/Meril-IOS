@@ -9,44 +9,95 @@ import UIKit
 import CoreData
 import IQKeyboardManagerSwift
 import Reachability
+import FirebaseMessaging
+import FirebaseCore
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
+    
     var window: UIWindow?
-//    var settingsData : SettingsData?
+    //    var settingsData : SettingsData?
     let reachability = try! Reachability()
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        Config IQKeyboardManager
-        IQKeyboardManager.shared.enable = true
+//        Firebase configure
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
 
+        //        Config IQKeyboardManager
+        IQKeyboardManager.shared.enable = true
+        
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = ColorConstant.mainThemeColor
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-
+        
         self.addNetworkReachability()
-        fetchSettingsData()
-//        self.getUserProfile()
+        //        self.getUserProfile()
         
         let vc: UIViewController
-        if UserDefaults.standard.string(forKey: "headerToken") != nil {
-//            vc = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-            vc = GlobalFunctions.setHomeVC()
+        if UserDefaults.standard.bool(forKey: "isDefaultPassword") {
+            let changePasswordVC = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
+            vc = GlobalFunctions.setRootNavigationController(currentVC: changePasswordVC)
+        } else if UserDefaults.standard.string(forKey: "headerToken") != nil {
+            let doctorId = UserDefaults.standard.value(forKey: "defaultDoctorId")
+            print("selected doctorId: \(doctorId)")
+            print("isFirstTimeLogIn: \(UserDefaults.standard.bool(forKey: "isFirstTimeLogIn"))")
+            if !(UserDefaults.standard.bool(forKey: "isFirstTimeLogIn")) && (doctorId == nil) {
+               let nextVC = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
+                vc = GlobalFunctions.setRootNavigationController(currentVC: nextVC)
+            } else {
+                self.fetchAndStoredDataLocally()
+                vc = GlobalFunctions.setHomeVC()
+            }
         } else {
             let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
             vc = GlobalFunctions.setRootNavigationController(currentVC: loginVC)
         }
-//        vc = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-//        vc = SurgerayListViewController(nibName: "SurgerayListViewController", bundle: nil)
         self.window?.rootViewController = vc//
         self.window?.makeKeyAndVisible()
         return true
     }
+    
+    func registerRemoteNotification(application: UIApplication) {
+        
+        if #available(iOS 10.0, *) {
+          // For iOS 10 display notification (sent via APNS)
+          UNUserNotificationCenter.current().delegate = self
 
+          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+          UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { _, _ in }
+          )
+        } else {
+          let settings: UIUserNotificationSettings =
+            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+          application.registerUserNotificationSettings(settings)
+        }
+        application.registerForRemoteNotifications()
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        print("Firebase registration token: \(String(describing: fcmToken))")
+        UserDefaults.standard.set(fcmToken, forKey: "fcmToken")
+    }
+    
+    func fetchAndStoredDataLocally() {
+        DispatchQueue.global(qos: .background).async {
+            self.fetchSettingsData()
+            CommonFunctions.getAllFormData {_ in
+                GlobalFunctions.printToConsole(message: "Form data stored successfully in local.")
+            }
+        }
+    }
+    
     func addNetworkReachability() {
         do{
             try reachability.startNotifier()
@@ -54,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("could not start reachability notifier")
         }
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
-
+        
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
@@ -62,38 +113,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     @objc func reachabilityChanged(note: Notification) {
-
-      let reachability = note.object as! Reachability
-
-      switch reachability.connection {
-      case .unavailable:
-          NotificationCenter.default.post(name: .networkLost, object: nil)
-//          notify to send the data to server which are not synced yet
-        print("Network not reachable")
-      case .wifi, .cellular:
-          AddSurgeryInventory().fetchSurgeryBySyncStatus()
-          print("Network reachable")
-      default:
-          print("None")
-//          Notify that network connection lost and store data to local if needed
-      }
+        
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .unavailable:
+            NotificationCenter.default.post(name: .networkLost, object: nil)
+            //          notify to send the data to server which are not synced yet
+            print("Network not reachable")
+        case .wifi, .cellular:
+            AddSurgeryInventory().fetchSurgeryBySyncStatus()
+            print("Network reachable")
+        default:
+            print("None")
+            //          Notify that network connection lost and store data to local if needed
+        }
     }
     // MARK: - Core Data stack
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
-        */
+         */
         let container = NSPersistentContainer(name: "Meril")
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
+                
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -109,9 +160,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
-
+    
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -132,7 +183,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //                hide banner view if there is error
                 return
             }
-//            self.settingsData = response?.settingsData
             do {
                 let encodedData = try JSONEncoder().encode(response?.settingsData)
                 let jsonStr = String(data: encodedData, encoding: String.Encoding.utf8)
@@ -142,24 +192,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    
-//    func getUserProfile() {
-//        LoginServices.getUserProfile { response, error in
-//            guard let responseData = response else {
-//                //                hide banner view if there is error
-//                GlobalFunctions.printToConsole(message: "Fail to fetch user profile")
-//                return
-//            }
-//            do {
-//                let encodedData = try JSONEncoder().encode(responseData.userProfile)
-//                let jsonStr = String(data: encodedData, encoding: String.Encoding.utf8)
-//
-//                UserDefaults.standard.set(jsonStr, forKey: "UserProfileData")
-//            } catch {
-//                GlobalFunctions.printToConsole(message: "Error to store user profile data: \(error.localizedDescription)")
-//            }
-//            GlobalFunctions.printToConsole(message: "User profile data: \(responseData.userProfile)")
-//        }
-//    }
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+}

@@ -35,12 +35,12 @@ struct UserTypesModel : Codable {
     let created_at : String?
     let updated_at : String?
     let user_data : UserData?
-    let is_default_password: Int?
-    //    let sergeries : [Sergeries]?
-//    let stocks : [Stocks]?
+    let is_default_password: String?
+    let surgeries : [SurgeryData]?
+    let stocks : [SurgeryData]?
 
 //    For login
-    let user_type_id: Int?
+    let user_type_id: String?
     let unique_id: String?
     let token: String?
     
@@ -66,21 +66,22 @@ struct UserTypesModel : Codable {
         case link = "link"
         case extra_parameter = "extra_parameter"
         case image = "image"
-//        case sergeries = "sergeries"
-//        case stocks = "stocks"
+        case surgeries = "sergeries"
+        case stocks = "stocks"
         case user_data = "user_data"
         case is_default_password = "is_default_password"
     }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        
         id = try values.decodeIfPresent(Int.self, forKey: .id)
         zoho_id = try values.decodeIfPresent(Int.self, forKey: .zoho_id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
         updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
       
-        user_type_id = try values.decodeIfPresent(Int.self, forKey: .user_type_id)
+        user_type_id = try values.decodeIfPresent(String.self, forKey: .user_type_id)
         unique_id = try values.decodeIfPresent(String.self, forKey: .unique_id)
         token = try values.decodeIfPresent(String.self, forKey: .token)
 
@@ -89,10 +90,10 @@ struct UserTypesModel : Codable {
         extra_parameter = try values.decodeIfPresent(String.self, forKey: .extra_parameter)
         image = try values.decodeIfPresent(String.self, forKey: .image)
         
-//        sergeries = try values.decodeIfPresent([Sergeries].self, forKey: .sergeries)
-//        stocks = try values.decodeIfPresent([Stocks].self, forKey: .stocks)
+        surgeries = try values.decodeIfPresent([SurgeryData].self, forKey: .surgeries)
+        stocks = try values.decodeIfPresent([SurgeryData].self, forKey: .stocks)
         user_data = try values.decodeIfPresent(UserData.self, forKey: .user_data)
-        is_default_password = try values.decodeIfPresent(Int.self, forKey: .is_default_password)
+        is_default_password = try values.decodeIfPresent(String.self, forKey: .is_default_password)
     }
 
 }
@@ -106,7 +107,7 @@ struct UserData : Codable {
     let city : String?
     let state : String?
     let country : String?
-    let pincode : Int?//String?
+    let pincode : String?//Int?
     let profile : String?
     let division_id : String?
     let gender : String?
@@ -139,7 +140,7 @@ struct UserData : Codable {
         city = try values.decodeIfPresent(String.self, forKey: .city)
         state = try values.decodeIfPresent(String.self, forKey: .state)
         country = try values.decodeIfPresent(String.self, forKey: .country)
-        pincode = try values.decodeIfPresent(Int.self, forKey: .pincode)
+        pincode = try values.decodeIfPresent(String.self, forKey: .pincode)
         profile = try values.decodeIfPresent(String.self, forKey: .profile)
         division_id = try values.decodeIfPresent(String.self, forKey: .division_id)
         gender = try values.decodeIfPresent(String.self, forKey: .gender)

@@ -58,19 +58,24 @@ class ChangePasswordViewController: BaseViewController {
         scrollDetails.layer.borderWidth = 0.5
         scrollDetails.layer.borderColor = UIColor.lightGray.cgColor
     }
+    
     func setNavigation(){
-        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeaderHeight,title: "Change password")
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        if !isFromLogin {
-            setBackButtononNavigation()
-            pressButtonOnNavigaion { (isBack) in
-                if(isBack){
-                }else{
-                    _ =  self.navigationController?.popViewController(animated: true)
-                }
-            }
-        }
+        self.navigationItem.title = "Change password"
+        GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)        
+
+//        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeaderHeight,title: "Change password")
+//        navigationController?.setNavigationBarHidden(true, animated: false)
+//        if !isFromLogin {
+//            setBackButtononNavigation()
+//            pressButtonOnNavigaion { (isBack) in
+//                if(isBack){
+//                }else{
+//                    _ =  self.navigationController?.popViewController(animated: true)
+//                }
+//            }
+//        }
     }
+    
     func inputValidation() {
         
         let currentPassword = txtCurrent.text ?? ""
@@ -107,14 +112,16 @@ extension ChangePasswordViewController{
     func callChangePasswordApi(userObj: ChangePasswordRequestModel) {
         ChangePasswordServices.changepassword(loginObj: userObj) { isSuccess, errorMessage in
             if isSuccess{
-                GlobalFunctions.showToast(controller: self, message: "Password change successfully", seconds: errorDismissTime)
-                UserDefaults.standard.set(false, forKey: "isDefaultPassword")
+                GlobalFunctions.showToast(controller: self, message: "Password change successfully", seconds: errorDismissTime) {
+                    
+                    UserDefaults.standard.set(false, forKey: "isDefaultPassword")
                     if self.isFromLogin {
                         appDelegate.fetchAndStoredDataLocally()
                         self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
                     } else {
                         self.navigationController?.popViewController(animated: true)
                     }
+                }
             }else{
                 GlobalFunctions.showToast(controller: self, message: errorMessage ?? "", seconds: errorDismissTime)
             }

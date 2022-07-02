@@ -34,7 +34,7 @@ class SideMenuVC: UIViewController {
 //        itemsArr.append(["iconName": "ic_rateApp", "title": "Rate App"])
         itemsArr.append(["iconName": "ic_share", "title": "Share"])
         itemsArr.append(["iconName": "ic_privacyPolicy", "title": "Privacy Policy"])
-//        itemsArr.append(["iconName": "ic_settings", "title": "Settings"])
+        itemsArr.append(["iconName": "ic_settings", "title": "Change Password"])
         itemsArr.append(["iconName": "ic_signOut", "title": "Signout"])
     }
     
@@ -76,28 +76,64 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
         self.sideMenuController?.hideLeftView()
         let navVC = sideMenuController?.rootViewController as! UINavigationController
 
-        if indexPath.row == 0{
-            
-        }else if indexPath.row == 1{
+        switch indexPath.row {
+        case 0:
+            print("Don't do anything")
+            break
+        case 1:
             let vc = PrivacyPolicyViewController(nibName: "PrivacyPolicyViewController", bundle: nil)
             vc.pageName = .AboutUs
             navVC.pushViewController(vc, animated: true)
-        }else if indexPath.row == 2{
+            break
+        case 2:
             let vc = ContactUsViewController(nibName: "ContactUsViewController", bundle: nil)
             navVC.pushViewController(vc, animated: true)
-        }else if indexPath.row == 3{
+            break
+        case 3:
             let text = "Shared text...."
             let textToShare = [ text ]
             let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
             self.present(activityViewController, animated: true, completion: nil)
-        }else if indexPath.row == 4{
+            break
+        case 4:
             let vc = PrivacyPolicyViewController(nibName: "PrivacyPolicyViewController", bundle: nil)
             vc.pageName = .PrivacyPolicy
             navVC.pushViewController(vc, animated: true)
-        }else if indexPath.row == 5{
+            break
+        case 5:
+            let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
+            navVC.pushViewController(vc, animated: true)
+            break
+        default:
             self.userLogoutConfirmationDialog()
         }
+        
+//        if indexPath.row == 0{
+//
+//        }else if indexPath.row == 1{
+//            let vc = PrivacyPolicyViewController(nibName: "PrivacyPolicyViewController", bundle: nil)
+//            vc.pageName = .AboutUs
+//            navVC.pushViewController(vc, animated: true)
+//        }else if indexPath.row == 2{
+//            let vc = ContactUsViewController(nibName: "ContactUsViewController", bundle: nil)
+//            navVC.pushViewController(vc, animated: true)
+//        }else if indexPath.row == 3{
+//            let text = "Shared text...."
+//            let textToShare = [ text ]
+//            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+//            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+//            self.present(activityViewController, animated: true, completion: nil)
+//        }else if indexPath.row == 4{
+//            let vc = PrivacyPolicyViewController(nibName: "PrivacyPolicyViewController", bundle: nil)
+//            vc.pageName = .PrivacyPolicy
+//            navVC.pushViewController(vc, animated: true)
+//        }else if indexPath.row == 5{
+//            let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
+//            self.navigationController!.pushViewController(vc, animated: true)
+//        } else {
+//            self.userLogoutConfirmationDialog()
+//        }
     }
     
     func userLogoutConfirmationDialog() {

@@ -200,7 +200,7 @@ extension InventoryListVC:UITableViewDelegate,UITableViewDataSource{
             cell.hospitalNameLbl.text = "Hospital: " + (itemSectionData.hospital?.Account_Name ?? "N/A")
             
             //            Set sales person name
-            cell.salesPersonLbl.text = "Sales person: " + (itemSectionData.sales_person?.name ?? "N/A")
+            cell.salesPersonLbl.text = "Sales person: " + (itemSectionData.sales_person?.fullname ?? "N/A")
             if let scans = itemSectionData.scans {
                 let itemSubData = scans[indexPath.row] 
                 cell.lblBarCode.text = "Barcode: " + (itemSubData.barcode ?? "N/A")
@@ -222,6 +222,16 @@ extension InventoryListVC:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = isFilterApplied ? filteredInventoryArr[indexPath.section] : inventoryArr[indexPath.section]
+
+        if item.addSurgeryTempObj == nil {
+            let vc = BarCodeListVC()//nibName: "BarCodeListVC", bundle: nil)
+            vc.barCodesArr = item.scans ?? []
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 

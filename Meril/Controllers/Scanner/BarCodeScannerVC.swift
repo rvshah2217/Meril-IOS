@@ -21,6 +21,7 @@ class BarCodeScannerVC: UIViewController {
     var isFromAddSurgery: Bool = false
     var isBarCodeAvailable: Bool = false
     weak var delegate: BarCodeScannerDelegate?
+    var flashBtn: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +48,34 @@ class BarCodeScannerVC: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_back"), style: .plain, target: self, action: #selector(self.backButtonPressed))
         
         if isFromAddSurgery {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_add"), style: .plain, target: self, action: #selector(self.addManualSurgeryBtnCicked))
+            let addBtn = UIBarButtonItem(image: UIImage(named: "ic_add"), style: .plain, target: self, action: #selector(self.addManualSurgeryBtnCicked))
+            self.navigationItem.rightBarButtonItems = [addBtn]
         }
+        flashBtn = UIBarButtonItem(image: UIImage(named: "ic_flashOn"), style: .plain, target: self, action: #selector(self.toggleFlash))
+        self.navigationItem.rightBarButtonItems?.append(flashBtn)
+    }
+    
+    @objc func toggleFlash() {
+        guard let device = AVCaptureDevice.default(for: AVMediaType.video) else { return }
+            guard device.hasTorch else { return }
+            do {
+                try device.lockForConfiguration()
+                if (device.torchMode == AVCaptureDevice.TorchMode.on) {
+                    device.torchMode = AVCaptureDevice.TorchMode.off
+                    flashBtn.image = UIImage(named: "ic_flashOff")
+                } else {
+                    do {
+                        try device.setTorchModeOn(level: 1.0)
+                        flashBtn.image = UIImage(named: "ic_flashOn")
+                    } catch {
+                        print(error)
+                    }
+                }
+
+                device.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
     }
     
     @objc func addManualSurgeryBtnCicked() {

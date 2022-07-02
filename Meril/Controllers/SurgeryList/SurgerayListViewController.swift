@@ -201,12 +201,13 @@ extension SurgeryListViewController: UITableViewDelegate,UITableViewDataSource{
             
             //            Set hospital name
             cell.hospitalNameLbl.text = "Hospital: " + (itemSectionData.hospital?.Account_Name ?? "N/A")
+            cell.hospitalNameLbl.numberOfLines = 2
 //            if let index = hospitalsArr.firstIndex(where: { $0.id == itemSectionData.id }) {
 //                cell.hospitalNameLbl.text = "Hospital: " + (hospitalsArr[index].name ?? "N/A")
 //            }
 
             //            Set sales person name
-            cell.salesPersonLbl.text = "Sales person: " + (itemSectionData.sales_person?.name ?? "N/A")
+            cell.salesPersonLbl.text = "Sales person: " + (itemSectionData.sales_person?.fullname ?? "N/A")
             cell.lblBarCode.isHidden = true
             cell.barCodeStatus.isHidden = true
 

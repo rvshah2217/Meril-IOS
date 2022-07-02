@@ -223,7 +223,7 @@ class AddSurgerayViewController: BaseViewController {
         }
         self.deploymentDateTxt.inputView = datePicker
         self.datePicker.backgroundColor = .white
-        self.datePicker.addTarget(self, action: #selector(self.handleDatePicker(_:)), for: .valueChanged)
+        self.datePicker.addTarget(self, action: #selector(self.handleDatePicker(_:)), for: .valueChanged)        
     }
     
     @objc func handleDatePicker(_ sender: UIDatePicker) {

@@ -542,8 +542,8 @@
             filePath = "Meril/Controllers/SurgeryList/SurgerayListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "filteredArrOnSearch()"
             landmarkType = "7">
          </BreakpointContent>
@@ -558,8 +558,8 @@
             filePath = "Meril/Controllers/SurgeryList/SurgerayListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "textFieldShouldReturn(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2670,8 +2670,8 @@
             filePath = "Meril/Controllers/SurgeryList/SurgerayListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2686,8 +2686,8 @@
             filePath = "Meril/Controllers/SurgeryList/SurgerayListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3239,38 +3239,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CD4E98E1-2E72-4200-8A43-90B8FF1AECDA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Meril/Controllers/ChangePassword/ChangePasswordViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "callChangePasswordApi(userObj:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CD3159F8-C0D9-41BA-8C00-FE9428F7EB7B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Meril/Controllers/ChangePassword/ChangePasswordViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "callChangePasswordApi(userObj:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "89295126-00DE-4603-B9CA-EB51BF82A044"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -3374,8 +3342,8 @@
             filePath = "Meril/Controllers/Scanner/BarCodeScannerVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "addManualSurgeryData(manuallyAddedData:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3390,8 +3358,8 @@
             filePath = "Meril/Controllers/Scanner/BarCodeScannerVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "addManualSurgeryData(manuallyAddedData:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3406,8 +3374,8 @@
             filePath = "Meril/Controllers/Scanner/BarCodeScannerVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "addManualSurgeryData(manuallyAddedData:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3422,8 +3390,8 @@
             filePath = "Meril/Controllers/Scanner/BarCodeScannerVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "addManualSurgeryData(manuallyAddedData:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3585,6 +3553,118 @@
             startingLineNumber = "138"
             endingLineNumber = "138"
             landmarkName = "redirectToVC(isDefaultPassword:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0B02BF5A-558B-4C51-82F5-72DEEA0799BD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Meril/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "fetchSettingsData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0B02BF5A-558B-4C51-82F5-72DEEA0799BD - 781b577ae228f4db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Meril.SettingsResponseModel&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in Meril.AppDelegate.fetchSettingsData() -&gt; ()"
+                  moduleName = "Meril"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nidhi_suhagiya/Documents/Projects/iOS/Client/Ravi/Meril/Meril/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "182"
+                  endingLineNumber = "182"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  uuid = "0B02BF5A-558B-4C51-82F5-72DEEA0799BD - 781b577ae228f4db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Meril.SettingsResponseModel&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in Meril.AppDelegate.fetchSettingsData() -&gt; ()"
+                  moduleName = "Meril"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nidhi_suhagiya/Documents/Projects/iOS/Client/Ravi/Meril/Meril/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "182"
+                  endingLineNumber = "182"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49CDA03A-F5BD-4E01-B1F0-56ED4DB7AA2A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Meril/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "fetchAndStoredDataLocally()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB333FF0-F483-46BB-BCDB-8B29FC3B0709"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Meril/Controllers/SurgeryList/Cell/SurgeriListTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "barCodeDetail"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AEB8680A-241F-44EC-BAAB-7CC99123E55F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Meril/Services/SurgeryServices.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "addSurgery(surgeryObj:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6B9D892F-1220-4A31-B24F-089D2DD9A925"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Meril/Controllers/AddSurgeray/AddSurgerayViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "489"
+            endingLineNumber = "489"
+            landmarkName = "callAddSurgeryApi()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

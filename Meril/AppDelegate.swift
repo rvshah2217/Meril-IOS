@@ -184,7 +184,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                 return
             }
             do {
-                let encodedData = try JSONEncoder().encode(response?.settingsData)
+                let encodedData = try JSONEncoder().encode(responseData.settingsData)
                 let jsonStr = String(data: encodedData, encoding: String.Encoding.utf8)
                 UserDefaults.standard.set(jsonStr, forKey: "settingsData")
             } catch {

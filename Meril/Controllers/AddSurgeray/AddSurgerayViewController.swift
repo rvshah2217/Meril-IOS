@@ -22,42 +22,42 @@ class AddSurgerayViewController: BaseViewController {
         
     @IBOutlet weak var genderDropDown: DropDown! {
         didSet {
-            self.genderDropDown.isSearchEnable = false
+//            self.genderDropDown.isSearchEnable = false
             self.genderDropDown.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtCity: DropDown! {
         didSet {
-            self.txtCity.isSearchEnable = false
+//            self.txtCity.isSearchEnable = false
             self.txtCity.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtHospital: DropDown! {
         didSet {
-            self.txtHospital.isSearchEnable = false
+//            self.txtHospital.isSearchEnable = false
             self.txtHospital.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtDoctor: DropDown! {
         didSet {
-            self.txtDoctor.isSearchEnable = false
+//            self.txtDoctor.isSearchEnable = false
             self.txtDoctor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtDistributor: DropDown! {
         didSet {
-            self.txtDistributor.isSearchEnable = false
+//            self.txtDistributor.isSearchEnable = false
             self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtSaleperson: DropDown! {
         didSet {
-            self.txtSaleperson.isSearchEnable = false
+//            self.txtSaleperson.isSearchEnable = false
             self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
@@ -131,20 +131,20 @@ class AddSurgerayViewController: BaseViewController {
     }
  
     //MARK:- Custome Method
-    func setUI(){
+    func setUI() {
         self.navigationItem.title = ""
-        for i in collectionViewBoarder{
+        for i in collectionViewBoarder {
             i.layer.borderColor = ColorConstant.mainThemeColor.cgColor
             i.layer.borderWidth = 1
             i.layer.cornerRadius = i.frame.height/2
         }
-        for i in collectionViewBackground{
+        for i in collectionViewBackground {
             i.backgroundColor = ColorConstant.mainThemeColor
             i.layer.cornerRadius = i.frame.height/2
         }
-//        scrollOuterView.layer.cornerRadius = 20
-//        scrollOuterView.layer.borderWidth = 0.5
-//        scrollOuterView.layer.borderColor = UIColor.lightGray.cgColor
+        //        scrollOuterView.layer.cornerRadius = 20
+        //        scrollOuterView.layer.borderWidth = 0.5
+        //        scrollOuterView.layer.borderColor = UIColor.lightGray.cgColor
         
         viewBC.backgroundColor = ColorConstant.mainThemeColor
         viewBC.addCornerAtBotttoms(radius: 30)
@@ -154,56 +154,70 @@ class AddSurgerayViewController: BaseViewController {
         
         txtCity.setPlaceholder(placeHolderStr: "Select City")
         txtHospital.setPlaceholder(placeHolderStr: "Select Hospital")
-        txtDoctor.setPlaceholder(placeHolderStr: "Select Doctor")
         txtDistributor.setPlaceholder(placeHolderStr: "Select Distributor")
         txtSaleperson.setPlaceholder(placeHolderStr: "Select Saleperson")
-        txtPatientScheme.setPlaceholder(placeHolderStr: "Select Scheme")
-//        txtUDT.setPlaceholder(placeHolderStr: "Select UDT")
-        genderDropDown.setPlaceholder(placeHolderStr: "Select Gender")
-        
+        //        txtUDT.setPlaceholder(placeHolderStr: "Select UDT")
+        genderDropDown.setPlaceholder(placeHolderStr: "Select Gender", textColor: ColorConstant.mainThemeColor)
+        txtPatientScheme.setPlaceholder(placeHolderStr: "Select Scheme", textColor: ColorConstant.mainThemeColor)
+        txtDoctor.setPlaceholder(placeHolderStr: "Select Doctor", textColor: ColorConstant.mainThemeColor)
+
         self.txtCity.rowHeight = 40
         self.txtHospital.rowHeight = 40
         self.txtDoctor.rowHeight = 40
         self.txtDistributor.rowHeight = 40
         self.txtSaleperson.rowHeight = 40
         self.txtPatientScheme.rowHeight = 40
-//        self.txtUDT.rowHeight = 40
+        //        self.txtUDT.rowHeight = 40
         self.genderDropDown.rowHeight = 40
-
+        
         setRightButton(txtCity, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtHospital, image: UIImage(named: "ic_dropdown") ?? UIImage())
-        setRightButton(txtDoctor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtDistributor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtSaleperson, image: UIImage(named: "ic_dropdown") ?? UIImage())
-        setRightButton(txtPatientScheme, image: UIImage(named: "ic_dropdown") ?? UIImage())
-//        setRightButton(txtUDT, image: UIImage(named: "ic_dropdown") ?? UIImage())
-        setRightButton(genderDropDown, image: UIImage(named: "ic_dropdown") ?? UIImage())
+        //        setRightButton(txtUDT, image: UIImage(named: "ic_dropdown") ?? UIImage())
+        let img = UIImage(named: "ic_dropdown")?.withRenderingMode(.alwaysTemplate)
+        
+        let imgView: UIImageView = UIImageView(image: img)
+        imgView.tintColor = ColorConstant.mainThemeColor
+        setBlueArrowRightButton(txtDoctor, imageView: imgView)
+        
+        let imgView1: UIImageView = UIImageView(image: img)
+        imgView1.tintColor = ColorConstant.mainThemeColor
+        setBlueArrowRightButton(genderDropDown, imageView: imgView1)
+        
+        let imgView2: UIImageView = UIImageView(image: img)
+        imgView2.tintColor = ColorConstant.mainThemeColor
+        setBlueArrowRightButton(txtPatientScheme, imageView: imgView2)
+
+        let imgView3: UIImageView = UIImageView(image: img)
+        imgView3.tintColor = ColorConstant.mainThemeColor
+        setBlueArrowRightButton(deploymentDateTxt, imageView: imgView3)
 
         deploymentDateTxt.attributedPlaceholder = NSAttributedString(
             string: "Select deployment date",
-            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
+            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor.withAlphaComponent(0.5)]
         )
         
         txtPatientName.attributedPlaceholder = NSAttributedString(
             string: "Patient Name",
-            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
+            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor.withAlphaComponent(0.5)]
         )
         
         txtPatientNumber.attributedPlaceholder = NSAttributedString(          string: "Patient Mobile Number",
-                                                                              attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
+                                                                              attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor.withAlphaComponent(0.5)]
         )
         
         txtPatientAge.attributedPlaceholder = NSAttributedString(          string: "Patient Age",
-                                                                           attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
+                                                                           attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor.withAlphaComponent(0.5)]
         )
         txtIpCode.attributedPlaceholder = NSAttributedString(
             string: "Ip Code",
-            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
+            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor.withAlphaComponent(0.5)]
         )
         
         DetailsScrollView.addCornerAtTops(radius: 20)
         
-//        Add Shadow
+        //        Add Shadow
         scrollOuterView.layer.masksToBounds = false
         scrollOuterView.layer.shadowRadius = 3
         scrollOuterView.layer.shadowOpacity = 0.5
@@ -267,10 +281,10 @@ class AddSurgerayViewController: BaseViewController {
             return
         }
         
-        guard let _ = selectedDoctorId else {
-            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDoctorError, seconds: errorDismissTime)
-            return
-        }
+//        guard let _ = selectedDoctorId else {
+//            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDoctorError, seconds: errorDismissTime)
+//            return
+//        }
         
         guard let _ = selectedDistributorId else {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDistributorError, seconds: errorDismissTime)
@@ -282,10 +296,10 @@ class AddSurgerayViewController: BaseViewController {
             return
         }
        
-        guard let _ = selectedGender else {
-            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyGenderError, seconds: errorDismissTime)
-            return
-        }
+//        guard let _ = selectedGender else {
+//            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyGenderError, seconds: errorDismissTime)
+//            return
+//        }
         
         let selectedDate = deploymentDateTxt.text ?? ""
         if !Validation.sharedInstance.checkLength(testStr: selectedDate) {
@@ -423,23 +437,49 @@ extension AddSurgerayViewController {
     }
     
     private func setDefaultData() {
-        let userDefault = UserDefaults.standard
-        selectedDoctorId = userDefault.integer(forKey: "defaultDoctorId")
-        self.txtDoctor.text = doctorsArr.filter({ item in
-            item.id == selectedDoctorId
-        }).first?.fullname
-        
+        guard let userTypeId = UserDefaults.standard.string(forKey: "userTypeId"), userTypeId == "2" else {
+            print("user type id")
+            return
+        }
+        print("user type id: \(userTypeId)")
+
+        let storedUserData = UserSessionManager.shared.userDetail
+//        let userDefault = UserDefaults.standard
+        if let doctorId = storedUserData?.doctor_id {
+            selectedDoctorId = Int(doctorId)//userDefault.integer(forKey: "defaultDoctorId")
+            self.txtDoctor.text = doctorsArr.filter({ item in
+                item.id == selectedDoctorId
+            }).first?.fullname
+        }
         //        set distributor
-        selectedDistributorId = userDefault.integer(forKey: "defaultDistributorId")
-        self.txtDistributor.text = distributorsArr.filter({ item in
-            item.id == selectedDistributorId
-        }).first?.name
+//        selectedDistributorId = userDefault.integer(forKey: "defaultDistributorId")
+        if let distributorId = storedUserData?.distributor_id {
+            selectedDistributorId = Int(distributorId)
+            self.txtDistributor.text = distributorsArr.filter({ item in
+                item.id == selectedDistributorId
+            }).first?.name
+        }
         
         //        set sales person
-        selectedSalesPersonId = userDefault.string(forKey: "defaultSalesPersonId")
-        self.txtSaleperson.text = sales_personsArr.filter({ item in
-            item.id == selectedSalesPersonId
-        }).first?.name
+//        selectedSalesPersonId = userDefault.string(forKey: "defaultSalesPersonId")
+        if let salesPersonId = storedUserData?.sales_person_id {
+            selectedSalesPersonId = salesPersonId
+            self.txtSaleperson.text = sales_personsArr.filter({ item in
+                item.id == selectedSalesPersonId
+            }).first?.name
+        }
+        
+        if (self.txtDistributor.text ?? "").count > 0 {
+            setRightButton(txtDistributor, image: UIImage(named: "ic_right") ?? UIImage())
+        }
+        
+        if (self.txtSaleperson.text ?? "").count > 0 {
+            setRightButton(txtSaleperson, image: UIImage(named: "ic_right") ?? UIImage())
+        }
+        
+        if (self.txtDoctor.text ?? "").count > 0 {
+            setRightButton(txtDoctor, image: UIImage(named: "ic_right") ?? UIImage())
+        }
     }
 }
 
@@ -489,6 +529,8 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
             guard let err = error else {
 //                Remove scanned barcodes from userdefaults
                 UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
+                UserDefaults.standard.removeObject(forKey: "manualEntryData")
+                
 //                self.navigationController?.popViewController(animated: true)
                 self.navigationController?.popToRootViewController(animated: true)
                 return

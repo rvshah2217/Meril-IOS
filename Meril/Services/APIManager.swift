@@ -39,7 +39,8 @@ class APIManager {
         GlobalFunctions.printToConsole(message: "api url:- \(type.url)")
         GlobalFunctions.printToConsole(message: "auth token:- \(type.headers)")
         GlobalFunctions.printToConsole(message: "parameters:- \(params)")
-        
+        GlobalFunctions.printToConsole(message: "httpMethod:- \(type.httpMethod)")
+
         self.sessionManager.request(type.url,
                                     method: type.httpMethod,
                                     parameters: params,

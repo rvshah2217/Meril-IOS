@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import iOSDropDown
 
 protocol ManualEntryDelegate: AnyObject {
     func addManualSurgeryData(manuallyAddedData: ManualEntryModel)
@@ -16,7 +17,11 @@ class ManualScanEntryVC: UIViewController {
     
 //    @IBOutlet var collectionViewBackground: [UIView]!
     @IBOutlet var collectionViewBorder: [UIView]!
-    @IBOutlet weak var txtProductCode: UITextField!
+    @IBOutlet weak var txtProductCode: DropDown! {
+        didSet {
+            self.txtProductCode.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+        }
+    }
     @IBOutlet weak var txtSerialNumber: UITextField!
     @IBOutlet weak var txtBatchNumber: UITextField!
     @IBOutlet weak var expiryDateTxt: UITextField!
@@ -26,10 +31,15 @@ class ManualScanEntryVC: UIViewController {
     var datePicker: UIDatePicker!
     var delegate: ManualEntryDelegate?
     var selectedExpiryTimeStamp: String?
+
+    var productArr = [ProductData]()
+    var selectedProductCode: String?
+    var mandatoryFieldType: Int = 0//0: None, 1: Batch, 2: Serial(Product code and expiry date are always mendatory)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        fetchProductData()
     }
     
     //MARK:- Custome Method
@@ -112,7 +122,7 @@ class ManualScanEntryVC: UIViewController {
     }
 
     private func validateUserInput() {
-        let productCode = txtProductCode.text ?? ""
+        let productCode = selectedProductCode ?? (txtProductCode.text ?? "")
         let batchNo = txtBatchNumber.text ?? ""
         let serialNo = txtSerialNumber.text ?? ""
         let expiryDate = expiryDateTxt.text ?? ""
@@ -122,14 +132,20 @@ class ManualScanEntryVC: UIViewController {
             return
         }
         
-        if !Validation.sharedInstance.checkLength(testStr: batchNo) {
-            GlobalFunctions.showToast(controller: self, message: UserMessages.batchNo, seconds: errorDismissTime)
-            return
-        }
-        
-        if !Validation.sharedInstance.checkLength(testStr: serialNo) {
-            GlobalFunctions.showToast(controller: self, message: UserMessages.serialNo, seconds: errorDismissTime)
-            return
+        //                    If mandatoryFieldType is 1 then batch number field is mandatory, if its 2 then serial number is mandatory, otherwise both are optional
+        switch mandatoryFieldType {
+        case 1:
+            if !Validation.sharedInstance.checkLength(testStr: batchNo) {
+                GlobalFunctions.showToast(controller: self, message: UserMessages.batchNo, seconds: errorDismissTime)
+                return
+            }
+        case 2:
+            if !Validation.sharedInstance.checkLength(testStr: serialNo) {
+                GlobalFunctions.showToast(controller: self, message: UserMessages.serialNo, seconds: errorDismissTime)
+                return
+            }
+        default:
+            break
         }
         
         if !Validation.sharedInstance.checkLength(testStr: expiryDate) {
@@ -142,4 +158,32 @@ class ManualScanEntryVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+}
+
+extension ManualScanEntryVC {
+    
+    func fetchProductData() {
+        if appDelegate.reachability.connection != .unavailable {
+            SHOW_CUSTOM_LOADER()
+            SurgeryServices.getProductData { responseData, error in
+                HIDE_CUSTOM_LOADER()
+                guard let response = responseData else {
+                    return
+                }
+                
+                self.productArr = response.productData ?? []
+                setRightButton(self.txtProductCode, image: UIImage(named: "ic_dropdown") ?? UIImage())
+
+//                self.txtProductCode.isEnabled = !self.schemeArr.isEmpty
+                self.txtProductCode.optionArray = self.productArr.map({ item -> String in
+                    item.hsn_code ?? ""
+                })
+                self.txtProductCode.didSelect { selectedText, index, id in
+                    self.selectedProductCode = self.productArr[index].hsn_code
+//                    If product flag is "B" then batch number field is mandatory, if its "S" then serial number is mandatory, otherwise both are optional
+                    self.mandatoryFieldType = ((self.productArr[index].flag == "B") ? 1 : ((self.productArr[index].flag == "S") ? 2 : 0))
+                }
+            }
+        }
+    }
 }

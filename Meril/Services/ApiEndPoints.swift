@@ -47,6 +47,8 @@ enum EndPointsItem {
     case contactUs
     case barcode
     case surgeryList
+    case updateHospital
+    case products
 }
 enum pageType {
     case PrivacyPolicy
@@ -100,12 +102,16 @@ extension EndPointsItem: EndPointType {
             return "barcode"
         case .surgeryList:
             return "surgery"
+        case .updateHospital:
+            return "update-hospital"
+        case .products:
+            return "products"
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .getUserTypesApi, .getHomeBanners, .getFormData, .getProfile, .settings, .getSurgeryList, .getStockList, .barcode:
+        case .getUserTypesApi, .getHomeBanners, .getFormData, .getProfile, .settings, .getSurgeryList, .getStockList, .barcode, .products:
             return .get
         default:
             return .post

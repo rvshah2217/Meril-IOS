@@ -189,6 +189,21 @@ func setRightButton(_ textField: UITextField, image: UIImage) {
     textField.rightView?.isUserInteractionEnabled = false
 }
 
+func setBlueArrowRightButton(_ textField: UITextField, imageView: UIImageView) {
+    imageView.frame = CGRect(x: CGFloat(-10), y: CGFloat(0), width: CGFloat(15), height: CGFloat(9))
+//    let imageView = UIImageView(frame: CGRect(x: CGFloat(-10), y: CGFloat(0), width: CGFloat(15), height: CGFloat(9)))
+    let view = UIView(frame: CGRect(x: -10, y: 0, width: 15, height: 9))
+    view.contentMode = .center
+//    imageView.image = image
+    imageView.contentMode = .center
+    textField.rightViewMode = .always
+    view.addSubview(imageView)
+    textField.rightView = view
+    textField.rightView?.isUserInteractionEnabled = false
+}
+
+
+
 func convertDateToString() -> String {
     let date = Date()
     let dateFormatter = DateFormatter()

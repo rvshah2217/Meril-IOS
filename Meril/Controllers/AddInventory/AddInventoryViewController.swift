@@ -17,10 +17,16 @@ class AddInventoryViewController: BaseViewController {
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var constrainViewHeaderHeight: NSLayoutConstraint!
     @IBOutlet weak var DetailsScrollView: UIScrollView!
+    var addInventoryReqObj: AddSurgeryRequestModel?
+
+    @IBOutlet weak var txtCity: DropDown! {
+        didSet {
+            self.txtCity.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+        }
+    }
     
     @IBOutlet weak var txtHospital: DropDown! {
         didSet {
-            self.txtHospital.isSearchEnable = false
             self.txtHospital.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
@@ -33,14 +39,14 @@ class AddInventoryViewController: BaseViewController {
 //
     @IBOutlet weak var txtDistributor: DropDown! {
         didSet {
-            self.txtDistributor.isSearchEnable = false
+//            self.txtDistributor.isSearchEnable = false
             self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtSaleperson: DropDown! {
         didSet {
-            self.txtSaleperson.isSearchEnable = false
+//            self.txtSaleperson.isSearchEnable = false
             self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
@@ -49,15 +55,14 @@ class AddInventoryViewController: BaseViewController {
     @IBOutlet weak var btnScanNow: UIButton!
     
     var hospitalsArr: [Hospitals] = []
-//    var doctorsArr: [Hospitals] = []
+    var cityArr: [Cities] = []
     var distributorsArr: [Hospitals] = []
     var sales_personsArr: [SalesPerson] = []
     
     var selectedHospitalId: Int?
-//    var selectedDoctorId: Int?
+    var selectedCityId: Int?
     var selectedDistributorId: Int?
     var selectedSalesPersonId: String?
-    var addInventoryReqObj: AddSurgeryRequestModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,7 +107,7 @@ class AddInventoryViewController: BaseViewController {
         self.txtSaleperson.rowHeight = 40
         
         setRightButton(txtHospital, image: UIImage(named: "ic_dropdown") ?? UIImage())
-//        setRightButton(txtDoctor, image: UIImage(named: "ic_dropdown") ?? UIImage())
+        setRightButton(txtCity, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtDistributor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtSaleperson, image: UIImage(named: "ic_dropdown") ?? UIImage())
      
@@ -195,6 +200,19 @@ extension AddInventoryViewController {
     
     func setAllDropDownData(formDataResponse: SurgeryInventoryModel) {
         
+        //        City dropdown
+        self.cityArr = formDataResponse.cities ?? []
+        self.txtCity.isEnabled = !self.cityArr.isEmpty
+        self.txtCity.optionArray = self.cityArr.map({ item -> String in
+            item.name ?? ""
+        })
+        
+        self.txtCity.didSelect { selectedText, index, id in
+            self.selectedCityId = self.cityArr[index].id
+            //            refresh hospital data when user select particular city
+            self.refreshHospitalByCity(selectedCityIndex: index)
+        }
+
         //        set distributor array
         self.distributorsArr = formDataResponse.distributors ?? []
         self.txtDistributor.isEnabled = !self.distributorsArr.isEmpty
@@ -215,7 +233,20 @@ extension AddInventoryViewController {
             self.selectedSalesPersonId = self.sales_personsArr[index].id
         }
         
-        self.hospitalsArr = formDataResponse.hospitals ?? []
+//        self.hospitalsArr = formDataResponse.hospitals ?? []
+//        self.txtHospital.isEnabled = !self.hospitalsArr.isEmpty
+//        self.txtHospital.optionArray = self.hospitalsArr.map({ item -> String in
+//            item.name ?? ""
+//        })
+//        self.txtHospital.didSelect { selectedText, index, id in
+//            self.selectedHospitalId = self.hospitalsArr[index].id
+//        }
+        setDefaultData()
+    }
+    
+    //   reload hospitals by city selection
+    func refreshHospitalByCity(selectedCityIndex: Int) {
+        self.hospitalsArr = cityArr[selectedCityIndex].hospitals ?? []
         self.txtHospital.isEnabled = !self.hospitalsArr.isEmpty
         self.txtHospital.optionArray = self.hospitalsArr.map({ item -> String in
             item.name ?? ""
@@ -223,22 +254,52 @@ extension AddInventoryViewController {
         self.txtHospital.didSelect { selectedText, index, id in
             self.selectedHospitalId = self.hospitalsArr[index].id
         }
-        setDefaultData()
+        
     }
     
     private func setDefaultData() {
-        let userDefault = UserDefaults.standard
+        guard let userTypeId = UserDefaults.standard.string(forKey: "userTypeId"), userTypeId == "2" else {
+            return
+        }
+        
+        let storedUserData = UserSessionManager.shared.userDetail
+
+//        let userDefault = UserDefaults.standard
         //        set distributor
-        selectedDistributorId = userDefault.integer(forKey: "defaultDistributorId")
-        self.txtDistributor.text = distributorsArr.filter({ item in
-            item.id == selectedDistributorId
-        }).first?.name
+        if let distributorId = storedUserData?.distributor_id {
+            selectedDistributorId = Int(distributorId)
+            self.txtDistributor.text = distributorsArr.filter({ item in
+                item.id == selectedDistributorId
+            }).first?.name
+        }
         
         //        set sales person
-        selectedSalesPersonId = userDefault.string(forKey: "defaultSalesPersonId")
-        self.txtSaleperson.text = sales_personsArr.filter({ item in
-            item.id == selectedSalesPersonId
-        }).first?.name
+        if let salesPersonId = storedUserData?.sales_person_id {
+            selectedSalesPersonId = salesPersonId
+            self.txtSaleperson.text = sales_personsArr.filter({ item in
+                item.id == selectedSalesPersonId
+            }).first?.name
+        }
+        
+//        if let city = storedUserData?.city {
+//            let cityDetail = cityArr.filter({ item in
+//                item.name == city
+//            }).first
+//            self.txtCity.text = cityDetail?.name
+//            selectedCityId = cityDetail?.id
+//        }
+        
+//        if (self.txtCity.text ?? "").count > 0 {
+//            setRightButton(txtCity, image: UIImage(named: "ic_right") ?? UIImage())
+//        }
+        
+        
+        if (self.txtDistributor.text ?? "").count > 0 {
+            setRightButton(txtDistributor, image: UIImage(named: "ic_right") ?? UIImage())
+        }
+        if (self.txtSaleperson.text ?? "").count > 0 {
+            setRightButton(txtSaleperson, image: UIImage(named: "ic_right") ?? UIImage())
+        }
     }
 }
 
@@ -247,11 +308,16 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
     // Call api to add Inventory with scanned barcodes and then redirect to display inventories
     func submitScannedData() {
         SHOW_CUSTOM_LOADER()
+        
+        let manualEntryArr: [ManualEntryModel] = UserSessionManager.shared.manualEntryData
+
         let barCodeArr: [BarCodeModel] = UserSessionManager.shared.barCodes
         
-        let dict = barCodeArr.compactMap { $0.dict }
-        
-        func convertArrayToJsonString() {
+        let barCodeDict = barCodeArr.compactMap { $0.dict }
+        let manualDataDict = manualEntryArr.compactMap { $0.dict }
+
+//        func convertArrayToJsonString() {
+        func convertArrayToJsonString(dict: [[String:Any]]) -> String? {
             if let theJSONData = try?  JSONSerialization.data(
                 withJSONObject: dict,
                 options: .prettyPrinted
@@ -259,11 +325,16 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
                let theJSONText = String(data: theJSONData,
                                         encoding: String.Encoding.ascii) {
                 print("JSON string = \n\(theJSONText)")
-                addInventoryReqObj?.barcodes = theJSONText
+//                addInventoryReqObj?.barcodes = theJSONText
+                return theJSONText
             }
+            return nil
         }
         
-        convertArrayToJsonString()
+        addInventoryReqObj?.manualEntry = convertArrayToJsonString(dict: manualDataDict)
+        addInventoryReqObj?.barcodes = convertArrayToJsonString(dict: barCodeDict)
+
+//        convertArrayToJsonString()
         GlobalFunctions.printToConsole(message: "\(addInventoryReqObj?.barcodes)")
         if appDelegate.reachability.connection == .unavailable {
             self.saveInventoryToCoreData(onSubmitAction: true)
@@ -278,6 +349,7 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
             HIDE_CUSTOM_LOADER()
             guard let err = error else {
                 UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
+                UserDefaults.standard.removeObject(forKey: "manualEntryData")
 //                self.navigationController?.popViewController(animated: true)
                 self.navigationController?.popToRootViewController(animated: true)
                 return

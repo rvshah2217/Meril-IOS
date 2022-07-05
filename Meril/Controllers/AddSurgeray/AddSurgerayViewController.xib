@@ -32,16 +32,16 @@
                 <outlet property="viewHeader" destination="kYN-VD-k8l" id="gM3-qX-Xa3"/>
                 <outletCollection property="collectionViewBackground" destination="2JR-k1-cRC" collectionClass="NSMutableArray" id="ySC-rf-CCX"/>
                 <outletCollection property="collectionViewBackground" destination="PCg-mm-bcX" collectionClass="NSMutableArray" id="JVV-fi-aPp"/>
-                <outletCollection property="collectionViewBackground" destination="ccg-dH-V6z" collectionClass="NSMutableArray" id="xgd-gB-q6O"/>
                 <outletCollection property="collectionViewBackground" destination="06J-Qt-Uqr" collectionClass="NSMutableArray" id="3Ct-oe-mpH"/>
                 <outletCollection property="collectionViewBackground" destination="Zyq-5E-GBv" collectionClass="NSMutableArray" id="5DT-ru-0Si"/>
                 <outletCollection property="collectionViewBoarder" destination="uyz-pr-7TF" collectionClass="NSMutableArray" id="qPR-KJ-OZp"/>
                 <outletCollection property="collectionViewBoarder" destination="OQu-RQ-ctc" collectionClass="NSMutableArray" id="aV6-Ki-dG4"/>
                 <outletCollection property="collectionViewBoarder" destination="NGF-WH-oZm" collectionClass="NSMutableArray" id="UKf-OJ-Dqc"/>
                 <outletCollection property="collectionViewBoarder" destination="cij-De-xHO" collectionClass="NSMutableArray" id="dBb-Tj-uPy"/>
-                <outletCollection property="collectionViewBackground" destination="60s-7w-HrH" collectionClass="NSMutableArray" id="pBN-kG-4dT"/>
-                <outletCollection property="collectionViewBackground" destination="vhd-Xp-aFk" collectionClass="NSMutableArray" id="yb9-AR-9oY"/>
                 <outletCollection property="collectionViewBoarder" destination="VUs-VG-oJ7" collectionClass="NSMutableArray" id="oJa-Eb-Jzg"/>
+                <outletCollection property="collectionViewBoarder" destination="ccg-dH-V6z" collectionClass="NSMutableArray" id="R3S-td-1xu"/>
+                <outletCollection property="collectionViewBoarder" destination="vhd-Xp-aFk" collectionClass="NSMutableArray" id="L2a-fV-HY9"/>
+                <outletCollection property="collectionViewBoarder" destination="60s-7w-HrH" collectionClass="NSMutableArray" id="mnk-pj-Z1p"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -114,27 +114,8 @@
                                                                 <constraint firstItem="xYi-9Y-Vb6" firstAttribute="leading" secondItem="PCg-mm-bcX" secondAttribute="leading" constant="15" id="mQe-hs-T4L"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccg-dH-V6z">
-                                                            <rect key="frame" x="0.0" y="120" width="344" height="45"/>
-                                                            <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Doctor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UqV-AT-SKs" customClass="DropDown" customModule="iOSDropDown">
-                                                                    <rect key="frame" x="15" y="0.0" width="324" height="45"/>
-                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
-                                                                </textField>
-                                                            </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="UqV-AT-SKs" secondAttribute="trailing" constant="5" id="J87-2d-Bqm"/>
-                                                                <constraint firstItem="UqV-AT-SKs" firstAttribute="leading" secondItem="ccg-dH-V6z" secondAttribute="leading" constant="15" id="juD-w2-GzC"/>
-                                                                <constraint firstAttribute="bottom" secondItem="UqV-AT-SKs" secondAttribute="bottom" id="kJA-aO-h7n"/>
-                                                                <constraint firstItem="UqV-AT-SKs" firstAttribute="top" secondItem="ccg-dH-V6z" secondAttribute="top" id="xgc-sQ-yhB"/>
-                                                            </constraints>
-                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06J-Qt-Uqr">
-                                                            <rect key="frame" x="0.0" y="180" width="344" height="45"/>
+                                                            <rect key="frame" x="0.0" y="120" width="344" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Distributor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6qd-g9-Bnd" customClass="DropDown" customModule="iOSDropDown">
                                                                     <rect key="frame" x="15" y="0.0" width="324" height="45"/>
@@ -153,7 +134,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zyq-5E-GBv">
-                                                            <rect key="frame" x="0.0" y="240" width="344" height="45"/>
+                                                            <rect key="frame" x="0.0" y="180" width="344" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Saleperson" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IuG-Lq-84X" customClass="DropDown" customModule="iOSDropDown">
                                                                     <rect key="frame" x="15" y="0.0" width="324" height="45"/>
@@ -171,13 +152,31 @@
                                                                 <constraint firstItem="IuG-Lq-84X" firstAttribute="leading" secondItem="Zyq-5E-GBv" secondAttribute="leading" constant="15" id="qKj-C0-V8G"/>
                                                             </constraints>
                                                         </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUs-VG-oJ7">
+                                                            <rect key="frame" x="0.0" y="240" width="344" height="45"/>
+                                                            <subviews>
+                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select deployment date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OtE-1N-nrT">
+                                                                    <rect key="frame" x="15" y="0.0" width="324" height="45"/>
+                                                                    <color key="textColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="OtE-1N-nrT" secondAttribute="bottom" id="2dN-hF-1eX"/>
+                                                                <constraint firstAttribute="trailing" secondItem="OtE-1N-nrT" secondAttribute="trailing" constant="5" id="4k8-qc-LlG"/>
+                                                                <constraint firstItem="OtE-1N-nrT" firstAttribute="top" secondItem="VUs-VG-oJ7" secondAttribute="top" id="HfE-7n-PAV"/>
+                                                                <constraint firstItem="OtE-1N-nrT" firstAttribute="leading" secondItem="VUs-VG-oJ7" secondAttribute="leading" constant="15" id="wKJ-My-oYZ"/>
+                                                            </constraints>
+                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="60s-7w-HrH">
                                                             <rect key="frame" x="0.0" y="300" width="344" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Scheme" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="krF-kS-3Th" customClass="DropDown" customModule="iOSDropDown">
                                                                     <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="textColor" red="0.19215686274509802" green="0.47843137254901957" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
@@ -190,13 +189,32 @@
                                                                 <constraint firstAttribute="bottom" secondItem="krF-kS-3Th" secondAttribute="bottom" id="WFj-ce-2ge"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhd-Xp-aFk">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccg-dH-V6z">
                                                             <rect key="frame" x="0.0" y="360" width="344" height="45"/>
+                                                            <subviews>
+                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Doctor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UqV-AT-SKs" customClass="DropDown" customModule="iOSDropDown">
+                                                                    <rect key="frame" x="15" y="0.0" width="324" height="45"/>
+                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="textColor" red="0.19215686274509802" green="0.47843137254901957" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="UqV-AT-SKs" secondAttribute="trailing" constant="5" id="J87-2d-Bqm"/>
+                                                                <constraint firstItem="UqV-AT-SKs" firstAttribute="leading" secondItem="ccg-dH-V6z" secondAttribute="leading" constant="15" id="juD-w2-GzC"/>
+                                                                <constraint firstAttribute="bottom" secondItem="UqV-AT-SKs" secondAttribute="bottom" id="kJA-aO-h7n"/>
+                                                                <constraint firstItem="UqV-AT-SKs" firstAttribute="top" secondItem="ccg-dH-V6z" secondAttribute="top" id="xgc-sQ-yhB"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhd-Xp-aFk">
+                                                            <rect key="frame" x="0.0" y="420" width="344" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fbC-fF-lAI" customClass="DropDown" customModule="iOSDropDown">
                                                                     <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="textColor" red="0.19215686274509802" green="0.47843137254901957" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
@@ -207,24 +225,6 @@
                                                                 <constraint firstAttribute="bottom" secondItem="fbC-fF-lAI" secondAttribute="bottom" id="ZxG-X8-UIk"/>
                                                                 <constraint firstAttribute="trailing" secondItem="fbC-fF-lAI" secondAttribute="trailing" constant="5" id="s41-0T-cUj"/>
                                                                 <constraint firstItem="fbC-fF-lAI" firstAttribute="top" secondItem="vhd-Xp-aFk" secondAttribute="top" id="tXc-UC-wKH"/>
-                                                            </constraints>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUs-VG-oJ7">
-                                                            <rect key="frame" x="0.0" y="420" width="344" height="45"/>
-                                                            <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select deployment date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OtE-1N-nrT">
-                                                                    <rect key="frame" x="15" y="0.0" width="314" height="45"/>
-                                                                    <color key="textColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
-                                                                </textField>
-                                                            </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="OtE-1N-nrT" secondAttribute="bottom" id="2dN-hF-1eX"/>
-                                                                <constraint firstAttribute="trailing" secondItem="OtE-1N-nrT" secondAttribute="trailing" constant="15" id="4k8-qc-LlG"/>
-                                                                <constraint firstItem="OtE-1N-nrT" firstAttribute="top" secondItem="VUs-VG-oJ7" secondAttribute="top" id="HfE-7n-PAV"/>
-                                                                <constraint firstItem="OtE-1N-nrT" firstAttribute="leading" secondItem="VUs-VG-oJ7" secondAttribute="leading" constant="15" id="wKJ-My-oYZ"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyz-pr-7TF">

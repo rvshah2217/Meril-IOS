@@ -112,12 +112,20 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CT2-n9-8o6">
+                                <rect key="frame" x="374" y="825" width="30" height="27"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="SQ0-gv-Qes" secondAttribute="trailing" id="1b7-L4-enR"/>
                             <constraint firstItem="SQ0-gv-Qes" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="57J-jW-l84"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="CT2-n9-8o6" secondAttribute="bottom" constant="10" id="9UY-Gs-g7b"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CT2-n9-8o6" secondAttribute="trailing" constant="10" id="EhT-Gk-l3C"/>
                             <constraint firstItem="SQ0-gv-Qes" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fMt-ep-f55"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="SQ0-gv-Qes" secondAttribute="bottom" constant="20" id="zHa-SN-OIm"/>
                         </constraints>
@@ -128,6 +136,7 @@
                         <outlet property="userEmailLbl" destination="fM4-X8-Hlu" id="v4M-k8-oBd"/>
                         <outlet property="userNameLbl" destination="9kX-uW-AST" id="0uy-g5-TdH"/>
                         <outlet property="userProfileImgVIew" destination="uBi-H3-JDP" id="iqi-Q2-BLP"/>
+                        <outlet property="versionNoLbl" destination="CT2-n9-8o6" id="Txy-Vy-TYS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -83,11 +83,11 @@ class LoginServices {
     //                Remove data stored locally
     static func removeLocallyStoredData() {
         //        Remove data from userdefaults
-        let isFirstTimeLogin = UserDefaults.standard.bool(forKey: "isFirstTimeLogInDone")
+//        let isFirstTimeLogin = UserDefaults.standard.bool(forKey: "isFirstTimeLogInDone")
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
-        UserDefaults.standard.set(isFirstTimeLogin, forKey: "isFirstTimeLogInDone")
+//        UserDefaults.standard.set(isFirstTimeLogin, forKey: "isFirstTimeLogInDone")
         
         //        Remove data from core data
         // Get a reference to a managed object context
@@ -151,6 +151,25 @@ extension LoginServices {
                 return completionHandler(response, nil)
             } else {
                 return completionHandler(nil, response.message ?? UserMessages.serverError)
+            }
+        }
+    }
+    
+//    Set default credentials of doctor, distributor and salesPerson
+    static func setDefaultCredentials(credentialObj: CredentialsRequestModel, completionHandler: @escaping (_ isSuccess: Bool, _ error: String?) -> ()) {
+                
+        APIManager.shared().call(for: LoginResponseModel.self, type: EndPointsItem.updateHospital, params: credentialObj.dict) { (responseData, error) in
+            GlobalFunctions.printToConsole(message: "Default credentials response: \(responseData?.message)")
+            guard let response = responseData else {
+                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                return completionHandler(false, error?.body)
+            }
+            
+            //Check if server return success response or not
+            if response.success ?? false {
+                return completionHandler(true, nil)
+            } else {
+                return completionHandler(false, response.message ?? UserMessages.serverError)
             }
         }
     }

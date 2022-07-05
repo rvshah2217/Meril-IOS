@@ -112,6 +112,13 @@ struct UserData : Codable {
     let division_id : String?
     let gender : String?
     let bio: String?
+    var distributor_id: String?
+    let distributor_name: String?
+    var sales_person_id: String?
+    let sales_person_name: String?
+    var doctor_id: String?
+    let doctor_name: String?
+
 
     enum CodingKeys: String, CodingKey {
 
@@ -128,6 +135,13 @@ struct UserData : Codable {
         case division_id = "division_id"
         case gender = "gender"
         case bio = "bio"
+        case distributor_id = "distributor_id"
+        case distributor_name = "distributor_name"
+        case sales_person_id = "sales_person_id"
+        case sales_person_name = "sales_person_name"
+        case doctor_id = "doctor_id"
+        case doctor_name = "doctor_name"
+
     }
 
     init(from decoder: Decoder) throws {
@@ -145,6 +159,13 @@ struct UserData : Codable {
         division_id = try values.decodeIfPresent(String.self, forKey: .division_id)
         gender = try values.decodeIfPresent(String.self, forKey: .gender)
         bio = try values.decodeIfPresent(String.self, forKey: .bio)
+        
+        distributor_id = try values.decodeIfPresent(String.self, forKey: .distributor_id)
+        distributor_name = try values.decodeIfPresent(String.self, forKey: .distributor_name)
+        sales_person_id = try values.decodeIfPresent(String.self, forKey: .sales_person_id)
+        sales_person_name = try values.decodeIfPresent(String.self, forKey: .sales_person_name)
+        doctor_id = try values.decodeIfPresent(String.self, forKey: .doctor_id)
+        doctor_name = try values.decodeIfPresent(String.self, forKey: .doctor_name)
     }
 
 }

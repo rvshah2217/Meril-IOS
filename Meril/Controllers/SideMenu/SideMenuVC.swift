@@ -14,6 +14,7 @@ class SideMenuVC: UIViewController {
     @IBOutlet weak var userEmailLbl: UILabel!
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var closeBtn: UIButton!
+    @IBOutlet weak var versionNoLbl: UILabel!
     
     var itemsArr = [[String:String]]()
     
@@ -25,6 +26,7 @@ class SideMenuVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        versionNoLbl.text = appVersion
     }
     
     private func setItemsArr() {        
@@ -34,6 +36,7 @@ class SideMenuVC: UIViewController {
 //        itemsArr.append(["iconName": "ic_rateApp", "title": "Rate App"])
         itemsArr.append(["iconName": "ic_share", "title": "Share"])
         itemsArr.append(["iconName": "ic_privacyPolicy", "title": "Privacy Policy"])
+        itemsArr.append(["iconName": "ic_settings", "title": "Default credentials"])
         itemsArr.append(["iconName": "ic_settings", "title": "Change Password"])
         itemsArr.append(["iconName": "ic_signOut", "title": "Signout"])
     }
@@ -102,6 +105,10 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
             navVC.pushViewController(vc, animated: true)
             break
         case 5:
+            let nextVC = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
+            navVC.pushViewController(nextVC, animated: true)
+            break
+        case 6:
             let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
             navVC.pushViewController(vc, animated: true)
             break

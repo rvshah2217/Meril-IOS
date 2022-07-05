@@ -23,3 +23,16 @@ class SideMenuCell: UITableViewCell {
         }
     }
 }
+
+class BarCodeCell: UICollectionViewCell {
+    
+    @IBOutlet weak var titleLbl: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.contentView.setViewCorner(radius: 5)
+        self.contentView.layer.borderColor = ColorConstant.mainThemeColor.cgColor
+        self.contentView.layer.borderWidth = 1
+        self.titleLbl.textAlignment = .left
+    }
+}

@@ -43,7 +43,7 @@ class DefaultLoginData: UIViewController {
 
     var selectedDoctorId: Int?
     var selectedDistributorId: Int?
-    var selectedSalesPersonId: String?
+    var selectedSalesPersonId: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,26 +100,43 @@ class DefaultLoginData: UIViewController {
     }
     
     @IBAction func submitBtnClicked(_ sender: UIButton) {
-        guard let _ = selectedDoctorId else {
-            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDoctorError, seconds: errorDismissTime)
-            return
-        }
+//        guard let _ = selectedDoctorId else {
+//            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDoctorError, seconds: errorDismissTime)
+//            return
+//        }
         
-        guard let _ = selectedDistributorId else {
+        guard let distributorId = selectedDistributorId else {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDistributorError, seconds: errorDismissTime)
             return
         }
         
-        guard let _ = selectedSalesPersonId else {
+        guard let salesPersonId = selectedSalesPersonId else {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptySalesPersonError, seconds: errorDismissTime)
             return
         }
         
-        UserDefaults.standard.set(true, forKey: "isFirstTimeLogInDone")
-        UserDefaults.standard.set(selectedDoctorId, forKey: "defaultDoctorId")
-        UserDefaults.standard.set(selectedDistributorId, forKey: "defaultDistributorId")
-        UserDefaults.standard.set(selectedSalesPersonId, forKey: "defaultSalesPersonId")
-        self.redirectToHomeVC()
+        self.callUpdateHospitalApi(doctorId: selectedDoctorId, distributorId: distributorId, salesPersonId: salesPersonId)
+        
+//        UserDefaults.standard.set(true, forKey: "isFirstTimeLogInDone")
+//        UserDefaults.standard.set(selectedDoctorId, forKey: "defaultDoctorId")
+//        UserDefaults.standard.set(selectedDistributorId, forKey: "defaultDistributorId")
+//        UserDefaults.standard.set(selectedSalesPersonId, forKey: "defaultSalesPersonId")
+//        self.redirectToHomeVC()
+    }
+    
+    private func callUpdateHospitalApi(doctorId: Int?, distributorId: Int, salesPersonId: Int) {
+        let obj = CredentialsRequestModel(doctorId: doctorId, distributorId: distributorId, salesPersonId: salesPersonId)
+        LoginServices.setDefaultCredentials(credentialObj: obj) { isSuccess, error in
+//            save doctor, distributor and salesPerson id
+            var userData = UserSessionManager.shared.userDetail
+            userData?.sales_person_id = String(salesPersonId)
+            userData?.distributor_id = String(distributorId)
+            if let doctorId = doctorId {
+                userData?.doctor_id = String(doctorId)
+            }
+            UserSessionManager.shared.userDetail = userData
+            self.redirectToHomeVC()
+        }
     }
     
     private func redirectToHomeVC() {
@@ -138,7 +155,7 @@ class DefaultLoginData: UIViewController {
 }
 
 extension DefaultLoginData {
-   
+    
     func fetchFormData() {
         if let formDataObj = StoreFormData.sharedInstance.fetchFormData() {
             self.setAllDropDownData(formDataResponse: formDataObj)
@@ -184,7 +201,35 @@ extension DefaultLoginData {
             item.name ?? ""
         })
         self.txtSaleperson.didSelect { selectedText, index, id in
-            self.selectedSalesPersonId = self.sales_personsArr[index].id
+            self.selectedSalesPersonId = Int(self.sales_personsArr[index].id!)
         }
+        
+        self.setDefaultData()
+    }
+    
+    func setDefaultData() {
+        let storedUserData = UserSessionManager.shared.userDetail
+
+        if let doctorId = storedUserData?.doctor_id {
+            selectedDoctorId = Int(doctorId)
+            self.txtDistributor.text = doctorsArr.filter({ item in
+                item.id == selectedDoctorId
+            }).first?.name
+        }
+
+        if let distributorId = storedUserData?.distributor_id {
+            selectedDistributorId = Int(distributorId)
+            self.txtDistributor.text = distributorsArr.filter({ item in
+                item.id == selectedDistributorId
+            }).first?.name
+        }
+        
+        if let salesPersonId = storedUserData?.sales_person_id {
+            selectedSalesPersonId = Int(salesPersonId)
+            self.txtSaleperson.text = sales_personsArr.filter({ item in
+                item.id == String(salesPersonId)
+            }).first?.name
+        }
+
     }
 }

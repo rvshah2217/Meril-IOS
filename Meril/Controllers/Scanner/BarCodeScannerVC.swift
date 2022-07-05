@@ -15,7 +15,13 @@ protocol BarCodeScannerDelegate: AnyObject {
 class BarCodeScannerVC: UIViewController {
     
     @IBOutlet weak var cameraView: UIView!
-    
+    @IBOutlet weak var barcodeScanCollectionView: UICollectionView!
+    @IBOutlet weak var manualBarcodeCollectionView: UICollectionView!
+    @IBOutlet weak var scanAgainBtn: UIButton!
+    @IBOutlet weak var submitBtn: UIButton!
+    @IBOutlet weak var barcodeScanCVHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var manualBarcodeCVHeightConstraint: NSLayoutConstraint!
+
     var captureSession:AVCaptureSession!
     var videoPreviewLayer:AVCaptureVideoPreviewLayer!
     var isFromAddSurgery: Bool = false
@@ -23,13 +29,36 @@ class BarCodeScannerVC: UIViewController {
     weak var delegate: BarCodeScannerDelegate?
     var flashBtn: UIBarButtonItem!
     
+    var manualEntryArr: [ManualEntryModel] = []
+    var barCodeArr: [BarCodeModel] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavBar()
-////        TODO: this is temporary
-//        UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
         self.setBackCamera()
+        self.setUI()
 //        checkCameraPermission()
+    }
+    
+    func setUI() {
+        self.barcodeScanCollectionView.delegate = self
+        self.barcodeScanCollectionView.dataSource = self
+        self.manualBarcodeCollectionView.delegate = self
+        self.manualBarcodeCollectionView.dataSource = self
+        scanAgainBtn.setViewCorner(radius: scanAgainBtn.frame.height / 2)
+        submitBtn.setViewCorner(radius: submitBtn.frame.height / 2)
+        self.barcodeScanCVHeightConstraint.constant = 0
+        self.manualBarcodeCVHeightConstraint.constant = 0
+        self.barcodeScanCollectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        self.manualBarcodeCollectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+      
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        self.barcodeScanCollectionView.collectionViewLayout = flowLayout
+        
+        let flowLayout1 = UICollectionViewFlowLayout()
+        flowLayout1.scrollDirection = .horizontal
+        self.manualBarcodeCollectionView.collectionViewLayout = flowLayout1
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,18 +70,30 @@ class BarCodeScannerVC: UIViewController {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        GlobalFunctions.printToConsole(message: "View did disappear")
+        UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
+        UserDefaults.standard.removeObject(forKey: "manualEntryData")
+    }
+    
     func setNavBar() {
         self.navigationController?.navigationBar.backgroundColor = ColorConstant.mainThemeColor
         self.navigationItem.title = "Scan"
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_back"), style: .plain, target: self, action: #selector(self.backButtonPressed))
         
-        if isFromAddSurgery {
-            let addBtn = UIBarButtonItem(image: UIImage(named: "ic_add"), style: .plain, target: self, action: #selector(self.addManualSurgeryBtnCicked))
-            self.navigationItem.rightBarButtonItems = [addBtn]
-        }
+//        if isFromAddSurgery {
+//            let addBtn = UIBarButtonItem(image: UIImage(named: "ic_add"), style: .plain, target: self, action: #selector(self.addManualSurgeryBtnCicked))
+//            self.navigationItem.rightBarButtonItems = [addBtn]
+//        }
+        
         flashBtn = UIBarButtonItem(image: UIImage(named: "ic_flashOn"), style: .plain, target: self, action: #selector(self.toggleFlash))
-        self.navigationItem.rightBarButtonItems?.append(flashBtn)
+//        self.navigationItem.rightBarButtonItems?.append(flashBtn)
+        
+        let addBtn = UIBarButtonItem(image: UIImage(named: "ic_add"), style: .plain, target: self, action: #selector(self.addManualSurgeryBtnCicked))
+//        self.navigationItem.rightBarButtonItems = [addBtn, flashBtn]
+        self.navigationItem.rightBarButtonItems = [flashBtn]
     }
     
     @objc func toggleFlash() {
@@ -94,7 +135,8 @@ class BarCodeScannerVC: UIViewController {
         if isBarCodeAvailable {
             let alertController = UIAlertController(title: "Warning", message: "Would you like to save data?", preferredStyle: .alert)
             let yesAction = UIAlertAction(title: "YES", style: .default) { _ in
-                self.submitScannedBarCodes()
+//                self.submitScannedBarCodes()
+                self.submitBtnClicked(self.submitBtn!)
             }
             let noAction = UIAlertAction(title: "NO", style: .default) { _ in
                 self.navigationController?.popViewController(animated: true)
@@ -159,7 +201,7 @@ class BarCodeScannerVC: UIViewController {
             captureSession.addOutput(captureMetadataOutput)
             // Set delegate and use the default dispatch queue to execute the call back
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.code39, AVMetadataObject.ObjectType.code128, AVMetadataObject.ObjectType.code39Mod43, AVMetadataObject.ObjectType.code93, AVMetadataObject.ObjectType.ean8, AVMetadataObject.ObjectType.ean13, AVMetadataObject.ObjectType.aztec, AVMetadataObject.ObjectType.pdf417, AVMetadataObject.ObjectType.itf14, AVMetadataObject.ObjectType.interleaved2of5, AVMetadataObject.ObjectType.dataMatrix, AVMetadataObject.ObjectType.upce]
+            captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.code39, AVMetadataObject.ObjectType.code128, AVMetadataObject.ObjectType.code39Mod43, AVMetadataObject.ObjectType.code93, AVMetadataObject.ObjectType.ean8, AVMetadataObject.ObjectType.ean13, AVMetadataObject.ObjectType.aztec, AVMetadataObject.ObjectType.pdf417, AVMetadataObject.ObjectType.itf14, AVMetadataObject.ObjectType.interleaved2of5, AVMetadataObject.ObjectType.dataMatrix, AVMetadataObject.ObjectType.upce, AVMetadataObject.ObjectType.qr]
             
             // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -235,68 +277,144 @@ extension BarCodeScannerVC: AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
+//    func saveBarCodeToUserDefaults(code: String) {
+//        isBarCodeAvailable = true
+//        var currentStoredArr: [BarCodeModel] = UserSessionManager.shared.barCodes//UserDefaults.standard.array(forKey: "scannedBarcodes") as? [String] ?? []
+////        When user scan for Surgery then he/she allows to scan maximum 10 barcodes
+//        if ((currentStoredArr.count > 10) && (isFromAddSurgery)) {
+//            openScanAgainDialog(isShowWarning: true)
+//            return
+//        }
+//        currentStoredArr.append(BarCodeModel(barcode: code, dateTime: convertDateToString()))
+//        UserSessionManager.shared.barCodes = currentStoredArr
+//        openScanAgainDialog(isShowWarning: false)
+//
+//    }
     func saveBarCodeToUserDefaults(code: String) {
         isBarCodeAvailable = true
-        var currentStoredArr: [BarCodeModel] = UserSessionManager.shared.barCodes//UserDefaults.standard.array(forKey: "scannedBarcodes") as? [String] ?? []
+        self.manualEntryArr = UserSessionManager.shared.manualEntryData
+        self.barCodeArr = UserSessionManager.shared.barCodes
 //        When user scan for Surgery then he/she allows to scan maximum 10 barcodes
-        if ((currentStoredArr.count > 10) && (isFromAddSurgery)) {
-            openScanAgainDialog(isShowWarning: true)
+        let currentStoredArr = barCodeArr.count + manualEntryArr.count
+        if ((currentStoredArr > 10) && (isFromAddSurgery)) {
+//            openScanAgainDialog(isShowWarning: true)
+            GlobalFunctions.showToast(controller: self, message: "You are not allowed to scan more than 10 barcodes.", seconds: successDismissTime, completionHandler: nil)
             return
         }
-        currentStoredArr.append(BarCodeModel(barcode: code, dateTime: convertDateToString()))
-        UserSessionManager.shared.barCodes = currentStoredArr
-        openScanAgainDialog(isShowWarning: false)
-
-    }
-    
-    func openScanAgainDialog(isShowWarning: Bool) {
-        let popUpVC = mainStoryboard.instantiateViewController(withIdentifier: "ScanAgainPopUpVC") as! ScanAgainPopUpVC
-        popUpVC.delegate = self
-        self.addChild(popUpVC)
-        popUpVC.view.frame = CGRect(x: 0, y: 0, width: DeviceConstant.deviceWidth, height: self.view.frame.height)
-        self.view.addSubview(popUpVC.view)
-        if isShowWarning {
-            popUpVC.successMsgLbl.text = "You are not allowed to scan more than 10 barcodes."
-            popUpVC.askScanAgainLbl.text = "Would you like to submit your data?"
-            popUpVC.askScanAgainLbl.numberOfLines = 2
-            popUpVC.titleLbl.text = "Warning"
-            popUpVC.scanAgainBtn.setTitle("Cancel", for: .normal)
-        }
-        popUpVC.didMove(toParent: self)
-    }
+        barCodeArr.append(BarCodeModel(barcode: code, dateTime: convertDateToString()))
+        UserSessionManager.shared.barCodes = self.barCodeArr
+//        openScanAgainDialog(isShowWarning: false)
         
-}
-
-extension BarCodeScannerVC: ScanAgainViewDelegate {
-  
-    func submitScannedBarCodes() {
-        delegate?.submitScannedData()
+        self.reloadCollectionViews()
     }
     
-    func scanAgain() {
+    private func reloadCollectionViews() {
+//        Reload barcode collectionView
+        self.barcodeScanCVHeightConstraint.constant = barCodeArr.isEmpty ? 0 : 100
+        self.barcodeScanCollectionView.reloadData()
+//        Reload Manual entry barcode collection view
+        self.manualBarcodeCVHeightConstraint.constant = manualEntryArr.isEmpty ? 0 : 80
+        self.manualBarcodeCollectionView.reloadData()
+    }
+    
+    @IBAction func scanAgainBtnClicked(_ sender: Any) {
         captureSession.startRunning()
     }
     
+    @IBAction func submitBtnClicked(_ sender: Any) {
+        delegate?.submitScannedData()
+    }
+    
+//    func openScanAgainDialog(isShowWarning: Bool) {
+//        let popUpVC = mainStoryboard.instantiateViewController(withIdentifier: "ScanAgainPopUpVC") as! ScanAgainPopUpVC
+//        popUpVC.delegate = self
+//        self.addChild(popUpVC)
+//        popUpVC.view.frame = CGRect(x: 0, y: 0, width: DeviceConstant.deviceWidth, height: self.view.frame.height)
+//        self.view.addSubview(popUpVC.view)
+//        if isShowWarning {
+//            popUpVC.successMsgLbl.text = "You are not allowed to scan more than 10 barcodes."
+//            popUpVC.askScanAgainLbl.text = "Would you like to submit your data?"
+//            popUpVC.askScanAgainLbl.numberOfLines = 2
+//            popUpVC.titleLbl.text = "Warning"
+//            popUpVC.scanAgainBtn.setTitle("Cancel", for: .normal)
+//        }
+//        popUpVC.didMove(toParent: self)
+//    }
+        
 }
+
+//extension BarCodeScannerVC: ScanAgainViewDelegate {
+//
+//    func submitScannedBarCodes() {
+//        delegate?.submitScannedData()
+//    }
+//
+//    func scanAgain() {
+//        captureSession.startRunning()
+//    }
+//
+//}
 
 extension BarCodeScannerVC: ManualEntryDelegate {
     
     func addManualSurgeryData(manuallyAddedData: ManualEntryModel) {
         isBarCodeAvailable = true
-        var currentManualEntryArr: [ManualEntryModel] = UserSessionManager.shared.manualEntryData
-        let currentStoredArr: [BarCodeModel] = UserSessionManager.shared.barCodes
+//        var currentManualEntryArr: [ManualEntryModel] = UserSessionManager.shared.manualEntryData
+//        let currentStoredArr: [BarCodeModel] = UserSessionManager.shared.barCodes
+        self.manualEntryArr = UserSessionManager.shared.manualEntryData
+        self.barCodeArr = UserSessionManager.shared.barCodes
+
 //        When user scan for Surgery then he/she allows to scan maximum 10 barcodes
         
-        let totalArr = currentStoredArr.count + currentManualEntryArr.count
+        let totalArr = barCodeArr.count + manualEntryArr.count
         
         if ((totalArr > 10) && (isFromAddSurgery)) {
-            openScanAgainDialog(isShowWarning: true)
+//            openScanAgainDialog(isShowWarning: true)
+            GlobalFunctions.showToast(controller: self, message: "You are not allowed to scan more than 10 barcodes.", seconds: successDismissTime, completionHandler: nil)
             return
         }
         
-        currentManualEntryArr.append(manuallyAddedData)
-        UserSessionManager.shared.manualEntryData = currentManualEntryArr
-        GlobalFunctions.showToast(controller: self, message: "Your data has been saved successfully.", seconds: successDismissTime, completionHandler: nil)
-        openScanAgainDialog(isShowWarning: false)
+        manualEntryArr.append(manuallyAddedData)
+        UserSessionManager.shared.manualEntryData = manualEntryArr
+//        GlobalFunctions.showToast(controller: self, message: "Your data has been saved successfully.", seconds: successDismissTime, completionHandler: nil)
+//        openScanAgainDialog(isShowWarning: false)
+        self.reloadCollectionViews()
+    }
+}
+
+//#MARK: Collectionview delegate and datasource
+extension BarCodeScannerVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch collectionView {
+        case barcodeScanCollectionView:
+            return barCodeArr.count
+        default:
+            return manualEntryArr.count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BarCodeCell
+        switch collectionView {
+        case barcodeScanCollectionView:
+            let str = "Scan#\(indexPath.row)\n"
+            cell.titleLbl.text = str + barCodeArr[indexPath.row].barcode
+            GlobalFunctions.printToConsole(message: "Barcode str: \(barCodeArr[indexPath.row].barcode)")
+        default:
+            let str = "Manual entry#\(indexPath.row)\n"
+            GlobalFunctions.printToConsole(message: "manualEntry str: \(manualEntryArr[indexPath.row].sku)")
+            cell.titleLbl.text = str + (manualEntryArr[indexPath.row].sku ?? "N/A")
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch collectionView {
+        case barcodeScanCollectionView:
+            return CGSize(width: 180, height: 80)
+        default:
+            return CGSize(width: 180, height: 60)
+        }
     }
 }

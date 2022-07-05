@@ -11,8 +11,9 @@ import UIKit
 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 let sidemenuStoryboard = UIStoryboard(name: "Sidemenu", bundle: nil)
 let deviceToken = UserDefaults.standard.string(forKey: "fcmToken") ?? "12345"//UserDefaults.standard.string(forKey: "deviceToken")
+let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 
-let errorDismissTime = 1.5
+let errorDismissTime = 2.5
 let successDismissTime = 0.3
 
 struct ColorConstant {

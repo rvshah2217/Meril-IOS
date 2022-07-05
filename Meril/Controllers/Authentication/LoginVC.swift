@@ -110,7 +110,7 @@ extension LoginVC {
             let isDefaultPassword = (response.loginUserData?.is_default_password == "1") ? true : false
             UserDefaults.standard.set(isDefaultPassword, forKey: "isDefaultPassword")
             UserDefaults.standard.set(response.loginUserData?.token, forKey: "headerToken")
-            
+            UserDefaults.standard.set(response.loginUserData?.user_type_id, forKey: "userTypeId")
 //            save loggedin user's surgeries and stocks in local database
             SurgeryList_CoreData.sharedInstance.saveSurgeriesToCoreData(schemeData: response.loginUserData?.surgeries ?? [], isForceSave: true)
             StockList_CoreData.sharedInstance.saveStocksToCoreData(schemeData: response.loginUserData?.stocks ?? [], isForceSave: true)
@@ -125,8 +125,11 @@ extension LoginVC {
         GlobalFunctions.showToast(controller: self, message: "Login successfully", seconds: successDismissTime) {
             
             
-            //                if its first time login then allow user to select default doctor, distributor and sales person
-            if  !UserDefaults.standard.bool(forKey: "isFirstTimeLogInDone") {
+            //                If usertype == 2(hospital) and distributor or salesperson id is nil then allow user to select default doctor, distributor and sales person
+            let userTypeId = UserDefaults.standard.string(forKey: "userTypeId")
+            let userData = UserSessionManager.shared.userDetail
+//            if  !UserDefaults.standard.bool(forKey: "isFirstTimeLogInDone") {
+            if let userTypeId = userTypeId, userTypeId == "2", ((userData?.distributor_id == nil) || userData?.sales_person_id == nil) {
                 let vc = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
                 self.navigationController!.pushViewController(vc, animated: true)
             } else if (isDefaultPassword == "1") {

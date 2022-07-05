@@ -125,4 +125,20 @@ extension SurgeryServices {
             }
         }
     }
+    
+    static func getProductData(completionHandler: @escaping (ProductResponseModel?, _ error: String?) -> ()) {
+        APIManager.shared().call(for: ProductResponseModel.self, type: EndPointsItem.products) { responseData, error in
+            guard let response = responseData else {
+                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                return completionHandler(nil, error?.body)
+            }
+            
+            //Check if server return success response or not
+            if response.success ?? false {
+                return completionHandler(response, nil)
+            } else {
+                return completionHandler(nil, response.message ?? UserMessages.serverError)
+            }
+        }
+    }
 }

@@ -234,13 +234,14 @@ struct AddSurgeryRequestModel : Codable {
     var DeploymentDate: String?
     var coreDataBarcodes: [BarCodeModel]?
     
-    init(hospitalId : Int?,  distributorId: Int?, salesPersonId: String?, stockId: String?, barcodes: String? = nil) {
+    init(hospitalId : Int?,  distributorId: Int?, salesPersonId: String?, stockId: String?, barcodes: String? = nil, cityId: Int?) {
         self.hospitalId = hospitalId
         //        self.doctorId = doctorId
         self.distributorId = distributorId
         self.salesPersonId = salesPersonId
         self.stockId = stockId
         self.barcodes = barcodes
+        self.cityId = cityId
     }
     //
     init(cityId : Int? = nil, hospitalId : Int?,  distributorId: Int?, doctorId: Int?, surgeryId: String? = nil, schemeId : Int? = nil, patientName : String? = nil, patientMobile: String? = nil, age: Int? = nil, ipCode: String? = nil, barcodes: String? = nil, salesPersonId: String? = nil, stockId: String? = nil, gender: String? = nil, DeploymentDate: String? = nil) {

@@ -96,7 +96,7 @@ class AddInventoryViewController: BaseViewController {
         self.viewHeader.backgroundColor = ColorConstant.mainThemeColor
         
         txtHospital.setPlaceholder(placeHolderStr: "Select Hospital")
-//        txtDoctor.setPlaceholder(placeHolderStr: "Select Doctor")
+        txtCity.setPlaceholder(placeHolderStr: "Select City")
         txtDistributor.setPlaceholder(placeHolderStr: "Select Distributor")
         txtSaleperson.setPlaceholder(placeHolderStr: "Select Saleperson")
         
@@ -143,15 +143,15 @@ class AddInventoryViewController: BaseViewController {
     
     func inputValidation() {
         
+        guard let _ = selectedCityId else {
+            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyCityError, seconds: errorDismissTime)
+            return
+        }
+        
         guard let _ = selectedHospitalId else {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptyHospitalError, seconds: errorDismissTime)
             return
         }
-//
-//        guard let _ = selectedDoctorId else {
-//            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDoctorError, seconds: errorDismissTime)
-//            return
-//        }
         
         guard let _ = selectedDistributorId else {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDistributorError, seconds: errorDismissTime)
@@ -165,7 +165,7 @@ class AddInventoryViewController: BaseViewController {
         
         let userId = UserDefaults.standard.integer(forKey: "userId")
         let stockId = "D\(Date.currentTimeStamp)U\(userId)"
-        addInventoryReqObj = AddSurgeryRequestModel(hospitalId: selectedHospitalId, distributorId: selectedDistributorId, salesPersonId: selectedSalesPersonId, stockId: stockId)
+        addInventoryReqObj = AddSurgeryRequestModel(hospitalId: selectedHospitalId, distributorId: selectedDistributorId, salesPersonId: selectedSalesPersonId, stockId: stockId, cityId: selectedCityId)
         self.redirectToScannerVC()
         //        If there is no error while validation then redirect to scan the data
         //        let scannerVC = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC

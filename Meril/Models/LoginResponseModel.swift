@@ -121,48 +121,51 @@ struct Barcode_data : Codable {
 
 struct ProductBarCode : Codable {
     let id : Int?
-    let zoho_id : String?
+//    let zoho_id : String?
     let material : String?
-    let material_description : String?
-    let gtin : String?
-    let uom : String?
-    let company_id : Int?
-    let hsn_code : String?
-    let material_group_desc : String?
-    let material_group_desc1 : String?
-    let created_at : String?
-    let updated_at : String?
+//    let material_description : String?
+//    let gtin : String?
+//    let uom : String?
+//    let company_id : Int?
+//    let hsn_code : String?
+//    let material_group_desc : String?
+//    let material_group_desc1 : String?
+//    let created_at : String?
+//    let updated_at : String?
+    let flag : String?
 
     enum CodingKeys: String, CodingKey {
 
         case id = "id"
-        case zoho_id = "zoho_id"
+//        case zoho_id = "zoho_id"
         case material = "material"
-        case material_description = "material_description"
-        case gtin = "gtin"
-        case uom = "uom"
-        case company_id = "company_id"
-        case hsn_code = "hsn_code"
-        case material_group_desc = "material_group_desc"
-        case material_group_desc1 = "material_group_desc1"
-        case created_at = "created_at"
-        case updated_at = "updated_at"
+//        case material_description = "material_description"
+//        case gtin = "gtin"
+//        case uom = "uom"
+//        case company_id = "company_id"
+//        case hsn_code = "hsn_code"
+//        case material_group_desc = "material_group_desc"
+//        case material_group_desc1 = "material_group_desc1"
+//        case created_at = "created_at"
+//        case updated_at = "updated_at"
+        case flag = "flag"
     }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
-        zoho_id = try values.decodeIfPresent(String.self, forKey: .zoho_id)
+//        zoho_id = try values.decodeIfPresent(String.self, forKey: .zoho_id)
         material = try values.decodeIfPresent(String.self, forKey: .material)
-        material_description = try values.decodeIfPresent(String.self, forKey: .material_description)
-        gtin = try values.decodeIfPresent(String.self, forKey: .gtin)
-        uom = try values.decodeIfPresent(String.self, forKey: .uom)
-        company_id = try values.decodeIfPresent(Int.self, forKey: .company_id)
-        hsn_code = try values.decodeIfPresent(String.self, forKey: .hsn_code)
-        material_group_desc = try values.decodeIfPresent(String.self, forKey: .material_group_desc)
-        material_group_desc1 = try values.decodeIfPresent(String.self, forKey: .material_group_desc1)
-        created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
-        updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
+//        material_description = try values.decodeIfPresent(String.self, forKey: .material_description)
+//        gtin = try values.decodeIfPresent(String.self, forKey: .gtin)
+//        uom = try values.decodeIfPresent(String.self, forKey: .uom)
+//        company_id = try values.decodeIfPresent(Int.self, forKey: .company_id)
+//        hsn_code = try values.decodeIfPresent(String.self, forKey: .hsn_code)
+//        material_group_desc = try values.decodeIfPresent(String.self, forKey: .material_group_desc)
+//        material_group_desc1 = try values.decodeIfPresent(String.self, forKey: .material_group_desc1)
+//        created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
+//        updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
+        flag = try values.decodeIfPresent(String.self, forKey: .flag)
     }
 
 }

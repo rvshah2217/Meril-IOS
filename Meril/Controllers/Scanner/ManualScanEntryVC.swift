@@ -20,6 +20,7 @@ class ManualScanEntryVC: UIViewController {
     @IBOutlet weak var txtProductCode: DropDown! {
         didSet {
             self.txtProductCode.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+            self.txtProductCode.rowHeight = 40
         }
     }
     @IBOutlet weak var txtSerialNumber: UITextField!
@@ -32,7 +33,7 @@ class ManualScanEntryVC: UIViewController {
     var delegate: ManualEntryDelegate?
     var selectedExpiryTimeStamp: String?
 
-    var productArr = [ProductData]()
+    var productArr = [ProductBarCode]()
     var selectedProductCode: String?
     var mandatoryFieldType: Int = 0//0: None, 1: Batch, 2: Serial(Product code and expiry date are always mendatory)
     
@@ -59,23 +60,25 @@ class ManualScanEntryVC: UIViewController {
         
         txtProductCode.attributedPlaceholder = NSAttributedString(
             string: "Product Code",
-            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
+            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor.withAlphaComponent(0.5)]
         )
                 
         txtBatchNumber.attributedPlaceholder = NSAttributedString(
             string: "Batch Number",
-            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
+            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor.withAlphaComponent(0.5)]
         )
 
         txtSerialNumber.attributedPlaceholder = NSAttributedString(
             string: "Serial Number",
-            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
+            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor.withAlphaComponent(0.5)]
         )
         
         expiryDateTxt.attributedPlaceholder = NSAttributedString(
             string: "Select deployment date",
-            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor]
+            attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor.withAlphaComponent(0.5)]
         )
+        
+        setRightButton(self.txtProductCode, image: UIImage(named: "ic_dropdown") ?? UIImage())
         self.convertDateToStr(date: Date())
     }
     
@@ -172,14 +175,13 @@ extension ManualScanEntryVC {
                 }
                 
                 self.productArr = response.productData ?? []
-                setRightButton(self.txtProductCode, image: UIImage(named: "ic_dropdown") ?? UIImage())
 
 //                self.txtProductCode.isEnabled = !self.schemeArr.isEmpty
                 self.txtProductCode.optionArray = self.productArr.map({ item -> String in
-                    item.hsn_code ?? ""
+                    item.material ?? ""
                 })
                 self.txtProductCode.didSelect { selectedText, index, id in
-                    self.selectedProductCode = self.productArr[index].hsn_code
+                    self.selectedProductCode = self.productArr[index].material
 //                    If product flag is "B" then batch number field is mandatory, if its "S" then serial number is mandatory, otherwise both are optional
                     self.mandatoryFieldType = ((self.productArr[index].flag == "B") ? 1 : ((self.productArr[index].flag == "S") ? 2 : 0))
                 }

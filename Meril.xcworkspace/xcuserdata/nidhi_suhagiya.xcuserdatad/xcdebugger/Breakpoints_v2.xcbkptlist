@@ -2864,8 +2864,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "363"
             endingLineNumber = "363"
-            landmarkName = "AddInventoryViewController"
-            landmarkType = "21">
+            landmarkName = "saveInventoryToCoreData(onSubmitAction:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "F92F12C8-09E3-4CB8-B071-B1DB8D48BC3B - ba02a72300231331"
@@ -3326,8 +3326,8 @@
             filePath = "Meril/Controllers/Scanner/ManualScanEntryVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "validateUserInput()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3438,8 +3438,8 @@
             filePath = "Meril/Controllers/Scanner/ManualScanEntryVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "convertDateToStr(date:isExpiry:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3886,8 +3886,8 @@
             filePath = "Meril/Controllers/Scanner/ManualScanEntryVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "fetchProductData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3902,8 +3902,8 @@
             filePath = "Meril/Controllers/Scanner/ManualScanEntryVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "fetchProductData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3918,8 +3918,8 @@
             filePath = "Meril/Controllers/Scanner/ManualScanEntryVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "fetchProductData()"
             landmarkType = "7">
          </BreakpointContent>

@@ -102,7 +102,7 @@ class AddInventoryViewController: BaseViewController {
         
         
         self.txtHospital.rowHeight = 40
-//        self.txtDoctor.rowHeight = 40
+        self.txtCity.rowHeight = 40
         self.txtDistributor.rowHeight = 40
         self.txtSaleperson.rowHeight = 40
         

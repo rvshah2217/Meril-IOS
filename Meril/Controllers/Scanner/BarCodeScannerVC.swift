@@ -92,8 +92,8 @@ class BarCodeScannerVC: UIViewController {
 //        self.navigationItem.rightBarButtonItems?.append(flashBtn)
         
         let addBtn = UIBarButtonItem(image: UIImage(named: "ic_add"), style: .plain, target: self, action: #selector(self.addManualSurgeryBtnCicked))
-//        self.navigationItem.rightBarButtonItems = [addBtn, flashBtn]
-        self.navigationItem.rightBarButtonItems = [flashBtn]
+        self.navigationItem.rightBarButtonItems = [addBtn, flashBtn]
+//        self.navigationItem.rightBarButtonItems = [flashBtn]
     }
     
     @objc func toggleFlash() {

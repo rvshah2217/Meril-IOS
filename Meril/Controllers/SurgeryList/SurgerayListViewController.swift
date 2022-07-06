@@ -172,66 +172,57 @@ class SurgeryListViewController: UIViewController {
 }
 extension SurgeryListViewController: UITableViewDelegate,UITableViewDataSource{
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return isFilterApplied ? filteredSurgeryArr.count : surgeryArr.count
+//    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        let item = isFilterApplied ? filteredSurgeryArr[section] : surgeryArr[section]
+//        if let addSurgeryObj = item.addSurgeryTempObj {
+//            return (addSurgeryObj.coreDataBarcodes ?? []).count
+//        }
         return isFilterApplied ? filteredSurgeryArr.count : surgeryArr.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let item = isFilterApplied ? filteredSurgeryArr[section] : surgeryArr[section]
-        if let addSurgeryObj = item.addSurgeryTempObj {
-            return (addSurgeryObj.coreDataBarcodes ?? []).count
-        }
-        return (item.scans ?? []).count
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let itemSectionData = isFilterApplied ? filteredSurgeryArr[indexPath.section] : surgeryArr[indexPath.section]
-        
-        if let addSurgeryObj = itemSectionData.addSurgeryTempObj, let barcodes = addSurgeryObj.coreDataBarcodes {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "syncCell") as! SyncCell
-            let item = barcodes[indexPath.row]
-            cell.barCodeLbl.text = "Barcode: " + item.barcode
-            return cell
-        } else {
+        let itemSectionData = isFilterApplied ? filteredSurgeryArr[indexPath.row] : surgeryArr[indexPath.row]
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SurgeryListTableViewCell") as! SurgeryListTableViewCell
-            cell.surgeryOrStockIdLbl.text = "Surgery id: " + (itemSectionData.surgery_id ?? "N/A")
-            cell.lblDate.text = "Date: " + (itemSectionData.created_at ?? "N/A")
-            cell.patientNameLbl.text = "Patient name: " + (itemSectionData.patient_name ?? "N/A")
+        if let addSurgeryObj = itemSectionData.addSurgeryTempObj {
+            cell.isOfflineData = true
+            cell.surgeryOrStockIdLbl.text = "Inventory Code: " + (addSurgeryObj.surgeryId ?? "N/A")
+            cell.lblDate.text = "Date: " + (addSurgeryObj.DeploymentDate ?? "\(Date())")
             
             //            Set hospital name
-            cell.hospitalNameLbl.text = "Hospital: " + (itemSectionData.hospital?.Account_Name ?? "N/A")
-            cell.hospitalNameLbl.numberOfLines = 2
-//            if let index = hospitalsArr.firstIndex(where: { $0.id == itemSectionData.id }) {
-//                cell.hospitalNameLbl.text = "Hospital: " + (hospitalsArr[index].name ?? "N/A")
-//            }
-
+            cell.hospitalNameLbl.text = "Hospital: " + (addSurgeryObj.hospitalName ?? "N/A")
+            
             //            Set sales person name
-            cell.salesPersonLbl.text = "Sales person: " + (itemSectionData.sales_person?.fullname ?? "N/A")
+            cell.salesPersonLbl.text = "Sales person: " + (addSurgeryObj.salesPersonName ?? "N/A")//(itemDetail.sales_person?.fullname ?? "N/A")
             cell.lblBarCode.isHidden = true
             cell.barCodeStatus.isHidden = true
-
-//            if let index = salesPersonsArr.firstIndex(where: { $0.id == itemSectionData.id }) {
-//                cell.salesPersonLbl.text = "Sales person: " + (salesPersonsArr[index].name ?? "N/A")
-//            }
-
-            //            Set doctor name
-            cell.doctorNameLbl.text = "Doctor: " + (itemSectionData.doctor?.Full_Name ?? "N/A")
-//            if let index = doctorsArr.firstIndex(where: { $0.id == itemSectionData.id }) {
-//                cell.doctorNameLbl.text = "Doctor: " + (doctorsArr[index].name ?? "N/A")
-//            }
-
-//            let itemSubData = itemSectionData.scans[indexPath.row]
-//            cell.lblBarCode.text = "Barcode: " + (itemSubData.barcode ?? "N/A")
-//            if let barCodeStatus = itemSubData.status, barCodeStatus == "invalid_barcode" {
-//                cell.viewMain.layer.borderColor = UIColor.red.cgColor
-//                cell.barCodeStatus.isHidden = false
-//            } else {
-//                cell.viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
-//                cell.barCodeStatus.isHidden = true
-//            }
-            return cell
+            cell.patientNameLbl.text = addSurgeryObj.patientName
+            cell.doctorNameLbl.text = addSurgeryObj.doctorName
+        } else {
+            cell.isOfflineData = false
+            cell.surgeryItemDetail = itemSectionData
         }
+//            cell.surgeryOrStockIdLbl.text = "Surgery id: " + (itemSectionData.surgery_id ?? "N/A")
+//            cell.lblDate.text = "Date: " + (itemSectionData.created_at ?? "N/A")
+//            cell.patientNameLbl.text = "Patient name: " + (itemSectionData.patient_name ?? "N/A")
+//
+//            //            Set hospital name
+//            cell.hospitalNameLbl.text = "Hospital: " + (itemSectionData.hospital?.Account_Name ?? "N/A")
+//            cell.hospitalNameLbl.numberOfLines = 2
+//
+//            //            Set sales person name
+//            cell.salesPersonLbl.text = "Sales person: " + (itemSectionData.sales_person?.fullname ?? "N/A")
+//            cell.lblBarCode.isHidden = true
+//            cell.barCodeStatus.isHidden = true
+//            //            Set doctor name
+//            cell.doctorNameLbl.text = "Doctor: " + (itemSectionData.doctor?.Full_Name ?? "N/A")
+
+            return cell
+//        }
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -243,13 +234,15 @@ extension SurgeryListViewController: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = isFilterApplied ? filteredSurgeryArr[indexPath.section] : surgeryArr[indexPath.section]
-
+        let item = isFilterApplied ? filteredSurgeryArr[indexPath.row] : surgeryArr[indexPath.row]
+        let vc = BarCodeListVC()//nibName: "BarCodeListVC", bundle: nil)
         if item.addSurgeryTempObj == nil {
-            let vc = BarCodeListVC()//nibName: "BarCodeListVC", bundle: nil)
             vc.barCodesArr = item.scans ?? []
-            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            vc.offlineBarCodesArr = item.addSurgeryTempObj?.coreDataBarcodes ?? []
+            vc.manualBarCodesArr = item.addSurgeryTempObj?.manualEntryCodes ?? []
         }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

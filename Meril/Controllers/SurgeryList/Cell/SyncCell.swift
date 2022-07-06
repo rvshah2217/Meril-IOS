@@ -45,8 +45,8 @@ class SyncCell: UITableViewCell {
         // Initialization code
         viewMain.layer.cornerRadius = 15
 //        viewMain.backgroundColor = UIColor.white
-//        viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
-//        viewMain.layer.borderWidth = 1
+        viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
+        viewMain.layer.borderWidth = 1
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

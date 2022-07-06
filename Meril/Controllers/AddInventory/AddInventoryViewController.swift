@@ -166,6 +166,9 @@ class AddInventoryViewController: BaseViewController {
         let userId = UserDefaults.standard.integer(forKey: "userId")
         let stockId = "D\(Date.currentTimeStamp)U\(userId)"
         addInventoryReqObj = AddSurgeryRequestModel(hospitalId: selectedHospitalId, distributorId: selectedDistributorId, salesPersonId: selectedSalesPersonId, stockId: stockId, cityId: selectedCityId)
+        addInventoryReqObj?.salesPersonName = self.txtSaleperson.text ?? ""
+        addInventoryReqObj?.hospitalName = self.txtHospital.text ?? ""
+
         self.redirectToScannerVC()
         //        If there is no error while validation then redirect to scan the data
         //        let scannerVC = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
@@ -281,18 +284,42 @@ extension AddInventoryViewController {
             }).first?.name
         }
         
-//        if let city = storedUserData?.city {
-//            let cityDetail = cityArr.filter({ item in
-//                item.name == city
-//            }).first
-//            self.txtCity.text = cityDetail?.name
-//            selectedCityId = cityDetail?.id
-//        }
+        if let hospitalId = storedUserData?.id {
+            let hospitalData = hospitalsArr.filter({ item in
+                item.id == hospitalId
+            }).first
+            self.txtHospital.text = hospitalData?.name
+            selectedHospitalId = hospitalId
+        }
         
-//        if (self.txtCity.text ?? "").count > 0 {
-//            setRightButton(txtCity, image: UIImage(named: "ic_right") ?? UIImage())
-//        }
+        if let city = storedUserData?.city {
+            for i in 0..<cityArr.count {
+                let item = cityArr[i]
+                if item.name == city {
+                    self.txtCity.text = item.name
+                    selectedCityId = item.id
+//                    set hospital by city selection
+                    if (self.txtHospital.text ?? "").count == 0 {
+                        self.refreshHospitalByCity(selectedCityIndex: i)
+                    }
+                    break
+                }
+            }
+        }
+        //            let cityDetail = cityArr.filter({ item in
+        //                item.name == city
+        //            }).first
+        //            self.txtCity.text = cityDetail?.name
+        //            selectedCityId = cityDetail?.id
+
         
+        if (self.txtHospital.text ?? "").count > 0 {
+            setRightButton(txtHospital, image: UIImage(named: "ic_right") ?? UIImage())
+        }
+        
+        if (self.txtCity.text ?? "").count > 0 {
+            setRightButton(txtCity, image: UIImage(named: "ic_right") ?? UIImage())
+        }
         
         if (self.txtDistributor.text ?? "").count > 0 {
             setRightButton(txtDistributor, image: UIImage(named: "ic_right") ?? UIImage())

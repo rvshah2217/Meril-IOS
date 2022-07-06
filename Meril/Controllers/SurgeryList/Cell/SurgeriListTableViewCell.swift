@@ -20,6 +20,7 @@ class SurgeryListTableViewCell: UITableViewCell {
     @IBOutlet weak var barCodeStatus: UILabel!
     
     var isFromInventory: Bool = false
+    var isOfflineData: Bool = false
     
     var barCodeDetail: Scans? = nil {
         didSet {
@@ -40,57 +41,51 @@ class SurgeryListTableViewCell: UITableViewCell {
                 self.viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
                 self.barCodeStatus.isHidden = true
             }
-
         }
     }
-//    var itemDetail: SurgeryData? = nil {
-//        didSet {
-//            guard let itemData = itemDetail else { return }
-//            self.surgeryOrStockIdLbl.text = isFromInventory ? "Stock ID: " + (itemData.stock_id ?? "N/A") : "Surgery ID: " + (itemData.surgery_id ?? "N/A")
-//            self.lblTitle.text = "Patient Name: " + (itemData.patient_name ?? "N/A")
-//            self.lblCode.text = "Hospital Code: " + (itemData.ip_code ?? "N/A")
-//            self.lblDate.text = "Date: " + (itemData.created_at ?? "N/A")
-//            var barCodeStr: String = ""
-//
-//            if let scanArr = itemData.scans, scanArr.count > 0 {
-//                self.lblBarCode.isHidden = false
-//                barCodeStr = "BarCode: "
-//                for i in 0..<scanArr.count {
-//                    let barCodeData = scanArr[i]
-//                    if i == (scanArr.count - 1) {
-//                        barCodeStr += barCodeData.barcode ?? ""
-//                    } else {
-//                        barCodeStr += (barCodeData.barcode ?? "") + ", "
-//                    }
-//                }
-//                self.lblBarCode.text = barCodeStr
-//            } else {
-//                self.lblBarCode.text = ""
-//                self.lblBarCode.isHidden = true
-//            }
-//
-//        }
-//    }
+    
+    var surgeryItemDetail: SurgeryData? = nil {
+        didSet {
+            guard let itemSectionData = surgeryItemDetail else { return }
+            self.surgeryOrStockIdLbl.text = "Surgery id: " + (itemSectionData.surgery_id ?? "N/A")
+            self.lblDate.text = "Date: " + (itemSectionData.created_at ?? "N/A")
+            self.patientNameLbl.text = "Patient name: " + (itemSectionData.patient_name ?? "N/A")
+            
+            //            Set hospital name
+            self.hospitalNameLbl.text = "Hospital: " + (itemSectionData.hospital?.Account_Name ?? "N/A")
+            self.hospitalNameLbl.numberOfLines = 2
+
+            //            Set sales person name
+            self.salesPersonLbl.text = "Sales person: " + (itemSectionData.sales_person?.fullname ?? "N/A")
+            self.lblBarCode.isHidden = true
+            self.barCodeStatus.isHidden = true
+            //            Set doctor name
+            self.doctorNameLbl.text = "Doctor: " + (itemSectionData.doctor?.Full_Name ?? "N/A")
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         viewMain.layer.cornerRadius = 15
-        viewMain.backgroundColor = UIColor.white
         viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
         viewMain.layer.borderWidth = 1
 
-        hospitalNameLbl.textColor = ColorConstant.mainThemeColor
-        doctorNameLbl.textColor = ColorConstant.mainThemeColor
-        salesPersonLbl.textColor = ColorConstant.mainThemeColor
-        patientNameLbl.textColor = ColorConstant.mainThemeColor
-        lblDate.textColor = ColorConstant.mainThemeColor
-        lblBarCode.textColor = ColorConstant.mainThemeColor
-        surgeryOrStockIdLbl.textColor = ColorConstant.mainThemeColor
+        self.barCodeStatus.isHidden = true
+        self.lblBarCode.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+        hospitalNameLbl.textColor = isOfflineData ? .white : ColorConstant.mainThemeColor
+        doctorNameLbl.textColor = isOfflineData ? .white : ColorConstant.mainThemeColor
+        salesPersonLbl.textColor = isOfflineData ? .white : ColorConstant.mainThemeColor
+        patientNameLbl.textColor = isOfflineData ? .white : ColorConstant.mainThemeColor
+        lblDate.textColor = isOfflineData ? .white : ColorConstant.mainThemeColor
+        lblBarCode.textColor = isOfflineData ? .white : ColorConstant.mainThemeColor
+        surgeryOrStockIdLbl.textColor = isOfflineData ? .white : ColorConstant.mainThemeColor
+        viewMain.backgroundColor = isOfflineData ? ColorConstant.mainThemeColor : .white
 
         // Configure the view for the selected state
     }

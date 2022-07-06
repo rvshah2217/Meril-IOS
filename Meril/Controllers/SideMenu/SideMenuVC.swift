@@ -36,7 +36,11 @@ class SideMenuVC: UIViewController {
 //        itemsArr.append(["iconName": "ic_rateApp", "title": "Rate App"])
         itemsArr.append(["iconName": "ic_share", "title": "Share"])
         itemsArr.append(["iconName": "ic_privacyPolicy", "title": "Privacy Policy"])
-        itemsArr.append(["iconName": "ic_settings", "title": "Default credentials"])
+        
+        let userTypeId = UserDefaults.standard.string(forKey: "userTypeId")
+        if userTypeId == "2" {
+            itemsArr.append(["iconName": "ic_settings", "title": "Default credentials"])
+        }
         itemsArr.append(["iconName": "ic_settings", "title": "Change Password"])
         itemsArr.append(["iconName": "ic_signOut", "title": "Signout"])
     }
@@ -78,6 +82,7 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.sideMenuController?.hideLeftView()
         let navVC = sideMenuController?.rootViewController as! UINavigationController
+        let userTypeId = UserDefaults.standard.string(forKey: "userTypeId")
 
         switch indexPath.row {
         case 0:
@@ -105,12 +110,21 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
             navVC.pushViewController(vc, animated: true)
             break
         case 5:
-            let nextVC = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
-            navVC.pushViewController(nextVC, animated: true)
+            if userTypeId == "2" {
+                let nextVC = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
+                navVC.pushViewController(nextVC, animated: true)
+            } else {
+                let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
+                navVC.pushViewController(vc, animated: true)
+            }
             break
         case 6:
-            let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
-            navVC.pushViewController(vc, animated: true)
+            if userTypeId == "2" {
+                let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
+                navVC.pushViewController(vc, animated: true)
+            } else {
+                self.userLogoutConfirmationDialog()
+            }
             break
         default:
             self.userLogoutConfirmationDialog()

@@ -94,6 +94,11 @@ extension LoginVC {
     }
     
     func callUserLoginApi(userObj: LoginRequestModel) {
+        if appDelegate.reachability.connection == .unavailable {
+            GlobalFunctions.showToast(controller: self, message: UserMessages.noInternetConnection, seconds: errorDismissTime) { }
+            return
+        }
+        
         SHOW_CUSTOM_LOADER()
         LoginServices.userLogin(loginObj: userObj) { loginResponse, errorMessage in
             HIDE_CUSTOM_LOADER()

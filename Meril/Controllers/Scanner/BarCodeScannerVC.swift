@@ -34,6 +34,10 @@ class BarCodeScannerVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
+        UserDefaults.standard.removeObject(forKey: "manualEntryData")
+
         setNavBar()
         self.setBackCamera()
         self.setUI()
@@ -73,8 +77,8 @@ class BarCodeScannerVC: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         GlobalFunctions.printToConsole(message: "View did disappear")
-        UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
-        UserDefaults.standard.removeObject(forKey: "manualEntryData")
+//        UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
+//        UserDefaults.standard.removeObject(forKey: "manualEntryData")
     }
     
     func setNavBar() {
@@ -301,11 +305,20 @@ extension BarCodeScannerVC: AVCaptureMetadataOutputObjectsDelegate {
             GlobalFunctions.showToast(controller: self, message: "You are not allowed to scan more than 10 barcodes.", seconds: successDismissTime, completionHandler: nil)
             return
         }
-        barCodeArr.append(BarCodeModel(barcode: code, dateTime: convertDateToString()))
-        UserSessionManager.shared.barCodes = self.barCodeArr
-//        openScanAgainDialog(isShowWarning: false)
         
-        self.reloadCollectionViews()
+        let arr = barCodeArr.filter { item in
+            item.barcode == code
+        }
+        if arr.count > 0 {
+//            show duplication error
+            GlobalFunctions.showToast(controller: self, message: "Barcode exist already.", seconds: successDismissTime, completionHandler: nil)
+        } else {
+            barCodeArr.append(BarCodeModel(barcode: code, dateTime: convertDateToString()))
+            UserSessionManager.shared.barCodes = self.barCodeArr
+    //        openScanAgainDialog(isShowWarning: false)
+            
+            self.reloadCollectionViews()
+        }
     }
     
     private func reloadCollectionViews() {
@@ -374,11 +387,19 @@ extension BarCodeScannerVC: ManualEntryDelegate {
             return
         }
         
-        manualEntryArr.append(manuallyAddedData)
-        UserSessionManager.shared.manualEntryData = manualEntryArr
+        let arr = manualEntryArr.filter { item in
+            item.sku == manuallyAddedData.sku
+        }
+        if arr.count > 0 {
+//            show duplication error
+            GlobalFunctions.showToast(controller: self, message: "Barcode exist already.", seconds: successDismissTime, completionHandler: nil)
+        } else {
+            manualEntryArr.append(manuallyAddedData)
+            UserSessionManager.shared.manualEntryData = manualEntryArr
+            self.reloadCollectionViews()
+        }
 //        GlobalFunctions.showToast(controller: self, message: "Your data has been saved successfully.", seconds: successDismissTime, completionHandler: nil)
 //        openScanAgainDialog(isShowWarning: false)
-        self.reloadCollectionViews()
     }
 }
 

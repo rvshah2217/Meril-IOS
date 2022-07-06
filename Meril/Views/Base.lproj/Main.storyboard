@@ -708,9 +708,9 @@
                         <viewLayoutGuide key="safeArea" id="iSk-wA-te2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iSk-wA-te2" firstAttribute="trailing" secondItem="7A9-nw-5fq" secondAttribute="trailing" id="15x-Bf-CHC"/>
+                            <constraint firstItem="7A9-nw-5fq" firstAttribute="trailing" secondItem="TpR-Vy-pSr" secondAttribute="trailing" id="15x-Bf-CHC"/>
                             <constraint firstItem="Kfd-qJ-4nO" firstAttribute="bottom" secondItem="iSk-wA-te2" secondAttribute="bottom" id="AWC-wO-IYO"/>
-                            <constraint firstItem="7A9-nw-5fq" firstAttribute="leading" secondItem="iSk-wA-te2" secondAttribute="leading" id="C7u-qL-Aka"/>
+                            <constraint firstItem="7A9-nw-5fq" firstAttribute="leading" secondItem="TpR-Vy-pSr" secondAttribute="leading" id="C7u-qL-Aka"/>
                             <constraint firstItem="xHL-qu-RwN" firstAttribute="leading" secondItem="iSk-wA-te2" secondAttribute="leading" constant="20" id="JNH-EO-MdR"/>
                             <constraint firstItem="Kfd-qJ-4nO" firstAttribute="leading" secondItem="TpR-Vy-pSr" secondAttribute="leading" id="XIa-lk-lA0"/>
                             <constraint firstItem="iSk-wA-te2" firstAttribute="trailing" secondItem="Kfd-qJ-4nO" secondAttribute="trailing" id="az8-9t-3Ct"/>

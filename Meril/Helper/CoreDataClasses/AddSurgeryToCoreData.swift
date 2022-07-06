@@ -49,6 +49,11 @@ class AddSurgeryToCoreData {
                     let barcodeObj = try JSONDecoder().decode([BarCodeModel].self, from: barcodeJsonData)
                     surgeryObj.coreDataBarcodes = barcodeObj
                 
+//                Convert manual entry array
+                let manualBarcodeJsonData = (surgeryObj.manualEntry ?? "").data(using: .utf8)!
+                let manualBarcodeObj = try JSONDecoder().decode([ManualEntryModel].self, from: manualBarcodeJsonData)
+                surgeryObj.manualEntryCodes = manualBarcodeObj
+
 //                Use Surgery data Object for easy handling on UI
                 var surgeryDataObj = SurgeryData(addSurgeryTempObj: surgeryObj)
                 surgeryDataObj.surgery_id = surgeryObj.surgeryId

@@ -50,11 +50,14 @@ class AddStockToCoreData {
                 let barcodeObj = try JSONDecoder().decode([BarCodeModel].self, from: barcodeJsonData)
                 surgeryObj.coreDataBarcodes = barcodeObj
                 
+                //                Convert manual entry array
+                let manualBarcodeJsonData = (surgeryObj.manualEntry ?? "").data(using: .utf8)!
+                let manualBarcodeObj = try JSONDecoder().decode([ManualEntryModel].self, from: manualBarcodeJsonData)
+                surgeryObj.manualEntryCodes = manualBarcodeObj
+                
                 //                Use Stock data Object for easy handling on UI
-                                var surgeryDataObj = SurgeryData(addSurgeryTempObj: surgeryObj)
-                                surgeryDataObj.surgery_id = surgeryObj.surgeryId
-                                    addedSurgeryArr.append(surgeryDataObj)
-
+                var surgeryDataObj = SurgeryData(addSurgeryTempObj: surgeryObj)
+                surgeryDataObj.surgery_id = surgeryObj.surgeryId
                 addedSurgeryArr.append(surgeryDataObj)
             }
             return addedSurgeryArr
@@ -80,10 +83,11 @@ class AddStockToCoreData {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddStock")
         fetchRequest.predicate = NSPredicate(format: "stockId == %@", stockId)
         do {
-            let sergeryData = try managedContext.fetch(fetchRequest).first as? AddStock
-            managedContext.delete(sergeryData!)
-            try managedContext.save()
-            GlobalFunctions.printToConsole(message: "Deleted Surgery id is: \(stockId)")
+            if let sergeryData = try managedContext.fetch(fetchRequest).first as? AddStock {
+                managedContext.delete(sergeryData)
+                try managedContext.save()
+                GlobalFunctions.printToConsole(message: "Deleted Surgery id is: \(stockId)")
+            }
         } catch {
             GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
         }

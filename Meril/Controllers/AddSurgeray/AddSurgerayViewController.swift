@@ -313,6 +313,9 @@ class AddSurgerayViewController: BaseViewController {
         let userId = UserDefaults.standard.integer(forKey: "userId")
         let surgeryId = "D\(Date.currentTimeStamp)U\(userId)"
         addSurgeryReqObj = AddSurgeryRequestModel(cityId: selectedCityId, hospitalId: selectedHospitalId, distributorId: selectedDistributorId, doctorId: selectedDoctorId, surgeryId: surgeryId, schemeId: selectedSchemeId, patientName: patientName, patientMobile: patientNumber, age: Int(patientAge), ipCode: ipCode, salesPersonId: selectedSalesPersonId, gender: selectedGender, DeploymentDate: selectedDate)
+        addSurgeryReqObj?.salesPersonName = self.txtSaleperson.text ?? ""
+        addSurgeryReqObj?.hospitalName = self.txtHospital.text ?? ""
+        addSurgeryReqObj?.doctorName = self.txtDoctor.text ?? ""
         self.redirectToScannerVC()
         //        If there is no error while validation then redirect to scan the data
         //        let scannerVC = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
@@ -467,6 +470,44 @@ extension AddSurgerayViewController {
             self.txtSaleperson.text = sales_personsArr.filter({ item in
                 item.id == selectedSalesPersonId
             }).first?.name
+        }
+        
+        if let hospitalId = storedUserData?.id {
+            let hospitalData = hospitalsArr.filter({ item in
+                item.id == hospitalId
+            }).first
+            self.txtHospital.text = hospitalData?.name
+            selectedHospitalId = hospitalId
+        }
+        
+//        if let city = storedUserData?.city {
+//            let cityDetail = citiesArr.filter({ item in
+//                item.name == city
+//            }).first
+//            self.txtCity.text = cityDetail?.name
+//            selectedCityId = cityDetail?.id
+//        }
+        if let city = storedUserData?.city {
+            for i in 0..<citiesArr.count {
+                let item = citiesArr[i]
+                if item.name == city {
+                    self.txtCity.text = item.name
+                    selectedCityId = item.id
+//                    set hospital by city selection
+                    if (self.txtHospital.text ?? "").count == 0 {
+                        self.refreshHospitalByCity(selectedCityIndex: i)
+                    }
+                    break
+                }
+            }
+        }
+        
+        if (self.txtHospital.text ?? "").count > 0 {
+            setRightButton(txtHospital, image: UIImage(named: "ic_right") ?? UIImage())
+        }
+        
+        if (self.txtCity.text ?? "").count > 0 {
+            setRightButton(txtCity, image: UIImage(named: "ic_right") ?? UIImage())
         }
         
         if (self.txtDistributor.text ?? "").count > 0 {

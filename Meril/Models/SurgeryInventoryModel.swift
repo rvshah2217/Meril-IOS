@@ -7,6 +7,7 @@
 
 
 import Foundation
+import UIKit
 
 struct FormDataResponseModel : Codable {
     
@@ -233,7 +234,11 @@ struct AddSurgeryRequestModel : Codable {
     var gender: String?
     var DeploymentDate: String?
     var coreDataBarcodes: [BarCodeModel]?
-    
+    var manualEntryCodes: [ManualEntryModel]?
+    var hospitalName: String?
+    var salesPersonName: String?
+    var doctorName: String?
+
     init(hospitalId : Int?,  distributorId: Int?, salesPersonId: String?, stockId: String?, barcodes: String? = nil, cityId: Int?) {
         self.hospitalId = hospitalId
         //        self.doctorId = doctorId
@@ -400,22 +405,34 @@ struct SurgeryData : Codable {
 }
 
 struct Scans : Codable {
-    let id : Int?
-    let zoho_id : String?
-    let surgery_id : String?
-    let stock_id : String?
-    let barcode : String?
-    let product_code : String?
-    let gtin : String?
-    let mfg_date : String?
-    let exp_date : String?
-    let batch_no : String?
-    let scan_datetime : String?
-    let serial_no : String?
-    let created_at : String?
-    let updated_at : String?
-    let product_data : Product_data?
+    var id : Int?
+    var zoho_id : String?
+    var surgery_id : String?
+    var stock_id : String?
+    var barcode : String?
+    var product_code : String?
+    var gtin : String?
+    var mfg_date : String?
+    var exp_date : String?
+    var batch_no : String?
+    var scan_datetime : String?
+    var serial_no : String?
+    var created_at : String?
+    var updated_at : String?
+    var product_data : Product_data?
     var status: String? = "invalid_barcode"
+    
+    init(product_code : String?, exp_date : String?, batch_no : String?, serial_no : String?, status: String? = "valid_barcode") {
+        self.product_code = product_code
+        self.exp_date = exp_date
+        self.batch_no = batch_no
+        self.serial_no = serial_no
+        self.status = status
+    }
+    
+//    required init() {
+//
+//    }
     
     enum CodingKeys: String, CodingKey {
         

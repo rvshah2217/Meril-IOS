@@ -47,5 +47,5 @@ struct UserMessages {
     static let productCode = "Please enter product code"
     static let batchNo = "Please enter batch number"
     static let serialNo = "Please enter serial number"
-
+    static let noInternetConnection = "No internet connection"
 }

@@ -55,28 +55,35 @@ class LoginServices {
         let topController = navController.topViewController
         APIManager.shared().call(for: LoginResponseModel.self, type: EndPointsItem.logout) { (responseData, error) in
             
-            guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
-                if let vc = topController as? UIViewController {
-                    GlobalFunctions.showToast(controller: vc, message: error?.title ?? UserMessages.serverError, seconds: errorDismissTime, completionHandler: nil)
-                }
-                return
-            }
+            //                Remove data from user defaults
+            LoginServices.removeLocallyStoredData()
+            
+            let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+            appDelegate.window?.rootViewController = GlobalFunctions.setRootNavigationController(currentVC: loginVC)
+            appDelegate.window?.makeKeyAndVisible()
+
+//            guard let response = responseData else {
+//                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+//                if let vc = topController as? UIViewController {
+//                    GlobalFunctions.showToast(controller: vc, message: error?.title ?? UserMessages.serverError, seconds: errorDismissTime, completionHandler: nil)
+//                }
+//                return
+//            }
             
             //Check if server return success response or not
-            if response.success ?? false {
-                //                Remove data from user defaults
-                LoginServices.removeLocallyStoredData()
-                
-                let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-                appDelegate.window?.rootViewController = GlobalFunctions.setRootNavigationController(currentVC: loginVC)
-                appDelegate.window?.makeKeyAndVisible()
-                
-            } else {
-                if let vc = topController as? UIViewController {
-                    GlobalFunctions.showToast(controller: vc, message: response.message ?? UserMessages.serverError, seconds: errorDismissTime, completionHandler: nil)
-                }
-            }
+//            if response.success ?? false {
+//                //                Remove data from user defaults
+//                LoginServices.removeLocallyStoredData()
+//
+//                let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+//                appDelegate.window?.rootViewController = GlobalFunctions.setRootNavigationController(currentVC: loginVC)
+//                appDelegate.window?.makeKeyAndVisible()
+//
+//            } else {
+//                if let vc = topController as? UIViewController {
+//                    GlobalFunctions.showToast(controller: vc, message: response.message ?? UserMessages.serverError, seconds: errorDismissTime, completionHandler: nil)
+//                }
+//            }
         }
     }
     

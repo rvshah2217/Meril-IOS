@@ -54,7 +54,7 @@ class DefaultLoginData: UIViewController {
     
     func setNavigation() {
         self.navigationItem.title = "Default Credentials"
-        self.navigationItem.hidesBackButton = true
+//        self.navigationItem.hidesBackButton = true
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)
     }
     
@@ -140,7 +140,8 @@ class DefaultLoginData: UIViewController {
     }
     
     private func redirectToHomeVC() {
-        if let isDefaultPassword = UserDefaults.standard.string(forKey: "isDefaultPassword"), isDefaultPassword == "1" {
+//        if let isDefaultPassword = UserDefaults.standard.string(forKey: "isDefaultPassword"), isDefaultPassword == "1" {
+        if UserDefaults.standard.bool(forKey: "isDefaultPassword") {
             //                    Redirect to change password
             let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
             vc.isFromLogin = true
@@ -212,9 +213,9 @@ extension DefaultLoginData {
 
         if let doctorId = storedUserData?.doctor_id {
             selectedDoctorId = Int(doctorId)
-            self.txtDistributor.text = doctorsArr.filter({ item in
+            self.txtDoctor.text = doctorsArr.filter({ item in
                 item.id == selectedDoctorId
-            }).first?.name
+            }).first?.fullname
         }
 
         if let distributorId = storedUserData?.distributor_id {

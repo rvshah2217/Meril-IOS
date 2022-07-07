@@ -11,8 +11,6 @@ class ContactUsViewController: BaseViewController {
     
     @IBOutlet var collectionTextField: [UITextField]!
     @IBOutlet weak var txtView: UITextView!
-//    @IBOutlet weak var constrainViewHeight: NSLayoutConstraint!
-//    @IBOutlet weak var ViewHeader: UIView!
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtSubject: UITextField!
@@ -21,18 +19,16 @@ class ContactUsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)
-//        setNavigation()
     }
     
     //MARK:- Setup UI
     func setUI(){
         self.navigationItem.title = "Contact Us"
-//        self.ViewHeader.backgroundColor = ColorConstant.mainThemeColor
+        //        self.ViewHeader.backgroundColor = ColorConstant.mainThemeColor
         btnSubmit.backgroundColor = ColorConstant.mainThemeColor
         btnSubmit.layer.cornerRadius = btnSubmit.frame.height / 2
         
@@ -53,27 +49,16 @@ class ContactUsViewController: BaseViewController {
         txtView.layer.cornerRadius = 8
         txtView.layer.borderColor = ColorConstant.mainThemeColor.cgColor
         txtView.textContainerInset = UIEdgeInsets(top: 10,left: 10,bottom: 0 ,right: 0);
-
+        
     }
-//    func setNavigation(){
-//        settupHeaderView(childView: self.ViewHeader, constrain: constrainViewHeight,title: "Contact Us")
-//        navigationController?.setNavigationBarHidden(true, animated: false)
-//        setBackButtononNavigation()
-//        pressButtonOnNavigaion { (isBack) in
-//            if(isBack){
-//            }else{
-//                _ =  self.navigationController?.popViewController(animated: true)
-//            }
-//        }
-//
-//    }
+    
     func inputValidation() {
         
         let name = txtName.text ?? ""
         let email = txtEmail.text ?? ""
         let subject = txtSubject.text ?? ""
-       let message = txtSubject.text ?? ""
-
+        let message = txtSubject.text ?? ""
+        
         if !Validation.sharedInstance.checkLength(testStr: name) {
             GlobalFunctions.showToast(controller: self, message: "Please enter name.", seconds: errorDismissTime)
             return
@@ -84,23 +69,32 @@ class ContactUsViewController: BaseViewController {
             return
         }
         
+        if !Validation.sharedInstance.isValidEmail(testStr: email) {
+            GlobalFunctions.showToast(controller: self, message: "Please enter valid email.", seconds: errorDismissTime)
+            return
+        }
+        
         if !Validation.sharedInstance.checkLength(testStr: subject) {
             GlobalFunctions.showToast(controller: self, message: "Please enter subject.", seconds: errorDismissTime)
             return
         }
+        
         if !Validation.sharedInstance.checkLength(testStr: message) {
             GlobalFunctions.showToast(controller: self, message: "Please enter message.", seconds: errorDismissTime)
         }
+        
         let obj = ContactUsRequestModel(name: name, email: email, subject: subject, message: message)
         self.callcontactUsApi(userObj: obj)
     }
     //MARK:- @IBAction Method
     @objc func btnBarDoneAction() { txtView.resignFirstResponder() }
-
+    
     @IBAction func onClickSubmit(_ sender: UIButton) {
         inputValidation()
     }
 }
+
+//#MARK: submit user data to server (ContactUs api call)
 extension ContactUsViewController{
     func callcontactUsApi(userObj: ContactUsRequestModel) {
         ContactUsServices.contactUs(loginObj: userObj){ isSuccess, errorMessage in

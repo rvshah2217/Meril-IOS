@@ -93,7 +93,7 @@ struct Barcode_data : Codable {
     let gtin : String?
     let expiry : String?
     let serial : String?
-    let units : Int?
+//    let units : Int?
     let type : String?
     let product : ProductBarCode?
 
@@ -102,7 +102,7 @@ struct Barcode_data : Codable {
         case gtin = "gtin"
         case expiry = "expiry"
         case serial = "serial"
-        case units = "units"
+//        case units = "units"
         case type = "type"
         case product = "product"
     }
@@ -112,7 +112,7 @@ struct Barcode_data : Codable {
         gtin = try values.decodeIfPresent(String.self, forKey: .gtin)
         expiry = try values.decodeIfPresent(String.self, forKey: .expiry)
         serial = try values.decodeIfPresent(String.self, forKey: .serial)
-        units = try values.decodeIfPresent(Int.self, forKey: .units)
+//        units = try values.decodeIfPresent(Int.self, forKey: .units)
         type = try values.decodeIfPresent(String.self, forKey: .type)
         product = try values.decodeIfPresent(ProductBarCode.self, forKey: .product)
     }

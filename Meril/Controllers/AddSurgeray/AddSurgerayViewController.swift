@@ -19,54 +19,43 @@ class AddSurgerayViewController: BaseViewController {
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var constrainViewHeaderHeight: NSLayoutConstraint!
     @IBOutlet weak var DetailsScrollView: UIScrollView!
-        
+    
     @IBOutlet weak var genderDropDown: DropDown! {
         didSet {
-//            self.genderDropDown.isSearchEnable = false
             self.genderDropDown.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtCity: DropDown! {
         didSet {
-//            self.txtCity.isSearchEnable = false
             self.txtCity.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtHospital: DropDown! {
         didSet {
-//            self.txtHospital.isSearchEnable = false
+            //            self.txtHospital.isSearchEnable = false
             self.txtHospital.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtDoctor: DropDown! {
         didSet {
-//            self.txtDoctor.isSearchEnable = false
             self.txtDoctor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtDistributor: DropDown! {
         didSet {
-//            self.txtDistributor.isSearchEnable = false
             self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtSaleperson: DropDown! {
         didSet {
-//            self.txtSaleperson.isSearchEnable = false
             self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
-    
-//    @IBOutlet weak var txtUDT: DropDown! {
-//        didSet {
-//            self.txtUDT.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
     
     @IBOutlet weak var txtPatientScheme: DropDown! {
         didSet {
@@ -83,17 +72,12 @@ class AddSurgerayViewController: BaseViewController {
     @IBOutlet weak var btnScanNow: UIButton!
     @IBOutlet weak var deploymentDateTxt: UITextField!
     
-    //    var schemeArr: [Schemes] = []
-    //    var udtArr: [Schemes] = []
-    //    var departmentsArr: [Schemes] = []
-    
     var citiesArr : [Cities] = []
     var hospitalsArr: [Hospitals] = []
     var doctorsArr: [Hospitals] = []
     var distributorsArr: [Hospitals] = []
     var sales_personsArr: [SalesPerson] = []
     var schemeArr: [Schemes] = []
-//    var udtArr: [Schemes] = []
     var genderArr: [String] = ["Male", "Female"]
     
     var selectedCityId: Int?
@@ -102,23 +86,21 @@ class AddSurgerayViewController: BaseViewController {
     var selectedDistributorId: Int?
     var selectedSalesPersonId: String?
     var selectedSchemeId: Int?
-//    var selectedUdtId: Int?
     var selectedGender: String?
     var addSurgeryReqObj: AddSurgeryRequestModel?
     var datePicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.internetConnectionLost), name: .networkLost, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.internetConnectionLost), name: .networkLost, object: nil)
         setUI()
         self.setDatePicker()
         self.fetchFormData()
-        // Do any additional setup after loading the view.
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .networkLost, object: nil)
-    }
+//    deinit {
+//        NotificationCenter.default.removeObserver(self, name: .networkLost, object: nil)
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -127,9 +109,9 @@ class AddSurgerayViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: .networkLost, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: .networkLost, object: nil)
     }
- 
+    
     //MARK:- Custome Method
     func setUI() {
         self.navigationItem.title = ""
@@ -142,10 +124,6 @@ class AddSurgerayViewController: BaseViewController {
             i.backgroundColor = ColorConstant.mainThemeColor
             i.layer.cornerRadius = i.frame.height/2
         }
-        //        scrollOuterView.layer.cornerRadius = 20
-        //        scrollOuterView.layer.borderWidth = 0.5
-        //        scrollOuterView.layer.borderColor = UIColor.lightGray.cgColor
-        
         viewBC.backgroundColor = ColorConstant.mainThemeColor
         viewBC.addCornerAtBotttoms(radius: 30)
         
@@ -156,18 +134,16 @@ class AddSurgerayViewController: BaseViewController {
         txtHospital.setPlaceholder(placeHolderStr: "Select Hospital")
         txtDistributor.setPlaceholder(placeHolderStr: "Select Distributor")
         txtSaleperson.setPlaceholder(placeHolderStr: "Select Saleperson")
-        //        txtUDT.setPlaceholder(placeHolderStr: "Select UDT")
         genderDropDown.setPlaceholder(placeHolderStr: "Select Gender", textColor: ColorConstant.mainThemeColor)
         txtPatientScheme.setPlaceholder(placeHolderStr: "Select Scheme", textColor: ColorConstant.mainThemeColor)
         txtDoctor.setPlaceholder(placeHolderStr: "Select Doctor", textColor: ColorConstant.mainThemeColor)
-
+        
         self.txtCity.rowHeight = 40
         self.txtHospital.rowHeight = 40
         self.txtDoctor.rowHeight = 40
         self.txtDistributor.rowHeight = 40
         self.txtSaleperson.rowHeight = 40
         self.txtPatientScheme.rowHeight = 40
-        //        self.txtUDT.rowHeight = 40
         self.genderDropDown.rowHeight = 40
         
         setRightButton(txtCity, image: UIImage(named: "ic_dropdown") ?? UIImage())
@@ -188,11 +164,11 @@ class AddSurgerayViewController: BaseViewController {
         let imgView2: UIImageView = UIImageView(image: img)
         imgView2.tintColor = ColorConstant.mainThemeColor
         setBlueArrowRightButton(txtPatientScheme, imageView: imgView2)
-
+        
         let imgView3: UIImageView = UIImageView(image: img)
         imgView3.tintColor = ColorConstant.mainThemeColor
         setBlueArrowRightButton(deploymentDateTxt, imageView: imgView3)
-
+        
         deploymentDateTxt.attributedPlaceholder = NSAttributedString(
             string: "Select deployment date",
             attributes: [NSAttributedString.Key.foregroundColor: ColorConstant.mainThemeColor.withAlphaComponent(0.5)]
@@ -230,7 +206,7 @@ class AddSurgerayViewController: BaseViewController {
     func setDatePicker() {
         let datePickerWidth = self.view.frame.width - 40
         let datePickerHeight = self.view.frame.height * 0.4
-    datePicker = UIDatePicker(frame: CGRect(x: (self.view.frame.width / 2) - (datePickerWidth / 2), y: (self.view.frame.height / 2) - (datePickerHeight / 2), width: datePickerWidth, height: datePickerHeight))
+        datePicker = UIDatePicker(frame: CGRect(x: (self.view.frame.width / 2) - (datePickerWidth / 2), y: (self.view.frame.height / 2) - (datePickerHeight / 2), width: datePickerWidth, height: datePickerHeight))
         datePicker.datePickerMode = .date
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels
@@ -247,21 +223,11 @@ class AddSurgerayViewController: BaseViewController {
     private func convertDateToStr(date: Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
-//        GlobalFunctions.printToConsole(message: "Selected date: \(dateFormatter.string(from: datePicker.date))")
+        //        GlobalFunctions.printToConsole(message: "Selected date: \(dateFormatter.string(from: datePicker.date))")
         self.deploymentDateTxt.text = dateFormatter.string(from: date)
     }
     
     func setNavigation(){
-//        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeaderHeight,title: "Add Surgeray")
-//        //        navigationController?.setNavigationBarHidden(true, animated: false)
-//
-//        setBackButtononNavigation()
-//        pressButtonOnNavigaion { (isBack) in
-//            if(isBack){
-//            }else{
-//                _ =  self.navigationController?.popViewController(animated: true)
-//            }
-//        }
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)
         self.navigationItem.title = "Add Surgery"
     }
@@ -281,11 +247,6 @@ class AddSurgerayViewController: BaseViewController {
             return
         }
         
-//        guard let _ = selectedDoctorId else {
-//            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDoctorError, seconds: errorDismissTime)
-//            return
-//        }
-        
         guard let _ = selectedDistributorId else {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDistributorError, seconds: errorDismissTime)
             return
@@ -295,11 +256,6 @@ class AddSurgerayViewController: BaseViewController {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptySalesPersonError, seconds: errorDismissTime)
             return
         }
-       
-//        guard let _ = selectedGender else {
-//            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyGenderError, seconds: errorDismissTime)
-//            return
-//        }
         
         let selectedDate = deploymentDateTxt.text ?? ""
         if !Validation.sharedInstance.checkLength(testStr: selectedDate) {
@@ -316,11 +272,8 @@ class AddSurgerayViewController: BaseViewController {
         addSurgeryReqObj?.salesPersonName = self.txtSaleperson.text ?? ""
         addSurgeryReqObj?.hospitalName = self.txtHospital.text ?? ""
         addSurgeryReqObj?.doctorName = self.txtDoctor.text ?? ""
-        self.redirectToScannerVC()
         //        If there is no error while validation then redirect to scan the data
-        //        let scannerVC = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
-        //        scannerVC.delegate = self
-        //        self.navigationController?.pushViewController(scannerVC, animated: true)
+        self.redirectToScannerVC()
     }
     
     func redirectToScannerVC() {
@@ -347,17 +300,6 @@ extension AddSurgerayViewController {
             guard let surgeryObj = response else { return }
             self.setAllDropDownData(formDataResponse: surgeryObj)
         }
-        //        SurgeryServices.getAllFormData { response, error in
-        //            guard let responseData = response else {
-        //                GlobalFunctions.printToConsole(message: "Fetch form-data failed: \(error)")
-        //                return
-        //            }
-        //            if let formDataObj = responseData.suregeryInventoryData {
-        //                self.setAllDropDownData(formDataResponse: formDataObj)
-        ////                Save response of Form data to core data
-        //                StoreFormData.sharedInstance.saveFormData(schemeData: formDataObj)
-        //            }
-        //        }
     }
     
     func setAllDropDownData(formDataResponse: SurgeryInventoryModel) {
@@ -445,9 +387,9 @@ extension AddSurgerayViewController {
             return
         }
         print("user type id: \(userTypeId)")
-
+        
         let storedUserData = UserSessionManager.shared.userDetail
-//        let userDefault = UserDefaults.standard
+        //        let userDefault = UserDefaults.standard
         if let doctorId = storedUserData?.doctor_id {
             selectedDoctorId = Int(doctorId)//userDefault.integer(forKey: "defaultDoctorId")
             self.txtDoctor.text = doctorsArr.filter({ item in
@@ -455,7 +397,6 @@ extension AddSurgerayViewController {
             }).first?.fullname
         }
         //        set distributor
-//        selectedDistributorId = userDefault.integer(forKey: "defaultDistributorId")
         if let distributorId = storedUserData?.distributor_id {
             selectedDistributorId = Int(distributorId)
             self.txtDistributor.text = distributorsArr.filter({ item in
@@ -464,7 +405,6 @@ extension AddSurgerayViewController {
         }
         
         //        set sales person
-//        selectedSalesPersonId = userDefault.string(forKey: "defaultSalesPersonId")
         if let salesPersonId = storedUserData?.sales_person_id {
             selectedSalesPersonId = salesPersonId
             self.txtSaleperson.text = sales_personsArr.filter({ item in
@@ -480,20 +420,13 @@ extension AddSurgerayViewController {
             selectedHospitalId = hospitalId
         }
         
-//        if let city = storedUserData?.city {
-//            let cityDetail = citiesArr.filter({ item in
-//                item.name == city
-//            }).first
-//            self.txtCity.text = cityDetail?.name
-//            selectedCityId = cityDetail?.id
-//        }
         if let city = storedUserData?.city {
             for i in 0..<citiesArr.count {
                 let item = citiesArr[i]
                 if item.name == city {
                     self.txtCity.text = item.name
                     selectedCityId = item.id
-//                    set hospital by city selection
+                    //                    set hospital by city selection
                     if (self.txtHospital.text ?? "").count == 0 {
                         self.refreshHospitalByCity(selectedCityIndex: i)
                     }
@@ -531,12 +464,12 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
         SHOW_CUSTOM_LOADER()
         
         let manualEntryArr: [ManualEntryModel] = UserSessionManager.shared.manualEntryData
-
+        
         let barCodeArr: [BarCodeModel] = UserSessionManager.shared.barCodes
         
         let barCodeDict = barCodeArr.compactMap { $0.dict }
         let manualDataDict = manualEntryArr.compactMap { $0.dict }
-
+        
         func convertArrayToJsonString(dict: [[String:Any]]) -> String? {
             if let theJSONData = try? JSONSerialization.data(
                 withJSONObject: dict,
@@ -552,9 +485,7 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
         
         addSurgeryReqObj?.manualEntry = convertArrayToJsonString(dict: manualDataDict)
         addSurgeryReqObj?.barcodes = convertArrayToJsonString(dict: barCodeDict)
-
-        GlobalFunctions.printToConsole(message: "\(addSurgeryReqObj?.barcodes)")
-        GlobalFunctions.printToConsole(message: "\(addSurgeryReqObj?.manualEntry)")
+        
         if appDelegate.reachability.connection == .unavailable {
             self.saveSurgeryToCoreData(onSubmitAction: true)
         } else {
@@ -563,16 +494,17 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
         
     }
     
+    //    #MARK: Add surgery data api call
     func callAddSurgeryApi() {
         guard let surgeryObj = addSurgeryReqObj else { return }
         SurgeryServices.addSurgery(surgeryObj: surgeryObj) { response, error in
             HIDE_CUSTOM_LOADER()
             guard let err = error else {
-//                Remove scanned barcodes from userdefaults
+                //                Remove scanned barcodes from userdefaults
                 UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
                 UserDefaults.standard.removeObject(forKey: "manualEntryData")
                 
-//                self.navigationController?.popViewController(animated: true)
+                //                self.navigationController?.popViewController(animated: true)
                 self.navigationController?.popToRootViewController(animated: true)
                 return
             }
@@ -580,6 +512,7 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
         }
     }
     
+    //    #MARK: Save surgery data to CoreData
     func saveSurgeryToCoreData(onSubmitAction: Bool = false) {
         guard let surgeryObj = addSurgeryReqObj else { return }
         //        Save records to Core data
@@ -590,11 +523,6 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
             }
         }
     }
-    
-    @objc func internetConnectionLost() {
-//        self.saveSurgeryToCoreData()
-    }
-//
 }
 
 

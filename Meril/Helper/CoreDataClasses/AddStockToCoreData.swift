@@ -13,6 +13,7 @@ class AddStockToCoreData {
     
     let managedContext = appDelegate.persistentContainer.viewContext
     
+    //    #MARK: Save inventory data
     func saveStockData(stockData: AddSurgeryRequestModel) {
         
         do {
@@ -33,6 +34,7 @@ class AddStockToCoreData {
         }
     }
     
+    //    #MARK: Fetch inventory data
     func fetchStocks() -> [SurgeryData]? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddStock")
         fetchRequest.predicate = NSPredicate(format: "isSyncedWithServer == %@", NSNumber(value: false))
@@ -67,6 +69,7 @@ class AddStockToCoreData {
         return nil
     }
     
+    //    #MARK: Update inventory status
     func updateStockStatus(stockId: String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddStock")
         fetchRequest.predicate = NSPredicate(format: "stockId == %@", stockId)
@@ -79,6 +82,7 @@ class AddStockToCoreData {
         }
     }
     
+    //    #MARK: Delete inventory 
     func deleteStockByStockId(stockId: String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddStock")
         fetchRequest.predicate = NSPredicate(format: "stockId == %@", stockId)

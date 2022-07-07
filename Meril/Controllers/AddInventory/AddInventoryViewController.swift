@@ -18,7 +18,7 @@ class AddInventoryViewController: BaseViewController {
     @IBOutlet weak var constrainViewHeaderHeight: NSLayoutConstraint!
     @IBOutlet weak var DetailsScrollView: UIScrollView!
     var addInventoryReqObj: AddSurgeryRequestModel?
-
+    
     @IBOutlet weak var txtCity: DropDown! {
         didSet {
             self.txtCity.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
@@ -31,26 +31,17 @@ class AddInventoryViewController: BaseViewController {
         }
     }
     
-//    @IBOutlet weak var txtDoctor: DropDown! {
-//        didSet {
-//            self.txtDoctor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-//
     @IBOutlet weak var txtDistributor: DropDown! {
         didSet {
-//            self.txtDistributor.isSearchEnable = false
             self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
     
     @IBOutlet weak var txtSaleperson: DropDown! {
         didSet {
-//            self.txtSaleperson.isSearchEnable = false
             self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
         }
     }
-    
     
     @IBOutlet weak var btnScanNow: UIButton!
     
@@ -66,15 +57,15 @@ class AddInventoryViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.internetConnectionLost), name: .networkLost, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.internetConnectionLost), name: .networkLost, object: nil)
         setUI()
         self.fetchFormData()
         // Do any additional setup after loading the view.
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .networkLost, object: nil)
-    }
+//    deinit {
+//        NotificationCenter.default.removeObserver(self, name: .networkLost, object: nil)
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -100,7 +91,6 @@ class AddInventoryViewController: BaseViewController {
         txtDistributor.setPlaceholder(placeHolderStr: "Select Distributor")
         txtSaleperson.setPlaceholder(placeHolderStr: "Select Saleperson")
         
-        
         self.txtHospital.rowHeight = 40
         self.txtCity.rowHeight = 40
         self.txtDistributor.rowHeight = 40
@@ -110,29 +100,19 @@ class AddInventoryViewController: BaseViewController {
         setRightButton(txtCity, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtDistributor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtSaleperson, image: UIImage(named: "ic_dropdown") ?? UIImage())
-     
+        
         DetailsScrollView.addCornerAtTops(radius: 20)
         
-//        Add Shadow
+        //        Add Shadow
         scrollOuterView.layer.masksToBounds = false
         scrollOuterView.layer.shadowRadius = 3
         scrollOuterView.layer.shadowOpacity = 0.5
         scrollOuterView.layer.shadowOffset = CGSize(width: 0, height: 0)
         scrollOuterView.layer.shadowColor = UIColor.black.cgColor
-
+        
     }
     
     func setNavigation(){
-//        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeaderHeight,title: "Add Surgeray")
-//        //        navigationController?.setNavigationBarHidden(true, animated: false)
-//
-//        setBackButtononNavigation()
-//        pressButtonOnNavigaion { (isBack) in
-//            if(isBack){
-//            }else{
-//                _ =  self.navigationController?.popViewController(animated: true)
-//            }
-//        }
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)
         self.navigationItem.title = "Physical Inventory Verification"
     }
@@ -168,12 +148,9 @@ class AddInventoryViewController: BaseViewController {
         addInventoryReqObj = AddSurgeryRequestModel(hospitalId: selectedHospitalId, distributorId: selectedDistributorId, salesPersonId: selectedSalesPersonId, stockId: stockId, cityId: selectedCityId)
         addInventoryReqObj?.salesPersonName = self.txtSaleperson.text ?? ""
         addInventoryReqObj?.hospitalName = self.txtHospital.text ?? ""
-
-        self.redirectToScannerVC()
+        
         //        If there is no error while validation then redirect to scan the data
-        //        let scannerVC = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
-        //        scannerVC.delegate = self
-        //        self.navigationController?.pushViewController(scannerVC, animated: true)
+        self.redirectToScannerVC()
     }
     
     func redirectToScannerVC() {
@@ -215,7 +192,7 @@ extension AddInventoryViewController {
             //            refresh hospital data when user select particular city
             self.refreshHospitalByCity(selectedCityIndex: index)
         }
-
+        
         //        set distributor array
         self.distributorsArr = formDataResponse.distributors ?? []
         self.txtDistributor.isEnabled = !self.distributorsArr.isEmpty
@@ -236,14 +213,6 @@ extension AddInventoryViewController {
             self.selectedSalesPersonId = self.sales_personsArr[index].id
         }
         
-//        self.hospitalsArr = formDataResponse.hospitals ?? []
-//        self.txtHospital.isEnabled = !self.hospitalsArr.isEmpty
-//        self.txtHospital.optionArray = self.hospitalsArr.map({ item -> String in
-//            item.name ?? ""
-//        })
-//        self.txtHospital.didSelect { selectedText, index, id in
-//            self.selectedHospitalId = self.hospitalsArr[index].id
-//        }
         setDefaultData()
     }
     
@@ -266,8 +235,8 @@ extension AddInventoryViewController {
         }
         
         let storedUserData = UserSessionManager.shared.userDetail
-
-//        let userDefault = UserDefaults.standard
+        
+        //        let userDefault = UserDefaults.standard
         //        set distributor
         if let distributorId = storedUserData?.distributor_id {
             selectedDistributorId = Int(distributorId)
@@ -298,7 +267,7 @@ extension AddInventoryViewController {
                 if item.name == city {
                     self.txtCity.text = item.name
                     selectedCityId = item.id
-//                    set hospital by city selection
+                    //                    set hospital by city selection
                     if (self.txtHospital.text ?? "").count == 0 {
                         self.refreshHospitalByCity(selectedCityIndex: i)
                     }
@@ -306,12 +275,6 @@ extension AddInventoryViewController {
                 }
             }
         }
-        //            let cityDetail = cityArr.filter({ item in
-        //                item.name == city
-        //            }).first
-        //            self.txtCity.text = cityDetail?.name
-        //            selectedCityId = cityDetail?.id
-
         
         if (self.txtHospital.text ?? "").count > 0 {
             setRightButton(txtHospital, image: UIImage(named: "ic_right") ?? UIImage())
@@ -330,6 +293,7 @@ extension AddInventoryViewController {
     }
 }
 
+//#MARK: Scan barcode delegate
 extension AddInventoryViewController: BarCodeScannerDelegate {
     
     // Call api to add Inventory with scanned barcodes and then redirect to display inventories
@@ -337,13 +301,13 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
         SHOW_CUSTOM_LOADER()
         
         let manualEntryArr: [ManualEntryModel] = UserSessionManager.shared.manualEntryData
-
+        
         let barCodeArr: [BarCodeModel] = UserSessionManager.shared.barCodes
         
         let barCodeDict = barCodeArr.compactMap { $0.dict }
         let manualDataDict = manualEntryArr.compactMap { $0.dict }
-
-//        func convertArrayToJsonString() {
+        
+        //        func convertArrayToJsonString() {
         func convertArrayToJsonString(dict: [[String:Any]]) -> String? {
             if let theJSONData = try?  JSONSerialization.data(
                 withJSONObject: dict,
@@ -352,7 +316,6 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
                let theJSONText = String(data: theJSONData,
                                         encoding: String.Encoding.ascii) {
                 print("JSON string = \n\(theJSONText)")
-//                addInventoryReqObj?.barcodes = theJSONText
                 return theJSONText
             }
             return nil
@@ -360,13 +323,11 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
         
         addInventoryReqObj?.manualEntry = convertArrayToJsonString(dict: manualDataDict)
         addInventoryReqObj?.barcodes = convertArrayToJsonString(dict: barCodeDict)
-
-//        convertArrayToJsonString()
-        GlobalFunctions.printToConsole(message: "\(addInventoryReqObj?.barcodes)")
+        
         if appDelegate.reachability.connection == .unavailable {
             self.saveInventoryToCoreData(onSubmitAction: true)
         } else {
-        self.callAddInventoryApi()
+            self.callAddInventoryApi()
         }
     }
     
@@ -377,7 +338,6 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
             guard let err = error else {
                 UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
                 UserDefaults.standard.removeObject(forKey: "manualEntryData")
-//                self.navigationController?.popViewController(animated: true)
                 self.navigationController?.popToRootViewController(animated: true)
                 return
             }
@@ -398,7 +358,6 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
         }
     }
     
-    @objc func internetConnectionLost() {
-//        self.saveInventoryToCoreData()
-    }
+//    @objc func internetConnectionLost() {
+//    }
 }

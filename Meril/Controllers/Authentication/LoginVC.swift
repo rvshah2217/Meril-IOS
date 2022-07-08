@@ -134,37 +134,19 @@ extension LoginVC {
             let userTypeId = UserDefaults.standard.string(forKey: "userTypeId")
             let userData = UserSessionManager.shared.userDetail
 //            if  !UserDefaults.standard.bool(forKey: "isFirstTimeLogInDone") {
-            if let userTypeId = userTypeId, userTypeId == "2", ((userData?.distributor_id == nil) || userData?.sales_person_id == nil) {
-                let vc = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
-                self.navigationController!.pushViewController(vc, animated: true)
-            } else if (isDefaultPassword == "1") {
+           if (isDefaultPassword == "1") {
                 //                    Redirect to change password
                 let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
                 vc.isFromLogin = true
+                self.navigationController!.pushViewController(vc, animated: true)
+            } else  if let userTypeId = userTypeId, userTypeId == "2", ((userData?.distributor_id == nil) || userData?.sales_person_id == nil) {
+                let vc = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
                 self.navigationController!.pushViewController(vc, animated: true)
             } else {
                 appDelegate.fetchAndStoredDataLocally()
                 self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
                 self.view?.window?.makeKeyAndVisible()
             }
-            
-//            if (isDefaultPassword == "1") {
-////                    Redirect to change password
-//                let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
-//                vc.isFromLogin = true
-//                self.navigationController!.pushViewController(vc, animated: true)
-//            } else {
-//
-////                if its first time login then allow user to select default doctor, distributor and sales person
-//                if UserDefaults.standard.bool(forKey: "isFirstTimeLogIn") {
-//                    let vc = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
-//                    self.navigationController!.pushViewController(vc, animated: true)
-//                } else {
-//                    appDelegate.fetchAndStoredDataLocally()
-//                    self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
-//                    self.view?.window?.makeKeyAndVisible()
-//                }
-//            }
         }
     }
 }

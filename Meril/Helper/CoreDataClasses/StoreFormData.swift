@@ -16,9 +16,9 @@ class StoreFormData {
     func saveFormData(schemeData: SurgeryInventoryModel) {
         //Update formdata on regular interval for example: update it if last added record was before 3 days
         let lastStoredFormData = fetchFormDataByDate()
-        if let lastStoredDate = lastStoredFormData?.creationDate, (Calendar.current.dateComponents([.day], from: lastStoredDate, to: Date()).day ?? 0) < 4 {
-            return
-        }
+//        if let lastStoredDate = lastStoredFormData?.creationDate, (Calendar.current.dateComponents([.day], from: lastStoredDate, to: Date()).day ?? 0) < 4 {
+//            return
+//        }
         
         do {
             let encodedData = try JSONEncoder().encode(schemeData)

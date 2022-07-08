@@ -141,16 +141,16 @@ class DefaultLoginData: UIViewController {
     
     private func redirectToHomeVC() {
 //        if let isDefaultPassword = UserDefaults.standard.string(forKey: "isDefaultPassword"), isDefaultPassword == "1" {
-        if UserDefaults.standard.bool(forKey: "isDefaultPassword") {
-            //                    Redirect to change password
-            let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
-            vc.isFromLogin = true
-            self.navigationController!.pushViewController(vc, animated: true)
-        } else {
+//        if UserDefaults.standard.bool(forKey: "isDefaultPassword") {
+//            //                    Redirect to change password
+//            let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
+//            vc.isFromLogin = true
+//            self.navigationController!.pushViewController(vc, animated: true)
+//        } else {
             appDelegate.fetchAndStoredDataLocally()
             self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
             self.view?.window?.makeKeyAndVisible()
-        }
+//        }
     }
 
 }

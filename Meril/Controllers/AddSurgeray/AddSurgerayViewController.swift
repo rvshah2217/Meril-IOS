@@ -323,7 +323,6 @@ extension AddSurgerayViewController {
             self.refreshHospitalByCity(selectedCityIndex: index)
         }
         
-        
         //        set doctor array
         self.doctorsArr = formDataResponse.doctors ?? []
         self.txtDoctor.isEnabled = !self.doctorsArr.isEmpty
@@ -363,7 +362,7 @@ extension AddSurgerayViewController {
         self.txtPatientScheme.didSelect { selectedText, index, id in
             self.selectedSchemeId = self.schemeArr[index].id
         }
-        
+                
         setDefaultData()
         
     }
@@ -411,15 +410,7 @@ extension AddSurgerayViewController {
                 item.id == selectedSalesPersonId
             }).first?.name
         }
-        
-        if let hospitalId = storedUserData?.id {
-            let hospitalData = hospitalsArr.filter({ item in
-                item.id == hospitalId
-            }).first
-            self.txtHospital.text = hospitalData?.name
-            selectedHospitalId = hospitalId
-        }
-        
+              
         if let city = storedUserData?.city {
             for i in 0..<citiesArr.count {
                 let item = citiesArr[i]
@@ -433,6 +424,14 @@ extension AddSurgerayViewController {
                     break
                 }
             }
+        }
+        
+        if let hospitalId = storedUserData?.id {
+            let hospitalData = hospitalsArr.filter({ item in
+                item.id == hospitalId
+            }).first
+            self.txtHospital.text = hospitalData?.name
+            selectedHospitalId = hospitalId
         }
         
         if (self.txtHospital.text ?? "").count > 0 {
@@ -499,16 +498,16 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
         guard let surgeryObj = addSurgeryReqObj else { return }
         SurgeryServices.addSurgery(surgeryObj: surgeryObj) { response, error in
             HIDE_CUSTOM_LOADER()
-            guard let err = error else {
+            guard let _ = error else {
                 //                Remove scanned barcodes from userdefaults
                 UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
                 UserDefaults.standard.removeObject(forKey: "manualEntryData")
-                
+                GlobalFunctions.showToast(controller: self, message: "Record saved successfully.", seconds: successDismissTime) {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
                 //                self.navigationController?.popViewController(animated: true)
-                self.navigationController?.popToRootViewController(animated: true)
                 return
             }
-            GlobalFunctions.showToast(controller: self, message: err, seconds: errorDismissTime)
         }
     }
     

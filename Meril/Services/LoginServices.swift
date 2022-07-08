@@ -135,6 +135,7 @@ class LoginServices {
         do {
             // Save the deletions to the persistent store
             try managedContext.save()
+            GlobalFunctions.printToConsole(message: "delete all objects")
         } catch {
             GlobalFunctions.printToConsole(message: "Fail to delete objects")
         }

@@ -226,7 +226,6 @@ extension AddInventoryViewController {
         self.txtHospital.didSelect { selectedText, index, id in
             self.selectedHospitalId = self.hospitalsArr[index].id
         }
-        
     }
     
     private func setDefaultData() {
@@ -253,14 +252,6 @@ extension AddInventoryViewController {
             }).first?.name
         }
         
-        if let hospitalId = storedUserData?.id {
-            let hospitalData = hospitalsArr.filter({ item in
-                item.id == hospitalId
-            }).first
-            self.txtHospital.text = hospitalData?.name
-            selectedHospitalId = hospitalId
-        }
-        
         if let city = storedUserData?.city {
             for i in 0..<cityArr.count {
                 let item = cityArr[i]
@@ -274,6 +265,14 @@ extension AddInventoryViewController {
                     break
                 }
             }
+        }
+        
+        if let hospitalId = storedUserData?.id {
+            let hospitalData = hospitalsArr.filter({ item in
+                item.id == hospitalId
+            }).first
+            self.txtHospital.text = hospitalData?.name
+            selectedHospitalId = hospitalId
         }
         
         if (self.txtHospital.text ?? "").count > 0 {
@@ -338,11 +337,12 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
             guard let err = error else {
                 UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
                 UserDefaults.standard.removeObject(forKey: "manualEntryData")
-                self.navigationController?.popToRootViewController(animated: true)
+                GlobalFunctions.showToast(controller: self, message: "Record saved successfully.", seconds: successDismissTime) {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
                 return
             }
             GlobalFunctions.showToast(controller: self, message: err, seconds: errorDismissTime)
-            
         }
     }
     

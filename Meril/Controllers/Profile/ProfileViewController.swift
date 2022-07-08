@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileViewController: BaseViewController {
 
+    @IBOutlet weak var appVersionLbl: UILabel!
     @IBOutlet weak var constrainViewHeader: NSLayoutConstraint!
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var lblName: UILabel!
@@ -19,7 +20,9 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var lblGender: UILabel!
     @IBOutlet weak var lblBio: UILabel!
     @IBOutlet weak var lblLocation: UILabel!
-
+    @IBOutlet weak var uniqueIdLbl: UILabel!
+    
+    @IBOutlet weak var uniqueIdTxt: UITextField!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var blueBgView: UIView!
     
@@ -83,21 +86,24 @@ class ProfileViewController: BaseViewController {
 //    }
     
     func setUserData() {
+        appVersionLbl.text = "Version: V" + appVersion
 //        let userInfo = UserDefaults.standard.string(forKey: "UserProfileData")
 //        let jsonData = (userInfo ?? "").data(using: .utf8)!
 //        if let userInfo = try? JSONDecoder().decode(UserProfileData.self, from: jsonData) {
 //        if let userInfo = userData {
         if let userInfo = UserSessionManager.shared.userDetail {
+            self.uniqueIdTxt.text = userInfo.unique_id ?? "N/A"
             if let profile = userInfo.profile {
                 self.imgProfile.sd_setImage(with: URL(string: profile), completed: nil)
             } else {
-                self.imgProfile.image = UIImage(named: "ic_profile")
+                self.imgProfile.image = UIImage(named: "AppIcon")
             }
             self.lblName.text = userInfo.name
             self.txtEmail.text = userInfo.email
             self.txtPhone.text = userInfo.phone
             self.txtGender.text = userInfo.gender ?? "Male"
-            self.txtBio.text = userInfo.bio ?? "N/A"
+            self.lblBio.text = "Name"
+            self.txtBio.text = userInfo.name ?? "N/A"
             var address = (userInfo.city ?? "City") + ", " + (userInfo.state ?? "State") + ", "
             address = address + (userInfo.country ?? "Country") + "-" + (userInfo.pincode ?? "")
             self.txtLocation.text = address

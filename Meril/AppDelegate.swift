@@ -38,29 +38,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         //        self.getUserProfile()
         
         let vc: UIViewController
-        if UserDefaults.standard.bool(forKey: "isDefaultPassword") {
-            let changePasswordVC = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
-            changePasswordVC.isFromLogin = true
-            vc = GlobalFunctions.setRootNavigationController(currentVC: changePasswordVC)
-        } else if UserDefaults.standard.string(forKey: "headerToken") != nil {
-            let doctorId = UserDefaults.standard.value(forKey: "defaultDoctorId")
-            print("selected doctorId: \(doctorId)")
-            //                If usertype == 2(hospital) and distributor or salesperson id is nil then allow user to select default doctor, distributor and sales person
-            let userTypeId = UserDefaults.standard.string(forKey: "userTypeId")
-            let userData = UserSessionManager.shared.userDetail
-//            if  !UserDefaults.standard.bool(forKey: "isFirstTimeLogInDone") {
-            if let userTypeId = userTypeId, userTypeId == "2", ((userData?.distributor_id == nil) || userData?.sales_person_id == nil) {
-//            if !(UserDefaults.standard.bool(forKey: "isFirstTimeLogIn")) && (doctorId == nil) {
-               let nextVC = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
-                vc = GlobalFunctions.setRootNavigationController(currentVC: nextVC)
+        if UserDefaults.standard.string(forKey: "headerToken") != nil {
+            if UserDefaults.standard.bool(forKey: "isDefaultPassword") {
+                let changePasswordVC = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
+                changePasswordVC.isFromLogin = true
+                vc = GlobalFunctions.setRootNavigationController(currentVC: changePasswordVC)
             } else {
-                self.fetchAndStoredDataLocally()
-                vc = GlobalFunctions.setHomeVC()
+                //                If usertype == 2(hospital) and distributor or salesperson id is nil then allow user to select default doctor, distributor and sales person
+                let userTypeId = UserDefaults.standard.string(forKey: "userTypeId")
+                let userData = UserSessionManager.shared.userDetail
+                if let userTypeId = userTypeId, userTypeId == "2", ((userData?.distributor_id == nil) || userData?.sales_person_id == nil) {
+                   let nextVC = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
+                    vc = GlobalFunctions.setRootNavigationController(currentVC: nextVC)
+                } else {
+                    self.fetchAndStoredDataLocally()
+                    vc = GlobalFunctions.setHomeVC()
+                }
             }
         } else {
             let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
             vc = GlobalFunctions.setRootNavigationController(currentVC: loginVC)
         }
+        
+        
+//        if UserDefaults.standard.bool(forKey: "isDefaultPassword") {
+//            let changePasswordVC = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
+//            changePasswordVC.isFromLogin = true
+//            vc = GlobalFunctions.setRootNavigationController(currentVC: changePasswordVC)
+//        } else if UserDefaults.standard.string(forKey: "headerToken") != nil {
+//            let doctorId = UserDefaults.standard.value(forKey: "defaultDoctorId")
+//            print("selected doctorId: \(doctorId)")
+//            //                If usertype == 2(hospital) and distributor or salesperson id is nil then allow user to select default doctor, distributor and sales person
+//            let userTypeId = UserDefaults.standard.string(forKey: "userTypeId")
+//            let userData = UserSessionManager.shared.userDetail
+////            if  !UserDefaults.standard.bool(forKey: "isFirstTimeLogInDone") {
+//            if let userTypeId = userTypeId, userTypeId == "2", ((userData?.distributor_id == nil) || userData?.sales_person_id == nil) {
+////            if !(UserDefaults.standard.bool(forKey: "isFirstTimeLogIn")) && (doctorId == nil) {
+//               let nextVC = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
+//                vc = GlobalFunctions.setRootNavigationController(currentVC: nextVC)
+//            } else {
+//                self.fetchAndStoredDataLocally()
+//                vc = GlobalFunctions.setHomeVC()
+//            }
+//        } else {
+//            let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+//            vc = GlobalFunctions.setRootNavigationController(currentVC: loginVC)
+//        }
         self.window?.rootViewController = vc//
         self.window?.makeKeyAndVisible()
         return true

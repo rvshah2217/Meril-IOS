@@ -96,7 +96,12 @@ class BarCodeScannerVC: UIViewController {
 //        self.navigationItem.rightBarButtonItems?.append(flashBtn)
         
         let addBtn = UIBarButtonItem(image: UIImage(named: "ic_add"), style: .plain, target: self, action: #selector(self.addManualSurgeryBtnCicked))
-        self.navigationItem.rightBarButtonItems = [addBtn, flashBtn]
+        if isFromAddSurgery {
+            self.navigationItem.rightBarButtonItems = [addBtn, flashBtn]
+        } else {
+            self.navigationItem.rightBarButtonItems = [flashBtn]
+        }
+        
 //        self.navigationItem.rightBarButtonItems = [flashBtn]
     }
     
@@ -305,20 +310,25 @@ extension BarCodeScannerVC: AVCaptureMetadataOutputObjectsDelegate {
             GlobalFunctions.showToast(controller: self, message: "You are not allowed to scan more than 10 barcodes.", seconds: successDismissTime, completionHandler: nil)
             return
         }
+        barCodeArr.append(BarCodeModel(barcode: code, dateTime: convertDateToString()))
+        UserSessionManager.shared.barCodes = self.barCodeArr
+//        openScanAgainDialog(isShowWarning: false)
         
-        let arr = barCodeArr.filter { item in
-            item.barcode == code
-        }
-        if arr.count > 0 {
-//            show duplication error
-            GlobalFunctions.showToast(controller: self, message: "Barcode exist already.", seconds: successDismissTime, completionHandler: nil)
-        } else {
-            barCodeArr.append(BarCodeModel(barcode: code, dateTime: convertDateToString()))
-            UserSessionManager.shared.barCodes = self.barCodeArr
-    //        openScanAgainDialog(isShowWarning: false)
-            
-            self.reloadCollectionViews()
-        }
+        self.reloadCollectionViews()
+
+//        let arr = barCodeArr.filter { item in
+//            item.barcode == code
+//        }
+//        if arr.count > 0 {
+////            show duplication error
+//            GlobalFunctions.showToast(controller: self, message: "Barcode exist already.", seconds: successDismissTime, completionHandler: nil)
+//        } else {
+//            barCodeArr.append(BarCodeModel(barcode: code, dateTime: convertDateToString()))
+//            UserSessionManager.shared.barCodes = self.barCodeArr
+//    //        openScanAgainDialog(isShowWarning: false)
+//
+//            self.reloadCollectionViews()
+//        }
     }
     
     private func reloadCollectionViews() {
@@ -387,17 +397,22 @@ extension BarCodeScannerVC: ManualEntryDelegate {
             return
         }
         
-        let arr = manualEntryArr.filter { item in
-            item.sku == manuallyAddedData.sku
-        }
-        if arr.count > 0 {
-//            show duplication error
-            GlobalFunctions.showToast(controller: self, message: "Barcode exist already.", seconds: successDismissTime, completionHandler: nil)
-        } else {
-            manualEntryArr.append(manuallyAddedData)
-            UserSessionManager.shared.manualEntryData = manualEntryArr
-            self.reloadCollectionViews()
-        }
+//        let arr = manualEntryArr.filter { item in
+//            item.sku == manuallyAddedData.sku
+//        }
+        
+        manualEntryArr.append(manuallyAddedData)
+        UserSessionManager.shared.manualEntryData = manualEntryArr
+        self.reloadCollectionViews()
+
+//        if arr.count > 0 {
+////            show duplication error
+//            GlobalFunctions.showToast(controller: self, message: "Barcode exist already.", seconds: successDismissTime, completionHandler: nil)
+//        } else {
+//            manualEntryArr.append(manuallyAddedData)
+//            UserSessionManager.shared.manualEntryData = manualEntryArr
+//            self.reloadCollectionViews()
+//        }
 //        GlobalFunctions.showToast(controller: self, message: "Your data has been saved successfully.", seconds: successDismissTime, completionHandler: nil)
 //        openScanAgainDialog(isShowWarning: false)
     }
@@ -419,11 +434,11 @@ extension BarCodeScannerVC: UICollectionViewDelegate, UICollectionViewDataSource
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BarCodeCell
         switch collectionView {
         case barcodeScanCollectionView:
-            let str = "Scan#\(indexPath.row)\n"
+            let str = "Scan#\(indexPath.row + 1)\n"
             cell.titleLbl.text = str + barCodeArr[indexPath.row].barcode
             GlobalFunctions.printToConsole(message: "Barcode str: \(barCodeArr[indexPath.row].barcode)")
         default:
-            let str = "Manual entry#\(indexPath.row)\n"
+            let str = "Manual entry#\(indexPath.row + 1)\n"
             GlobalFunctions.printToConsole(message: "manualEntry str: \(manualEntryArr[indexPath.row].sku)")
             cell.titleLbl.text = str + (manualEntryArr[indexPath.row].sku ?? "N/A")
         }

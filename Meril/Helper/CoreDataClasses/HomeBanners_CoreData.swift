@@ -17,9 +17,9 @@ class HomeBanners_CoreData {
     func saveBanners(schemeData: [UserTypesModel]) {
         //Update formdata on regular interval for example: update it if last added record was before 3 days
         let lastStoredFormData = fetchBannersDataByDate()
-        if let lastStoredDate = lastStoredFormData?.creationDate, (Calendar.current.dateComponents([.day], from: lastStoredDate, to: Date()).day ?? 0) < 4 {
-            return
-        }
+//        if let lastStoredDate = lastStoredFormData?.creationDate, (Calendar.current.dateComponents([.day], from: lastStoredDate, to: Date()).hour ?? 0) < 1 {
+//            return
+//        }
         
         do {
             let encodedData = try JSONEncoder().encode(schemeData)

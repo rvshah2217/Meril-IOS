@@ -16,11 +16,11 @@ class StockList_CoreData {
         //Update formdata on regular interval for example: update it if last added record was before 3 days
         var lastStoredSurgeryData: InventoryList?
         lastStoredSurgeryData = fetchStocksDataByDate()
-        if !isForceSave {
-            if let lastStoredDate = lastStoredSurgeryData?.creationDate, (Calendar.current.dateComponents([.day], from: lastStoredDate, to: Date()).day ?? 0) < 4 {
-                return
-            }
-        }
+//        if !isForceSave {
+//            if let lastStoredDate = lastStoredSurgeryData?.creationDate, (Calendar.current.dateComponents([.day], from: lastStoredDate, to: Date()).hour ?? 0) < 1 {
+//                return
+//            }
+//        }
         do {
             let encodedData = try JSONEncoder().encode(schemeData)
             let jsonStr = String(data: encodedData, encoding: String.Encoding.utf8)

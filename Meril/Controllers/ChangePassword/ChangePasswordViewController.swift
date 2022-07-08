@@ -115,16 +115,27 @@ extension ChangePasswordViewController{
                 GlobalFunctions.showToast(controller: self, message: "Password change successfully", seconds: errorDismissTime) {
                     
                     UserDefaults.standard.set(false, forKey: "isDefaultPassword")
-                    if self.isFromLogin {
-                        appDelegate.fetchAndStoredDataLocally()
-                        self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
-                    } else {
-                        self.navigationController?.popViewController(animated: true)
-                    }
+                    self.redirectToNextVC()
+                 
                 }
             }else{
                 GlobalFunctions.showToast(controller: self, message: errorMessage ?? "", seconds: errorDismissTime)
             }
+        }
+    }
+    
+    func redirectToNextVC() {
+        let userTypeId = UserDefaults.standard.string(forKey: "userTypeId")
+        let userData = UserSessionManager.shared.userDetail
+        if let userTypeId = userTypeId, userTypeId == "2", ((userData?.distributor_id == nil) || userData?.sales_person_id == nil) {
+            let vc = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
+//            self.navigationController!.pushViewController(vc, animated: true)
+            self.view?.window?.rootViewController = GlobalFunctions.setRootNavigationController(currentVC: vc)
+        } else if self.isFromLogin {
+            appDelegate.fetchAndStoredDataLocally()
+            self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
+        } else {
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }

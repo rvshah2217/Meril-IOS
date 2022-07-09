@@ -45,6 +45,10 @@ class BarCodeListVC: UIViewController {
         tableOuterView.layer.shadowOpacity = 0.5
         tableOuterView.layer.shadowOffset = CGSize(width: 0, height: 0)
         tableOuterView.layer.shadowColor = UIColor.black.cgColor
+        
+        if barCodesArr.isEmpty && offlineBarCodesArr.isEmpty && manualBarCodesArr.isEmpty {
+            noDataFoundLbl.isHidden = false
+        }
     }
     
 }

@@ -86,7 +86,7 @@ class ProfileViewController: BaseViewController {
 //    }
     
     func setUserData() {
-        appVersionLbl.text = "Version: V" + appVersion
+        appVersionLbl.text = "Version:V" + appVersion
 //        let userInfo = UserDefaults.standard.string(forKey: "UserProfileData")
 //        let jsonData = (userInfo ?? "").data(using: .utf8)!
 //        if let userInfo = try? JSONDecoder().decode(UserProfileData.self, from: jsonData) {

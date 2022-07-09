@@ -74,6 +74,11 @@ class BarCodeScannerVC: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        videoPreviewLayer?.frame = cameraView.layer.bounds
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         GlobalFunctions.printToConsole(message: "View did disappear")
@@ -345,7 +350,15 @@ extension BarCodeScannerVC: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     @IBAction func submitBtnClicked(_ sender: Any) {
-        delegate?.submitScannedData()
+        self.manualEntryArr = UserSessionManager.shared.manualEntryData
+        self.barCodeArr = UserSessionManager.shared.barCodes
+//        When user scan for Surgery then he/she allows to scan maximum 10 barcodes
+        let currentStoredArrCount = barCodeArr.count + manualEntryArr.count
+        if currentStoredArrCount <= 0 {
+            GlobalFunctions.showToast(controller: self, message: UserMessages.scanAtLeastOneCodeError, seconds: errorDismissTime, completionHandler: nil)
+        } else {
+            delegate?.submitScannedData()
+        }
     }
     
 //    func openScanAgainDialog(isShowWarning: Bool) {

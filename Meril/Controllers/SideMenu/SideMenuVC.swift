@@ -14,7 +14,7 @@ class SideMenuVC: UIViewController {
     @IBOutlet weak var userEmailLbl: UILabel!
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var closeBtn: UIButton!
-    @IBOutlet weak var versionNoLbl: UILabel!
+//    @IBOutlet weak var versionNoLbl: UILabel!
     
     var itemsArr = [[String:String]]()
     
@@ -26,7 +26,7 @@ class SideMenuVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        versionNoLbl.text = appVersion
+//        versionNoLbl.text = "Version: V" + appVersion
     }
     
     private func setItemsArr() {        
@@ -54,7 +54,7 @@ class SideMenuVC: UIViewController {
                 userProfileImgVIew.sd_setImage(with: URL(string: profileImgStr))
                 return
             }
-            userProfileImgVIew.image = UIImage(named: "ic_profile")
+            userProfileImgVIew.image = UIImage(named: "ic_homeProfile")
         }
     }
     
@@ -168,6 +168,6 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
+        return 50
     }
 }

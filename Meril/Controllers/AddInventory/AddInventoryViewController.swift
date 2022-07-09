@@ -18,7 +18,8 @@ class AddInventoryViewController: BaseViewController {
     @IBOutlet weak var constrainViewHeaderHeight: NSLayoutConstraint!
     @IBOutlet weak var DetailsScrollView: UIScrollView!
     var addInventoryReqObj: AddSurgeryRequestModel?
-    
+    let successToastTime = 1.0
+
     @IBOutlet weak var txtCity: DropDown! {
         didSet {
             self.txtCity.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
@@ -331,13 +332,16 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
     }
     
     func callAddInventoryApi() {
-        guard let inventoryObj = addInventoryReqObj else { return }
+        guard let inventoryObj = addInventoryReqObj else {
+            HIDE_CUSTOM_LOADER()
+            return
+        }
         SurgeryServices.addInventoryStock(surgeryObj: inventoryObj) { response, error in
             HIDE_CUSTOM_LOADER()
             guard let err = error else {
                 UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
                 UserDefaults.standard.removeObject(forKey: "manualEntryData")
-                GlobalFunctions.showToast(controller: self, message: "Record saved successfully.", seconds: successDismissTime) {
+                GlobalFunctions.showToast(controller: self, message: "Record saved successfully.", seconds: self.successToastTime) {
                     self.navigationController?.popToRootViewController(animated: true)
                 }
                 return
@@ -347,12 +351,15 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
     }
     
     func saveInventoryToCoreData(onSubmitAction: Bool = false) {
-        guard let stockObj = addInventoryReqObj else { return }
+        guard let stockObj = addInventoryReqObj else {
+            HIDE_CUSTOM_LOADER()
+            return
+        }
         //        Save records to Core data
         AddStockToCoreData.sharedInstance.saveStockData(stockData: stockObj)
+        HIDE_CUSTOM_LOADER()
         if onSubmitAction {
-            HIDE_CUSTOM_LOADER()
-            GlobalFunctions.showToast(controller: self, message: "Record saved successfully.", seconds: successDismissTime) {
+            GlobalFunctions.showToast(controller: self, message: "Record saved successfully.", seconds: self.successToastTime) {
                 self.navigationController?.popToRootViewController(animated: true)
             }
         }

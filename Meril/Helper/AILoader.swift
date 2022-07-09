@@ -53,7 +53,6 @@ public func ShowLoaderOnView() {
 }
 
 //MARK:- HideLoaderOnView
-
 public func HideLoaderOnView() {
     stopActivityAnimating(isFromOnView: true)
 }

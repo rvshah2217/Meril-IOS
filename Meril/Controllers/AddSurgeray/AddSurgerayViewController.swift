@@ -19,7 +19,7 @@ class AddSurgerayViewController: BaseViewController {
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var constrainViewHeaderHeight: NSLayoutConstraint!
     @IBOutlet weak var DetailsScrollView: UIScrollView!
-    
+    let successToastTime = 1.0
     @IBOutlet weak var genderDropDown: DropDown! {
         didSet {
             self.genderDropDown.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
@@ -119,6 +119,7 @@ class AddSurgerayViewController: BaseViewController {
             i.layer.borderColor = ColorConstant.mainThemeColor.cgColor
             i.layer.borderWidth = 1
             i.layer.cornerRadius = i.frame.height/2
+            i.backgroundColor = UIColor.white
         }
         for i in collectionViewBackground {
             i.backgroundColor = ColorConstant.mainThemeColor
@@ -495,14 +496,17 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
     
     //    #MARK: Add surgery data api call
     func callAddSurgeryApi() {
-        guard let surgeryObj = addSurgeryReqObj else { return }
+        guard let surgeryObj = addSurgeryReqObj else {
+            HIDE_CUSTOM_LOADER()
+            return
+        }
         SurgeryServices.addSurgery(surgeryObj: surgeryObj) { response, error in
             HIDE_CUSTOM_LOADER()
             guard let _ = error else {
                 //                Remove scanned barcodes from userdefaults
                 UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
                 UserDefaults.standard.removeObject(forKey: "manualEntryData")
-                GlobalFunctions.showToast(controller: self, message: "Record saved successfully.", seconds: successDismissTime) {
+                GlobalFunctions.showToast(controller: self, message: "Record saved successfully.", seconds: self.successToastTime) {
                     self.navigationController?.popToRootViewController(animated: true)
                 }
                 //                self.navigationController?.popViewController(animated: true)
@@ -513,11 +517,15 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
     
     //    #MARK: Save surgery data to CoreData
     func saveSurgeryToCoreData(onSubmitAction: Bool = false) {
-        guard let surgeryObj = addSurgeryReqObj else { return }
+        guard let surgeryObj = addSurgeryReqObj else {
+            HIDE_CUSTOM_LOADER()
+            return
+        }
         //        Save records to Core data
         AddSurgeryToCoreData.sharedInstance.saveSurgeryData(surgeryData: surgeryObj)
+        HIDE_CUSTOM_LOADER()
         if onSubmitAction {
-            GlobalFunctions.showToast(controller: self, message: "Record saved successfully.", seconds: successDismissTime) {
+            GlobalFunctions.showToast(controller: self, message: "Record saved successfully.", seconds: self.successToastTime) {
                 self.navigationController?.popToRootViewController(animated: true)
             }
         }

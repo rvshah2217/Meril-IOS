@@ -206,6 +206,15 @@ extension SurgeryListViewController: UITableViewDelegate,UITableViewDataSource{
             cell.isOfflineData = false
             cell.surgeryItemDetail = itemSectionData
         }
+//        if let barCodeStatus = itemSectionData.status, ((barCodeStatus == "invalid_barcode") || (barCodeStatus == "missing_data")) {
+        if let barCodeStatus = itemSectionData.status, barCodeStatus != "done" {
+            cell.viewMain.layer.borderColor = UIColor.red.cgColor
+            cell.barCodeStatus.isHidden = false
+            cell.barCodeStatus.text = "Status: " + barCodeStatus
+        } else {
+            cell.viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
+            cell.barCodeStatus.isHidden = true
+        }
 //            cell.surgeryOrStockIdLbl.text = "Surgery id: " + (itemSectionData.surgery_id ?? "N/A")
 //            cell.lblDate.text = "Date: " + (itemSectionData.created_at ?? "N/A")
 //            cell.patientNameLbl.text = "Patient name: " + (itemSectionData.patient_name ?? "N/A")

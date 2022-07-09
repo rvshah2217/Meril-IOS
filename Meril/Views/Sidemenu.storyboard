@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="798"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="6PR-I9-dpk">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfe-ZP-ta4">
@@ -77,7 +77,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="61" id="1yE-3x-xA8" customClass="SideMenuCell" customModule="Meril" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="224.5" width="414" height="61"/>
+                                        <rect key="frame" x="0.0" y="194.5" width="414" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1yE-3x-xA8" id="RmF-2H-PYs">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
@@ -93,7 +93,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78n-Xh-T5E">
                                                     <rect key="frame" x="75" y="21" width="304" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="16"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -112,20 +112,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CT2-n9-8o6">
-                                <rect key="frame" x="381.5" y="832" width="22.5" height="20"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
-                                <color key="textColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="SQ0-gv-Qes" secondAttribute="trailing" id="1b7-L4-enR"/>
                             <constraint firstItem="SQ0-gv-Qes" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="57J-jW-l84"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="CT2-n9-8o6" secondAttribute="bottom" constant="10" id="9UY-Gs-g7b"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CT2-n9-8o6" secondAttribute="trailing" constant="10" id="EhT-Gk-l3C"/>
                             <constraint firstItem="SQ0-gv-Qes" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fMt-ep-f55"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="SQ0-gv-Qes" secondAttribute="bottom" constant="20" id="zHa-SN-OIm"/>
                         </constraints>
@@ -136,7 +128,6 @@
                         <outlet property="userEmailLbl" destination="fM4-X8-Hlu" id="v4M-k8-oBd"/>
                         <outlet property="userNameLbl" destination="9kX-uW-AST" id="0uy-g5-TdH"/>
                         <outlet property="userProfileImgVIew" destination="uBi-H3-JDP" id="iqi-Q2-BLP"/>
-                        <outlet property="versionNoLbl" destination="CT2-n9-8o6" id="Txy-Vy-TYS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

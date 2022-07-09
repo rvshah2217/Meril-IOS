@@ -11,7 +11,7 @@ import UIKit
 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 let sidemenuStoryboard = UIStoryboard(name: "Sidemenu", bundle: nil)
 let deviceToken = UserDefaults.standard.string(forKey: "fcmToken") ?? "12345"//UserDefaults.standard.string(forKey: "deviceToken")
-let appVersion: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+let appVersion: String = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
 
 let errorDismissTime = 2.5
 let successDismissTime = 0.3
@@ -48,4 +48,6 @@ struct UserMessages {
     static let batchNo = "Please enter batch number"
     static let serialNo = "Please enter serial number"
     static let noInternetConnection = "No internet connection"
+    
+    static let scanAtLeastOneCodeError = "Please scan one code or add manually"
 }

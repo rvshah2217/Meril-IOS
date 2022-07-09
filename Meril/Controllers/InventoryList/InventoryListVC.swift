@@ -214,8 +214,16 @@ extension InventoryListVC:UITableViewDelegate,UITableViewDataSource{
             
             //            Set sales person name
             cell.salesPersonLbl.text = "Sales person: " + (itemDetail.sales_person?.fullname ?? "N/A")
-
         }
+        if let barCodeStatus = itemDetail.status, barCodeStatus != "done" {
+            cell.viewMain.layer.borderColor = UIColor.red.cgColor
+            cell.barCodeStatus.isHidden = false
+            cell.barCodeStatus.text = "Status: " + barCodeStatus
+        } else {
+            cell.viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
+            cell.barCodeStatus.isHidden = true
+        }
+
             return cell
 //        }
     }

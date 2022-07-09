@@ -292,6 +292,7 @@ class UserSessionManager
 struct AddSurgeryInventory {
     func fetchSurgeryBySyncStatus() {
         let surgeryArr = AddSurgeryToCoreData.sharedInstance.fetchSurgeries() ?? []
+        GlobalFunctions.printToConsole(message: "surgery arr for sync: \(surgeryArr.count) ")
         let group = DispatchGroup()
         for surgery in surgeryArr {
             if let addSurgeryObj = surgery.addSurgeryTempObj {
@@ -310,12 +311,13 @@ struct AddSurgeryInventory {
         group.notify(queue: .main) {
             NotificationCenter.default.post(name: .stopSyncBtnAnimation, object: nil, userInfo: nil)
             AddSurgeryInventory().fetchInventoryBySyncStatus()
-            GlobalFunctions.printToConsole(message: "All request completed")
+            GlobalFunctions.printToConsole(message: "All surgery request completed")
         }
     }
     
     func fetchInventoryBySyncStatus() {
         let stockArr = AddStockToCoreData.sharedInstance.fetchStocks() ?? []
+        GlobalFunctions.printToConsole(message: "stock arr for sync: \(stockArr.count) ")
         let stockGroup = DispatchGroup()
         for stock in stockArr {
             if let addStockObj = stock.addSurgeryTempObj {
@@ -332,7 +334,7 @@ struct AddSurgeryInventory {
             }
         }
         stockGroup.notify(queue: .main) {
-            GlobalFunctions.printToConsole(message: "All request completed")
+            GlobalFunctions.printToConsole(message: "All inventory request completed")
             NotificationCenter.default.post(name: .stopSyncBtnAnimation, object: nil, userInfo: nil)
         }
     }

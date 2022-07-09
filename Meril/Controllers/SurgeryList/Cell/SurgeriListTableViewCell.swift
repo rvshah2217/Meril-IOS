@@ -34,9 +34,10 @@ class SurgeryListTableViewCell: UITableViewCell {
             self.salesPersonLbl.text = "Serial no: " + (barCodeData.serial_no ?? "N/A")
             self.patientNameLbl.text = "Expiry date: " + (barCodeData.exp_date ?? "\(Date())")
             self.lblBarCode.isHidden = true
-            if let barCodeStatus = barCodeData.status, barCodeStatus == "invalid_barcode" {
+            if let barCodeStatus = barCodeData.status, barCodeStatus != "done" {
                 self.viewMain.layer.borderColor = UIColor.red.cgColor
                 self.barCodeStatus.isHidden = false
+                self.barCodeStatus.text = "Status: " + barCodeStatus
             } else {
                 self.viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
                 self.barCodeStatus.isHidden = true

@@ -79,7 +79,7 @@ class ManualScanEntryVC: UIViewController {
         )
         
         setRightButton(self.txtProductCode, image: UIImage(named: "ic_dropdown") ?? UIImage())
-        self.convertDateToStr(date: Date())
+//        self.convertDateToStr(date: Date())
     }
     
     func setDatePicker() {

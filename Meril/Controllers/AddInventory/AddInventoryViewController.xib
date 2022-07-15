@@ -22,10 +22,10 @@
                 <outlet property="view" destination="ibk-R4-4Vj" id="yS9-Sy-Yjv"/>
                 <outlet property="viewBC" destination="cG8-LA-dNS" id="tcF-14-Xzp"/>
                 <outlet property="viewHeader" destination="wSz-OV-lwV" id="e2B-Xm-Ehd"/>
-                <outletCollection property="collectionViewBackground" destination="y6X-uz-SJq" collectionClass="NSMutableArray" id="bZP-MM-VML"/>
-                <outletCollection property="collectionViewBackground" destination="MUW-Cm-z82" collectionClass="NSMutableArray" id="xlX-hq-wQB"/>
-                <outletCollection property="collectionViewBackground" destination="RfY-1h-GzG" collectionClass="NSMutableArray" id="Qnu-lA-fab"/>
                 <outletCollection property="collectionViewBackground" destination="HHk-VS-RCU" collectionClass="NSMutableArray" id="lDq-9h-TWl"/>
+                <outletCollection property="collectionViewBackground" destination="MUW-Cm-z82" collectionClass="NSMutableArray" id="xlX-hq-wQB"/>
+                <outletCollection property="collectionViewBackground" destination="y6X-uz-SJq" collectionClass="NSMutableArray" id="bZP-MM-VML"/>
+                <outletCollection property="collectionViewBackground" destination="RfY-1h-GzG" collectionClass="NSMutableArray" id="Qnu-lA-fab"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -54,96 +54,149 @@
                                     <rect key="frame" x="0.0" y="0.0" width="384" height="803"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl0-JG-cqn">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="400"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="512"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2fm-uv-MRV">
-                                                    <rect key="frame" x="20" y="40" width="344" height="225"/>
+                                                    <rect key="frame" x="20" y="40" width="344" height="337"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHk-VS-RCU">
-                                                            <rect key="frame" x="0.0" y="0.0" width="344" height="45"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qV5-1Y-lvK">
+                                                            <rect key="frame" x="0.0" y="0.0" width="344" height="73"/>
                                                             <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="35p-OT-JgE" customClass="DropDown" customModule="iOSDropDown">
-                                                                    <rect key="frame" x="15" y="0.0" width="324" height="45"/>
-                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
-                                                                </textField>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoA-Ue-wGi">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="344" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="9GS-kX-efu"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHk-VS-RCU">
+                                                                    <rect key="frame" x="0.0" y="28" width="344" height="45"/>
+                                                                    <subviews>
+                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="35p-OT-JgE" customClass="DropDown" customModule="iOSDropDown">
+                                                                            <rect key="frame" x="15" y="0.0" width="324" height="45"/>
+                                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                            <textInputTraits key="textInputTraits"/>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="35p-OT-JgE" firstAttribute="top" secondItem="HHk-VS-RCU" secondAttribute="top" id="Rkw-ay-tkr"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="35p-OT-JgE" secondAttribute="bottom" id="Xgx-wA-LRo"/>
+                                                                        <constraint firstItem="35p-OT-JgE" firstAttribute="leading" secondItem="HHk-VS-RCU" secondAttribute="leading" constant="15" id="vax-gT-9OC"/>
+                                                                        <constraint firstAttribute="height" constant="45" id="xlU-yN-YPD"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="35p-OT-JgE" secondAttribute="trailing" constant="5" id="ytb-cC-0y6"/>
+                                                                    </constraints>
+                                                                </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <constraints>
-                                                                <constraint firstItem="35p-OT-JgE" firstAttribute="top" secondItem="HHk-VS-RCU" secondAttribute="top" id="Rkw-ay-tkr"/>
-                                                                <constraint firstAttribute="bottom" secondItem="35p-OT-JgE" secondAttribute="bottom" id="Xgx-wA-LRo"/>
-                                                                <constraint firstItem="35p-OT-JgE" firstAttribute="leading" secondItem="HHk-VS-RCU" secondAttribute="leading" constant="15" id="vax-gT-9OC"/>
-                                                                <constraint firstAttribute="height" constant="45" id="xlU-yN-YPD"/>
-                                                                <constraint firstAttribute="trailing" secondItem="35p-OT-JgE" secondAttribute="trailing" constant="5" id="ytb-cC-0y6"/>
-                                                            </constraints>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUW-Cm-z82">
-                                                            <rect key="frame" x="0.0" y="60" width="344" height="45"/>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jVt-hn-Gxh">
+                                                            <rect key="frame" x="0.0" y="88" width="344" height="73"/>
                                                             <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Distributor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mlf-uX-ddH" customClass="DropDown" customModule="iOSDropDown">
-                                                                    <rect key="frame" x="15" y="0.0" width="324" height="45"/>
-                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
-                                                                </textField>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distributor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4p-66-SLG">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="344" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="NQ1-DZ-izG"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUW-Cm-z82">
+                                                                    <rect key="frame" x="0.0" y="28" width="344" height="45"/>
+                                                                    <subviews>
+                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Distributor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mlf-uX-ddH" customClass="DropDown" customModule="iOSDropDown">
+                                                                            <rect key="frame" x="15" y="0.0" width="324" height="45"/>
+                                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                            <textInputTraits key="textInputTraits"/>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="bottom" secondItem="Mlf-uX-ddH" secondAttribute="bottom" id="CeA-fu-4yD"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="Mlf-uX-ddH" secondAttribute="trailing" constant="5" id="N9e-yR-Kq0"/>
+                                                                        <constraint firstItem="Mlf-uX-ddH" firstAttribute="leading" secondItem="MUW-Cm-z82" secondAttribute="leading" constant="15" id="fBq-Xk-wmf"/>
+                                                                        <constraint firstItem="Mlf-uX-ddH" firstAttribute="top" secondItem="MUW-Cm-z82" secondAttribute="top" id="lIh-r8-29M"/>
+                                                                    </constraints>
+                                                                </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="Mlf-uX-ddH" secondAttribute="bottom" id="CeA-fu-4yD"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Mlf-uX-ddH" secondAttribute="trailing" constant="5" id="N9e-yR-Kq0"/>
-                                                                <constraint firstItem="Mlf-uX-ddH" firstAttribute="leading" secondItem="MUW-Cm-z82" secondAttribute="leading" constant="15" id="fBq-Xk-wmf"/>
-                                                                <constraint firstItem="Mlf-uX-ddH" firstAttribute="top" secondItem="MUW-Cm-z82" secondAttribute="top" id="lIh-r8-29M"/>
-                                                            </constraints>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6X-uz-SJq">
-                                                            <rect key="frame" x="0.0" y="120" width="344" height="45"/>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hBe-qq-Tjs">
+                                                            <rect key="frame" x="0.0" y="176" width="344" height="73"/>
                                                             <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Hospital" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRs-C9-Nq4" customClass="DropDown" customModule="iOSDropDown">
-                                                                    <rect key="frame" x="15" y="0.0" width="324" height="45"/>
-                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
-                                                                </textField>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ld5-J8-01v">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="344" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="Qqx-E5-vBF"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6X-uz-SJq">
+                                                                    <rect key="frame" x="0.0" y="28" width="344" height="45"/>
+                                                                    <subviews>
+                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Hospital" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRs-C9-Nq4" customClass="DropDown" customModule="iOSDropDown">
+                                                                            <rect key="frame" x="15" y="0.0" width="324" height="45"/>
+                                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                            <textInputTraits key="textInputTraits"/>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="HRs-C9-Nq4" firstAttribute="leading" secondItem="y6X-uz-SJq" secondAttribute="leading" constant="15" id="5Yt-3N-Tef"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="HRs-C9-Nq4" secondAttribute="bottom" id="9wJ-BS-v6O"/>
+                                                                        <constraint firstAttribute="height" constant="45" id="AZV-eg-bnd"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="HRs-C9-Nq4" secondAttribute="trailing" constant="5" id="KrX-8D-PLu"/>
+                                                                        <constraint firstItem="HRs-C9-Nq4" firstAttribute="top" secondItem="y6X-uz-SJq" secondAttribute="top" id="LPG-bV-gWe"/>
+                                                                    </constraints>
+                                                                </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <constraints>
-                                                                <constraint firstItem="HRs-C9-Nq4" firstAttribute="leading" secondItem="y6X-uz-SJq" secondAttribute="leading" constant="15" id="5Yt-3N-Tef"/>
-                                                                <constraint firstAttribute="bottom" secondItem="HRs-C9-Nq4" secondAttribute="bottom" id="9wJ-BS-v6O"/>
-                                                                <constraint firstAttribute="height" constant="45" id="AZV-eg-bnd"/>
-                                                                <constraint firstAttribute="trailing" secondItem="HRs-C9-Nq4" secondAttribute="trailing" constant="5" id="KrX-8D-PLu"/>
-                                                                <constraint firstItem="HRs-C9-Nq4" firstAttribute="top" secondItem="y6X-uz-SJq" secondAttribute="top" id="LPG-bV-gWe"/>
-                                                            </constraints>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfY-1h-GzG">
-                                                            <rect key="frame" x="0.0" y="180" width="344" height="45"/>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PrI-aP-bU4">
+                                                            <rect key="frame" x="0.0" y="264" width="344" height="73"/>
                                                             <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Saleperson" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aAg-OV-8SZ" customClass="DropDown" customModule="iOSDropDown">
-                                                                    <rect key="frame" x="15" y="0.0" width="324" height="45"/>
-                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
-                                                                </textField>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sales person:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3j-RL-NU9">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="344" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="T3d-Td-sap"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfY-1h-GzG">
+                                                                    <rect key="frame" x="0.0" y="28" width="344" height="45"/>
+                                                                    <subviews>
+                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Saleperson" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aAg-OV-8SZ" customClass="DropDown" customModule="iOSDropDown">
+                                                                            <rect key="frame" x="15" y="0.0" width="324" height="45"/>
+                                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                            <textInputTraits key="textInputTraits"/>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="aAg-OV-8SZ" firstAttribute="top" secondItem="RfY-1h-GzG" secondAttribute="top" id="1vt-o9-oPb"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="aAg-OV-8SZ" secondAttribute="trailing" constant="5" id="RFU-ni-llX"/>
+                                                                        <constraint firstItem="aAg-OV-8SZ" firstAttribute="leading" secondItem="RfY-1h-GzG" secondAttribute="leading" constant="15" id="gBO-rn-YFj"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="aAg-OV-8SZ" secondAttribute="bottom" id="gpt-pU-rpy"/>
+                                                                    </constraints>
+                                                                </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <constraints>
-                                                                <constraint firstItem="aAg-OV-8SZ" firstAttribute="top" secondItem="RfY-1h-GzG" secondAttribute="top" id="1vt-o9-oPb"/>
-                                                                <constraint firstAttribute="trailing" secondItem="aAg-OV-8SZ" secondAttribute="trailing" constant="5" id="RFU-ni-llX"/>
-                                                                <constraint firstItem="aAg-OV-8SZ" firstAttribute="leading" secondItem="RfY-1h-GzG" secondAttribute="leading" constant="15" id="gBO-rn-YFj"/>
-                                                                <constraint firstAttribute="bottom" secondItem="aAg-OV-8SZ" secondAttribute="bottom" id="gpt-pU-rpy"/>
-                                                            </constraints>
-                                                        </view>
+                                                        </stackView>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="RfY-1h-GzG" firstAttribute="height" secondItem="MUW-Cm-z82" secondAttribute="height" id="F5z-dy-yCy"/>
-                                                    </constraints>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="604-pY-tH3">
-                                                    <rect key="frame" x="102" y="315" width="180" height="45"/>
+                                                    <rect key="frame" x="102" y="427" width="180" height="45"/>
                                                     <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="fLU-2p-43l"/>

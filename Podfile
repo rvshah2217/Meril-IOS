@@ -16,5 +16,6 @@ target 'Meril' do
   pod 'FullMaterialLoader'
   pod 'ReachabilitySwift'
   pod 'Firebase/Messaging'
+  pod 'Firebase/Crashlytics'
 
 end

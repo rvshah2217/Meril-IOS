@@ -96,7 +96,7 @@ private func startActivityAnimating(size: CGSize? = nil, message: String? = nil 
     }
     UIApplication.shared.keyWindow?.isUserInteractionEnabled = false
     
-    for item in (UIApplication.shared.keyWindow?.subviews)!
+    for item in (UIApplication.shared.keyWindow?.subviews ?? [])
     where item.restorationIdentifier == activityRestorationIdentifier {
         return
     }

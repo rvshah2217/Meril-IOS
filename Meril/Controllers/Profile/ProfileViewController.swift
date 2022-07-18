@@ -96,7 +96,7 @@ class ProfileViewController: BaseViewController {
             if let profile = userInfo.profile {
                 self.imgProfile.sd_setImage(with: URL(string: profile), completed: nil)
             } else {
-                self.imgProfile.image = UIImage(named: "AppIcon")
+                self.imgProfile.image = UIImage(named: "ic_profileLogo")
             }
             self.lblName.text = userInfo.name
             self.txtEmail.text = userInfo.email

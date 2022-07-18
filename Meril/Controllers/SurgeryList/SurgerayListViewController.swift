@@ -267,7 +267,12 @@ extension SurgeryListViewController: UITextFieldDelegate {
     func filteredArrOnSearch() {
         let searchStr = txtSearch.text ?? ""
         filteredSurgeryArr = surgeryArr.filter {
-            ($0.patient_name ?? "").localizedCaseInsensitiveContains(searchStr)
+            if let addSurgeryObj = $0.addSurgeryTempObj {
+                return (addSurgeryObj.surgeryId ?? "").localizedCaseInsensitiveContains(searchStr) || (addSurgeryObj.hospitalName ?? "").localizedCaseInsensitiveContains(searchStr) || (addSurgeryObj.salesPersonName ?? "").localizedCaseInsensitiveContains(searchStr) ||
+                (addSurgeryObj.doctorName ?? "").localizedCaseInsensitiveContains(searchStr)
+            } else {
+             return ($0.surgery_id ?? "").localizedCaseInsensitiveContains(searchStr) || ($0.hospital?.Account_Name ?? "").localizedCaseInsensitiveContains(searchStr) || ($0.sales_person?.fullname ?? "").localizedCaseInsensitiveContains(searchStr) || ($0.doctor?.Full_Name ?? "").localizedCaseInsensitiveContains(searchStr)
+            }
         }
         self.noDataFoundLbl.isHidden = !(isFilterApplied && self.filteredSurgeryArr.isEmpty)
         

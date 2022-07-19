@@ -36,6 +36,7 @@ class ManualScanEntryVC: UIViewController {
     var productArr = [ProductBarCode]()
     var selectedProductCode: String?
     var mandatoryFieldType: Int = 0//0: None, 1: Batch, 2: Serial(Product code and expiry date are always mendatory)
+    var salesPersonId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,9 +167,10 @@ class ManualScanEntryVC: UIViewController {
 extension ManualScanEntryVC {
     
     func fetchProductData() {
+        guard let salesPersonId = salesPersonId else { return }
         if appDelegate.reachability.connection != .unavailable {
             SHOW_CUSTOM_LOADER()
-            SurgeryServices.getProductData { responseData, error in
+            SurgeryServices.getProductData(salesPersonId: salesPersonId) { responseData, error in
                 HIDE_CUSTOM_LOADER()
                 guard let response = responseData else {
                     return

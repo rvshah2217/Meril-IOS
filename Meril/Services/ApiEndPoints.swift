@@ -146,7 +146,7 @@ extension EndPointsItem: EndPointType {
 //    If the API requires body or querystring encoding, it can be specified here
     var encoding: ParameterEncoding {
         switch self {
-        case .barcode:
+        case .barcode, .products:
             return URLEncoding.queryString
         default:
             return JSONEncoding.default

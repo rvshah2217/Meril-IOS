@@ -156,6 +156,7 @@ class AddInventoryViewController: BaseViewController {
     
     func redirectToScannerVC() {
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "BarCodeScannerVC") as! BarCodeScannerVC
+        vc.selectedSalesPersonId = selectedSalesPersonId
         vc.isFromAddSurgery = false
         vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)

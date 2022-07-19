@@ -31,7 +31,8 @@ class BarCodeScannerVC: UIViewController {
     
     var manualEntryArr: [ManualEntryModel] = []
     var barCodeArr: [BarCodeModel] = []
-
+    var selectedSalesPersonId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -135,6 +136,7 @@ class BarCodeScannerVC: UIViewController {
     
     @objc func addManualSurgeryBtnCicked() {
         let nextVC = mainStoryboard.instantiateViewController(withIdentifier: "ManualScanEntryVC") as! ManualScanEntryVC
+        nextVC.salesPersonId = selectedSalesPersonId
         nextVC.modalPresentationStyle = .overCurrentContext
         nextVC.modalTransitionStyle = .crossDissolve
         nextVC.view.backgroundColor = .black.withAlphaComponent(0.5)

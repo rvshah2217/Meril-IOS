@@ -16,7 +16,7 @@ class SurgeryServices {
         APIManager.shared().call(for: FormDataResponseModel.self, type: EndPointsItem.getFormData) { (responseData, error) in
             
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(nil, error?.body)
             }
             //Check if server return success response or not
@@ -34,7 +34,7 @@ class SurgeryServices {
         APIManager.shared().call(for: ResponseModel.self, type: EndPointsItem.addSurgery, params: surgeryObj.dict) { (responseData, error) in
             
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(nil, error?.body)
             }
             
@@ -53,7 +53,7 @@ class SurgeryServices {
         APIManager.shared().call(for: ResponseModel.self, type: EndPointsItem.addStock, params: surgeryObj.dict) { (responseData, error) in
             
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(nil, error?.body)
             }
             
@@ -76,7 +76,7 @@ extension SurgeryServices {
         APIManager.shared().call(for: SurgeryListResponseModel.self, type: EndPointsItem.getSurgeryList) { (responseData, error) in
             
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(nil, error?.body)
             }
             //Check if server return success response or not
@@ -95,7 +95,7 @@ extension SurgeryServices {
         APIManager.shared().call(for: SurgeryListResponseModel.self, type: EndPointsItem.getStockList) { (responseData, error) in
             
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(nil, error?.body)
             }
             //Check if server return success response or not
@@ -113,7 +113,7 @@ extension SurgeryServices {
         APIManager.shared().call(for: BarcodeStatusResponseModel.self, type: EndPointsItem.barcode, params: ["barcode": barCode]) { (responseData, error) in
             
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(nil, error?.body)
             }
             
@@ -129,7 +129,7 @@ extension SurgeryServices {
     static func getProductData(salesPersonId: String, completionHandler: @escaping (ProductResponseModel?, _ error: String?) -> ()) {
         APIManager.shared().call(for: ProductResponseModel.self, type: EndPointsItem.products, params: ["salesPersonId": salesPersonId]) { responseData, error in
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(nil, error?.body)
             }
             

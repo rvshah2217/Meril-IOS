@@ -123,7 +123,7 @@ class InventoryListVC: UIViewController {
         SHOW_CUSTOM_LOADER()
         SurgeryServices.getInventories { response, error in
             HIDE_CUSTOM_LOADER()
-            guard let err = error else {                
+            guard let _ = error else {
                 self.inventoryArr = response?.surgeryData ?? []
                 self.fetchAddStockDataWithoutSync()
                 self.noDataFoundLbl.isHidden = !self.inventoryArr.isEmpty
@@ -142,7 +142,8 @@ class InventoryListVC: UIViewController {
 
                 return
             }
-            GlobalFunctions.printToConsole(message: "Unable to fetch surgeries: \(err)")
+            self.noDataFoundLbl.isHidden = !self.inventoryArr.isEmpty
+            //GlobalFunctions.printToConsole(message: "Unable to fetch surgeries: \(err)")
         }
     }
     
@@ -152,17 +153,17 @@ class InventoryListVC: UIViewController {
         if self.inventoryArr.isEmpty {
             self.inventoryArr = stockArrWithSyncFalse
         } else {
-            GlobalFunctions.printToConsole(message: "before merging total rows: \(inventoryArr.count)")
+            //GlobalFunctions.printToConsole(message: "before merging total rows: \(inventoryArr.count)")
             stockArrWithSyncFalse += inventoryArr
             inventoryArr = stockArrWithSyncFalse
-            GlobalFunctions.printToConsole(message: "After merging total rows: \(inventoryArr.count)")
+            //GlobalFunctions.printToConsole(message: "After merging total rows: \(inventoryArr.count)")
         }
 //        for surgery in stockArrWithSyncFalse { //.reversed() {
 //            var surgeryObj = SurgeryData()
 //            surgeryObj.addSurgeryTempObj = surgery
 //            self.inventoryArr.insert(surgeryObj, at: 0)
 //        }
-//        GlobalFunctions.printToConsole(message: "self.surgeryArr.count: \(self.inventoryArr.count)")
+//        //GlobalFunctions.printToConsole(message: "self.surgeryArr.count: \(self.inventoryArr.count)")
         self.tblView.reloadData()
     }
 }

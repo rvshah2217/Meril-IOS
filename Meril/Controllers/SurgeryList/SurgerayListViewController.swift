@@ -143,21 +143,21 @@ class SurgeryListViewController: UIViewController {
 //                }
                 return
             }
-            GlobalFunctions.printToConsole(message: "Unable to fetch surgeries: \(err)")
+            //GlobalFunctions.printToConsole(message: "Unable to fetch surgeries: \(err)")
         }
     }
     
     //    Fetch surgery data from server whose sync status is false and then append it to the current surgeryArr to make it easier to handle UI
     func fetchAddSurgeryDataWithoutSync() {
-        GlobalFunctions.printToConsole(message: "before self.surgeryArr.count: \(self.surgeryArr.count)")
+        //GlobalFunctions.printToConsole(message: "before self.surgeryArr.count: \(self.surgeryArr.count)")
         var surgeryOfflineData = AddSurgeryToCoreData.sharedInstance.fetchSurgeries() ?? []
         if self.surgeryArr.isEmpty {
             self.surgeryArr = surgeryOfflineData
         } else {
-            GlobalFunctions.printToConsole(message: "before merging total rows: \(surgeryArr.count)")
+            //GlobalFunctions.printToConsole(message: "before merging total rows: \(surgeryArr.count)")
             surgeryOfflineData += surgeryArr
             surgeryArr = surgeryOfflineData
-            GlobalFunctions.printToConsole(message: "After merging total rows: \(surgeryArr.count)")
+            //GlobalFunctions.printToConsole(message: "After merging total rows: \(surgeryArr.count)")
         }
 //        surgeryArrWithSyncFalse = AddSurgeryToCoreData.sharedInstance.fetchSurgeries() ?? []
 //        for surgery in surgeryArrWithSyncFalse {//.reversed() {
@@ -165,7 +165,7 @@ class SurgeryListViewController: UIViewController {
 //            surgeryObj.addSurgeryTempObj = surgery
 //            self.surgeryArr.insert(surgeryObj, at: 0)
 //        }
-        GlobalFunctions.printToConsole(message: "self.surgeryArr.count: \(self.surgeryArr.count)")
+        //GlobalFunctions.printToConsole(message: "self.surgeryArr.count: \(self.surgeryArr.count)")
         self.tblView.reloadData()
     }
     

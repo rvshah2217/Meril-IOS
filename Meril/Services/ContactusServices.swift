@@ -12,7 +12,6 @@ class ContactUsServices {
         APIManager.shared().call(for: LoginResponseModel.self, type: EndPointsItem.contactUs, params: loginObj.dict) { (responseData, error) in
             
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(false, error?.body)
             }
             

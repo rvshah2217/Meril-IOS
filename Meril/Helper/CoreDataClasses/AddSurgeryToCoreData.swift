@@ -30,7 +30,7 @@ class AddSurgeryToCoreData {
             
             try managedContext.save()
         } catch {
-            GlobalFunctions.printToConsole(message: "Unable to save FormData: \(error.localizedDescription)")
+            //GlobalFunctions.printToConsole(message: "Unable to save FormData: \(error.localizedDescription)")
         }
     }
     
@@ -61,7 +61,7 @@ class AddSurgeryToCoreData {
             }
             return addedSurgeryArr
         } catch {
-            GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
+            //GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
         }
         return nil
     }
@@ -74,7 +74,7 @@ class AddSurgeryToCoreData {
             sergeryData?.isSyncedWithServer = true
             try managedContext.save()
         } catch {
-            GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
+            //GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
         }
     }
     
@@ -86,9 +86,9 @@ class AddSurgeryToCoreData {
                 managedContext.delete(sergeryData)
             }
             try managedContext.save()
-            GlobalFunctions.printToConsole(message: "Deleted Surgery id is: \(surgeryId)")
+            //GlobalFunctions.printToConsole(message: "Deleted Surgery id is: \(surgeryId)")
         } catch {
-            GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
+            //GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
         }
     }
 }

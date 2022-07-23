@@ -107,7 +107,7 @@ class ManualScanEntryVC: UIViewController {
         } else {
             dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
         }
-        //        GlobalFunctions.printToConsole(message: "Selected date: \(dateFormatter.string(from: datePicker.date))")
+        //        //GlobalFunctions.printToConsole(message: "Selected date: \(dateFormatter.string(from: datePicker.date))")
         let convertedDateStr = dateFormatter.string(from: date)
         if isExpiry {
             self.expiryDateTxt.text = convertedDateStr

@@ -38,7 +38,7 @@ class SurgeryList_CoreData {
             }
             try managedContext.save()
         } catch {
-            GlobalFunctions.printToConsole(message: "Unable to save FormData: \(error.localizedDescription)")
+            //GlobalFunctions.printToConsole(message: "Unable to save FormData: \(error.localizedDescription)")
         }
     }
     
@@ -49,10 +49,10 @@ class SurgeryList_CoreData {
         fetchRequest.fetchLimit = 1
         do {
             let userTypesData = try managedContext.fetch(fetchRequest).first as? SurgeryList
-            GlobalFunctions.printToConsole(message: "json str:- \(userTypesData?.responseStr)")
+            //GlobalFunctions.printToConsole(message: "json str:- \(userTypesData?.responseStr)")
             return userTypesData
         } catch {
-            GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
+            //GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
         }
         return nil
     }
@@ -63,13 +63,13 @@ class SurgeryList_CoreData {
             guard let surgeryData = try managedContext.fetch(fetchRequest).first as? SurgeryList else {
                 return nil
             }
-            GlobalFunctions.printToConsole(message: "json fetch fromdata str:- \(surgeryData.responseStr)")
+            //GlobalFunctions.printToConsole(message: "json fetch fromdata str:- \(surgeryData.responseStr)")
             let jsonData = (surgeryData.responseStr ?? "").data(using: .utf8)!
             let userTypeObj = try JSONDecoder().decode([SurgeryData].self, from: jsonData)
             return userTypeObj
-            //            GlobalFunctions.printToConsole(message: "Total fetch userTypes data: \(userTypesData.count)")
+            //            //GlobalFunctions.printToConsole(message: "Total fetch userTypes data: \(userTypesData.count)")
         } catch {
-            GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
+            //GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
         }
         return nil
     }

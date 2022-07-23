@@ -240,7 +240,7 @@ class AddSurgerayViewController: BaseViewController {
     private func convertDateToStr(date: Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
-        //        GlobalFunctions.printToConsole(message: "Selected date: \(dateFormatter.string(from: datePicker.date))")
+        //        //GlobalFunctions.printToConsole(message: "Selected date: \(dateFormatter.string(from: datePicker.date))")
         self.deploymentDateTxt.text = dateFormatter.string(from: date)
     }
     

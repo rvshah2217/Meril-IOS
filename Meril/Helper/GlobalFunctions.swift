@@ -209,7 +209,7 @@ func convertDateToString() -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"//Format: Y-m-d H:i:s:- 2022-03-25 03:15:00
     let str = dateFormatter.string(from: date)
-    GlobalFunctions.printToConsole(message: "Current date string: \(str)")
+    //GlobalFunctions.printToConsole(message: "Current date string: \(str)")
     return str
 }
 
@@ -222,7 +222,7 @@ func convertStringToDateStr(str: String?) -> String? {
     if let currentDate = dateFormatter.date(from: passedStr) {
         dateFormatter.dateFormat = "dd/MM/yy"//Format: Y-m-d H:i:s:- 2022-03-25 03:15:00
         let str = dateFormatter.string(from: currentDate)
-        GlobalFunctions.printToConsole(message: "Current date string: \(str)")
+        //GlobalFunctions.printToConsole(message: "Current date string: \(str)")
         return str
     }
     return nil
@@ -269,10 +269,10 @@ class UserSessionManager
                 let userData = userInfo.data(using: .utf8)!
                 do {
                     let json = try JSONDecoder().decode(UserData.self, from: userData)
-                    GlobalFunctions.printToConsole(message: "logged in user detail:- \(json)")
+                    //GlobalFunctions.printToConsole(message: "logged in user detail:- \(json)")
                     return json
                 } catch {
-                    GlobalFunctions.printToConsole(message: error.localizedDescription)
+                    //GlobalFunctions.printToConsole(message: error.localizedDescription)
                 }
         }
             return nil
@@ -292,7 +292,7 @@ class UserSessionManager
 struct AddSurgeryInventory {
     func fetchSurgeryBySyncStatus() {
         let surgeryArr = AddSurgeryToCoreData.sharedInstance.fetchSurgeries() ?? []
-        GlobalFunctions.printToConsole(message: "surgery arr for sync: \(surgeryArr.count) ")
+        //GlobalFunctions.printToConsole(message: "surgery arr for sync: \(surgeryArr.count) ")
         let group = DispatchGroup()
         for surgery in surgeryArr {
             if let addSurgeryObj = surgery.addSurgeryTempObj {
@@ -311,13 +311,13 @@ struct AddSurgeryInventory {
         group.notify(queue: .main) {
             NotificationCenter.default.post(name: .stopSyncBtnAnimation, object: nil, userInfo: nil)
             AddSurgeryInventory().fetchInventoryBySyncStatus()
-            GlobalFunctions.printToConsole(message: "All surgery request completed")
+            //GlobalFunctions.printToConsole(message: "All surgery request completed")
         }
     }
     
     func fetchInventoryBySyncStatus() {
         let stockArr = AddStockToCoreData.sharedInstance.fetchStocks() ?? []
-        GlobalFunctions.printToConsole(message: "stock arr for sync: \(stockArr.count) ")
+        //GlobalFunctions.printToConsole(message: "stock arr for sync: \(stockArr.count) ")
         let stockGroup = DispatchGroup()
         for stock in stockArr {
             if let addStockObj = stock.addSurgeryTempObj {
@@ -334,7 +334,7 @@ struct AddSurgeryInventory {
             }
         }
         stockGroup.notify(queue: .main) {
-            GlobalFunctions.printToConsole(message: "All inventory request completed")
+            //GlobalFunctions.printToConsole(message: "All inventory request completed")
             NotificationCenter.default.post(name: .stopSyncBtnAnimation, object: nil, userInfo: nil)
         }
     }
@@ -345,7 +345,6 @@ struct CommonFunctions {
     static func getAllFormData(completionHandler: @escaping (SurgeryInventoryModel?) -> ()) {
         SurgeryServices.getAllFormData { response, error in
             guard let responseData = response else {
-                GlobalFunctions.printToConsole(message: "Fetch form-data failed: \(error)")
                 return
             }
             if let formDataObj = responseData.suregeryInventoryData {

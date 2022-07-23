@@ -37,7 +37,7 @@ class HomeBanners_CoreData {
             }
             try managedContext.save()
         } catch {
-            GlobalFunctions.printToConsole(message: "Unable to save FormData: \(error.localizedDescription)")
+            //GlobalFunctions.printToConsole(message: "Unable to save FormData: \(error.localizedDescription)")
         }
     }
     
@@ -52,7 +52,7 @@ class HomeBanners_CoreData {
             let userTypesData = try managedContext.fetch(fetchRequest).first as? HomeBanners
             return userTypesData
         } catch {
-            GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
+            //GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
         }
         return nil
     }
@@ -68,7 +68,7 @@ class HomeBanners_CoreData {
             let userTypeObj = try JSONDecoder().decode([UserTypesModel].self, from: jsonData)
             return userTypeObj
         } catch {
-            GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
+            //GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
         }
         return nil
     }

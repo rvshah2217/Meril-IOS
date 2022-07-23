@@ -16,7 +16,6 @@ class HomeServices {
         APIManager.shared().call(for: ResponseModel.self, type: EndPointsItem.getHomeBanners) { (responseData, error) in
             
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(nil, error?.body)
             }
             //Check if server return success response or not

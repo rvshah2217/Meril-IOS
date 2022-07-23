@@ -18,7 +18,7 @@ class LoginServices {
         APIManager.shared().call(for: ResponseModel.self, type: EndPointsItem.getUserTypesApi) { (responseData, error) in
             
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(nil, error?.body)
             }
             //Check if server return success response or not
@@ -36,7 +36,7 @@ class LoginServices {
         APIManager.shared().call(for: LoginResponseModel.self, type: EndPointsItem.login, params: loginObj.dict) { (responseData, error) in
             
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(nil, error?.body)
             }
             
@@ -52,7 +52,7 @@ class LoginServices {
     //    user login
     //    static func userLogOut(completionHandler: @escaping (LoginResponseModel?, _ error: String?) -> ()) {
     static func userLogOut(navController: UINavigationController) {
-        let topController = navController.topViewController
+//        let topController = navController.topViewController
         APIManager.shared().call(for: LoginResponseModel.self, type: EndPointsItem.logout) { (responseData, error) in
             
             //                Remove data from user defaults
@@ -63,7 +63,7 @@ class LoginServices {
             appDelegate.window?.makeKeyAndVisible()
 
 //            guard let response = responseData else {
-//                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+//                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
 //                if let vc = topController as? UIViewController {
 //                    GlobalFunctions.showToast(controller: vc, message: error?.title ?? UserMessages.serverError, seconds: errorDismissTime, completionHandler: nil)
 //                }
@@ -135,9 +135,9 @@ class LoginServices {
         do {
             // Save the deletions to the persistent store
             try managedContext.save()
-            GlobalFunctions.printToConsole(message: "delete all objects")
+            //GlobalFunctions.printToConsole(message: "delete all objects")
         } catch {
-            GlobalFunctions.printToConsole(message: "Fail to delete objects")
+            //GlobalFunctions.printToConsole(message: "Fail to delete objects")
         }
         
     }
@@ -151,7 +151,7 @@ extension LoginServices {
         APIManager.shared().call(for: UserProfileResponseModel.self, type: EndPointsItem.getProfile) { (responseData, error) in
             
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(nil, error?.body)
             }
             //Check if server return success response or not
@@ -167,9 +167,9 @@ extension LoginServices {
     static func setDefaultCredentials(credentialObj: CredentialsRequestModel, completionHandler: @escaping (_ isSuccess: Bool, _ error: String?) -> ()) {
                 
         APIManager.shared().call(for: LoginResponseModel.self, type: EndPointsItem.updateHospital, params: credentialObj.dict) { (responseData, error) in
-            GlobalFunctions.printToConsole(message: "Default credentials response: \(responseData?.message)")
+            //GlobalFunctions.printToConsole(message: "Default credentials response: \(responseData?.message)")
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(false, error?.body)
             }
             

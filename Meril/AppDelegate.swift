@@ -102,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         DispatchQueue.global(qos: .background).async {
             self.fetchSettingsData()
             CommonFunctions.getAllFormData {_ in
-                GlobalFunctions.printToConsole(message: "Form data stored successfully in local.")
+                //GlobalFunctions.printToConsole(message: "Form data stored successfully in local.")
             }
         }
     }
@@ -164,8 +164,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                  */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
-            GlobalFunctions.printToConsole(message: container.name)
-            GlobalFunctions.printToConsole(message: container.debugDescription)
+            //GlobalFunctions.printToConsole(message: container.name)
+            //GlobalFunctions.printToConsole(message: container.debugDescription)
         })
         return container
     }()
@@ -197,7 +197,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                 let jsonStr = String(data: encodedData, encoding: String.Encoding.utf8)
                 UserDefaults.standard.set(jsonStr, forKey: "settingsData")
             } catch {
-                GlobalFunctions.printToConsole(message: "Error to store user profile data: \(error.localizedDescription)")
+                //GlobalFunctions.printToConsole(message: "Error to store user profile data: \(error.localizedDescription)")
             }
         }
     }

@@ -143,7 +143,7 @@ class HomeVC: UIViewController {
         let selectedIndex = self.imageSlidesView.currentPage
         if let urlStr = bannerArr[selectedIndex].link, let url = URL(string: urlStr) {
             if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.openURL(url)
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
     }

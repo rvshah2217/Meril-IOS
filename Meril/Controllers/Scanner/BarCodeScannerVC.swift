@@ -82,7 +82,7 @@ class BarCodeScannerVC: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        GlobalFunctions.printToConsole(message: "View did disappear")
+        //GlobalFunctions.printToConsole(message: "View did disappear")
 //        UserDefaults.standard.removeObject(forKey: "scannedBarcodes")
 //        UserDefaults.standard.removeObject(forKey: "manualEntryData")
     }
@@ -451,10 +451,10 @@ extension BarCodeScannerVC: UICollectionViewDelegate, UICollectionViewDataSource
         case barcodeScanCollectionView:
             let str = "Scan#\(indexPath.row + 1)\n"
             cell.titleLbl.text = str + barCodeArr[indexPath.row].barcode
-            GlobalFunctions.printToConsole(message: "Barcode str: \(barCodeArr[indexPath.row].barcode)")
+            //GlobalFunctions.printToConsole(message: "Barcode str: \(barCodeArr[indexPath.row].barcode)")
         default:
             let str = "Manual entry#\(indexPath.row + 1)\n"
-            GlobalFunctions.printToConsole(message: "manualEntry str: \(manualEntryArr[indexPath.row].sku)")
+            //GlobalFunctions.printToConsole(message: "manualEntry str: \(manualEntryArr[indexPath.row].sku)")
             cell.titleLbl.text = str + (manualEntryArr[indexPath.row].sku ?? "N/A")
         }
         return cell

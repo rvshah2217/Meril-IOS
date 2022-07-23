@@ -37,7 +37,7 @@ class StockList_CoreData {
             }
             try managedContext.save()
         } catch {
-            GlobalFunctions.printToConsole(message: "Unable to save FormData: \(error.localizedDescription)")
+            //GlobalFunctions.printToConsole(message: "Unable to save FormData: \(error.localizedDescription)")
         }
     }
     
@@ -48,10 +48,10 @@ class StockList_CoreData {
         fetchRequest.fetchLimit = 1
         do {
             let userTypesData = try managedContext.fetch(fetchRequest).first as? InventoryList
-            GlobalFunctions.printToConsole(message: "fetchStocksDataByDate:- \(userTypesData?.responseStr)")
+            //GlobalFunctions.printToConsole(message: "fetchStocksDataByDate:- \(userTypesData?.responseStr)")
             return userTypesData
         } catch {
-            GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
+            //GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
         }
         return nil
     }
@@ -62,12 +62,12 @@ class StockList_CoreData {
             guard let surgeryData = try managedContext.fetch(fetchRequest).first as? InventoryList else {
                 return nil
             }
-            GlobalFunctions.printToConsole(message: "json fetch stock data str:- \(surgeryData.responseStr)")
+            //GlobalFunctions.printToConsole(message: "json fetch stock data str:- \(surgeryData.responseStr)")
             let jsonData = (surgeryData.responseStr ?? "").data(using: .utf8)!
             let userTypeObj = try JSONDecoder().decode([SurgeryData].self, from: jsonData)
             return userTypeObj
         } catch {
-            GlobalFunctions.printToConsole(message: "Unable to stock data records: \(error.localizedDescription)")
+            //GlobalFunctions.printToConsole(message: "Unable to stock data records: \(error.localizedDescription)")
         }
         return nil
     }

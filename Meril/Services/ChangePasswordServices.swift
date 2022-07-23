@@ -13,7 +13,7 @@ class ChangePasswordServices {
         APIManager.shared().call(for: LoginResponseModel.self, type: EndPointsItem.changePassword, params: loginObj.dict) { (responseData, error) in
             
             guard let response = responseData else {
-                GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
+                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
                 return completionHandler(false, error?.body)
             }
             

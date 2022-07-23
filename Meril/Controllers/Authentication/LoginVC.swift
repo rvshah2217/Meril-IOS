@@ -103,7 +103,6 @@ extension LoginVC {
         LoginServices.userLogin(loginObj: userObj) { loginResponse, errorMessage in
             HIDE_CUSTOM_LOADER()
             guard let response = loginResponse else {
-                GlobalFunctions.printToConsole(message: "login error: \(errorMessage)")
                 GlobalFunctions.showToast(controller: self, message: errorMessage ?? UserMessages.serverError, seconds: errorDismissTime) { }
                 return
             }

@@ -61,6 +61,7 @@ extension BarCodeListVC: UITableViewDelegate, UITableViewDataSource {
         }
         return 2
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !barCodesArr.isEmpty {
             return barCodesArr.count

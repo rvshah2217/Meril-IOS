@@ -20,29 +20,34 @@ class AddInventoryViewController: BaseViewController {
     var addInventoryReqObj: AddSurgeryRequestModel?
     let successToastTime = 1.0
 
-    @IBOutlet weak var txtCity: DropDown! {
-        didSet {
-            self.txtCity.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-        }
-    }
-    
-    @IBOutlet weak var txtHospital: DropDown! {
-        didSet {
-            self.txtHospital.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-        }
-    }
-    
-    @IBOutlet weak var txtDistributor: DropDown! {
-        didSet {
-            self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-        }
-    }
-    
-    @IBOutlet weak var txtSaleperson: DropDown! {
-        didSet {
-            self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-        }
-    }
+    @IBOutlet weak var txtCity: UITextField!
+    @IBOutlet weak var txtHospital: UITextField!
+    @IBOutlet weak var txtDistributor: UITextField!
+    @IBOutlet weak var txtSaleperson: UITextField!
+
+//    @IBOutlet weak var txtCity: DropDown! {
+//        didSet {
+//            self.txtCity.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+//        }
+//    }
+//
+//    @IBOutlet weak var txtHospital: DropDown! {
+//        didSet {
+//            self.txtHospital.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+//        }
+//    }
+//
+//    @IBOutlet weak var txtDistributor: DropDown! {
+//        didSet {
+//            self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+//        }
+//    }
+//
+//    @IBOutlet weak var txtSaleperson: DropDown! {
+//        didSet {
+//            self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+//        }
+//    }
     
     @IBOutlet weak var btnScanNow: UIButton!
     
@@ -92,10 +97,10 @@ class AddInventoryViewController: BaseViewController {
         txtDistributor.setPlaceholder(placeHolderStr: "Select Distributor")
         txtSaleperson.setPlaceholder(placeHolderStr: "Select Saleperson")
         
-        self.txtHospital.rowHeight = 40
-        self.txtCity.rowHeight = 40
-        self.txtDistributor.rowHeight = 40
-        self.txtSaleperson.rowHeight = 40
+//        self.txtHospital.rowHeight = 40
+//        self.txtCity.rowHeight = 40
+//        self.txtDistributor.rowHeight = 40
+//        self.txtSaleperson.rowHeight = 40
         
         setRightButton(txtHospital, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtCity, image: UIImage(named: "ic_dropdown") ?? UIImage())
@@ -111,6 +116,10 @@ class AddInventoryViewController: BaseViewController {
         scrollOuterView.layer.shadowOffset = CGSize(width: 0, height: 0)
         scrollOuterView.layer.shadowColor = UIColor.black.cgColor
         
+        txtCity.delegate = self
+        txtDistributor.delegate = self
+        txtHospital.delegate = self
+        txtSaleperson.delegate = self
     }
     
     func setNavigation(){
@@ -166,11 +175,14 @@ class AddInventoryViewController: BaseViewController {
 extension AddInventoryViewController {
     
     func fetchFormData() {
-        if let formDataObj = StoreFormData.sharedInstance.fetchFormData() {
-            self.setAllDropDownData(formDataResponse: formDataObj)
-            return
+        if appDelegate.reachability.connection == .unavailable {
+            if let formDataObj = StoreFormData.sharedInstance.fetchFormData() {
+                self.setAllDropDownData(formDataResponse: formDataObj)
+                return
+            }
+        } else {
+            self.fetchFormDataFromServer()
         }
-        self.fetchFormDataFromServer()
     }
     
     func fetchFormDataFromServer() {
@@ -185,35 +197,35 @@ extension AddInventoryViewController {
         //        City dropdown
         self.cityArr = formDataResponse.cities ?? []
         self.txtCity.isEnabled = !self.cityArr.isEmpty
-        self.txtCity.optionArray = self.cityArr.map({ item -> String in
-            item.name ?? ""
-        })
+//        self.txtCity.optionArray = self.cityArr.map({ item -> String in
+//            item.name ?? ""
+//        })
         
-        self.txtCity.didSelect { selectedText, index, id in
-            self.selectedCityId = self.cityArr[index].id
-            //            refresh hospital data when user select particular city
-            self.refreshHospitalByCity(selectedCityIndex: index)
-        }
+//        self.txtCity.didSelect { selectedText, index, id in
+//            self.selectedCityId = self.cityArr[index].id
+//            //            refresh hospital data when user select particular city
+//            self.refreshHospitalByCity(selectedCityIndex: index)
+//        }
         
         //        set distributor array
         self.distributorsArr = formDataResponse.distributors ?? []
         self.txtDistributor.isEnabled = !self.distributorsArr.isEmpty
-        self.txtDistributor.optionArray = self.distributorsArr.map({ item -> String in
-            item.name ?? ""
-        })
-        self.txtDistributor.didSelect { selectedText, index, id in
-            self.selectedDistributorId = self.distributorsArr[index].id
-        }
+//        self.txtDistributor.optionArray = self.distributorsArr.map({ item -> String in
+//            item.name ?? ""
+//        })
+//        self.txtDistributor.didSelect { selectedText, index, id in
+//            self.selectedDistributorId = self.distributorsArr[index].id
+//        }
         
         //        set salesperson array
         self.sales_personsArr = formDataResponse.sales_persons ?? []
         self.txtSaleperson.isEnabled = !self.sales_personsArr.isEmpty
-        self.txtSaleperson.optionArray = self.sales_personsArr.map({ item -> String in
-            item.name ?? ""
-        })
-        self.txtSaleperson.didSelect { selectedText, index, id in
-            self.selectedSalesPersonId = self.sales_personsArr[index].id
-        }
+//        self.txtSaleperson.optionArray = self.sales_personsArr.map({ item -> String in
+//            item.name ?? ""
+//        })
+//        self.txtSaleperson.didSelect { selectedText, index, id in
+//            self.selectedSalesPersonId = self.sales_personsArr[index].id
+//        }
         
         setDefaultData()
     }
@@ -222,12 +234,12 @@ extension AddInventoryViewController {
     func refreshHospitalByCity(selectedCityIndex: Int) {
         self.hospitalsArr = cityArr[selectedCityIndex].hospitals ?? []
         self.txtHospital.isEnabled = !self.hospitalsArr.isEmpty
-        self.txtHospital.optionArray = self.hospitalsArr.map({ item -> String in
-            item.name ?? ""
-        })
-        self.txtHospital.didSelect { selectedText, index, id in
-            self.selectedHospitalId = self.hospitalsArr[index].id
-        }
+//        self.txtHospital.optionArray = self.hospitalsArr.map({ item -> String in
+//            item.name ?? ""
+//        })
+//        self.txtHospital.didSelect { selectedText, index, id in
+//            self.selectedHospitalId = self.hospitalsArr[index].id
+//        }
     }
     
     private func setDefaultData() {
@@ -368,4 +380,67 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
     
 //    @objc func internetConnectionLost() {
 //    }
+}
+
+//#MARK: Textfield delegate
+extension AddInventoryViewController: UITextFieldDelegate {
+    
+    public func  textFieldDidBeginEditing(_ textField: UITextField) {
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "DropDownMenuVC") as! DropDownMenuVC
+        vc.delegate = self
+        //MenuType: 0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
+        switch textField {
+        case txtCity:
+            vc.menuType = 0
+            vc.citiesArr = cityArr
+            break
+        case txtSaleperson:
+            vc.menuType = 1
+            vc.sales_personsArr = sales_personsArr
+            break
+        case txtHospital:
+            vc.menuType = 4
+            vc.objArr = hospitalsArr
+            break
+        default:
+            vc.menuType = 6
+            vc.objArr = distributorsArr
+        }
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true, completion: nil)
+    }
+}
+
+//#MARK: DropDown delegate
+extension AddInventoryViewController: DropDownMenuDelegate {
+    
+//MenuType: 0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
+    func selectedDropDownItem(menuType: Int, menuObj: Any) {
+        print("selected menu object: \(menuObj)")
+        switch menuType {
+        case 0:
+            guard let obj = menuObj as? Cities else { return }
+            txtCity.text = obj.name
+            selectedCityId = obj.id
+            let index = cityArr.firstIndex { city in
+                city.id == obj.id
+            }
+            self.refreshHospitalByCity(selectedCityIndex: Int(index!))
+            break
+        case 1:
+            guard let obj = menuObj as? SalesPerson else { return }
+            txtSaleperson.text = obj.name
+            selectedSalesPersonId = obj.id
+            break
+        case 4:
+            guard let obj = menuObj as? Hospitals else { return }
+            txtHospital.text = obj.name
+            selectedHospitalId = obj.id
+        default:
+            guard let obj = menuObj as? Hospitals else { return }
+            txtDistributor.text = obj.name
+            selectedDistributorId = obj.id
+        }
+    }
 }

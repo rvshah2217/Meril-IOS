@@ -15,11 +15,11 @@
                 <outlet property="btnScanNow" destination="DRS-Kp-mwb" id="egw-Jt-dsa"/>
                 <outlet property="constrainViewHeaderHeight" destination="fpa-6D-2Eq" id="ERu-cH-0WJ"/>
                 <outlet property="deploymentDateTxt" destination="OtE-1N-nrT" id="ULp-Xa-Axb"/>
-                <outlet property="genderDropDown" destination="fbC-fF-lAI" id="lPQ-UZ-b02"/>
                 <outlet property="scrollOuterView" destination="se9-XT-gHi" id="YSZ-Af-w0T"/>
                 <outlet property="txtCity" destination="5E5-RB-K1P" id="tJy-UX-1lV"/>
                 <outlet property="txtDistributor" destination="6qd-g9-Bnd" id="DAZ-f5-vdR"/>
                 <outlet property="txtDoctor" destination="UqV-AT-SKs" id="2fF-KY-A9c"/>
+                <outlet property="txtGender" destination="fbC-fF-lAI" id="pXD-7U-i0x"/>
                 <outlet property="txtHospital" destination="xYi-9Y-Vb6" id="MQr-Wt-cni"/>
                 <outlet property="txtIpCode" destination="DEf-4T-hGL" id="tAX-zh-Ap0"/>
                 <outlet property="txtPatientAge" destination="HsX-u9-qzL" id="S5e-r3-Dmy"/>
@@ -90,7 +90,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2JR-k1-cRC">
                                                                     <rect key="frame" x="0.0" y="28" width="344" height="45"/>
                                                                     <subviews>
-                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5E5-RB-K1P" customClass="DropDown" customModule="iOSDropDown">
+                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5E5-RB-K1P">
                                                                             <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -124,7 +124,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCg-mm-bcX">
                                                                     <rect key="frame" x="0.0" y="28" width="344" height="45"/>
                                                                     <subviews>
-                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Hospital" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xYi-9Y-Vb6" customClass="DropDown" customModule="iOSDropDown">
+                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Hospital" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xYi-9Y-Vb6">
                                                                             <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -158,7 +158,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06J-Qt-Uqr">
                                                                     <rect key="frame" x="0.0" y="28" width="344" height="45"/>
                                                                     <subviews>
-                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Distributor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6qd-g9-Bnd" customClass="DropDown" customModule="iOSDropDown">
+                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Distributor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6qd-g9-Bnd">
                                                                             <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -192,7 +192,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zyq-5E-GBv">
                                                                     <rect key="frame" x="0.0" y="28" width="344" height="45"/>
                                                                     <subviews>
-                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Saleperson" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IuG-Lq-84X" customClass="DropDown" customModule="iOSDropDown">
+                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Saleperson" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IuG-Lq-84X">
                                                                             <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -259,7 +259,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="60s-7w-HrH">
                                                                     <rect key="frame" x="0.0" y="28" width="344" height="45"/>
                                                                     <subviews>
-                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Scheme" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="krF-kS-3Th" customClass="DropDown" customModule="iOSDropDown">
+                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Scheme" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="krF-kS-3Th">
                                                                             <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="textColor" red="0.19215686274509802" green="0.47843137254901957" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
@@ -293,7 +293,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccg-dH-V6z">
                                                                     <rect key="frame" x="0.0" y="28" width="344" height="45"/>
                                                                     <subviews>
-                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Doctor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UqV-AT-SKs" customClass="DropDown" customModule="iOSDropDown">
+                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Doctor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UqV-AT-SKs">
                                                                             <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="textColor" red="0.19215686274509802" green="0.47843137254901957" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
@@ -327,7 +327,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhd-Xp-aFk">
                                                                     <rect key="frame" x="0.0" y="28" width="344" height="45"/>
                                                                     <subviews>
-                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fbC-fF-lAI" customClass="DropDown" customModule="iOSDropDown">
+                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fbC-fF-lAI">
                                                                             <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="textColor" red="0.19215686274509802" green="0.47843137254901957" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>

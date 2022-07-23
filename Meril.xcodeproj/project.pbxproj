@@ -23,6 +23,7 @@
 		831A4F8D27E8A1B100BEF2E7 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A4F8C27E8A1B100BEF2E7 /* UITextField+Extension.swift */; };
 		8326D89E27ECABD80081B4ED /* ScanAgainPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D89D27ECABD80081B4ED /* ScanAgainPopUpVC.swift */; };
 		8326D8A027ED9CF50081B4ED /* SurgeryServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */; };
+		8343AF53288A960E00799A1C /* DropDownMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8343AF52288A960E00799A1C /* DropDownMenuVC.swift */; };
 		8347C3A82874CC4500E8EE66 /* ProductResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8347C3A72874CC4500E8EE66 /* ProductResponseModel.swift */; };
 		834ED70127F06CAE0059B30C /* SurgeryInventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834ED70027F06CAE0059B30C /* SurgeryInventoryModel.swift */; };
 		834ED70B27F06E9F0059B30C /* InventoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834ED70927F06E9F0059B30C /* InventoryListVC.swift */; };
@@ -100,6 +101,7 @@
 		831A4F8C27E8A1B100BEF2E7 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		8326D89D27ECABD80081B4ED /* ScanAgainPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAgainPopUpVC.swift; sourceTree = "<group>"; };
 		8326D89F27ED9CF50081B4ED /* SurgeryServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryServices.swift; sourceTree = "<group>"; };
+		8343AF52288A960E00799A1C /* DropDownMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenuVC.swift; sourceTree = "<group>"; };
 		8347C3A72874CC4500E8EE66 /* ProductResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponseModel.swift; sourceTree = "<group>"; };
 		834ED70027F06CAE0059B30C /* SurgeryInventoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryInventoryModel.swift; sourceTree = "<group>"; };
 		834ED70927F06E9F0059B30C /* InventoryListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryListVC.swift; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 			children = (
 				88CBA32F27ECCDE2005C22FE /* AddSurgerayViewController.xib */,
 				88CBA33027ECCDE2005C22FE /* AddSurgerayViewController.swift */,
+				8343AF52288A960E00799A1C /* DropDownMenuVC.swift */,
 			);
 			path = AddSurgeray;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				837192D927EAF4F300BE04A1 /* HomeServices.swift in Sources */,
 				834ED70E27F06FCF0059B30C /* AILoader.swift in Sources */,
 				88CBA33927ECCDE2005C22FE /* PrivacyPolicyViewController.swift in Sources */,
+				8343AF53288A960E00799A1C /* DropDownMenuVC.swift in Sources */,
 				88CBA34C27ECDC49005C22FE /* SurgerayListViewController.swift in Sources */,
 				837192DB27EB7B1600BE04A1 /* BarCodeScannerVC.swift in Sources */,
 				887C7A4027EF31C500A5A0FB /* SettingsModel.swift in Sources */,

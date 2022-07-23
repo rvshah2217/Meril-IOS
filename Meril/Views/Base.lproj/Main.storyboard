@@ -962,10 +962,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7sD-Q1-gH4">
-                                <rect key="frame" x="25" y="184" width="364" height="538"/>
+                                <rect key="frame" x="25" y="139.5" width="364" height="627"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3oy-67-J14">
-                                        <rect key="frame" x="10" y="115" width="344" height="348"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3oy-67-J14">
+                                        <rect key="frame" x="10" y="115" width="344" height="437"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableView>
@@ -973,7 +973,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Sales person" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="18" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y5h-2n-ic0">
-                                                <rect key="frame" x="20" y="13" width="324" height="24.5"/>
+                                                <rect key="frame" x="20" y="12.5" width="324" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -988,7 +988,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSw-u7-CzN">
-                                        <rect key="frame" x="102" y="473" width="160" height="45"/>
+                                        <rect key="frame" x="102" y="562" width="160" height="45"/>
                                         <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="OsJ-0g-Eyg"/>
@@ -1037,7 +1037,7 @@
                         <constraints>
                             <constraint firstItem="aLK-2r-8gM" firstAttribute="trailing" secondItem="7sD-Q1-gH4" secondAttribute="trailing" constant="25" id="GtX-3c-NEg"/>
                             <constraint firstItem="7sD-Q1-gH4" firstAttribute="leading" secondItem="aLK-2r-8gM" secondAttribute="leading" constant="25" id="UFh-6Q-X6J"/>
-                            <constraint firstItem="7sD-Q1-gH4" firstAttribute="height" secondItem="B1H-qA-EPf" secondAttribute="height" multiplier="0.6" id="Zo0-AK-QfC"/>
+                            <constraint firstItem="7sD-Q1-gH4" firstAttribute="height" secondItem="B1H-qA-EPf" secondAttribute="height" multiplier="0.7" id="Zo0-AK-QfC"/>
                             <constraint firstItem="7sD-Q1-gH4" firstAttribute="centerY" secondItem="aLK-2r-8gM" secondAttribute="centerY" id="deN-fz-U3m"/>
                         </constraints>
                     </view>
@@ -1047,6 +1047,7 @@
                         <outlet property="outerView" destination="7sD-Q1-gH4" id="tKG-YW-I3m"/>
                         <outlet property="tableView" destination="3oy-67-J14" id="6mM-Ci-fig"/>
                         <outlet property="titleLbl" destination="y5h-2n-ic0" id="R9o-6B-WVq"/>
+                        <outlet property="titleOuterView" destination="5Ay-Ib-1YK" id="xXM-Ir-opD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLk-Jh-K4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

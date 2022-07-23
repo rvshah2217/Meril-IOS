@@ -592,9 +592,9 @@ extension AddSurgerayViewController: UITextFieldDelegate {
             vc.objArr = distributorsArr
             vc.titleStr = "Select Distributor"
         }
-        vc.modalPresentationStyle = .fullScreen
+        vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
-        self.present(vc, animated: true, completion: nil)
+        self.navigationController?.present(vc, animated: true, completion: nil)
     }
 }
 

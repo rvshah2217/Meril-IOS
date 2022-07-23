@@ -17,6 +17,7 @@ class DropDownMenuVC: UIViewController {
     @IBOutlet weak var cancelSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var outerView: UIView!
+    @IBOutlet weak var titleOuterView: UIView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
     
@@ -40,13 +41,15 @@ class DropDownMenuVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         cancelBtn.setViewCorner(radius: self.cancelBtn.frame.height/2)
         cancelSearchBar.delegate = self
         self.setTableData()
         tableView.delegate = self
         tableView.dataSource = self
         self.titleLbl.text = titleStr
+        self.outerView.setViewCorner(radius: 15)
+        self.titleOuterView.addCornerAtTops(radius: 14)
     }
     
     private func setTableData() {

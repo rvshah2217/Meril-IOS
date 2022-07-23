@@ -263,9 +263,9 @@ extension DefaultLoginData: UITextFieldDelegate {
             vc.objArr = distributorsArr
             vc.titleStr = "Select Distrbutor"
         }
-        vc.modalPresentationStyle = .fullScreen
+        vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
-        self.present(vc, animated: true, completion: nil)
+        self.navigationController?.present(vc, animated: true, completion: nil)
     }
 }
 

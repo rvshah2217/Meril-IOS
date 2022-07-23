@@ -60,7 +60,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPw-r2-Bes">
                                                         <rect key="frame" x="0.0" y="28" width="334" height="45"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Patient Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mx8-WS-jhj" customClass="DropDown" customModule="iOSDropDown">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Patient Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mx8-WS-jhj">
                                                                 <rect key="frame" x="15" y="0.0" width="304" height="45"/>
                                                                 <color key="textColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -221,7 +221,7 @@
                         <outlet property="expiryDateTxt" destination="owW-ou-uOg" id="epI-el-9kC"/>
                         <outlet property="submitBtn" destination="xCf-Yb-4Hg" id="o2V-Ry-9qO"/>
                         <outlet property="txtBatchNumber" destination="mFA-SJ-Nuv" id="Dos-uP-eRM"/>
-                        <outlet property="txtProductCode" destination="mx8-WS-jhj" id="cEx-91-hkQ"/>
+                        <outlet property="txtProductCode" destination="mx8-WS-jhj" id="98G-fD-tp5"/>
                         <outlet property="txtSerialNumber" destination="pgB-5q-6oa" id="Rvf-g8-GRP"/>
                         <outletCollection property="collectionViewBorder" destination="wPw-r2-Bes" collectionClass="NSMutableArray" id="3t3-Dy-XeQ"/>
                         <outletCollection property="collectionViewBorder" destination="bMH-bh-xnn" collectionClass="NSMutableArray" id="MVS-4D-H7G"/>
@@ -282,7 +282,7 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="En1-WJ-ECS">
                                                                                 <rect key="frame" x="0.0" y="28" width="344" height="45"/>
                                                                                 <subviews>
-                                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Doctor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HQI-Sa-uNC" customClass="DropDown" customModule="iOSDropDown">
+                                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Doctor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HQI-Sa-uNC">
                                                                                         <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -316,7 +316,7 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G4h-wg-OZ5">
                                                                                 <rect key="frame" x="0.0" y="28" width="344" height="45"/>
                                                                                 <subviews>
-                                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Distributor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRn-no-4GP" customClass="DropDown" customModule="iOSDropDown">
+                                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Distributor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRn-no-4GP">
                                                                                         <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -349,7 +349,7 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOZ-Bc-yCP">
                                                                                 <rect key="frame" x="0.0" y="28" width="344" height="45"/>
                                                                                 <subviews>
-                                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Saleperson" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K5v-7e-ULl" customClass="DropDown" customModule="iOSDropDown">
+                                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Saleperson" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K5v-7e-ULl">
                                                                                         <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

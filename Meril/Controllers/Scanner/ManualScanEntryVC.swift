@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import iOSDropDown
+//import iOSDropDown
 
 protocol ManualEntryDelegate: AnyObject {
     func addManualSurgeryData(manuallyAddedData: ManualEntryModel)
@@ -17,12 +17,13 @@ class ManualScanEntryVC: UIViewController {
     
 //    @IBOutlet var collectionViewBackground: [UIView]!
     @IBOutlet var collectionViewBorder: [UIView]!
-    @IBOutlet weak var txtProductCode: DropDown! {
-        didSet {
-            self.txtProductCode.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-            self.txtProductCode.rowHeight = 40
-        }
-    }
+    @IBOutlet weak var txtProductCode: UITextField!
+//    {
+//        didSet {
+//            self.txtProductCode.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+//            self.txtProductCode.rowHeight = 40
+//        }
+//    }
     @IBOutlet weak var txtSerialNumber: UITextField!
     @IBOutlet weak var txtBatchNumber: UITextField!
     @IBOutlet weak var expiryDateTxt: UITextField!
@@ -81,6 +82,7 @@ class ManualScanEntryVC: UIViewController {
         
         setRightButton(self.txtProductCode, image: UIImage(named: "ic_dropdown") ?? UIImage())
 //        self.convertDateToStr(date: Date())
+        txtProductCode.delegate = self
     }
     
     func setDatePicker() {
@@ -179,15 +181,45 @@ extension ManualScanEntryVC {
                 self.productArr = response.productData ?? []
 
 //                self.txtProductCode.isEnabled = !self.schemeArr.isEmpty
-                self.txtProductCode.optionArray = self.productArr.map({ item -> String in
-                    item.material ?? ""
-                })
-                self.txtProductCode.didSelect { selectedText, index, id in
-                    self.selectedProductCode = self.productArr[index].material
-//                    If product flag is "B" then batch number field is mandatory, if its "S" then serial number is mandatory, otherwise both are optional
-                    self.mandatoryFieldType = ((self.productArr[index].flag == "B") ? 1 : ((self.productArr[index].flag == "S") ? 2 : 0))
-                }
+//                self.txtProductCode.optionArray = self.productArr.map({ item -> String in
+//                    item.material ?? ""
+//                })
+//                self.txtProductCode.didSelect { selectedText, index, id in
+//                    self.selectedProductCode = self.productArr[index].material
+////                    If product flag is "B" then batch number field is mandatory, if its "S" then serial number is mandatory, otherwise both are optional
+//                    self.mandatoryFieldType = ((self.productArr[index].flag == "B") ? 1 : ((self.productArr[index].flag == "S") ? 2 : 0))
+//                }
             }
         }
     }
 }
+
+//#MARK: Textfield delegate
+extension ManualScanEntryVC: UITextFieldDelegate {
+    
+    public func  textFieldDidBeginEditing(_ textField: UITextField) {
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "DropDownMenuVC") as! DropDownMenuVC
+        vc.menuType = 88
+        vc.productArr = productArr
+        vc.delegate = self
+        vc.titleStr = "Select Product Barcode"
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true, completion: nil)
+    }
+}
+
+//#MARK: DropDown delegate
+extension ManualScanEntryVC: DropDownMenuDelegate {
+    
+//MenuType: 88 ProductBarCode
+    func selectedDropDownItem(menuType: Int, menuObj: Any) {
+        guard let obj = menuObj as? ProductBarCode else { return }
+        txtProductCode.text = obj.material
+        selectedProductCode = obj.material
+        //                    If product flag is "B" then batch number field is mandatory, if its "S" then serial number is mandatory, otherwise both are optional
+        self.mandatoryFieldType = ((obj.flag == "B") ? 1 : ((obj.flag == "S") ? 2 : 0))
+
+    }
+}
+

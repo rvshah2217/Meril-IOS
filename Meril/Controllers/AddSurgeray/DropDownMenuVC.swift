@@ -31,8 +31,12 @@ class DropDownMenuVC: UIViewController {
     var filteredSales_personsArr: [SalesPerson] = []
     var filteredSchemeArr: [Schemes] = []
 
+    var productArr = [ProductBarCode]()
+    var filteredProductArr: [ProductBarCode] = []
+
+    var titleStr: String = "Select Item"
     var delegate: DropDownMenuDelegate?
-    var menuType: Int = 0//0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
+    var menuType: Int = 0//0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors, 88: ProductBarCode
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +46,7 @@ class DropDownMenuVC: UIViewController {
         self.setTableData()
         tableView.delegate = self
         tableView.dataSource = self
+        self.titleLbl.text = titleStr
     }
     
     private func setTableData() {
@@ -56,6 +61,9 @@ class DropDownMenuVC: UIViewController {
             filteredSchemeArr = schemeArr
             break
         case 3:
+            break
+        case 88:
+            filteredProductArr = productArr
             break
         default:
             filteredObjArr = objArr
@@ -82,6 +90,8 @@ extension DropDownMenuVC: UITableViewDelegate, UITableViewDataSource {
             return filteredSchemeArr.count
         case 3:
             return genderArr.count
+        case 88:
+            return filteredProductArr.count
         default:
             return filteredObjArr.count
         }
@@ -100,6 +110,8 @@ extension DropDownMenuVC: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.text = genderArr[indexPath.row]
         case 5:
             cell.textLabel?.text = filteredObjArr[indexPath.row].fullname
+        case 88:
+            cell.textLabel?.text = filteredProductArr[indexPath.row].material
         default:
             cell.textLabel?.text = filteredObjArr[indexPath.row].name
         }
@@ -121,6 +133,8 @@ extension DropDownMenuVC: UITableViewDelegate, UITableViewDataSource {
             item = filteredSchemeArr[indexPath.row]
         case 3:
             item = genderArr[indexPath.row]
+        case 88:
+            item = filteredProductArr[indexPath.row]
 //        case 4:
 //            item = objArr[indexPath.row]
         default:
@@ -162,6 +176,11 @@ extension DropDownMenuVC: UISearchBarDelegate {
             })
             break
         case 3:
+            break
+        case 88:
+            filteredProductArr = searchText.isEmpty ? productArr : productArr.filter({ product -> Bool in
+                product.material?.range(of: searchText, options: .caseInsensitive) != nil
+            })
             break
         default:
             filteredObjArr = searchText.isEmpty ? objArr : objArr.filter({ hospitalObj -> Bool in

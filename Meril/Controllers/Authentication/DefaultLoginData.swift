@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import iOSDropDown
 
 class DefaultLoginData: UIViewController {
     
@@ -17,23 +16,27 @@ class DefaultLoginData: UIViewController {
     @IBOutlet weak var DetailsScrollView: UIScrollView!
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var constrainViewHeaderHeight: NSLayoutConstraint!
-    @IBOutlet weak var txtDoctor: DropDown! {
-        didSet {
-            self.txtDoctor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-        }
-    }
     
-    @IBOutlet weak var txtDistributor: DropDown! {
-        didSet {
-            self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-        }
-    }
+    @IBOutlet weak var txtDoctor: UITextField!
+//    {
+//        didSet {
+//            self.txtDoctor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+//        }
+//    }
     
-    @IBOutlet weak var txtSaleperson: DropDown! {
-        didSet {
-            self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-        }
-    }
+    @IBOutlet weak var txtDistributor: UITextField!
+//{
+//        didSet {
+//            self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+//        }
+//    }
+    
+    @IBOutlet weak var txtSaleperson: UITextField!
+//{
+//        didSet {
+//            self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
+//        }
+//    }
     
     @IBOutlet weak var submitBtn: UIButton!
     
@@ -43,7 +46,7 @@ class DefaultLoginData: UIViewController {
 
     var selectedDoctorId: Int?
     var selectedDistributorId: Int?
-    var selectedSalesPersonId: Int?
+    var selectedSalesPersonId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,9 +85,9 @@ class DefaultLoginData: UIViewController {
         txtDistributor.setPlaceholder(placeHolderStr: "Select Distributor")
         txtSaleperson.setPlaceholder(placeHolderStr: "Select Saleperson")
         
-        self.txtDoctor.rowHeight = 40
-        self.txtDistributor.rowHeight = 40
-        self.txtSaleperson.rowHeight = 40
+        self.txtDoctor.delegate = self
+        self.txtDistributor.delegate = self
+        self.txtSaleperson.delegate = self
         setRightButton(txtDoctor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtDistributor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtSaleperson, image: UIImage(named: "ic_dropdown") ?? UIImage())
@@ -115,7 +118,9 @@ class DefaultLoginData: UIViewController {
             return
         }
         
-        self.callUpdateHospitalApi(doctorId: selectedDoctorId, distributorId: distributorId, salesPersonId: salesPersonId)
+        if let convertedSalesPersonId = Int(salesPersonId) {
+            self.callUpdateHospitalApi(doctorId: selectedDoctorId, distributorId: distributorId, salesPersonId: convertedSalesPersonId)
+        }
         
 //        UserDefaults.standard.set(true, forKey: "isFirstTimeLogInDone")
 //        UserDefaults.standard.set(selectedDoctorId, forKey: "defaultDoctorId")
@@ -178,32 +183,32 @@ extension DefaultLoginData {
         //        set doctor array
         self.doctorsArr = formDataResponse.doctors ?? []
         self.txtDoctor.isEnabled = !self.doctorsArr.isEmpty
-        self.txtDoctor.optionArray = self.doctorsArr.map({ item -> String in
-            item.fullname ?? ""
-        })
-        self.txtDoctor.didSelect { selectedText, index, id in
-            self.selectedDoctorId = self.doctorsArr[index].id
-        }
+//        self.txtDoctor.optionArray = self.doctorsArr.map({ item -> String in
+//            item.fullname ?? ""
+//        })
+//        self.txtDoctor.didSelect { selectedText, index, id in
+//            self.selectedDoctorId = self.doctorsArr[index].id
+//        }
         
         //        set distributor array
         self.distributorsArr = formDataResponse.distributors ?? []
         self.txtDistributor.isEnabled = !self.distributorsArr.isEmpty
-        self.txtDistributor.optionArray = self.distributorsArr.map({ item -> String in
-            item.name ?? ""
-        })
-        self.txtDistributor.didSelect { selectedText, index, id in
-            self.selectedDistributorId = self.distributorsArr[index].id
-        }
+//        self.txtDistributor.optionArray = self.distributorsArr.map({ item -> String in
+//            item.name ?? ""
+//        })
+//        self.txtDistributor.didSelect { selectedText, index, id in
+//            self.selectedDistributorId = self.distributorsArr[index].id
+//        }
         
         //        set salesperson array
         self.sales_personsArr = formDataResponse.sales_persons ?? []
         self.txtSaleperson.isEnabled = !self.sales_personsArr.isEmpty
-        self.txtSaleperson.optionArray = self.sales_personsArr.map({ item -> String in
-            item.name ?? ""
-        })
-        self.txtSaleperson.didSelect { selectedText, index, id in
-            self.selectedSalesPersonId = Int(self.sales_personsArr[index].id!)
-        }
+//        self.txtSaleperson.optionArray = self.sales_personsArr.map({ item -> String in
+//            item.name ?? ""
+//        })
+//        self.txtSaleperson.didSelect { selectedText, index, id in
+//            self.selectedSalesPersonId = Int(self.sales_personsArr[index].id!)
+//        }
         
         self.setDefaultData()
     }
@@ -226,11 +231,64 @@ extension DefaultLoginData {
         }
         
         if let salesPersonId = storedUserData?.sales_person_id {
-            selectedSalesPersonId = Int(salesPersonId)
+            selectedSalesPersonId = salesPersonId
             self.txtSaleperson.text = sales_personsArr.filter({ item in
-                item.id == String(salesPersonId)
+                item.id == salesPersonId
             }).first?.name
         }
 
+    }
+}
+
+//#MARK: Textfield delegate
+extension DefaultLoginData: UITextFieldDelegate {
+    
+    public func  textFieldDidBeginEditing(_ textField: UITextField) {
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "DropDownMenuVC") as! DropDownMenuVC
+        vc.delegate = self
+        //MenuType: 0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
+        switch textField {
+        case txtSaleperson:
+            vc.menuType = 1
+            vc.sales_personsArr = sales_personsArr
+            vc.titleStr = "Select Sales Person"
+            break
+        case txtDoctor:
+            vc.menuType = 5
+            vc.objArr = doctorsArr
+            vc.titleStr = "Select Doctor"
+            break
+        default:
+            vc.menuType = 6
+            vc.objArr = distributorsArr
+            vc.titleStr = "Select Distrbutor"
+        }
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true, completion: nil)
+    }
+}
+
+//#MARK: DropDown delegate
+extension DefaultLoginData: DropDownMenuDelegate {
+    
+//MenuType: 0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
+    func selectedDropDownItem(menuType: Int, menuObj: Any) {
+        print("selected menu object: \(menuObj)")
+        switch menuType {
+        case 1:
+            guard let obj = menuObj as? SalesPerson else { return }
+            txtSaleperson.text = obj.name
+            selectedSalesPersonId = obj.id
+            break
+        case 5:
+            guard let obj = menuObj as? Hospitals else { return }
+            txtDoctor.text = obj.fullname
+            selectedDoctorId = obj.id
+        default:
+            guard let obj = menuObj as? Hospitals else { return }
+            txtDistributor.text = obj.name
+            selectedDistributorId = obj.id
+        }
     }
 }

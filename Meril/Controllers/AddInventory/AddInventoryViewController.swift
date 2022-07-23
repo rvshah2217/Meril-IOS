@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import iOSDropDown
+//import iOSDropDown
 
 class AddInventoryViewController: BaseViewController {
     
@@ -393,18 +393,22 @@ extension AddInventoryViewController: UITextFieldDelegate {
         case txtCity:
             vc.menuType = 0
             vc.citiesArr = cityArr
+            vc.titleStr = "Select City"
             break
         case txtSaleperson:
             vc.menuType = 1
             vc.sales_personsArr = sales_personsArr
+            vc.titleStr = "Select Sales Person"
             break
         case txtHospital:
             vc.menuType = 4
             vc.objArr = hospitalsArr
+            vc.titleStr = "Select Hospital"
             break
         default:
             vc.menuType = 6
             vc.objArr = distributorsArr
+            vc.titleStr = "Select Distributor"
         }
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .crossDissolve

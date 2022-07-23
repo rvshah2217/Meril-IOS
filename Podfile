@@ -6,7 +6,6 @@ target 'Meril' do
   use_frameworks!
 
   # Pods for Meril
-  pod 'iOSDropDown'
   pod 'LGSideMenuController'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
   pod 'IQKeyboardManagerSwift'

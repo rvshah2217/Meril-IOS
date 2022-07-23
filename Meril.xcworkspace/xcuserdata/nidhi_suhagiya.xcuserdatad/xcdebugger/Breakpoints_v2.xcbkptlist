@@ -3118,8 +3118,8 @@
             filePath = "Meril/Controllers/Scanner/ManualScanEntryVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "validateUserInput()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3230,8 +3230,8 @@
             filePath = "Meril/Controllers/Scanner/ManualScanEntryVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "convertDateToStr(date:isExpiry:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3454,8 +3454,8 @@
             filePath = "Meril/Controllers/Authentication/DefaultLoginData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "callUpdateHospitalApi(doctorId:distributorId:salesPersonId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3598,8 +3598,8 @@
             filePath = "Meril/Controllers/Scanner/ManualScanEntryVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "fetchProductData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3614,8 +3614,8 @@
             filePath = "Meril/Controllers/Scanner/ManualScanEntryVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "fetchProductData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3630,8 +3630,8 @@
             filePath = "Meril/Controllers/Scanner/ManualScanEntryVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "fetchProductData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3774,8 +3774,8 @@
             filePath = "Meril/Controllers/Authentication/DefaultLoginData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "setDefaultData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3790,8 +3790,8 @@
             filePath = "Meril/Controllers/Authentication/DefaultLoginData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "redirectToHomeVC()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3806,8 +3806,8 @@
             filePath = "Meril/Controllers/Authentication/DefaultLoginData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "redirectToHomeVC()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4920,7 +4920,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9838DC53-52DA-4DBA-80A6-F58CCACA3105"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Meril/Services/SurgeryServices.swift"
@@ -4974,8 +4974,8 @@
             filePath = "Meril/Controllers/AddInventory/AddInventoryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430"
+            startingLineNumber = "434"
+            endingLineNumber = "434"
             landmarkName = "selectedDropDownItem(menuType:menuObj:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4990,8 +4990,8 @@
             filePath = "Meril/Controllers/AddInventory/AddInventoryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "423"
-            endingLineNumber = "423"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
             landmarkName = "selectedDropDownItem(menuType:menuObj:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5022,8 +5022,8 @@
             filePath = "Meril/Controllers/AddInventory/AddInventoryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "406"
-            endingLineNumber = "406"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "textFieldDidBeginEditing(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5102,8 +5102,8 @@
             filePath = "Meril/Controllers/AddSurgeray/AddSurgerayViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "599"
-            endingLineNumber = "599"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
             landmarkName = "selectedDropDownItem(menuType:menuObj:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5233,6 +5233,38 @@
             startingLineNumber = "144"
             endingLineNumber = "144"
             landmarkName = "bannerImageViewTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2F4C2A2-2396-419F-897F-0FEC6D61C88F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Meril/Controllers/AddInventory/AddInventoryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "399"
+            endingLineNumber = "399"
+            landmarkName = "textFieldDidBeginEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0E0D21DE-CC4F-489D-B81D-0ECA31A95733"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Meril/Controllers/Scanner/ManualScanEntryVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "textFieldDidBeginEditing(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

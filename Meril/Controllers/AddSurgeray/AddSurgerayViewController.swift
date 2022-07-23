@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import iOSDropDown
+//import iOSDropDown
 import Reachability
 
 class AddSurgerayViewController: BaseViewController {
@@ -563,27 +563,34 @@ extension AddSurgerayViewController: UITextFieldDelegate {
         case txtCity:
             vc.menuType = 0
             vc.citiesArr = citiesArr
+            vc.titleStr = "Select City"
             break
         case txtSaleperson:
             vc.menuType = 1
             vc.sales_personsArr = sales_personsArr
+            vc.titleStr = "Select Sales Person"
             break
         case txtPatientScheme:
             vc.menuType = 2
             vc.schemeArr = schemeArr
+            vc.titleStr = "Select Scheme"
         case txtGender:
             vc.menuType = 3
             vc.genderArr = genderArr
+            vc.titleStr = "Select Gender"
         case txtHospital:
             vc.menuType = 4
             vc.objArr = hospitalsArr
+            vc.titleStr = "Select Hospital"
             break
         case txtDoctor:
             vc.menuType = 5
             vc.objArr = doctorsArr
+            vc.titleStr = "Select Doctor"
         default:
             vc.menuType = 6
             vc.objArr = distributorsArr
+            vc.titleStr = "Select Distributor"
         }
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .crossDissolve

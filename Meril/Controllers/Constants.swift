@@ -26,7 +26,7 @@ struct DeviceConstant {
 }
 
 struct ApiConstant {
-    static let baseUrl = "https://houseofgames.in/merillife/api/"
+    static let baseUrl = "https://meril.meritrack.in/meritrack/api/"//"http://meril.meritrack.in:8012/meritrack/api/"//"https://houseofgames.in/merillife/api/"
     static let loginApi = "login"
     static let getHomeDataApi = "banners"
     static let surgeryListApi = ""

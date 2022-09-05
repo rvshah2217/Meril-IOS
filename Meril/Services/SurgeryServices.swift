@@ -126,7 +126,7 @@ extension SurgeryServices {
         }
     }
     
-    static func getProductData(salesPersonId: String, completionHandler: @escaping (ProductResponseModel?, _ error: String?) -> ()) {
+    static func getProductData(salesPersonId: Int, completionHandler: @escaping (ProductResponseModel?, _ error: String?) -> ()) {
         APIManager.shared().call(for: ProductResponseModel.self, type: EndPointsItem.products, params: ["salesPersonId": salesPersonId]) { responseData, error in
             guard let response = responseData else {
                 //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")

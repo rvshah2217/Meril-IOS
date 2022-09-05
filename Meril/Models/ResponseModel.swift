@@ -30,12 +30,12 @@ struct ResponseModel : Codable {
 
 struct UserTypesModel : Codable {
     let id : Int?
-    let zoho_id : Int?
+    let zoho_id : String?
     let name : String?
     let created_at : String?
     let updated_at : String?
     let user_data : UserData?
-    let is_default_password: String?
+    let is_default_password: Int?
     let surgeries : [SurgeryData]?
     let stocks : [SurgeryData]?
 
@@ -76,7 +76,7 @@ struct UserTypesModel : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
         id = try values.decodeIfPresent(Int.self, forKey: .id)
-        zoho_id = try values.decodeIfPresent(Int.self, forKey: .zoho_id)
+        zoho_id = try values.decodeIfPresent(String.self, forKey: .zoho_id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
         updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
@@ -93,7 +93,7 @@ struct UserTypesModel : Codable {
         surgeries = try values.decodeIfPresent([SurgeryData].self, forKey: .surgeries)
         stocks = try values.decodeIfPresent([SurgeryData].self, forKey: .stocks)
         user_data = try values.decodeIfPresent(UserData.self, forKey: .user_data)
-        is_default_password = try values.decodeIfPresent(String.self, forKey: .is_default_password)
+        is_default_password = try values.decodeIfPresent(Int.self, forKey: .is_default_password)
     }
 
 }
@@ -107,16 +107,16 @@ struct UserData : Codable {
     let city : String?
     let state : String?
     let country : String?
-    let pincode : String?//Int?
+    let pincode : Int?
     let profile : String?
     let division_id : String?
     let gender : String?
     let bio: String?
-    var distributor_id: String?
+    var distributor_id: Int?
     let distributor_name: String?
-    var sales_person_id: String?
+    var sales_person_id: Int?
     let sales_person_name: String?
-    var doctor_id: String?
+    var doctor_id: Int?
     let doctor_name: String?
 
 
@@ -154,17 +154,17 @@ struct UserData : Codable {
         city = try values.decodeIfPresent(String.self, forKey: .city)
         state = try values.decodeIfPresent(String.self, forKey: .state)
         country = try values.decodeIfPresent(String.self, forKey: .country)
-        pincode = try values.decodeIfPresent(String.self, forKey: .pincode)
+        pincode = try values.decodeIfPresent(Int.self, forKey: .pincode)
         profile = try values.decodeIfPresent(String.self, forKey: .profile)
         division_id = try values.decodeIfPresent(String.self, forKey: .division_id)
         gender = try values.decodeIfPresent(String.self, forKey: .gender)
         bio = try values.decodeIfPresent(String.self, forKey: .bio)
         
-        distributor_id = try values.decodeIfPresent(String.self, forKey: .distributor_id)
+        distributor_id = try values.decodeIfPresent(Int.self, forKey: .distributor_id)
         distributor_name = try values.decodeIfPresent(String.self, forKey: .distributor_name)
-        sales_person_id = try values.decodeIfPresent(String.self, forKey: .sales_person_id)
+        sales_person_id = try values.decodeIfPresent(Int.self, forKey: .sales_person_id)
         sales_person_name = try values.decodeIfPresent(String.self, forKey: .sales_person_name)
-        doctor_id = try values.decodeIfPresent(String.self, forKey: .doctor_id)
+        doctor_id = try values.decodeIfPresent(Int.self, forKey: .doctor_id)
         doctor_name = try values.decodeIfPresent(String.self, forKey: .doctor_name)
     }
 

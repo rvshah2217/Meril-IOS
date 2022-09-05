@@ -31,7 +31,7 @@ class BarCodeScannerVC: UIViewController {
     
     var manualEntryArr: [ManualEntryModel] = []
     var barCodeArr: [BarCodeModel] = []
-    var selectedSalesPersonId: String?
+    var selectedSalesPersonId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()

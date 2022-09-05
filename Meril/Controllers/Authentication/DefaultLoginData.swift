@@ -46,7 +46,7 @@ class DefaultLoginData: UIViewController {
 
     var selectedDoctorId: Int?
     var selectedDistributorId: Int?
-    var selectedSalesPersonId: String?
+    var selectedSalesPersonId: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,9 +118,9 @@ class DefaultLoginData: UIViewController {
             return
         }
         
-        if let convertedSalesPersonId = Int(salesPersonId) {
-            self.callUpdateHospitalApi(doctorId: selectedDoctorId, distributorId: distributorId, salesPersonId: convertedSalesPersonId)
-        }
+//        if let convertedSalesPersonId = salesPersonId {
+            self.callUpdateHospitalApi(doctorId: selectedDoctorId, distributorId: distributorId, salesPersonId: salesPersonId)
+//        }
         
 //        UserDefaults.standard.set(true, forKey: "isFirstTimeLogInDone")
 //        UserDefaults.standard.set(selectedDoctorId, forKey: "defaultDoctorId")
@@ -134,10 +134,10 @@ class DefaultLoginData: UIViewController {
         LoginServices.setDefaultCredentials(credentialObj: obj) { isSuccess, error in
 //            save doctor, distributor and salesPerson id
             var userData = UserSessionManager.shared.userDetail
-            userData?.sales_person_id = String(salesPersonId)
-            userData?.distributor_id = String(distributorId)
+            userData?.sales_person_id = salesPersonId
+            userData?.distributor_id = distributorId
             if let doctorId = doctorId {
-                userData?.doctor_id = String(doctorId)
+                userData?.doctor_id = doctorId
             }
             UserSessionManager.shared.userDetail = userData
             self.redirectToHomeVC()

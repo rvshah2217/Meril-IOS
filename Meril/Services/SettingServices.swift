@@ -26,4 +26,22 @@ class SettingServices {
             }
         }
     }
+    
+    //    Fetch user types
+//    static func getProfile(completionHandler: @escaping (SettingsResponseModel?, _ error: String?) -> ()) {
+//
+//        //        let params: [String:Any] = [:]
+//        APIManager.shared().call(for: SettingsResponseModel.self, type: EndPointsItem.settings) { (responseData, error) in
+//
+//            guard let response = responseData else {
+//                return completionHandler(nil, error?.body)
+//            }
+//            //Check if server return success response or not
+//            if response.success ?? false {
+//                return completionHandler(response, nil)
+//            } else {
+//                return completionHandler(nil, response.message ?? UserMessages.serverError)
+//            }
+//        }
+//    }
 }

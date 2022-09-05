@@ -93,7 +93,7 @@ class AddSurgerayViewController: BaseViewController {
     var selectedHospitalId: Int?
     var selectedDoctorId: Int?
     var selectedDistributorId: Int?
-    var selectedSalesPersonId: String?
+    var selectedSalesPersonId: Int?
     var selectedSchemeId: Int?
     var selectedGender: String?
     var addSurgeryReqObj: AddSurgeryRequestModel?
@@ -317,7 +317,9 @@ extension AddSurgerayViewController {
     
     
     func fetchFormDataFromServer() {
+        SHOW_CUSTOM_LOADER()
         CommonFunctions.getAllFormData { response in
+            HIDE_CUSTOM_LOADER()
             guard let surgeryObj = response else { return }
             self.setAllDropDownData(formDataResponse: surgeryObj)
         }
@@ -511,7 +513,6 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
         } else {
             self.callAddSurgeryApi()
         }
-        
     }
     
     //    #MARK: Add surgery data api call
@@ -558,6 +559,7 @@ extension AddSurgerayViewController: UITextFieldDelegate {
     public func  textFieldDidBeginEditing(_ textField: UITextField) {
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "DropDownMenuVC") as! DropDownMenuVC
         vc.delegate = self
+        self.view.endEditing(true)
         //MenuType: 0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
         switch textField {
         case txtCity:

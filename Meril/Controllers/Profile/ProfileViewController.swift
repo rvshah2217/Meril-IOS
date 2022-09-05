@@ -39,7 +39,7 @@ class ProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        setUserData()
+        fetchUserProfile()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +85,19 @@ class ProfileViewController: BaseViewController {
 //
 //    }
     
+    private func fetchUserProfile() {
+        if appDelegate.reachability.connection == .unavailable {
+            self.setUserData()
+            return
+        }
+//        Api call 
+        LoginServices.getUserProfile { responseData, error in
+            //            store user data into UserDefaults
+            UserSessionManager.shared.userDetail = responseData?.userProfile
+            self.setUserData()
+        }
+    }
+    
     func setUserData() {
         appVersionLbl.text = "Version:V" + appVersion
 //        let userInfo = UserDefaults.standard.string(forKey: "UserProfileData")
@@ -105,7 +118,7 @@ class ProfileViewController: BaseViewController {
             self.lblBio.text = "Name"
             self.txtBio.text = userInfo.name ?? "N/A"
             var address = (userInfo.city ?? "City") + ", " + (userInfo.state ?? "State") + ", "
-            address = address + (userInfo.country ?? "Country") + "-" + (userInfo.pincode ?? "")
+            address = address + (userInfo.country ?? "Country") + "-" + String(userInfo.pincode ?? 0)
             self.txtLocation.text = address
         }
 //        self.imgProfile.image = UIImage

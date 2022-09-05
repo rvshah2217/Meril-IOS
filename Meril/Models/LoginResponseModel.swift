@@ -170,3 +170,35 @@ struct ProductBarCode : Codable {
 
 }
 
+enum CustomDataValue: Codable {
+
+ case string(String)
+
+ var stringValue: String? {
+    switch self {
+    case .string(let s):
+        return s
+    }
+ }
+
+init(from decoder: Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let x = try? container.decode(String.self) {
+        self = .string(x)
+        return
+    }
+    if let x = try? container.decode(Int.self) {
+        self = .string("\(x)")
+        return
+    }
+    throw DecodingError.typeMismatch(CustomDataValue.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for MyValue"))
+}
+
+func encode(to encoder: Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .string(let x):
+        try container.encode(x)
+    }
+}
+}

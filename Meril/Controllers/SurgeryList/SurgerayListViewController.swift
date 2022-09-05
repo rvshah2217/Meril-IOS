@@ -29,6 +29,7 @@ class SurgeryListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        self.navigationController?.navigationBar.backItem?.title = ""
         NotificationCenter.default.addObserver(self, selector: #selector(self.surgeryAddedToServer), name: .surgeryAdded, object: nil)
 //        self.fetchStaticDataFromCoreData()
         //        self.fetchAddSurgeryDataWithoutSync()

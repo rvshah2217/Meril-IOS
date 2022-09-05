@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21G72" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AddStock" representedClassName="AddStock" syncable="YES" codeGenerationType="class">
         <attribute name="addStockStr" optional="YES" attributeType="String"/>
         <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -35,12 +35,12 @@
         <attribute name="responseStr" optional="YES" attributeType="String"/>
     </entity>
     <elements>
+        <element name="AddStock" positionX="18" positionY="162" width="128" height="89"/>
         <element name="AddStock1" positionX="27" positionY="171" width="128" height="89"/>
         <element name="AddSurgeries" positionX="-18" positionY="99" width="128" height="89"/>
         <element name="FormData" positionX="-18" positionY="135" width="128" height="59"/>
         <element name="HomeBanners" positionX="36" positionY="189" width="128" height="59"/>
         <element name="InventoryList" positionX="45" positionY="198" width="128" height="59"/>
         <element name="SurgeryList" positionX="-9" positionY="108" width="128" height="59"/>
-        <element name="AddStock" positionX="18" positionY="162" width="128" height="89"/>
     </elements>
 </model>

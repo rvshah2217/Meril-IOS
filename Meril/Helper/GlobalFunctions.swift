@@ -308,6 +308,9 @@ struct AddSurgeryInventory {
                 }
             }
         }
+        
+        // Calling ‘notify’ allows us to observe whenever the whole
+           // group was finished using a closure.
         group.notify(queue: .main) {
             NotificationCenter.default.post(name: .stopSyncBtnAnimation, object: nil, userInfo: nil)
             AddSurgeryInventory().fetchInventoryBySyncStatus()
@@ -333,6 +336,9 @@ struct AddSurgeryInventory {
                 }
             }
         }
+        
+        // Calling ‘notify’ allows us to observe whenever the whole
+           // group was finished using a closure.
         stockGroup.notify(queue: .main) {
             //GlobalFunctions.printToConsole(message: "All inventory request completed")
             NotificationCenter.default.post(name: .stopSyncBtnAnimation, object: nil, userInfo: nil)

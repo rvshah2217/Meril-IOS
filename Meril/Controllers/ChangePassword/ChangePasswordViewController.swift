@@ -110,7 +110,9 @@ class ChangePasswordViewController: BaseViewController {
 }
 extension ChangePasswordViewController{
     func callChangePasswordApi(userObj: ChangePasswordRequestModel) {
+        SHOW_CUSTOM_LOADER()
         ChangePasswordServices.changepassword(loginObj: userObj) { isSuccess, errorMessage in
+            HIDE_CUSTOM_LOADER()
             if isSuccess{
                 GlobalFunctions.showToast(controller: self, message: "Password change successfully", seconds: errorDismissTime) {
                     

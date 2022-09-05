@@ -59,7 +59,7 @@ class AddInventoryViewController: BaseViewController {
     var selectedHospitalId: Int?
     var selectedCityId: Int?
     var selectedDistributorId: Int?
-    var selectedSalesPersonId: String?
+    var selectedSalesPersonId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -412,7 +412,7 @@ extension AddInventoryViewController: UITextFieldDelegate {
         }
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
-        self.navigationController?.present(vc, animated: true, completion: nil)
+        self.navigationController?.present(vc, animated: false, completion: nil)
 //        self.present(vc, animated: true, completion: nil)
     }
 }

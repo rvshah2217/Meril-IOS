@@ -26,6 +26,7 @@ class BarCodeListVC: UIViewController {
     
     //MARK:- Custome Method
     func setUI() {
+        self.navigationController?.navigationBar.backItem?.title = ""
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: UIColor.white)
         self.navigationItem.title = "Barcodes"
         viewBg.backgroundColor = ColorConstant.mainThemeColor

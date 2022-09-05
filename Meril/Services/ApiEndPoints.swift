@@ -59,9 +59,9 @@ extension EndPointsItem: EndPointType {
     
     var baseURL: String {
         switch APIManager.networkEnviroment {
-        case .dev: return "https://houseofgames.in/merillife/api/"
-        case .production: return "https://houseofgames.in/merillife/api/"//"http://RunWayCards.com/RWCWebApi/LiveAccount/mobileapi/"
-        case .stage: return "https://houseofgames.in/merillife/api/"//"http://RunWayCards.com/RWCWebApi/LiveAccount/mobileapi/"
+        case .dev: return "https://meril.meritrack.in/meritrack/api/"//"https://houseofgames.in/merillife/api/"
+        case .production: return "https://meril.meritrack.in/meritrack/api/"//"http://RunWayCards.com/RWCWebApi/LiveAccount/mobileapi/"
+        case .stage: return "https://meril.meritrack.in/meritrack/api/"//"http://RunWayCards.com/RWCWebApi/LiveAccount/mobileapi/"
         }
     }
     

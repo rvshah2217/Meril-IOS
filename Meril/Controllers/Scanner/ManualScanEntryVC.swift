@@ -37,7 +37,7 @@ class ManualScanEntryVC: UIViewController {
     var productArr = [ProductBarCode]()
     var selectedProductCode: String?
     var mandatoryFieldType: Int = 0//0: None, 1: Batch, 2: Serial(Product code and expiry date are always mendatory)
-    var salesPersonId: String?
+    var salesPersonId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -198,14 +198,16 @@ extension ManualScanEntryVC {
 extension ManualScanEntryVC: UITextFieldDelegate {
     
     public func  textFieldDidBeginEditing(_ textField: UITextField) {
+        self.view.resignFirstResponder()
+        self.view.endEditing(true)
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "DropDownMenuVC") as! DropDownMenuVC
         vc.menuType = 88
         vc.productArr = productArr
         vc.delegate = self
         vc.titleStr = "Select Product Barcode"
-        vc.modalPresentationStyle = .overFullScreen
+        vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
-        self.navigationController?.present(vc, animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
     }
 }
 

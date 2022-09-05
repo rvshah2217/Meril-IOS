@@ -60,7 +60,8 @@ class InventoryListVC: UIViewController {
     
     //MARK:- Custome Method
     func setUI() {
-        self.navigationItem.title = "Physical Inventory Report"
+//        self.navigationItem.title = "Physical Inventory Report"        
+
         txtSearch.delegate = self
         txtSearch.returnKeyType = .done
 

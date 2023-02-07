@@ -30,7 +30,7 @@ class AddStockToCoreData {
             
             try managedContext.save()
         } catch {
-            //GlobalFunctions.printToConsole(message: "Unable to save stock data: \(error.localizedDescription)")
+            GlobalFunctions.printToConsole(message: "Unable to save stock data: \(error.localizedDescription)")
         }
     }
     
@@ -42,7 +42,6 @@ class AddStockToCoreData {
             let surgeryTypesData = try managedContext.fetch(fetchRequest) as? [AddStock]
             var addedSurgeryArr: [SurgeryData] = []
             for surgery in surgeryTypesData ?? [] {
-                //GlobalFunctions.printToConsole(message: "stock obj: \(surgery.isEqual(AddSurgeries.self))")
                 
                 let jsonData = (surgery.addStockStr ?? "").data(using: .utf8)!
                 var surgeryObj = try JSONDecoder().decode(AddSurgeryRequestModel.self, from: jsonData)
@@ -64,7 +63,7 @@ class AddStockToCoreData {
             }
             return addedSurgeryArr
         } catch {
-            //GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
+            GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
         }
         return nil
     }
@@ -78,7 +77,7 @@ class AddStockToCoreData {
             sergeryData?.isSyncedWithServer = true
             try managedContext.save()
         } catch {
-            //GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
+            GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
         }
     }
     
@@ -90,10 +89,10 @@ class AddStockToCoreData {
             if let sergeryData = try managedContext.fetch(fetchRequest).first as? AddStock {
                 managedContext.delete(sergeryData)
                 try managedContext.save()
-                //GlobalFunctions.printToConsole(message: "Deleted Surgery id is: \(stockId)")
+                GlobalFunctions.printToConsole(message: "Deleted Surgery id is: \(stockId)")
             }
         } catch {
-            //GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
+            GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
         }
     }
 }

@@ -15,7 +15,6 @@ class AddSurgeryToCoreData {
     let managedContext = appDelegate.persistentContainer.viewContext
     
     func saveSurgeryData(surgeryData: AddSurgeryRequestModel) {
-//    func saveSurgeryData(surgeryData: SurgeryData) {
         do {
             let encodedData = try JSONEncoder().encode(surgeryData)
             let jsonStr = String(data: encodedData, encoding: String.Encoding.utf8)
@@ -30,7 +29,7 @@ class AddSurgeryToCoreData {
             
             try managedContext.save()
         } catch {
-            //GlobalFunctions.printToConsole(message: "Unable to save FormData: \(error.localizedDescription)")
+            GlobalFunctions.printToConsole(message: "Unable to save FormData: \(error.localizedDescription)")
         }
     }
     
@@ -45,23 +44,23 @@ class AddSurgeryToCoreData {
                 var surgeryObj = try JSONDecoder().decode(AddSurgeryRequestModel.self, from: jsonData)
                 
                 //                Convert barcode array
-                    let barcodeJsonData = (surgeryObj.barcodes ?? "").data(using: .utf8)!
-                    let barcodeObj = try JSONDecoder().decode([BarCodeModel].self, from: barcodeJsonData)
-                    surgeryObj.coreDataBarcodes = barcodeObj
+                let barcodeJsonData = (surgeryObj.barcodes ?? "").data(using: .utf8)!
+                let barcodeObj = try JSONDecoder().decode([BarCodeModel].self, from: barcodeJsonData)
+                surgeryObj.coreDataBarcodes = barcodeObj
                 
-//                Convert manual entry array
+                //                Convert manual entry array
                 let manualBarcodeJsonData = (surgeryObj.manualEntry ?? "").data(using: .utf8)!
                 let manualBarcodeObj = try JSONDecoder().decode([ManualEntryModel].self, from: manualBarcodeJsonData)
                 surgeryObj.manualEntryCodes = manualBarcodeObj
-
-//                Use Surgery data Object for easy handling on UI
+                
+                //                Use Surgery data Object for easy handling on UI
                 var surgeryDataObj = SurgeryData(addSurgeryTempObj: surgeryObj)
                 surgeryDataObj.surgery_id = surgeryObj.surgeryId
-                    addedSurgeryArr.append(surgeryDataObj)
+                addedSurgeryArr.append(surgeryDataObj)
             }
             return addedSurgeryArr
         } catch {
-            //GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
+            GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
         }
         return nil
     }
@@ -74,7 +73,7 @@ class AddSurgeryToCoreData {
             sergeryData?.isSyncedWithServer = true
             try managedContext.save()
         } catch {
-            //GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
+            GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
         }
     }
     
@@ -86,9 +85,8 @@ class AddSurgeryToCoreData {
                 managedContext.delete(sergeryData)
             }
             try managedContext.save()
-            //GlobalFunctions.printToConsole(message: "Deleted Surgery id is: \(surgeryId)")
         } catch {
-            //GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
+            GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
         }
     }
 }

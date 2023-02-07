@@ -12,20 +12,6 @@ import CoreData
 
 class LoginVC: UIViewController {
     
-    //    @IBOutlet weak var userTypeTxt: DropDown! {
-    //        didSet {
-    //            self.userTypeTxt.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-    //            self.userTypeTxt.setIcon(imgName: "ic_star")//addImageViewToLeft(imgName: "ic_user")
-    //        }
-    //    }
-    //
-    //    @IBOutlet weak var departmentTypeTxt: DropDown! {
-    //        didSet {
-    //            self.departmentTypeTxt.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-    //            self.departmentTypeTxt.setIcon(imgName: "ic_star")//addImageViewToLeft(imgName: "ic_user")
-    //        }
-    //    }
-    
     @IBOutlet weak var userNameTxt: UITextField! {
         didSet {
             self.userNameTxt.setViewCorner(radius: self.userNameTxt.frame.height/2)
@@ -45,8 +31,6 @@ class LoginVC: UIViewController {
     }
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var forgotPasswordBtn: UIButton!
-    //    var userTypesArr: [UserTypesModel] = []
-    //    var selectedUserTypeId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,13 +61,11 @@ extension LoginVC {
         let userNameStr = userNameTxt.text ?? ""
         let passwordStr = passwordTxt.text ?? ""
         
-//        if !Validation.sharedInstance.validateUserName(testStr: userNameStr) {
         if !Validation.sharedInstance.checkLength(testStr: passwordStr) {
             GlobalFunctions.showToast(controller: self, message: "Please enter username", seconds: errorDismissTime, completionHandler: {})
             return
         }
         
-        //        if !Validation.sharedInstance.validatePassword(testStr: passwordStr) {
         if !Validation.sharedInstance.checkLength(testStr: passwordStr) {
             GlobalFunctions.showToast(controller: self, message: "Please enter password", seconds: errorDismissTime, completionHandler: {})
             return
@@ -110,12 +92,13 @@ extension LoginVC {
             
             //            store user data into UserDefaults
             UserSessionManager.shared.userDetail = response.loginUserData?.user_data
-
+            
             let isDefaultPassword = (response.loginUserData?.is_default_password == 1) ? true : false
             UserDefaults.standard.set(isDefaultPassword, forKey: "isDefaultPassword")
             UserDefaults.standard.set(response.loginUserData?.token, forKey: "headerToken")
             UserDefaults.standard.set(response.loginUserData?.user_type_id, forKey: "userTypeId")
-//            save loggedin user's surgeries and stocks in local database
+            
+            //            save loggedin user's surgeries and stocks in local database
             SurgeryList_CoreData.sharedInstance.saveSurgeriesToCoreData(schemeData: response.loginUserData?.surgeries ?? [], isForceSave: true)
             StockList_CoreData.sharedInstance.saveStocksToCoreData(schemeData: response.loginUserData?.stocks ?? [], isForceSave: true)
             
@@ -123,7 +106,7 @@ extension LoginVC {
         }
     }
     
-//    If is_default_password is true then redirect to Change password otherwise redirect to the Home screen
+    //    If is_default_password is true then redirect to Change password otherwise redirect to the Home screen
     func redirectToVC(isDefaultPassword: Int) {
         //           Redirect to home screen
         GlobalFunctions.showToast(controller: self, message: "Login successfully", seconds: successDismissTime) {
@@ -132,8 +115,8 @@ extension LoginVC {
             //                If usertype == 2(hospital) and distributor or salesperson id is nil then allow user to select default doctor, distributor and sales person
             let userTypeId = UserDefaults.standard.string(forKey: "userTypeId")
             let userData = UserSessionManager.shared.userDetail
-//            if  !UserDefaults.standard.bool(forKey: "isFirstTimeLogInDone") {
-           if (isDefaultPassword == 1) {
+            
+            if (isDefaultPassword == 1) {
                 //                    Redirect to change password
                 let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
                 vc.isFromLogin = true

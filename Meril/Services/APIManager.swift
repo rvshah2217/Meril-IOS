@@ -39,7 +39,6 @@ class APIManager {
         GlobalFunctions.printToConsole(message: "api url:- \(type.url)")
         GlobalFunctions.printToConsole(message: "auth token:- \(type.headers)")
         GlobalFunctions.printToConsole(message: "parameters:- \(params)")
-//        //GlobalFunctions.printToConsole(message: "httpMethod:- \(type.httpMethod)")
 
         self.sessionManager.request(type.url,
                                     method: type.httpMethod,
@@ -49,14 +48,12 @@ class APIManager {
             switch json.result {
             case .success(_):
                 if let jsonData = json.data {
-                    //GlobalFunctions.printToConsole(message: "Api response for \(type.url):- \(json.result)")
                     let decoder = JSONDecoder()
                     let result = try! decoder.decode(T.self, from: jsonData)
                     completionHandler(result, nil)
                 }
                 break
             case .failure(let error):
-                //GlobalFunctions.printToConsole(message: "api response error:- \(error.localizedDescription)")
                 completionHandler(nil, self.parseApiError(data: json.data))
                 break
             }

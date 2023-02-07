@@ -10,15 +10,12 @@ import UIKit
 import ChameleonFramework
 
 struct GlobalFunctions {
-        
+    
     static func showToast(controller: UIViewController, message : String, seconds: Double, completionHandler: (() -> ())? = nil) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .actionSheet)
-//        alert.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)        
-//        alert.view.alpha = 0.6
         alert.view.layer.cornerRadius = 15
-
+        
         controller.present(alert, animated: true)
-
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
             alert.dismiss(animated: true) {
                 completionHandler?()
@@ -37,7 +34,7 @@ struct GlobalFunctions {
     
     static func setRootNavigationController(currentVC: UIViewController) -> UINavigationController {
         let navController = UINavigationController(rootViewController: currentVC)
-    
+        
         navController.navigationBar.tintColor = .white
         configureStatusNavBar(navController: navController, bgColor: .white, textColor: ColorConstant.mainThemeColor)
         return navController
@@ -65,16 +62,16 @@ struct GlobalFunctions {
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .medium),
                 NSAttributedString.Key.foregroundColor: textColor
             ]
-
         }
     }
     
     static func printToConsole(message : String) {
-        #if DEBUG
-            print(message)
-        #endif
+#if DEBUG
+        print(message)
+#endif
     }
 }
+
 let NAVIGATION_BAR_HEIGHT:CGFloat = 64
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
@@ -91,7 +88,6 @@ func IS_IPAD_DEVICE()->Bool{
     let deviceType = UIDevice.current.userInterfaceIdiom == .pad
     return deviceType
 }
-
 
 //iPhone 4 OR 4S
 func IS_IPHONE_4_OR_4S()->Bool{
@@ -135,6 +131,7 @@ func IS_IPHONE_6P_OR_6SP()->Bool{
     }
     return device
 }
+
 //iPhone X
 func IS_IPHONE_X()->Bool{
     let SCREEN_HEIGHT_TO_CHECK_AGAINST:CGFloat = 812
@@ -156,6 +153,7 @@ func IS_IPHONE_XR()->Bool{
     }
     return device
 }
+
 //iPhone Pro Max
 func IS_IPHONE_PRO_MAX()->Bool{
     let SCREEN_HEIGHT_TO_CHECK_AGAINST:CGFloat = 896
@@ -166,6 +164,7 @@ func IS_IPHONE_PRO_MAX()->Bool{
     }
     return device
 }
+
 func setLeftButton(_ textField: UITextField, image: UIImage) {
     let imageView = UIImageView(frame: CGRect(x: CGFloat(10), y: CGFloat(0), width: CGFloat(30), height: CGFloat(30)))
     let view = UIView(frame: CGRect(x: 10, y: 0, width: 45, height: 30))
@@ -176,7 +175,7 @@ func setLeftButton(_ textField: UITextField, image: UIImage) {
     view.addSubview(imageView)
     textField.leftView = view
 }
-   
+
 func setRightButton(_ textField: UITextField, image: UIImage) {
     let imageView = UIImageView(frame: CGRect(x: CGFloat(-10), y: CGFloat(0), width: CGFloat(15), height: CGFloat(9)))
     let view = UIView(frame: CGRect(x: -10, y: 0, width: 15, height: 9))
@@ -191,18 +190,14 @@ func setRightButton(_ textField: UITextField, image: UIImage) {
 
 func setBlueArrowRightButton(_ textField: UITextField, imageView: UIImageView) {
     imageView.frame = CGRect(x: CGFloat(-10), y: CGFloat(0), width: CGFloat(15), height: CGFloat(9))
-//    let imageView = UIImageView(frame: CGRect(x: CGFloat(-10), y: CGFloat(0), width: CGFloat(15), height: CGFloat(9)))
     let view = UIView(frame: CGRect(x: -10, y: 0, width: 15, height: 9))
     view.contentMode = .center
-//    imageView.image = image
     imageView.contentMode = .center
     textField.rightViewMode = .always
     view.addSubview(imageView)
     textField.rightView = view
     textField.rightView?.isUserInteractionEnabled = false
 }
-
-
 
 func convertDateToString() -> String {
     let date = Date()
@@ -232,9 +227,9 @@ func convertStringToDateStr(str: String?) -> String? {
 class UserSessionManager
 {
     // MARK:- Properties
-
+    
     public static var shared = UserSessionManager()
-
+    
     var manualEntryData: [ManualEntryModel]
     {
         get
@@ -274,7 +269,7 @@ class UserSessionManager
                 } catch {
                     //GlobalFunctions.printToConsole(message: error.localizedDescription)
                 }
-        }
+            }
             return nil
         }
         set {
@@ -283,24 +278,26 @@ class UserSessionManager
             UserDefaults.standard.set(convertedString, forKey: "userDetails")
         }
     }
-
+    
     // MARK:- Init
-
+    
     private init(){}
 }
 
 struct AddSurgeryInventory {
+    
     func fetchSurgeryBySyncStatus() {
         let surgeryArr = AddSurgeryToCoreData.sharedInstance.fetchSurgeries() ?? []
-        //GlobalFunctions.printToConsole(message: "surgery arr for sync: \(surgeryArr.count) ")
+        GlobalFunctions.printToConsole(message: "surgery arr for sync: \(surgeryArr.count) ")
         let group = DispatchGroup()
         for surgery in surgeryArr {
             if let addSurgeryObj = surgery.addSurgeryTempObj {
+                GlobalFunctions.printToConsole(message: "surgery obj to send: \(addSurgeryObj.dict)")
                 group.enter()
                 SurgeryServices.addSurgery(surgeryObj: addSurgeryObj) { response, error in
                     group.leave()
                     guard let _ = error else {
-        //                delete record from core data if surgery sync successfully
+                        //                delete record from core data if surgery sync successfully
                         AddSurgeryToCoreData.sharedInstance.deleteSergeryBySurgeryId(surgeryId: addSurgeryObj.surgeryId!)
                         NotificationCenter.default.post(name: .surgeryAdded, object: nil, userInfo: ["surgeryId": addSurgeryObj.surgeryId!])
                         return
@@ -310,20 +307,20 @@ struct AddSurgeryInventory {
         }
         
         // Calling ‘notify’ allows us to observe whenever the whole
-           // group was finished using a closure.
+        // group was finished using a closure.
         group.notify(queue: .main) {
             NotificationCenter.default.post(name: .stopSyncBtnAnimation, object: nil, userInfo: nil)
             AddSurgeryInventory().fetchInventoryBySyncStatus()
-            //GlobalFunctions.printToConsole(message: "All surgery request completed")
         }
     }
     
     func fetchInventoryBySyncStatus() {
         let stockArr = AddStockToCoreData.sharedInstance.fetchStocks() ?? []
-        //GlobalFunctions.printToConsole(message: "stock arr for sync: \(stockArr.count) ")
+        GlobalFunctions.printToConsole(message: "stock arr for sync: \(stockArr.count) ")
         let stockGroup = DispatchGroup()
         for stock in stockArr {
             if let addStockObj = stock.addSurgeryTempObj {
+                GlobalFunctions.printToConsole(message: "Inventory obj to send: \(addStockObj.dict)")
                 stockGroup.enter()
                 SurgeryServices.addInventoryStock(surgeryObj: addStockObj) { response, error in
                     stockGroup.leave()
@@ -338,9 +335,8 @@ struct AddSurgeryInventory {
         }
         
         // Calling ‘notify’ allows us to observe whenever the whole
-           // group was finished using a closure.
+        // group was finished using a closure.
         stockGroup.notify(queue: .main) {
-            //GlobalFunctions.printToConsole(message: "All inventory request completed")
             NotificationCenter.default.post(name: .stopSyncBtnAnimation, object: nil, userInfo: nil)
         }
     }
@@ -350,9 +346,11 @@ struct CommonFunctions {
     
     static func getAllFormData(completionHandler: @escaping (SurgeryInventoryModel?) -> ()) {
         SurgeryServices.getAllFormData { response, error in
+            
             guard let responseData = response else {
                 return
             }
+            
             if let formDataObj = responseData.suregeryInventoryData {
                 //                Save response of Form data to core data
                 DispatchQueue.main.async {

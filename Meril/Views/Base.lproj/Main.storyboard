@@ -668,6 +668,7 @@
                         <outlet property="displayInventoriesBtn" destination="7xO-XT-Edz" id="zbJ-fG-FdS"/>
                         <outlet property="displaySurgeriesBtn" destination="ML3-HM-IAQ" id="BBa-OY-cId"/>
                         <outlet property="imageSlidesView" destination="Ojn-RE-gMX" id="YkU-cy-89R"/>
+                        <outlet property="scrollView" destination="V7p-32-N0d" id="S3Q-SG-BOB"/>
                         <outlet property="syncDataBtn" destination="6ud-LA-Kbe" id="Msb-kC-hN2"/>
                     </connections>
                 </viewController>
@@ -962,7 +963,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7sD-Q1-gH4">
-                                <rect key="frame" x="25" y="139.5" width="364" height="627"/>
+                                <rect key="frame" x="25" y="162" width="364" height="582"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3oy-67-J14">
                                         <rect key="frame" x="10" y="115" width="344" height="437"/>
@@ -978,30 +979,31 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSw-u7-CzN">
+                                                <rect key="frame" x="319" y="5" width="40" height="40"/>
+                                                <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="1ug-xt-iKj"/>
+                                                    <constraint firstAttribute="width" constant="40" id="W6j-3k-hbD"/>
+                                                </constraints>
+                                                <state key="normal" image="ic_cancel_white">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelBtnClicked:" destination="Dzr-nJ-09e" eventType="touchUpInside" id="p2S-yV-kGR"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.270588249" green="0.47058826679999999" blue="0.74117654560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="y5h-2n-ic0" firstAttribute="centerY" secondItem="5Ay-Ib-1YK" secondAttribute="centerY" id="8Zx-GR-mGG"/>
                                             <constraint firstItem="y5h-2n-ic0" firstAttribute="leading" secondItem="5Ay-Ib-1YK" secondAttribute="leading" constant="20" id="Bmq-48-vH6"/>
                                             <constraint firstAttribute="trailing" secondItem="y5h-2n-ic0" secondAttribute="trailing" constant="20" id="MGp-qU-crJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="YSw-u7-CzN" secondAttribute="trailing" constant="5" id="OaE-Cd-JTf"/>
                                             <constraint firstAttribute="height" constant="50" id="TOJ-VW-P4h"/>
+                                            <constraint firstItem="YSw-u7-CzN" firstAttribute="centerY" secondItem="y5h-2n-ic0" secondAttribute="centerY" id="hby-lt-e6A"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSw-u7-CzN">
-                                        <rect key="frame" x="102" y="562" width="160" height="45"/>
-                                        <color key="backgroundColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="OsJ-0g-Eyg"/>
-                                            <constraint firstAttribute="height" constant="45" id="xvm-A4-sTI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="15"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="cancelBtnClicked:" destination="Dzr-nJ-09e" eventType="touchUpInside" id="p2S-yV-kGR"/>
-                                        </connections>
-                                    </button>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jtG-D9-GZj">
                                         <rect key="frame" x="10" y="60" width="344" height="50"/>
                                         <constraints>
@@ -1018,14 +1020,12 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="jtG-D9-GZj" firstAttribute="leading" secondItem="7sD-Q1-gH4" secondAttribute="leading" constant="10" id="1YJ-p2-LdZ"/>
-                                    <constraint firstItem="YSw-u7-CzN" firstAttribute="top" secondItem="3oy-67-J14" secondAttribute="bottom" constant="10" id="5wy-zL-bB4"/>
                                     <constraint firstItem="5Ay-Ib-1YK" firstAttribute="leading" secondItem="7sD-Q1-gH4" secondAttribute="leading" id="Aov-M4-oYp"/>
                                     <constraint firstAttribute="trailing" secondItem="3oy-67-J14" secondAttribute="trailing" constant="10" id="Lvm-oU-9v3"/>
                                     <constraint firstAttribute="trailing" secondItem="jtG-D9-GZj" secondAttribute="trailing" constant="10" id="Twq-Ro-E4w"/>
                                     <constraint firstItem="jtG-D9-GZj" firstAttribute="top" secondItem="5Ay-Ib-1YK" secondAttribute="bottom" constant="10" id="YqE-CT-wnp"/>
-                                    <constraint firstItem="YSw-u7-CzN" firstAttribute="centerX" secondItem="7sD-Q1-gH4" secondAttribute="centerX" id="ZHc-Go-ztw"/>
+                                    <constraint firstAttribute="bottom" secondItem="3oy-67-J14" secondAttribute="bottom" constant="30" id="gTM-wd-KKh"/>
                                     <constraint firstItem="3oy-67-J14" firstAttribute="leading" secondItem="7sD-Q1-gH4" secondAttribute="leading" constant="10" id="nIy-yp-Nsz"/>
-                                    <constraint firstAttribute="bottom" secondItem="YSw-u7-CzN" secondAttribute="bottom" constant="20" id="pCf-52-4KQ"/>
                                     <constraint firstAttribute="trailing" secondItem="5Ay-Ib-1YK" secondAttribute="trailing" id="vdL-WQ-azG"/>
                                     <constraint firstItem="3oy-67-J14" firstAttribute="top" secondItem="jtG-D9-GZj" secondAttribute="bottom" constant="5" id="wsX-ea-bKs"/>
                                     <constraint firstItem="5Ay-Ib-1YK" firstAttribute="top" secondItem="7sD-Q1-gH4" secondAttribute="top" id="zAT-hu-a2s"/>
@@ -1037,7 +1037,7 @@
                         <constraints>
                             <constraint firstItem="aLK-2r-8gM" firstAttribute="trailing" secondItem="7sD-Q1-gH4" secondAttribute="trailing" constant="25" id="GtX-3c-NEg"/>
                             <constraint firstItem="7sD-Q1-gH4" firstAttribute="leading" secondItem="aLK-2r-8gM" secondAttribute="leading" constant="25" id="UFh-6Q-X6J"/>
-                            <constraint firstItem="7sD-Q1-gH4" firstAttribute="height" secondItem="B1H-qA-EPf" secondAttribute="height" multiplier="0.7" id="Zo0-AK-QfC"/>
+                            <constraint firstItem="7sD-Q1-gH4" firstAttribute="height" secondItem="B1H-qA-EPf" secondAttribute="height" multiplier="0.65" id="Zo0-AK-QfC"/>
                             <constraint firstItem="7sD-Q1-gH4" firstAttribute="centerY" secondItem="aLK-2r-8gM" secondAttribute="centerY" id="deN-fz-U3m"/>
                         </constraints>
                     </view>
@@ -1186,6 +1186,7 @@
     <resources>
         <image name="ic_addPhysicalInventory" width="2084" height="2084"/>
         <image name="ic_addSurgery" width="11251" height="8334"/>
+        <image name="ic_cancel_white" width="24" height="24"/>
         <image name="ic_close" width="24" height="24"/>
         <image name="ic_launchIcon" width="127" height="55"/>
         <image name="ic_listPhysicalInventory" width="2084" height="2084"/>

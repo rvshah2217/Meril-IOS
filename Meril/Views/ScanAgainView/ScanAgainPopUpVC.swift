@@ -45,9 +45,7 @@ class ScanAgainPopUpVC: UIViewController {
         self.willMove(toParent: nil)
         self.view.removeFromSuperview()
         self.removeFromParent()
-//        if scanAgainBtn.title(for: .normal) != "Cancel" {
-            self.delegate?.scanAgain()
-//        }
+        self.delegate?.scanAgain()
     }
     
     @IBAction func submitBtnClicked(_ sender: Any) {

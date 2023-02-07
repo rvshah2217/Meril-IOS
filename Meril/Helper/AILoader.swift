@@ -47,7 +47,6 @@ public func HIDE_CUSTOM_LOADER() {
 }
 
 //MARK:- ShowLoaderOnView
-
 public func ShowLoaderOnView() {
     startActivityAnimating(size: CGSize(width:44, height:44), message: nil , color: ColorConstant.mainThemeColor, padding: 2,isFromOnView: true)
 }
@@ -64,12 +63,6 @@ private func startActivityAnimating(size: CGSize? = nil, message: String? = nil 
     
     activityContainer.isUserInteractionEnabled = false
     let actualSize = size ?? CGSize(width:56,height:56)
-    
-    //    let activityIndicatorView = NVActivityIndicatorView(
-    //        frame: CGRect(x:0, y:0, width:actualSize.width, height:actualSize.height),
-    //        type: type!,
-    //        color: color!,
-    //        padding: padding!)
     
     indicator = MaterialLoadingIndicator(frame: CGRect(x:0, y:0, width: 56, height: 56))
     indicator.indicatorColor = [ColorConstant.mainThemeColor.cgColor, UIColor.yellow.cgColor, UIColor.red.cgColor]
@@ -89,7 +82,6 @@ private func startActivityAnimating(size: CGSize? = nil, message: String? = nil 
                     indicator.center.y + actualSize.height)
             label.textAlignment = .center
             label.text = message
-//            label.font = UIFont.appFont_Poppins_Regular_WithSize(16.0)
             label.textColor = .white
             activityContainer.addSubview(label)
         }

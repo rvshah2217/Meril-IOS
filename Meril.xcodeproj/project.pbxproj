@@ -64,9 +64,7 @@
 		88CBA33927ECCDE2005C22FE /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA32D27ECCDE2005C22FE /* PrivacyPolicyViewController.swift */; };
 		88CBA33A27ECCDE2005C22FE /* AddSurgerayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA32F27ECCDE2005C22FE /* AddSurgerayViewController.xib */; };
 		88CBA33B27ECCDE2005C22FE /* AddSurgerayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA33027ECCDE2005C22FE /* AddSurgerayViewController.swift */; };
-		88CBA33C27ECCDE2005C22FE /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA33227ECCDE2005C22FE /* EditProfileViewController.swift */; };
 		88CBA33D27ECCDE2005C22FE /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA33327ECCDE2005C22FE /* ProfileViewController.xib */; };
-		88CBA33E27ECCDE2005C22FE /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA33427ECCDE2005C22FE /* EditProfileViewController.xib */; };
 		88CBA33F27ECCDE2005C22FE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA33527ECCDE2005C22FE /* ProfileViewController.swift */; };
 		88CBA34027ECCDE2005C22FE /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CBA33627ECCDE2005C22FE /* SettingsViewController.xib */; };
 		88CBA34127ECCDE2005C22FE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBA33727ECCDE2005C22FE /* SettingsViewController.swift */; };
@@ -142,9 +140,7 @@
 		88CBA32D27ECCDE2005C22FE /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		88CBA32F27ECCDE2005C22FE /* AddSurgerayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSurgerayViewController.xib; sourceTree = "<group>"; };
 		88CBA33027ECCDE2005C22FE /* AddSurgerayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSurgerayViewController.swift; sourceTree = "<group>"; };
-		88CBA33227ECCDE2005C22FE /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		88CBA33327ECCDE2005C22FE /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
-		88CBA33427ECCDE2005C22FE /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		88CBA33527ECCDE2005C22FE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		88CBA33627ECCDE2005C22FE /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		88CBA33727ECCDE2005C22FE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -425,9 +421,7 @@
 		88CBA33127ECCDE2005C22FE /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				88CBA33227ECCDE2005C22FE /* EditProfileViewController.swift */,
 				88CBA33327ECCDE2005C22FE /* ProfileViewController.xib */,
-				88CBA33427ECCDE2005C22FE /* EditProfileViewController.xib */,
 				88CBA33527ECCDE2005C22FE /* ProfileViewController.swift */,
 				88CBA33627ECCDE2005C22FE /* SettingsViewController.xib */,
 				88CBA33727ECCDE2005C22FE /* SettingsViewController.swift */,
@@ -546,7 +540,6 @@
 				88CBA34D27ECDC49005C22FE /* SurgerayListViewController.xib in Resources */,
 				83D14C3C27FC3143008A1D80 /* SyncCell.xib in Resources */,
 				83DF1A14285B20BD008B4B01 /* GoogleService-Info.plist in Resources */,
-				88CBA33E27ECCDE2005C22FE /* EditProfileViewController.xib in Resources */,
 				88CBA35227ECDF74005C22FE /* SurgeryListTableViewCell.xib in Resources */,
 				887C7A3727EF193000A5A0FB /* ContactUsViewController.xib in Resources */,
 				8313DF6B2803ED1200DB0EF6 /* BarCodeListVC.xib in Resources */,
@@ -672,7 +665,6 @@
 				887C7A4627EF4A9D00A5A0FB /* ContactUsModel.swift in Sources */,
 				837192D727EA581F00BE04A1 /* Validation.swift in Sources */,
 				837192CE27EA026700BE04A1 /* LoginServices.swift in Sources */,
-				88CBA33C27ECCDE2005C22FE /* EditProfileViewController.swift in Sources */,
 				83D14C4227FCC632008A1D80 /* StockList_CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -819,12 +811,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 255DE97B9CBEA6D5EB3BEDAD /* Pods-Meril.debug.xcconfig */;
 			buildSettings = {
-				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Meril/Meril.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 646VCF93GY;
@@ -846,7 +838,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meril.meritrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = meriTrack_dev_prov;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -857,12 +849,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 59D932FF9AB499D412011A07 /* Pods-Meril.release.xcconfig */;
 			buildSettings = {
-				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Meril/Meril.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = 646VCF93GY;
 				EXCLUDED_ARCHS = "";
@@ -883,7 +875,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meril.meritrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = meritrack_dist;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

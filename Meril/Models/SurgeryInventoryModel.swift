@@ -70,7 +70,6 @@ struct SurgeryInventoryModel : Codable {
 
 struct Schemes : Codable {
     let id : Int?
-    let zoho_id : String?
     let scheme_name : String?
     let created_at : String?
     let updated_at : String?
@@ -82,7 +81,6 @@ struct Schemes : Codable {
     enum CodingKeys: String, CodingKey {
         
         case id = "id"
-        case zoho_id = "zoho_id"
         case scheme_name = "scheme_name"
         case created_at = "created_at"
         case updated_at = "updated_at"
@@ -94,7 +92,6 @@ struct Schemes : Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
-        zoho_id = try values.decodeIfPresent(String.self, forKey: .zoho_id)
         scheme_name = try values.decodeIfPresent(String.self, forKey: .scheme_name)
         created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
         updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
@@ -178,7 +175,6 @@ struct SalesPerson : Codable {
 struct Cities : Codable {
     
     let id : Int?
-    let zoho_id : Int?
     let country_id : String?
     let state_id : String?
     let name : String?
@@ -189,7 +185,6 @@ struct Cities : Codable {
     enum CodingKeys: String, CodingKey {
         
         case id = "id"
-        case zoho_id = "zoho_id"
         case country_id = "country_id"
         case state_id = "state_id"
         case name = "name"
@@ -201,7 +196,6 @@ struct Cities : Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
-        zoho_id = try values.decodeIfPresent(Int.self, forKey: .zoho_id)
         country_id = try values.decodeIfPresent(String.self, forKey: .country_id)
         state_id = try values.decodeIfPresent(String.self, forKey: .state_id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
@@ -209,7 +203,6 @@ struct Cities : Codable {
         updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
         hospitals = try values.decodeIfPresent([Hospitals].self, forKey: .hospitals)
     }
-    
 }
 
 struct AddSurgeryRequestModel : Codable {
@@ -221,13 +214,12 @@ struct AddSurgeryRequestModel : Codable {
     
     var schemeId : Int?
     var surgeryId: String?
-    //    var udtId: Int?
     var patientName : String?
     var patientMobile: String?
     var age: Int?
     
     var ipCode: String?
-    var barcodes: String?//[BarCodeModel]?
+    var barcodes: String?
     var manualEntry: String?
     var salesPersonId: Int?
     var stockId: String?
@@ -238,17 +230,16 @@ struct AddSurgeryRequestModel : Codable {
     var hospitalName: String?
     var salesPersonName: String?
     var doctorName: String?
-
+    
     init(hospitalId : Int?,  distributorId: Int?, salesPersonId: Int?, stockId: String?, barcodes: String? = nil, cityId: Int?) {
         self.hospitalId = hospitalId
-        //        self.doctorId = doctorId
         self.distributorId = distributorId
         self.salesPersonId = salesPersonId
         self.stockId = stockId
         self.barcodes = barcodes
         self.cityId = cityId
     }
-    //
+    
     init(cityId : Int? = nil, hospitalId : Int?,  distributorId: Int?, doctorId: Int?, surgeryId: String? = nil, schemeId : Int? = nil, patientName : String? = nil, patientMobile: String? = nil, age: Int? = nil, ipCode: String? = nil, barcodes: String? = nil, salesPersonId: Int? = nil, stockId: String? = nil, gender: String? = nil, DeploymentDate: String? = nil) {
         self.cityId = cityId
         self.hospitalId = hospitalId
@@ -256,7 +247,6 @@ struct AddSurgeryRequestModel : Codable {
         self.distributorId = distributorId
         self.surgeryId = surgeryId
         self.schemeId = schemeId
-        //        self.udtId = udtId
         self.patientMobile = patientMobile
         self.age = age
         self.ipCode = ipCode
@@ -297,7 +287,6 @@ struct SurgeryListResponseModel : Codable {
 
 struct SurgeryData : Codable {
     var id : Int?
-    var zoho_id : String?
     var surgery_id : String?
     var user_id : Int?
     var unique_id : String?
@@ -319,7 +308,7 @@ struct SurgeryData : Codable {
     var updated_at : String?
     var doctor_id : Int?
     var sales_person_id: Int?
-    var scans : [Scans]?//? = []
+    var scans : [Scans]?
     var stock_id: Int?
     var hospital: Hospitals?
     var doctor: Hospitals?
@@ -334,7 +323,6 @@ struct SurgeryData : Codable {
     enum CodingKeys: String, CodingKey {
         
         case id = "id"
-        case zoho_id = "zoho_id"
         case surgery_id = "surgery_id"
         case user_id = "user_id"
         case unique_id = "unique_id"
@@ -368,7 +356,6 @@ struct SurgeryData : Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
-        zoho_id = try values.decodeIfPresent(String.self, forKey: .zoho_id)
         surgery_id = try values.decodeIfPresent(String.self, forKey: .surgery_id)
         user_id = try values.decodeIfPresent(Int.self, forKey: .user_id)
         unique_id = try values.decodeIfPresent(String.self, forKey: .unique_id)
@@ -386,12 +373,10 @@ struct SurgeryData : Codable {
         company_id = try values.decodeIfPresent(Int.self, forKey: .company_id)
         manager_id = try values.decodeIfPresent(Int.self, forKey: .manager_id)
         status = try values.decodeIfPresent(String.self, forKey: .status)
-        //        if appDelegate.reachability.connection == .unavailable {
-        //            created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
-        //        } else {
+        
         let currentDate: String? = try values.decodeIfPresent(String.self, forKey: .created_at)
         created_at = (convertStringToDateStr(str: currentDate) == nil) ? currentDate : convertStringToDateStr(str: currentDate)
-        //        }
+        
         updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
         doctor_id = try values.decodeIfPresent(Int.self, forKey: .doctor_id)
         scans = try values.decodeIfPresent([Scans].self, forKey: .scans) ?? []
@@ -400,7 +385,6 @@ struct SurgeryData : Codable {
         hospital = try values.decodeIfPresent(Hospitals.self, forKey: .hospital)
         doctor = try values.decodeIfPresent(Hospitals.self, forKey: .doctor)
         sales_person = try values.decodeIfPresent(Hospitals.self, forKey: .sales_person)
-        //        addSurgeryTempObj = try values.decodeIfPresent(AddSurgeryRequestModel.self, forKey: .addSurgeryTempObj)
     }
 }
 
@@ -430,10 +414,6 @@ struct Scans : Codable {
         self.status = status
     }
     
-//    required init() {
-//
-//    }
-    
     enum CodingKeys: String, CodingKey {
         
         case id = "id"
@@ -457,7 +437,6 @@ struct Scans : Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
-        zoho_id = try values.decodeIfPresent(String.self, forKey: .zoho_id)
         surgery_id = try values.decodeIfPresent(String.self, forKey: .surgery_id)
         stock_id = try values.decodeIfPresent(Int.self, forKey: .stock_id)
         barcode = try values.decodeIfPresent(String.self, forKey: .barcode)
@@ -478,7 +457,6 @@ struct Scans : Codable {
 
 struct Product_data : Codable {
     let id : Int?
-    let zoho_id : String?
     let name : String?
     let description : String?
     let product_category : String?
@@ -507,7 +485,6 @@ struct Product_data : Codable {
     enum CodingKeys: String, CodingKey {
         
         case id = "id"
-        case zoho_id = "zoho_id"
         case name = "name"
         case description = "description"
         case product_category = "product_category"
@@ -537,7 +514,6 @@ struct Product_data : Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
-        zoho_id = try values.decodeIfPresent(String.self, forKey: .zoho_id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         description = try values.decodeIfPresent(String.self, forKey: .description)
         product_category = try values.decodeIfPresent(String.self, forKey: .product_category)
@@ -569,10 +545,8 @@ struct Product_data : Codable {
 struct ManualEntryModel: Codable {
     
     let sku: String?
-//    let gtin: String?
     let expiry: String?
     let batch: String?
     let serial: String?
     var dateTime: String? = "\(Date())"
-    
 }

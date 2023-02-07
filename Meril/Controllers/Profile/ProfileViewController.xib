@@ -49,14 +49,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61U-D2-Ss4">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="472"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="451.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQ4-K0-LHe">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
                                     <color key="backgroundColor" red="0.19215686274509802" green="0.47843137254901957" blue="0.76470588235294112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psn-Ew-SCF">
-                                    <rect key="frame" x="20" y="40" width="374" height="422"/>
+                                    <rect key="frame" x="20" y="40" width="374" height="401.5"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashBg" translatesAutoresizingMaskIntoConstraints="NO" id="p79-bT-SCV">
                                             <rect key="frame" x="157" y="10" width="60" height="60"/>
@@ -65,14 +65,14 @@
                                                 <constraint firstAttribute="width" constant="60" id="Hqr-B1-7r7"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sagar Garchar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17w-6G-02w">
-                                            <rect key="frame" x="20" y="85" width="334" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17w-6G-02w">
+                                            <rect key="frame" x="20" y="85" width="334" height="0.0"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="gTT-aw-gBY">
-                                            <rect key="frame" x="20" y="125.5" width="334" height="217"/>
+                                            <rect key="frame" x="20" y="105" width="334" height="217"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WD6-YH-iOM">
                                                     <rect key="frame" x="0.0" y="0.0" width="334" height="43"/>
@@ -83,7 +83,7 @@
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="IOS devloper" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nco-mW-4Re">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nco-mW-4Re">
                                                             <rect key="frame" x="0.0" y="18" width="334" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="8A2-Af-i0S"/>
@@ -102,7 +102,7 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sagar@gmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K1b-A4-Zl1">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K1b-A4-Zl1">
                                                             <rect key="frame" x="0.0" y="18" width="334" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="naf-LP-aP1"/>
@@ -121,7 +121,7 @@
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="7412365412" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZCf-oB-FuV">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZCf-oB-FuV">
                                                             <rect key="frame" x="0.0" y="18" width="334" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="WcE-4L-XyA"/>
@@ -140,7 +140,7 @@
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="7412365412" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8hS-4m-ifl">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8hS-4m-ifl">
                                                             <rect key="frame" x="0.0" y="18" width="334" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="dRk-Gl-X99"/>
@@ -191,7 +191,7 @@
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version: V1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2F7-eQ-zyt">
-                                            <rect key="frame" x="132.5" y="382.5" width="109.5" height="19.5"/>
+                                            <rect key="frame" x="132.5" y="362" width="109.5" height="19.5"/>
                                             <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="16"/>
                                             <color key="textColor" red="0.19215686269999999" green="0.47843137250000001" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>

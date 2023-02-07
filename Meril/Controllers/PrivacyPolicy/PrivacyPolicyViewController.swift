@@ -10,8 +10,6 @@ import UIKit
 
 class PrivacyPolicyViewController: BaseViewController {
     
-//    @IBOutlet weak var constrainViewHeight: NSLayoutConstraint!
-//    @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var txtView: UITextView!
     
     var pageName : pageType?
@@ -19,19 +17,16 @@ class PrivacyPolicyViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        // Do any additional setup after loading the view.
     }
- 
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        setNavigation()
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)
     }
     
     //MARK:- Custome Method
     func setUI(){
         self.navigationItem.title = pageName == .some(.AboutUs) ? "About Us" : "Privacy Policy"
-        //        self.viewHeader.backgroundColor = ColorConstant.mainThemeColor
         
         let settingsData = UserDefaults.standard.string(forKey: "settingsData")
         let jsonData = (settingsData ?? "").data(using: .utf8)!
@@ -45,7 +40,6 @@ class PrivacyPolicyViewController: BaseViewController {
     }
     
     func setNavigation(){
-//        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeight,title: pageName == .some(.AboutUs) ? "About Us" : "Privacy Policy")
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         setBackButtononNavigation()
@@ -56,5 +50,4 @@ class PrivacyPolicyViewController: BaseViewController {
             }
         }
     }
-    
 }

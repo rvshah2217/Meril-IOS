@@ -18,36 +18,18 @@ class DefaultLoginData: UIViewController {
     @IBOutlet weak var constrainViewHeaderHeight: NSLayoutConstraint!
     
     @IBOutlet weak var txtDoctor: UITextField!
-//    {
-//        didSet {
-//            self.txtDoctor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-    
     @IBOutlet weak var txtDistributor: UITextField!
-//{
-//        didSet {
-//            self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-    
     @IBOutlet weak var txtSaleperson: UITextField!
-//{
-//        didSet {
-//            self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-    
     @IBOutlet weak var submitBtn: UIButton!
     
     var doctorsArr: [Hospitals] = []
     var distributorsArr: [Hospitals] = []
     var sales_personsArr: [SalesPerson] = []
-
+    
     var selectedDoctorId: Int?
     var selectedDistributorId: Int?
     var selectedSalesPersonId: Int?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigation()
@@ -57,14 +39,12 @@ class DefaultLoginData: UIViewController {
     
     func setNavigation() {
         self.navigationItem.title = "Default Credentials"
-//        self.navigationItem.hidesBackButton = true
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)
     }
     
     //MARK:- Custome Method
     func setUI(){
-//        UserDefaults.standard.set(true, forKey: "isFirstTimeLogInDone")
-
+        
         for i in collectionViewBoarder{
             i.layer.borderColor = ColorConstant.mainThemeColor.cgColor
             i.layer.borderWidth = 1
@@ -74,7 +54,7 @@ class DefaultLoginData: UIViewController {
             i.backgroundColor = ColorConstant.mainThemeColor
             i.layer.cornerRadius = i.frame.height/2
         }
-
+        
         backgroundView.backgroundColor = ColorConstant.mainThemeColor
         backgroundView.addCornerAtBotttoms(radius: 30)
         
@@ -94,7 +74,7 @@ class DefaultLoginData: UIViewController {
         
         DetailsScrollView.addCornerAtTops(radius: 20)
         
-//        Add Shadow
+        //        Add Shadow
         scrollOuterView.layer.masksToBounds = false
         scrollOuterView.layer.shadowRadius = 3
         scrollOuterView.layer.shadowOpacity = 0.5
@@ -103,10 +83,6 @@ class DefaultLoginData: UIViewController {
     }
     
     @IBAction func submitBtnClicked(_ sender: UIButton) {
-//        guard let _ = selectedDoctorId else {
-//            GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDoctorError, seconds: errorDismissTime)
-//            return
-//        }
         
         guard let distributorId = selectedDistributorId else {
             GlobalFunctions.showToast(controller: self, message: UserMessages.emptyDistributorError, seconds: errorDismissTime)
@@ -118,21 +94,13 @@ class DefaultLoginData: UIViewController {
             return
         }
         
-//        if let convertedSalesPersonId = salesPersonId {
-            self.callUpdateHospitalApi(doctorId: selectedDoctorId, distributorId: distributorId, salesPersonId: salesPersonId)
-//        }
-        
-//        UserDefaults.standard.set(true, forKey: "isFirstTimeLogInDone")
-//        UserDefaults.standard.set(selectedDoctorId, forKey: "defaultDoctorId")
-//        UserDefaults.standard.set(selectedDistributorId, forKey: "defaultDistributorId")
-//        UserDefaults.standard.set(selectedSalesPersonId, forKey: "defaultSalesPersonId")
-//        self.redirectToHomeVC()
+        self.callUpdateHospitalApi(doctorId: selectedDoctorId, distributorId: distributorId, salesPersonId: salesPersonId)
     }
     
     private func callUpdateHospitalApi(doctorId: Int?, distributorId: Int, salesPersonId: Int) {
         let obj = CredentialsRequestModel(doctorId: doctorId, distributorId: distributorId, salesPersonId: salesPersonId)
         LoginServices.setDefaultCredentials(credentialObj: obj) { isSuccess, error in
-//            save doctor, distributor and salesPerson id
+            //            save doctor, distributor and salesPerson id
             var userData = UserSessionManager.shared.userDetail
             userData?.sales_person_id = salesPersonId
             userData?.distributor_id = distributorId
@@ -145,19 +113,10 @@ class DefaultLoginData: UIViewController {
     }
     
     private func redirectToHomeVC() {
-//        if let isDefaultPassword = UserDefaults.standard.string(forKey: "isDefaultPassword"), isDefaultPassword == "1" {
-//        if UserDefaults.standard.bool(forKey: "isDefaultPassword") {
-//            //                    Redirect to change password
-//            let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
-//            vc.isFromLogin = true
-//            self.navigationController!.pushViewController(vc, animated: true)
-//        } else {
-            appDelegate.fetchAndStoredDataLocally()
-            self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
-            self.view?.window?.makeKeyAndVisible()
-//        }
+        appDelegate.fetchAndStoredDataLocally()
+        self.view?.window?.rootViewController = GlobalFunctions.setHomeVC()
+        self.view?.window?.makeKeyAndVisible()
     }
-
 }
 
 extension DefaultLoginData {
@@ -169,7 +128,6 @@ extension DefaultLoginData {
         }
         self.fetchFormDataFromServer()
     }
-    
     
     func fetchFormDataFromServer() {
         CommonFunctions.getAllFormData { response in
@@ -183,46 +141,27 @@ extension DefaultLoginData {
         //        set doctor array
         self.doctorsArr = formDataResponse.doctors ?? []
         self.txtDoctor.isEnabled = !self.doctorsArr.isEmpty
-//        self.txtDoctor.optionArray = self.doctorsArr.map({ item -> String in
-//            item.fullname ?? ""
-//        })
-//        self.txtDoctor.didSelect { selectedText, index, id in
-//            self.selectedDoctorId = self.doctorsArr[index].id
-//        }
         
         //        set distributor array
         self.distributorsArr = formDataResponse.distributors ?? []
         self.txtDistributor.isEnabled = !self.distributorsArr.isEmpty
-//        self.txtDistributor.optionArray = self.distributorsArr.map({ item -> String in
-//            item.name ?? ""
-//        })
-//        self.txtDistributor.didSelect { selectedText, index, id in
-//            self.selectedDistributorId = self.distributorsArr[index].id
-//        }
         
         //        set salesperson array
         self.sales_personsArr = formDataResponse.sales_persons ?? []
         self.txtSaleperson.isEnabled = !self.sales_personsArr.isEmpty
-//        self.txtSaleperson.optionArray = self.sales_personsArr.map({ item -> String in
-//            item.name ?? ""
-//        })
-//        self.txtSaleperson.didSelect { selectedText, index, id in
-//            self.selectedSalesPersonId = Int(self.sales_personsArr[index].id!)
-//        }
-        
         self.setDefaultData()
     }
     
     func setDefaultData() {
         let storedUserData = UserSessionManager.shared.userDetail
-
+        
         if let doctorId = storedUserData?.doctor_id {
             selectedDoctorId = Int(doctorId)
             self.txtDoctor.text = doctorsArr.filter({ item in
                 item.id == selectedDoctorId
             }).first?.fullname
         }
-
+        
         if let distributorId = storedUserData?.distributor_id {
             selectedDistributorId = Int(distributorId)
             self.txtDistributor.text = distributorsArr.filter({ item in
@@ -236,7 +175,6 @@ extension DefaultLoginData {
                 item.id == salesPersonId
             }).first?.name
         }
-
     }
 }
 
@@ -272,7 +210,7 @@ extension DefaultLoginData: UITextFieldDelegate {
 //#MARK: DropDown delegate
 extension DefaultLoginData: DropDownMenuDelegate {
     
-//MenuType: 0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
+    //MenuType: 0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
     func selectedDropDownItem(menuType: Int, menuObj: Any) {
         print("selected menu object: \(menuObj)")
         switch menuType {

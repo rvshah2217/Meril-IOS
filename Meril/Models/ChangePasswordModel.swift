@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct ChangePasswordRequestModel : Encodable {
     let currentPassword : String?
     let newPassword: String?

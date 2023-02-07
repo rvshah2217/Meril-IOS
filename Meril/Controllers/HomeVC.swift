@@ -18,9 +18,11 @@ class HomeVC: UIViewController {
     @IBOutlet weak var addInventoryBtn: UIButton!
     @IBOutlet weak var displaySurgeriesBtn: UIButton!
     @IBOutlet weak var displayInventoriesBtn: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var syncDataBtn: UIButton!
     
     var bannerArr: [UserTypesModel] = []
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,7 @@ class HomeVC: UIViewController {
         // Do any additional setup after loading the view.
         self.setNavBar()
         self.setUI()
-        self.fetchBanners()
+        self.fetchBanners(isRefreshData: false)
     }
     
     deinit {
@@ -36,6 +38,7 @@ class HomeVC: UIViewController {
     }
     
     private func setNavBar() {
+        
         let menuBtn = UIBarButtonItem(image: UIImage(named: "ic_menu"), style: .plain, target: self, action: #selector(self.sideMenuBtnPressed))
         self.navigationItem.leftBarButtonItem = menuBtn
         
@@ -44,7 +47,7 @@ class HomeVC: UIViewController {
         
         self.navigationItem.title = ""
         self.navigationItem.titleView = navTitleView()
-
+        
         //Set navigation header
         func navTitleView() -> UIView {
             let titleView = UIView(frame: CGRect(x: (DeviceConstant.deviceWidth / 2) - 70, y: 0, width: 130, height: 40))
@@ -67,7 +70,6 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: .white, textColor: ColorConstant.mainThemeColor)
-//        self.navigationController?.navigationBar.barTintColor = .white
     }
     
     private func setUI() {
@@ -96,6 +98,15 @@ class HomeVC: UIViewController {
         imageSlidesView.contentScaleMode = .scaleToFill
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.bannerImageViewTapped))
         imageSlidesView.addGestureRecognizer(gestureRecognizer)
+        
+        //        Add refresh control
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        self.scrollView.refreshControl = refreshControl
+    }
+    
+    @objc func refreshData() {
+        self.fetchBanners(isRefreshData: true)
     }
     
     @objc func sideMenuBtnPressed() {        
@@ -107,27 +118,38 @@ class HomeVC: UIViewController {
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
     
-    func fetchBanners() {
-        SHOW_CUSTOM_LOADER()
-//        Fetch banners from local database
-        bannerArr = HomeBanners_CoreData.sharedInstance.fetchBanners() ?? []
-//        if it is empty then fetch it from server
-        if bannerArr.isEmpty {
-            HomeServices.getBannerList { response, error in
-                HIDE_CUSTOM_LOADER()
-                guard let responseData = response else {
-                    //                hide banner view if there is error
-                    return
-                }
-                self.bannerArr = responseData.userTypes ?? []
-    //            save bannerresponse to coreData
-                HomeBanners_CoreData.sharedInstance.saveBanners(schemeData: responseData.userTypes ?? [])
-                self.setBannerImages()
+    private func fetchBannersFromServer() {
+        HomeServices.getBannerList { response, error in
+            self.refreshControl.endRefreshing()
+            HIDE_CUSTOM_LOADER()
+            guard let responseData = response else {
+                //                hide banner view if there is error
+                return
             }
-            return
+            self.bannerArr = responseData.userTypes ?? []
+            //            save bannerresponse to coreData
+            HomeBanners_CoreData.sharedInstance.saveBanners(schemeData: responseData.userTypes ?? [])
+            self.setBannerImages()
         }
+    }
+    
+    private func fetchBannersFromCoreData() {
+        bannerArr = HomeBanners_CoreData.sharedInstance.fetchBanners() ?? []
+        self.refreshControl.endRefreshing()
         HIDE_CUSTOM_LOADER()
         self.setBannerImages()
+    }
+    
+    func fetchBanners(isRefreshData: Bool) {
+        if !isRefreshData {
+            SHOW_CUSTOM_LOADER()
+        }
+        //        Fetch banners from core data if network is not available otherwise fetch it from server
+        if appDelegate.reachability.connection == .unavailable {
+            fetchBannersFromCoreData()
+        } else {
+            fetchBannersFromServer()
+        }
     }
     
     func setBannerImages() {
@@ -138,7 +160,7 @@ class HomeVC: UIViewController {
         self.imageSlidesView.setImageInputs(images)
     }
     
-//    Handle banner click
+    //    Handle banner click
     @objc func bannerImageViewTapped() {
         let selectedIndex = self.imageSlidesView.currentPage
         if let urlStr = bannerArr[selectedIndex].link, let url = URL(string: urlStr) {
@@ -169,8 +191,8 @@ extension HomeVC {
         
         let vc = InventoryListVC(nibName: "InventoryListVC", bundle: nil)
         self.navigationController?.pushViewController(vc, animated: true)
-//        let vc = SurgerayListViewController(nibName: "SurgerayListViewController", bundle: nil)
-//        self.navigationController?.pushViewController(vc, animated: true)
+        //        let vc = SurgerayListViewController(nibName: "SurgerayListViewController", bundle: nil)
+        //        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func syncDataBtnClicked(_ sender: Any) {
@@ -179,8 +201,8 @@ extension HomeVC {
     }
     
     @objc func stopSyncButtonAnimation() {
-            // Put your code which should be executed with a delay here
-            self.syncDataBtn.imageView?.stopRotation()
+        // Put your code which should be executed with a delay here
+        self.syncDataBtn.imageView?.stopRotation()
     }
 }
 

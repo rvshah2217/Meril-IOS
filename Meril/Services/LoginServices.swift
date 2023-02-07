@@ -50,9 +50,7 @@ class LoginServices {
     }
     
     //    user login
-    //    static func userLogOut(completionHandler: @escaping (LoginResponseModel?, _ error: String?) -> ()) {
     static func userLogOut(navController: UINavigationController) {
-//        let topController = navController.topViewController
         APIManager.shared().call(for: LoginResponseModel.self, type: EndPointsItem.logout) { (responseData, error) in
             
             //                Remove data from user defaults
@@ -61,40 +59,16 @@ class LoginServices {
             let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
             appDelegate.window?.rootViewController = GlobalFunctions.setRootNavigationController(currentVC: loginVC)
             appDelegate.window?.makeKeyAndVisible()
-
-//            guard let response = responseData else {
-//                //GlobalFunctions.printToConsole(message: "usertype error:- \(error?.title)")
-//                if let vc = topController as? UIViewController {
-//                    GlobalFunctions.showToast(controller: vc, message: error?.title ?? UserMessages.serverError, seconds: errorDismissTime, completionHandler: nil)
-//                }
-//                return
-//            }
             
-            //Check if server return success response or not
-//            if response.success ?? false {
-//                //                Remove data from user defaults
-//                LoginServices.removeLocallyStoredData()
-//
-//                let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-//                appDelegate.window?.rootViewController = GlobalFunctions.setRootNavigationController(currentVC: loginVC)
-//                appDelegate.window?.makeKeyAndVisible()
-//
-//            } else {
-//                if let vc = topController as? UIViewController {
-//                    GlobalFunctions.showToast(controller: vc, message: response.message ?? UserMessages.serverError, seconds: errorDismissTime, completionHandler: nil)
-//                }
-//            }
         }
     }
     
     //                Remove data stored locally
     static func removeLocallyStoredData() {
         //        Remove data from userdefaults
-//        let isFirstTimeLogin = UserDefaults.standard.bool(forKey: "isFirstTimeLogInDone")
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
-//        UserDefaults.standard.set(isFirstTimeLogin, forKey: "isFirstTimeLogInDone")
         
         //        Remove data from core data
         // Get a reference to a managed object context
@@ -135,11 +109,9 @@ class LoginServices {
         do {
             // Save the deletions to the persistent store
             try managedContext.save()
-            //GlobalFunctions.printToConsole(message: "delete all objects")
         } catch {
             //GlobalFunctions.printToConsole(message: "Fail to delete objects")
-        }
-        
+        }        
     }
 }
 
@@ -163,9 +135,9 @@ extension LoginServices {
         }
     }
     
-//    Set default credentials of doctor, distributor and salesPerson
+    //    Set default credentials of doctor, distributor and salesPerson
     static func setDefaultCredentials(credentialObj: CredentialsRequestModel, completionHandler: @escaping (_ isSuccess: Bool, _ error: String?) -> ()) {
-                
+        
         APIManager.shared().call(for: LoginResponseModel.self, type: EndPointsItem.updateHospital, params: credentialObj.dict) { (responseData, error) in
             //GlobalFunctions.printToConsole(message: "Default credentials response: \(responseData?.message)")
             guard let response = responseData else {

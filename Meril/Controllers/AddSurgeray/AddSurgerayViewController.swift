@@ -19,7 +19,6 @@ class AddSurgerayViewController: BaseViewController {
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var constrainViewHeaderHeight: NSLayoutConstraint!
     @IBOutlet weak var DetailsScrollView: UIScrollView!
-    let successToastTime = 1.0
     
     @IBOutlet weak var txtGender: UITextField!
     @IBOutlet weak var txtCity: UITextField!
@@ -28,51 +27,6 @@ class AddSurgerayViewController: BaseViewController {
     @IBOutlet weak var txtDistributor: UITextField!
     @IBOutlet weak var txtSaleperson: UITextField!
     @IBOutlet weak var txtPatientScheme: UITextField!
-//
-//    @IBOutlet weak var genderDropDown: DropDown! {
-//        didSet {
-//            self.genderDropDown.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-//
-//    @IBOutlet weak var txtCity: DropDown! {
-//        didSet {
-//            self.txtCity.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-//
-//    @IBOutlet weak var txtHospital: DropDown! {
-//        didSet {
-//            //            self.txtHospital.isSearchEnable = false
-//            self.txtHospital.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-//
-//    @IBOutlet weak var txtDoctor: DropDown! {
-//        didSet {
-//            self.txtDoctor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-//
-//    @IBOutlet weak var txtDistributor: DropDown! {
-//        didSet {
-//            self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-//
-//    @IBOutlet weak var txtSaleperson: DropDown! {
-//        didSet {
-//            self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-//
-//    @IBOutlet weak var txtPatientScheme: DropDown! {
-//        didSet {
-//            self.txtPatientScheme.isSearchEnable = false
-//            self.txtPatientScheme.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-//
     
     @IBOutlet weak var txtPatientName: UITextField!
     @IBOutlet weak var txtPatientNumber: UITextField!
@@ -80,6 +34,8 @@ class AddSurgerayViewController: BaseViewController {
     @IBOutlet weak var txtIpCode: UITextField!
     @IBOutlet weak var btnScanNow: UIButton!
     @IBOutlet weak var deploymentDateTxt: UITextField!
+    
+    let successToastTime = 1.0
     
     var citiesArr : [Cities] = []
     var hospitalsArr: [Hospitals] = []
@@ -101,15 +57,10 @@ class AddSurgerayViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.internetConnectionLost), name: .networkLost, object: nil)
         setUI()
         self.setDatePicker()
         self.fetchFormData()
     }
-    
-//    deinit {
-//        NotificationCenter.default.removeObserver(self, name: .networkLost, object: nil)
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -118,7 +69,6 @@ class AddSurgerayViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        NotificationCenter.default.removeObserver(self, name: .networkLost, object: nil)
     }
     
     //MARK:- Custome Method
@@ -148,13 +98,6 @@ class AddSurgerayViewController: BaseViewController {
         txtPatientScheme.setPlaceholder(placeHolderStr: "Select Scheme", textColor: ColorConstant.mainThemeColor)
         txtDoctor.setPlaceholder(placeHolderStr: "Select Doctor", textColor: ColorConstant.mainThemeColor)
         
-//        self.txtCity.rowHeight = 40
-//        self.txtHospital.rowHeight = 40
-//        self.txtDoctor.rowHeight = 40
-//        self.txtDistributor.rowHeight = 40
-//        self.txtSaleperson.rowHeight = 40
-//        self.txtPatientScheme.rowHeight = 40
-//        self.genderDropDown.rowHeight = 40
         self.txtCity.delegate = self
         self.txtHospital.delegate = self
         self.txtDoctor.delegate = self
@@ -167,7 +110,7 @@ class AddSurgerayViewController: BaseViewController {
         setRightButton(txtHospital, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtDistributor, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtSaleperson, image: UIImage(named: "ic_dropdown") ?? UIImage())
-        //        setRightButton(txtUDT, image: UIImage(named: "ic_dropdown") ?? UIImage())
+        
         let img = UIImage(named: "ic_dropdown")?.withRenderingMode(.alwaysTemplate)
         
         let imgView: UIImageView = UIImageView(image: img)
@@ -230,7 +173,7 @@ class AddSurgerayViewController: BaseViewController {
         }
         self.deploymentDateTxt.inputView = datePicker
         self.datePicker.backgroundColor = .white
-        self.datePicker.addTarget(self, action: #selector(self.handleDatePicker(_:)), for: .valueChanged)        
+        self.datePicker.addTarget(self, action: #selector(self.handleDatePicker(_:)), for: .valueChanged)
     }
     
     @objc func handleDatePicker(_ sender: UIDatePicker) {
@@ -240,7 +183,6 @@ class AddSurgerayViewController: BaseViewController {
     private func convertDateToStr(date: Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
-        //        //GlobalFunctions.printToConsole(message: "Selected date: \(dateFormatter.string(from: datePicker.date))")
         self.deploymentDateTxt.text = dateFormatter.string(from: date)
     }
     
@@ -285,6 +227,7 @@ class AddSurgerayViewController: BaseViewController {
         let ipCode = txtIpCode.text ?? ""
         let userId = UserDefaults.standard.integer(forKey: "userId")
         let surgeryId = "D\(Date.currentTimeStamp)U\(userId)"
+        
         addSurgeryReqObj = AddSurgeryRequestModel(cityId: selectedCityId, hospitalId: selectedHospitalId, distributorId: selectedDistributorId, doctorId: selectedDoctorId, surgeryId: surgeryId, schemeId: selectedSchemeId, patientName: patientName, patientMobile: patientNumber, age: Int(patientAge), ipCode: ipCode, salesPersonId: selectedSalesPersonId, gender: selectedGender, DeploymentDate: selectedDate)
         addSurgeryReqObj?.salesPersonName = self.txtSaleperson.text ?? ""
         addSurgeryReqObj?.hospitalName = self.txtHospital.text ?? ""
@@ -315,7 +258,6 @@ extension AddSurgerayViewController {
         }
     }
     
-    
     func fetchFormDataFromServer() {
         SHOW_CUSTOM_LOADER()
         CommonFunctions.getAllFormData { response in
@@ -328,96 +270,50 @@ extension AddSurgerayViewController {
     func setAllDropDownData(formDataResponse: SurgeryInventoryModel) {
         //        Gender dropdown
         self.txtGender.isEnabled = !self.genderArr.isEmpty
-//        self.genderDropDown.optionArray = self.genderArr
-//        self.genderDropDown.didSelect { selectedText, index, id in
-//            self.selectedGender = self.genderArr[index]
-//        }
-//
+        
         //        City dropdown
         self.citiesArr = formDataResponse.cities ?? []
         self.txtCity.isEnabled = !self.citiesArr.isEmpty
-//        self.txtCity.optionArray = self.citiesArr.map({ item -> String in
-//            item.name ?? ""
-//        })
-        
-//        self.txtCity.didSelect { selectedText, index, id in
-//            self.selectedCityId = self.citiesArr[index].id
-//            //            refresh hospital data when user select particular city
-//            self.refreshHospitalByCity(selectedCityIndex: index)
-//        }
         
         //        set doctor array
         self.doctorsArr = formDataResponse.doctors ?? []
         self.txtDoctor.isEnabled = !self.doctorsArr.isEmpty
-//        self.txtDoctor.optionArray = self.doctorsArr.map({ item -> String in
-//            item.fullname ?? ""
-//        })
-//        self.txtDoctor.didSelect { selectedText, index, id in
-//            self.selectedDoctorId = self.doctorsArr[index].id
-//        }
         
         //        set distributor array
         self.distributorsArr = formDataResponse.distributors ?? []
         self.txtDistributor.isEnabled = !self.distributorsArr.isEmpty
-//        self.txtDistributor.optionArray = self.distributorsArr.map({ item -> String in
-//            item.name ?? ""
-//        })
-//        self.txtDistributor.didSelect { selectedText, index, id in
-//            self.selectedDistributorId = self.distributorsArr[index].id
-//        }
         
         //        set salesperson array
         self.sales_personsArr = formDataResponse.sales_persons ?? []
         self.txtSaleperson.isEnabled = !self.sales_personsArr.isEmpty
-//        self.txtSaleperson.optionArray = self.sales_personsArr.map({ item -> String in
-//            item.name ?? ""
-//        })
-//        self.txtSaleperson.didSelect { selectedText, index, id in
-//            self.selectedSalesPersonId = self.sales_personsArr[index].id
-//        }
         
         //        set scheme array
         self.schemeArr = formDataResponse.schemes ?? []
         self.txtPatientScheme.isEnabled = !self.schemeArr.isEmpty
-//        self.txtPatientScheme.optionArray = self.schemeArr.map({ item -> String in
-//            item.scheme_name ?? ""
-//        })
-//        self.txtPatientScheme.didSelect { selectedText, index, id in
-//            self.selectedSchemeId = self.schemeArr[index].id
-//        }
-                
-        setDefaultData()
         
+        setDefaultData()
     }
     
     //   reload hospitals by city selection
     func refreshHospitalByCity(selectedCityIndex: Int) {
         self.hospitalsArr = citiesArr[selectedCityIndex].hospitals ?? []
         self.txtHospital.isEnabled = !self.hospitalsArr.isEmpty
-//        self.txtHospital.optionArray = self.hospitalsArr.map({ item -> String in
-//            item.name ?? ""
-//        })
-//        self.txtHospital.didSelect { selectedText, index, id in
-//            self.selectedHospitalId = self.hospitalsArr[index].id
-//        }
-        
     }
     
     private func setDefaultData() {
         guard let userTypeId = UserDefaults.standard.string(forKey: "userTypeId"), userTypeId == "2" else {
-            print("user type id")
             return
         }
-        print("user type id: \(userTypeId)")
         
         let storedUserData = UserSessionManager.shared.userDetail
-        //        let userDefault = UserDefaults.standard
+        
         if let doctorId = storedUserData?.doctor_id {
             selectedDoctorId = Int(doctorId)//userDefault.integer(forKey: "defaultDoctorId")
             self.txtDoctor.text = doctorsArr.filter({ item in
                 item.id == selectedDoctorId
             }).first?.fullname
         }
+        
         //        set distributor
         if let distributorId = storedUserData?.distributor_id {
             selectedDistributorId = Int(distributorId)
@@ -433,7 +329,7 @@ extension AddSurgerayViewController {
                 item.id == selectedSalesPersonId
             }).first?.name
         }
-              
+        
         if let city = storedUserData?.city {
             for i in 0..<citiesArr.count {
                 let item = citiesArr[i]
@@ -530,7 +426,6 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
                 GlobalFunctions.showToast(controller: self, message: "Record saved successfully.", seconds: self.successToastTime) {
                     self.navigationController?.popToRootViewController(animated: true)
                 }
-                //                self.navigationController?.popViewController(animated: true)
                 return
             }
         }
@@ -557,9 +452,9 @@ extension AddSurgerayViewController: BarCodeScannerDelegate {
 extension AddSurgerayViewController: UITextFieldDelegate {
     
     public func  textFieldDidBeginEditing(_ textField: UITextField) {
+        self.view.endEditing(true)
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "DropDownMenuVC") as! DropDownMenuVC
         vc.delegate = self
-        self.view.endEditing(true)
         //MenuType: 0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
         switch textField {
         case txtCity:
@@ -581,6 +476,10 @@ extension AddSurgerayViewController: UITextFieldDelegate {
             vc.genderArr = genderArr
             vc.titleStr = "Select Gender"
         case txtHospital:
+            if selectedCityId == nil {
+                GlobalFunctions.showToast(controller: self, message: UserMessages.priorCitySelectionError, seconds: errorDismissTime)
+                return
+            }
             vc.menuType = 4
             vc.objArr = hospitalsArr
             vc.titleStr = "Select Hospital"
@@ -603,7 +502,7 @@ extension AddSurgerayViewController: UITextFieldDelegate {
 //#MARK: DropDown delegate
 extension AddSurgerayViewController: DropDownMenuDelegate {
     
-//MenuType: 0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
+    //MenuType: 0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
     func selectedDropDownItem(menuType: Int, menuObj: Any) {
         print("selected menu object: \(menuObj)")
         switch menuType {

@@ -25,18 +25,11 @@ struct DeviceConstant {
     static let deviceHeight = UIScreen.main.bounds.height
 }
 
-//struct ApiConstant {
-//    static let baseUrl = "https://meril.meritrack.in/meritrack/api/"//"http://meril.meritrack.in:8012/meritrack/api/"//"https://houseofgames.in/merillife/api/"
-//    static let loginApi = "login"
-//    static let getHomeDataApi = "banners"
-//    static let surgeryListApi = ""
-//    static let inventeryListApi = ""
-//}
-
 struct UserMessages {
     static let defaultAlertTitle = "Error"
     static let serverError = "Something went wrong! Please try again later."
     static let emptyCityError = "Please select city."
+    static let priorCitySelectionError = "Please select city first."
     static let emptyHospitalError = "Please select hospital."
     static let emptyDoctorError = "Please select doctor."
     static let emptyDistributorError = "Please select distributor."

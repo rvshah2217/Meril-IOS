@@ -16,10 +16,8 @@ class BaseViewController: UIViewController {
     var customNavigationBar : UINavigationBar?
     var lblDescTotalHeight1 = 0.0
 
-
     var lblCount:UILabel!
     var btnSwitch = UIButton(type: .custom)
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,13 +57,13 @@ class BaseViewController: UIViewController {
         for views in childView.subviews{
             views.removeFromSuperview()
         }
+        
         let title = title
         let firstFrame = CGRect(x: -SCREEN_WIDTH / 100, y: 10, width: (navigationController?.navigationBar.frame.width)! - 80, height: (navigationController?.navigationBar.frame.height)!)
         let firstLabel = UILabel(frame: firstFrame)
         firstLabel.text = title
         firstLabel.numberOfLines = 1
         firstLabel.lineBreakMode = .byClipping
-//        firstLabel.font = UIFont(name: , size: 19)
         firstLabel.textColor = UIColor.white
         
         firstLabel.layer.masksToBounds = false

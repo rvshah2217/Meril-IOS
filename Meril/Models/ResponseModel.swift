@@ -11,26 +11,25 @@ struct ResponseModel : Codable {
     let success : Bool?
     let message : String?
     let userTypes : [UserTypesModel]?    
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case success = "success"
         case message = "message"
         case userTypes = "data"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
         userTypes = try values.decodeIfPresent([UserTypesModel].self, forKey: .userTypes)
     }
-
+    
 }
 
 struct UserTypesModel : Codable {
     let id : Int?
-    let zoho_id : String?
     let name : String?
     let created_at : String?
     let updated_at : String?
@@ -38,30 +37,27 @@ struct UserTypesModel : Codable {
     let is_default_password: Int?
     let surgeries : [SurgeryData]?
     let stocks : [SurgeryData]?
-
-//    For login
+    
+    //    For login
     let user_type_id: String?
     let unique_id: String?
     let token: String?
     
-//    For banners
+    //    For banners
     let type : String?
     let link : String?
     let extra_parameter : String?
     let image : String?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case id = "id"
-        case zoho_id = "zoho_id"
         case name = "name"
         case created_at = "created_at"
         case updated_at = "updated_at"
-        
         case user_type_id = "user_type_id"
         case unique_id = "unique_id"
         case token = "token"
-        
         case type = "type"
         case link = "link"
         case extra_parameter = "extra_parameter"
@@ -71,20 +67,19 @@ struct UserTypesModel : Codable {
         case user_data = "user_data"
         case is_default_password = "is_default_password"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
         id = try values.decodeIfPresent(Int.self, forKey: .id)
-        zoho_id = try values.decodeIfPresent(String.self, forKey: .zoho_id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
         updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
-      
+        
         user_type_id = try values.decodeIfPresent(String.self, forKey: .user_type_id)
         unique_id = try values.decodeIfPresent(String.self, forKey: .unique_id)
         token = try values.decodeIfPresent(String.self, forKey: .token)
-
+        
         type = try values.decodeIfPresent(String.self, forKey: .type)
         link = try values.decodeIfPresent(String.self, forKey: .link)
         extra_parameter = try values.decodeIfPresent(String.self, forKey: .extra_parameter)
@@ -95,7 +90,7 @@ struct UserTypesModel : Codable {
         user_data = try values.decodeIfPresent(UserData.self, forKey: .user_data)
         is_default_password = try values.decodeIfPresent(Int.self, forKey: .is_default_password)
     }
-
+    
 }
 
 struct UserData : Codable {
@@ -118,10 +113,10 @@ struct UserData : Codable {
     let sales_person_name: String?
     var doctor_id: Int?
     let doctor_name: String?
-
-
+    
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case id = "id"
         case unique_id = "unique_id"
         case name = "name"
@@ -141,9 +136,9 @@ struct UserData : Codable {
         case sales_person_name = "sales_person_name"
         case doctor_id = "doctor_id"
         case doctor_name = "doctor_name"
-
+        
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
@@ -167,27 +162,27 @@ struct UserData : Codable {
         doctor_id = try values.decodeIfPresent(Int.self, forKey: .doctor_id)
         doctor_name = try values.decodeIfPresent(String.self, forKey: .doctor_name)
     }
-
+    
 }
 
 struct UserProfileResponseModel : Codable {
     let success : Bool?
     let message : String?
     let userProfile : UserData?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case success = "success"
         case message = "message"
         case userProfile = "data"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
         userProfile = try values.decodeIfPresent(UserData.self, forKey: .userProfile)
     }
-
+    
 }
 

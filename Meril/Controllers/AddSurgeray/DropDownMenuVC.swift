@@ -31,10 +31,10 @@ class DropDownMenuVC: UIViewController {
     var filteredCitiesArr : [Cities] = []
     var filteredSales_personsArr: [SalesPerson] = []
     var filteredSchemeArr: [Schemes] = []
-
+    
     var productArr = [ProductBarCode]()
     var filteredProductArr: [ProductBarCode] = []
-
+    
     var titleStr: String = "Select Item"
     var delegate: DropDownMenuDelegate?
     var menuType: Int = 0//0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors, 88: ProductBarCode
@@ -80,7 +80,7 @@ class DropDownMenuVC: UIViewController {
 extension DropDownMenuVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-       return 1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,7 +99,7 @@ extension DropDownMenuVC: UITableViewDelegate, UITableViewDataSource {
             return filteredObjArr.count
         }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         switch menuType {
@@ -138,8 +138,6 @@ extension DropDownMenuVC: UITableViewDelegate, UITableViewDataSource {
             item = genderArr[indexPath.row]
         case 88:
             item = filteredProductArr[indexPath.row]
-//        case 4:
-//            item = objArr[indexPath.row]
         default:
             item = filteredObjArr[indexPath.row]
         }
@@ -154,9 +152,10 @@ extension DropDownMenuVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension DropDownMenuVC: UISearchBarDelegate {
- 
+    
     // This method updates filteredData based on the text in the Search Box
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
         // When there is no text, filteredData is the same as the original data
         // When user has entered text into the search box
         // Use the filter method to iterate over all items in the data array
@@ -193,7 +192,6 @@ extension DropDownMenuVC: UISearchBarDelegate {
         }
         tableView.reloadData()
     }
-
 }
 
 

@@ -16,15 +16,14 @@ import FirebaseCore
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     
     var window: UIWindow?
-    //    var settingsData : SettingsData?
     let reachability = try! Reachability()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        Firebase configure
+        //        Firebase configure
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
-
+        
         //        Config IQKeyboardManager
         IQKeyboardManager.shared.enable = true
         
@@ -33,9 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        
         self.addNetworkReachability()
-        //        self.getUserProfile()
         
         let vc: UIViewController
         if UserDefaults.standard.string(forKey: "headerToken") != nil {
@@ -48,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                 let userTypeId = UserDefaults.standard.string(forKey: "userTypeId")
                 let userData = UserSessionManager.shared.userDetail
                 if let userTypeId = userTypeId, userTypeId == "2", ((userData?.distributor_id == nil) || userData?.sales_person_id == nil) {
-                   let nextVC = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
+                    let nextVC = mainStoryboard.instantiateViewController(withIdentifier: "DefaultLoginData") as! DefaultLoginData
                     vc = GlobalFunctions.setRootNavigationController(currentVC: nextVC)
                 } else {
                     self.fetchAndStoredDataLocally()
@@ -73,18 +70,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     func registerRemoteNotification(application: UIApplication) {
         
         if #available(iOS 10.0, *) {
-          // For iOS 10 display notification (sent via APNS)
-          UNUserNotificationCenter.current().delegate = self
-
-          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-          UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: { _, _ in }
-          )
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: { _, _ in }
+            )
         } else {
-          let settings: UIUserNotificationSettings =
+            let settings: UIUserNotificationSettings =
             UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-          application.registerUserNotificationSettings(settings)
+            application.registerUserNotificationSettings(settings)
         }
         application.registerForRemoteNotifications()
     }

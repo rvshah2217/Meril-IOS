@@ -14,7 +14,6 @@ class SideMenuVC: UIViewController {
     @IBOutlet weak var userEmailLbl: UILabel!
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var closeBtn: UIButton!
-//    @IBOutlet weak var versionNoLbl: UILabel!
     
     var itemsArr = [[String:String]]()
     
@@ -26,14 +25,12 @@ class SideMenuVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-//        versionNoLbl.text = "Version: V" + appVersion
     }
     
     private func setItemsArr() {        
         itemsArr.append(["iconName": "ic_home", "title": "Home"])
         itemsArr.append(["iconName": "ic_aboutUs", "title": "About Us"])
         itemsArr.append(["iconName": "ic_contactUs", "title": "Contact Us"])
-//        itemsArr.append(["iconName": "ic_rateApp", "title": "Rate App"])
         itemsArr.append(["iconName": "ic_share", "title": "Share"])
         itemsArr.append(["iconName": "ic_privacyPolicy", "title": "Privacy Policy"])
         
@@ -83,7 +80,7 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
         self.sideMenuController?.hideLeftView()
         let navVC = sideMenuController?.rootViewController as! UINavigationController
         let userTypeId = UserDefaults.standard.string(forKey: "userTypeId")
-
+        
         switch indexPath.row {
         case 0:
             print("Don't do anything")
@@ -129,32 +126,6 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
         default:
             self.userLogoutConfirmationDialog()
         }
-        
-//        if indexPath.row == 0{
-//
-//        }else if indexPath.row == 1{
-//            let vc = PrivacyPolicyViewController(nibName: "PrivacyPolicyViewController", bundle: nil)
-//            vc.pageName = .AboutUs
-//            navVC.pushViewController(vc, animated: true)
-//        }else if indexPath.row == 2{
-//            let vc = ContactUsViewController(nibName: "ContactUsViewController", bundle: nil)
-//            navVC.pushViewController(vc, animated: true)
-//        }else if indexPath.row == 3{
-//            let text = "Shared text...."
-//            let textToShare = [ text ]
-//            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-//            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-//            self.present(activityViewController, animated: true, completion: nil)
-//        }else if indexPath.row == 4{
-//            let vc = PrivacyPolicyViewController(nibName: "PrivacyPolicyViewController", bundle: nil)
-//            vc.pageName = .PrivacyPolicy
-//            navVC.pushViewController(vc, animated: true)
-//        }else if indexPath.row == 5{
-//            let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
-//            self.navigationController!.pushViewController(vc, animated: true)
-//        } else {
-//            self.userLogoutConfirmationDialog()
-//        }
     }
     
     func userLogoutConfirmationDialog() {

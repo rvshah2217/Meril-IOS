@@ -9,7 +9,7 @@
 import UIKit
 
 class SettingsViewController: BaseViewController {
-
+    
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var constrainViewHeight: NSLayoutConstraint!
     @IBOutlet var collectionDataVI: [UIView]!
@@ -18,12 +18,12 @@ class SettingsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigation()
     }
+    
     //MARK:- Custome Method
     func setUI(){
         for i in collectionDataVI{
@@ -33,10 +33,11 @@ class SettingsViewController: BaseViewController {
         btnLogin.layer.cornerRadius = btnLogin.frame.height/2
         self.viewHeader.backgroundColor = ColorConstant.mainThemeColor
     }
+    
     func setNavigation(){
         settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeight,title: "Settings")
         navigationController?.setNavigationBarHidden(true, animated: false)
-
+        
         setBackButtononNavigation()
         pressButtonOnNavigaion { (isBack) in
             if(isBack){
@@ -44,14 +45,5 @@ class SettingsViewController: BaseViewController {
                 _ =  self.navigationController?.popViewController(animated: true)
             }
         }
-    }
-    //MARK: -@IBAction Method
-    @IBAction func OnClickLogin(_ sender: UIButton) {
-    }
-    @IBAction func OnClickEditProfile(_ sender: UIButton) {
-    }
-    @IBAction func OnClickUserName(_ sender: UIButton) {
-    }
-    @IBAction func OnClickPassword(_ sender: UIButton) {
     }
 }

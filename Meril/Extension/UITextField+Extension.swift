@@ -8,48 +8,36 @@
 import UIKit
 
 extension UITextField {
-        
-    func setIcon(imgName: String) {
-       let iconView = UIImageView(frame:
-                      CGRect(x: 10, y: 10, width: 20, height: 20))
-       iconView.image = UIImage(named: imgName)
-       let iconContainerView: UIView = UIView(frame:
-                      CGRect(x: 20, y: 0, width: 40, height: 40))
-       iconContainerView.addSubview(iconView)
-       leftView = iconContainerView
-       leftViewMode = .always
-    }
     
-//    func addImageViewToLeft(imgName: String) {
-//        self.leftView = UIImageView(image: UIImage(named: imgName))
-//        self.leftView?.frame = CGRect(x: 15, y: 5, width: 30 , height:30)
-//        self.leftViewMode = .always
-//    }
-//
-//    func addImageViewToRight(imgName: String) {
-//        self.rightView = UIImageView(image: UIImage(named: imgName))
-//        self.rightView?.frame = CGRect(x: self.frame.width - 35, y: 5, width: 30 , height:30)
-//        self.rightViewMode = .always
-//    }
+    func setIcon(imgName: String) {
+        let iconView = UIImageView(frame:
+                                    CGRect(x: 10, y: 10, width: 20, height: 20))
+        iconView.image = UIImage(named: imgName)
+        let iconContainerView: UIView = UIView(frame:
+                                                CGRect(x: 20, y: 0, width: 40, height: 40))
+        iconContainerView.addSubview(iconView)
+        leftView = iconContainerView
+        leftViewMode = .always
+    }
     
     func setPlaceholder(placeHolderStr: String, textColor: UIColor = .white) {
         self.attributedPlaceholder = NSAttributedString(string: placeHolderStr, attributes: [
             NSAttributedString.Key.foregroundColor: textColor.withAlphaComponent(0.5)
         ]
-)
+        )
     }
 }
 
 extension UIView {
     
     func rotate() {
-           let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-           rotation.toValue = NSNumber(value: Double.pi * 2)
-           rotation.duration = 4
-           rotation.isCumulative = true
-           rotation.repeatCount = Float.greatestFiniteMagnitude
-           self.layer.add(rotation, forKey: "rotationAnimation")
-       }
+        let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.toValue = NSNumber(value: Double.pi * 2)
+        rotation.duration = 4
+        rotation.isCumulative = true
+        rotation.repeatCount = Float.greatestFiniteMagnitude
+        self.layer.add(rotation, forKey: "rotationAnimation")
+    }
     
     func stopRotation() {
         self.layer.removeAnimation(forKey: "rotationAnimation")
@@ -57,8 +45,6 @@ extension UIView {
     
     func addShadowPath(radius: CGFloat){
         self.layer.cornerRadius = radius
-//        self.borderColor = UIColor.colorFromHex("#cccccc")
-//        self.borderWidth = 1
         let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: radius)
         self.clipsToBounds = true
         layer.masksToBounds = false
@@ -90,11 +76,11 @@ extension UIView {
     }
     
     private func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-           let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-           let mask = CAShapeLayer()
-           mask.path = path.cgPath
-           layer.mask = mask
-       }
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
     
     func setViewCorner(radius: CGFloat) {
         self.layer.cornerRadius = radius
@@ -120,7 +106,7 @@ extension Dictionary {
         guard jsonString != nil else {return nil}
         return jsonString//! as NSString
     }
-
+    
 }
 
 extension Notification.Name {

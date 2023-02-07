@@ -16,9 +16,6 @@ class StoreFormData {
     func saveFormData(schemeData: SurgeryInventoryModel) {
         //Update formdata on regular interval for example: update it if last added record was before 3 days
         let lastStoredFormData = fetchFormDataByDate()
-//        if let lastStoredDate = lastStoredFormData?.creationDate, (Calendar.current.dateComponents([.day], from: lastStoredDate, to: Date()).day ?? 0) < 4 {
-//            return
-//        }
         
         do {
             let encodedData = try JSONEncoder().encode(schemeData)
@@ -36,7 +33,7 @@ class StoreFormData {
             }
             try managedContext.save()
         } catch {
-            //GlobalFunctions.printToConsole(message: "Unable to save FormData: \(error.localizedDescription)")
+            GlobalFunctions.printToConsole(message: "Unable to save FormData: \(error.localizedDescription)")
         }
     }
     
@@ -45,35 +42,28 @@ class StoreFormData {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FormData")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         fetchRequest.fetchLimit = 1
-        //            let predicate = NSPredicate(format: "(creationDate == %@)", Date() as! NSDate)
-        //            fetchRequest.predicate = predicate
         do {
             let userTypesData = try managedContext.fetch(fetchRequest).first as? FormData
             return userTypesData
         } catch {
-            //GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
+            GlobalFunctions.printToConsole(message: "Unable to fetch FormData: \(error.localizedDescription)")
         }
         return nil
     }
     
     func fetchFormData() -> SurgeryInventoryModel? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FormData")
-//        fetchRequest.resultType = .dictionaryResultType
         do {
             guard let userTypesData = try managedContext.fetch(fetchRequest).first as? FormData else {
                 return nil
             }
-            //GlobalFunctions.printToConsole(message: "json fetch fromdata str:- \(userTypesData.responseStr)")
-            let jsonData = (userTypesData.responseStr ?? "").data(using: .utf8)!//try JSONEncoder().encode(userTypesData.responseStr!)
-
-            //JSONSerialization.data(withJSONObject: userTypesData.responseStr, options: .prettyPrinted)
             
-            //            let reqJSONStr = String(data: jsonData, encoding: .utf8)
+            let jsonData = (userTypesData.responseStr ?? "").data(using: .utf8)!
+            
             let userTypeObj = try JSONDecoder().decode(SurgeryInventoryModel.self, from: jsonData)            
             return userTypeObj
-            //            //GlobalFunctions.printToConsole(message: "Total fetch userTypes data: \(userTypesData.count)")
         } catch {
-            //GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
+            GlobalFunctions.printToConsole(message: "Unable to fetch records: \(error.localizedDescription)")
         }
         return nil
     }

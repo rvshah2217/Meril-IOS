@@ -9,14 +9,13 @@
 import UIKit
 
 class ProfileViewController: BaseViewController {
-
+    
     @IBOutlet weak var appVersionLbl: UILabel!
     @IBOutlet weak var constrainViewHeader: NSLayoutConstraint!
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var lblPhone: UILabel!
-//    @IBOutlet weak var lblPassword: UILabel!
     @IBOutlet weak var lblGender: UILabel!
     @IBOutlet weak var lblBio: UILabel!
     @IBOutlet weak var lblLocation: UILabel!
@@ -28,13 +27,12 @@ class ProfileViewController: BaseViewController {
     
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPhone: UITextField!
-//    @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtGender: UITextField!
     @IBOutlet weak var txtBio: UITextField!
     @IBOutlet weak var txtLocation: UITextField!
     
     @IBOutlet weak var DetailsView : UIView!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +42,6 @@ class ProfileViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        setNavigation()
         GlobalFunctions.configureStatusNavBar(navController: self.navigationController!, bgColor: ColorConstant.mainThemeColor, textColor: .white)
         self.navigationItem.title = "Profile"
     }
@@ -65,33 +62,22 @@ class ProfileViewController: BaseViewController {
         DetailsView.layer.shadowOpacity = 0.1
         DetailsView.layer.shadowRadius = 2.0
         DetailsView.layer.masksToBounds = false
-//        DetailsView.layer.cornerRadius = 20
         DetailsView.layer.borderColor = UIColor.lightGray.cgColor
         DetailsView.layer.borderWidth = 0.1
-
+        
         textfiledUserInteractionFalse()
         viewHeader.backgroundColor = ColorConstant.mainThemeColor
     }
-//    func setNavigation(){
-//        settupHeaderView(childView: self.viewHeader, constrain: constrainViewHeader,title: "Profile")
-//        navigationController?.setNavigationBarHidden(true, animated: false)
-//        setBackButtononNavigation()
-//        pressButtonOnNavigaion { (isBack) in
-//            if(isBack){
-//            }else{
-//                _ =  self.navigationController?.popViewController(animated: true)
-//            }
-//        }
-//
-//    }
     
     private func fetchUserProfile() {
         if appDelegate.reachability.connection == .unavailable {
             self.setUserData()
             return
         }
-//        Api call 
+        //        Api call
+        SHOW_CUSTOM_LOADER()
         LoginServices.getUserProfile { responseData, error in
+            HIDE_CUSTOM_LOADER()
             //            store user data into UserDefaults
             UserSessionManager.shared.userDetail = responseData?.userProfile
             self.setUserData()
@@ -100,10 +86,7 @@ class ProfileViewController: BaseViewController {
     
     func setUserData() {
         appVersionLbl.text = "Version:V" + appVersion
-//        let userInfo = UserDefaults.standard.string(forKey: "UserProfileData")
-//        let jsonData = (userInfo ?? "").data(using: .utf8)!
-//        if let userInfo = try? JSONDecoder().decode(UserProfileData.self, from: jsonData) {
-//        if let userInfo = userData {
+        
         if let userInfo = UserSessionManager.shared.userDetail {
             self.uniqueIdTxt.text = userInfo.unique_id ?? "N/A"
             if let profile = userInfo.profile {
@@ -121,7 +104,6 @@ class ProfileViewController: BaseViewController {
             address = address + (userInfo.country ?? "Country") + "-" + String(userInfo.pincode ?? 0)
             self.txtLocation.text = address
         }
-//        self.imgProfile.image = UIImage
     }
     
     func textfiledUserInteractionFalse(){
@@ -135,5 +117,4 @@ class ProfileViewController: BaseViewController {
     @IBAction func OnClickBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-    
 }

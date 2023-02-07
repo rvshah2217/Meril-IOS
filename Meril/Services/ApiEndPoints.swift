@@ -59,9 +59,9 @@ extension EndPointsItem: EndPointType {
     
     var baseURL: String {
         switch APIManager.networkEnviroment {
-        case .dev: return "https://meril.meritrack.in/meritrack/api/"//"https://houseofgames.in/merillife/api/"
-        case .production: return "https://meril.meritrack.in/meritrack/api/"//"http://RunWayCards.com/RWCWebApi/LiveAccount/mobileapi/"
-        case .stage: return "https://meril.meritrack.in/meritrack/api/"//"http://RunWayCards.com/RWCWebApi/LiveAccount/mobileapi/"
+        case .dev: return "https://meritrack.agensy.in/api/"//"https://meril.meritrack.in/meritrack/api/"
+        case .production: return "https://meritrack.agensy.in/api/"//"https://meril.meritrack.in/meritrack/api/"
+        case .stage: return "https://meritrack.agensy.in/api/"//"https://meril.meritrack.in/meritrack/api/"
         }
     }
     
@@ -128,12 +128,6 @@ extension EndPointsItem: EndPointType {
     
     var headers: HTTPHeaders? {
         return tokenHeader
-//        switch self {
-//        case .login, .getUserTypesApi:
-//            return nil//["Accept": "application/json"]
-//        default:
-//            return tokenHeader
-//        }
     }
     
     var url: URL {

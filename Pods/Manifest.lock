@@ -69,7 +69,6 @@ PODS:
   - ImageSlideshow/SDWebImage (1.9.2):
     - ImageSlideshow/Core
     - SDWebImage (>= 3.7)
-  - iOSDropDown (0.3.4)
   - IQKeyboardManagerSwift (6.5.9)
   - LGSideMenuController (3.1.2)
   - nanopb (2.30908.0):
@@ -91,7 +90,6 @@ DEPENDENCIES:
   - FullMaterialLoader
   - ImageSlideshow (~> 1.9.0)
   - ImageSlideshow/SDWebImage
-  - iOSDropDown
   - IQKeyboardManagerSwift
   - LGSideMenuController
   - ReachabilitySwift
@@ -109,7 +107,6 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - ImageSlideshow
-    - iOSDropDown
     - IQKeyboardManagerSwift
     - LGSideMenuController
     - nanopb
@@ -139,7 +136,6 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
-  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   LGSideMenuController: 0c7b155b0dbdf14bf8b88d5ac363c5fe1584bb23
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
@@ -147,6 +143,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
 
-PODFILE CHECKSUM: 0874883a58304e03fa0a09ef2c5f19c6be94cb01
+PODFILE CHECKSUM: db3ba805b6c0456b7fd23be4b01c556170551468
 
 COCOAPODS: 1.11.3

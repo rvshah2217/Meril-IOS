@@ -17,39 +17,16 @@ class AddInventoryViewController: BaseViewController {
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var constrainViewHeaderHeight: NSLayoutConstraint!
     @IBOutlet weak var DetailsScrollView: UIScrollView!
-    var addInventoryReqObj: AddSurgeryRequestModel?
-    let successToastTime = 1.0
-
+    
     @IBOutlet weak var txtCity: UITextField!
     @IBOutlet weak var txtHospital: UITextField!
     @IBOutlet weak var txtDistributor: UITextField!
     @IBOutlet weak var txtSaleperson: UITextField!
-
-//    @IBOutlet weak var txtCity: DropDown! {
-//        didSet {
-//            self.txtCity.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-//
-//    @IBOutlet weak var txtHospital: DropDown! {
-//        didSet {
-//            self.txtHospital.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-//
-//    @IBOutlet weak var txtDistributor: DropDown! {
-//        didSet {
-//            self.txtDistributor.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
-//
-//    @IBOutlet weak var txtSaleperson: DropDown! {
-//        didSet {
-//            self.txtSaleperson.selectedRowColor = ColorConstant.mainThemeColor// ?? UIColor.systemBlue
-//        }
-//    }
     
     @IBOutlet weak var btnScanNow: UIButton!
+    
+    var addInventoryReqObj: AddSurgeryRequestModel?
+    let successToastTime = 1.0
     
     var hospitalsArr: [Hospitals] = []
     var cityArr: [Cities] = []
@@ -63,15 +40,9 @@ class AddInventoryViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.internetConnectionLost), name: .networkLost, object: nil)
         setUI()
         self.fetchFormData()
-        // Do any additional setup after loading the view.
     }
-    
-//    deinit {
-//        NotificationCenter.default.removeObserver(self, name: .networkLost, object: nil)
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -96,11 +67,6 @@ class AddInventoryViewController: BaseViewController {
         txtCity.setPlaceholder(placeHolderStr: "Select City")
         txtDistributor.setPlaceholder(placeHolderStr: "Select Distributor")
         txtSaleperson.setPlaceholder(placeHolderStr: "Select Saleperson")
-        
-//        self.txtHospital.rowHeight = 40
-//        self.txtCity.rowHeight = 40
-//        self.txtDistributor.rowHeight = 40
-//        self.txtSaleperson.rowHeight = 40
         
         setRightButton(txtHospital, image: UIImage(named: "ic_dropdown") ?? UIImage())
         setRightButton(txtCity, image: UIImage(named: "ic_dropdown") ?? UIImage())
@@ -186,7 +152,9 @@ extension AddInventoryViewController {
     }
     
     func fetchFormDataFromServer() {
+        SHOW_CUSTOM_LOADER()
         CommonFunctions.getAllFormData { response in
+            HIDE_CUSTOM_LOADER()
             guard let surgeryObj = response else { return }
             self.setAllDropDownData(formDataResponse: surgeryObj)
         }
@@ -197,35 +165,14 @@ extension AddInventoryViewController {
         //        City dropdown
         self.cityArr = formDataResponse.cities ?? []
         self.txtCity.isEnabled = !self.cityArr.isEmpty
-//        self.txtCity.optionArray = self.cityArr.map({ item -> String in
-//            item.name ?? ""
-//        })
-        
-//        self.txtCity.didSelect { selectedText, index, id in
-//            self.selectedCityId = self.cityArr[index].id
-//            //            refresh hospital data when user select particular city
-//            self.refreshHospitalByCity(selectedCityIndex: index)
-//        }
         
         //        set distributor array
         self.distributorsArr = formDataResponse.distributors ?? []
         self.txtDistributor.isEnabled = !self.distributorsArr.isEmpty
-//        self.txtDistributor.optionArray = self.distributorsArr.map({ item -> String in
-//            item.name ?? ""
-//        })
-//        self.txtDistributor.didSelect { selectedText, index, id in
-//            self.selectedDistributorId = self.distributorsArr[index].id
-//        }
         
         //        set salesperson array
         self.sales_personsArr = formDataResponse.sales_persons ?? []
         self.txtSaleperson.isEnabled = !self.sales_personsArr.isEmpty
-//        self.txtSaleperson.optionArray = self.sales_personsArr.map({ item -> String in
-//            item.name ?? ""
-//        })
-//        self.txtSaleperson.didSelect { selectedText, index, id in
-//            self.selectedSalesPersonId = self.sales_personsArr[index].id
-//        }
         
         setDefaultData()
     }
@@ -234,12 +181,6 @@ extension AddInventoryViewController {
     func refreshHospitalByCity(selectedCityIndex: Int) {
         self.hospitalsArr = cityArr[selectedCityIndex].hospitals ?? []
         self.txtHospital.isEnabled = !self.hospitalsArr.isEmpty
-//        self.txtHospital.optionArray = self.hospitalsArr.map({ item -> String in
-//            item.name ?? ""
-//        })
-//        self.txtHospital.didSelect { selectedText, index, id in
-//            self.selectedHospitalId = self.hospitalsArr[index].id
-//        }
     }
     
     private func setDefaultData() {
@@ -249,7 +190,6 @@ extension AddInventoryViewController {
         
         let storedUserData = UserSessionManager.shared.userDetail
         
-        //        let userDefault = UserDefaults.standard
         //        set distributor
         if let distributorId = storedUserData?.distributor_id {
             selectedDistributorId = Int(distributorId)
@@ -364,10 +304,12 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
     }
     
     func saveInventoryToCoreData(onSubmitAction: Bool = false) {
+        
         guard let stockObj = addInventoryReqObj else {
             HIDE_CUSTOM_LOADER()
             return
         }
+        
         //        Save records to Core data
         AddStockToCoreData.sharedInstance.saveStockData(stockData: stockObj)
         HIDE_CUSTOM_LOADER()
@@ -377,17 +319,16 @@ extension AddInventoryViewController: BarCodeScannerDelegate {
             }
         }
     }
-    
-//    @objc func internetConnectionLost() {
-//    }
 }
 
 //#MARK: Textfield delegate
 extension AddInventoryViewController: UITextFieldDelegate {
     
     public func  textFieldDidBeginEditing(_ textField: UITextField) {
+        self.view.endEditing(true)
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "DropDownMenuVC") as! DropDownMenuVC
         vc.delegate = self
+        
         //MenuType: 0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
         switch textField {
         case txtCity:
@@ -401,6 +342,10 @@ extension AddInventoryViewController: UITextFieldDelegate {
             vc.titleStr = "Select Sales Person"
             break
         case txtHospital:
+            if selectedCityId == nil {
+                GlobalFunctions.showToast(controller: self, message: UserMessages.priorCitySelectionError, seconds: errorDismissTime)
+                return
+            }
             vc.menuType = 4
             vc.objArr = hospitalsArr
             vc.titleStr = "Select Hospital"
@@ -413,14 +358,13 @@ extension AddInventoryViewController: UITextFieldDelegate {
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         self.navigationController?.present(vc, animated: false, completion: nil)
-//        self.present(vc, animated: true, completion: nil)
     }
 }
 
 //#MARK: DropDown delegate
 extension AddInventoryViewController: DropDownMenuDelegate {
     
-//MenuType: 0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
+    //MenuType: 0: city, 1: SalesPerson, 2: schemeArr, 3: gender, 4: hospital, 5: doctors, 6: distributors
     func selectedDropDownItem(menuType: Int, menuObj: Any) {
         print("selected menu object: \(menuObj)")
         switch menuType {

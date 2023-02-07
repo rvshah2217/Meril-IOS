@@ -8,36 +8,23 @@
 import UIKit
 
 class InventoryListVC: UIViewController {
-
+    
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var viewBK: UIView!
     @IBOutlet weak var tableOuterView: UIView!
     @IBOutlet weak var noDataFoundLbl: UIView!
-
+    
     var inventoryArr: [SurgeryData] = []
     var filteredInventoryArr: [SurgeryData] = []
     var isFilterApplied: Bool = false
-   
-//    var stockArrWithSyncFalse: [AddSurgeryRequestModel] = []
-//    var hospitalsArr: [Hospitals] = []
-//    var doctorsArr: [Hospitals] = []
-//    var salesPersonsArr: [Hospitals] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.stockAddedToServer), name: .stockAdded, object: nil)
         setUI()
-//        fetch hospital, doctor and sales person data from local database
-//        self.fetchStaticDataFromCoreData()
-//        self.fetchInventoryList()
-        if appDelegate.reachability.connection == .unavailable {
-            self.fetchStockListFromCoreData(isUpdateUsingNotification: false)
-        } else {
-            self.fetchInventoryListFromServer(isUpdateUsingNotification: false)
-        }
-//        fetchAddStockDataWithoutSync()
+        fetchInventory(isUpdateUsingNotification: false)
     }
     
     deinit {
@@ -60,26 +47,24 @@ class InventoryListVC: UIViewController {
     
     //MARK:- Custome Method
     func setUI() {
-//        self.navigationItem.title = "Physical Inventory Report"        
-
+        
         txtSearch.delegate = self
         txtSearch.returnKeyType = .done
-
+        
         txtSearch.layer.cornerRadius = txtSearch.frame.height / 2
         txtSearch.backgroundColor = UIColor.white
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtSearch.frame.height))
         txtSearch.leftViewMode = UITextField.ViewMode.always;
         txtSearch.leftView = view;
-
+        
         viewBK.backgroundColor = ColorConstant.mainThemeColor
         viewBK.addCornerAtBotttoms(radius: 30)
-
+        
         tblView.register(UINib.init(nibName:"SurgeryListTableViewCell", bundle: nil), forCellReuseIdentifier: "SurgeryListTableViewCell")
-//        tblView.register(UINib.init(nibName:"SyncCell", bundle: nil), forCellReuseIdentifier: "syncCell")
         tblView.delegate = self
         tblView.dataSource = self
         tblView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-
+        
         tblView.addCornerAtTops(radius: 20)
         
         //        Add Shadow
@@ -95,56 +80,41 @@ class InventoryListVC: UIViewController {
             //            delete record from coreData
             AddStockToCoreData.sharedInstance.deleteStockByStockId(stockId: stockId)
         }
-        self.fetchStockListFromCoreData(isUpdateUsingNotification: true)
+        self.fetchInventory(isUpdateUsingNotification: true)
     }
-    
-//    func fetchStaticDataFromCoreData() {
-//        if let formDataObj = StoreFormData.sharedInstance.fetchFormData() {
-//            self.hospitalsArr = formDataObj.hospitals ?? []
-//            self.doctorsArr = formDataObj.doctors ?? []
-//            self.salesPersonsArr = formDataObj.sales_persons ?? []
-//            self.doctorsArr = formDataObj.doctors ?? []
-//        }
-//    }
     
     func fetchStockListFromCoreData(isUpdateUsingNotification: Bool) {
         SHOW_CUSTOM_LOADER()
         self.inventoryArr = StockList_CoreData.sharedInstance.fetchStocksData() ?? []
-        if self.inventoryArr.isEmpty {
-            self.fetchInventoryListFromServer(isUpdateUsingNotification: isUpdateUsingNotification)
-            return
-        }
         HIDE_CUSTOM_LOADER()
         self.fetchAddStockDataWithoutSync()
         self.noDataFoundLbl.isHidden = true
-//        self.tblView.reloadData()
     }
     
     func fetchInventoryListFromServer(isUpdateUsingNotification: Bool = false) {
-        SHOW_CUSTOM_LOADER()
+        if !isUpdateUsingNotification {
+            SHOW_CUSTOM_LOADER()
+        }
         SurgeryServices.getInventories { response, error in
             HIDE_CUSTOM_LOADER()
             guard let _ = error else {
                 self.inventoryArr = response?.surgeryData ?? []
                 self.fetchAddStockDataWithoutSync()
                 self.noDataFoundLbl.isHidden = !self.inventoryArr.isEmpty
-//                self.tblView.reloadData()
-                if isUpdateUsingNotification {
-                    DispatchQueue.global(qos: .background).async {
-                        self.tblView.reloadData()
-                        //                save response to the coreData
-                        StockList_CoreData.sharedInstance.saveStocksToCoreData(schemeData: self.inventoryArr, isForceSave: true)
-                    }
-                } else {
-                    self.tblView.reloadData()
-                    //                save response to the coreData
-                    StockList_CoreData.sharedInstance.saveStocksToCoreData(schemeData: self.inventoryArr, isForceSave: true)
-                }
-
+                self.tblView.reloadData()
+                //                save response to the coreData
+                StockList_CoreData.sharedInstance.saveStocksToCoreData(schemeData: self.inventoryArr, isForceSave: true)
                 return
             }
             self.noDataFoundLbl.isHidden = !self.inventoryArr.isEmpty
-            //GlobalFunctions.printToConsole(message: "Unable to fetch surgeries: \(err)")
+        }
+    }
+    
+    private func fetchInventory(isUpdateUsingNotification: Bool) {
+        if appDelegate.reachability.connection == .unavailable {
+            self.fetchStockListFromCoreData(isUpdateUsingNotification: isUpdateUsingNotification)
+        } else {
+            self.fetchInventoryListFromServer(isUpdateUsingNotification: isUpdateUsingNotification)
         }
     }
     
@@ -154,47 +124,24 @@ class InventoryListVC: UIViewController {
         if self.inventoryArr.isEmpty {
             self.inventoryArr = stockArrWithSyncFalse
         } else {
-            //GlobalFunctions.printToConsole(message: "before merging total rows: \(inventoryArr.count)")
             stockArrWithSyncFalse += inventoryArr
             inventoryArr = stockArrWithSyncFalse
-            //GlobalFunctions.printToConsole(message: "After merging total rows: \(inventoryArr.count)")
         }
-//        for surgery in stockArrWithSyncFalse { //.reversed() {
-//            var surgeryObj = SurgeryData()
-//            surgeryObj.addSurgeryTempObj = surgery
-//            self.inventoryArr.insert(surgeryObj, at: 0)
-//        }
-//        //GlobalFunctions.printToConsole(message: "self.surgeryArr.count: \(self.inventoryArr.count)")
         self.tblView.reloadData()
     }
 }
 extension InventoryListVC:UITableViewDelegate,UITableViewDataSource{
-
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return isFilterApplied ? filteredInventoryArr.count : inventoryArr.count
-//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return isFilterApplied ? filteredInventoryArr.count : inventoryArr.count
-//        let item = isFilterApplied ? filteredInventoryArr[section] : inventoryArr[section]
-//        if let addSurgeryObj = item.addSurgeryTempObj {
-//            return (addSurgeryObj.coreDataBarcodes ?? []).count
-//        }
         return isFilterApplied ? filteredInventoryArr.count : inventoryArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let itemDetail = isFilterApplied ? filteredInventoryArr[indexPath.row] : inventoryArr[indexPath.row]
-//        if let addSurgeryObj = itemDetail.addSurgeryTempObj, let barcodes = addSurgeryObj.coreDataBarcodes {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "syncCell") as! SyncCell
-////            let item = barcodes[indexPath.row]
-//            cell.barCodeLbl.text = "Barcode: " + itemDetail.//item.barcode
-//            return cell
-//        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SurgeryListTableViewCell") as! SurgeryListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SurgeryListTableViewCell") as! SurgeryListTableViewCell
         cell.patientNameLbl.isHidden = true
         cell.doctorNameLbl.isHidden = true
-
+        
         if let addSurgeryObj = itemDetail.addSurgeryTempObj {
             cell.isOfflineData = true
             cell.surgeryOrStockIdLbl.text = "Inventory Code: " + (addSurgeryObj.surgeryId ?? "N/A")
@@ -204,10 +151,9 @@ extension InventoryListVC:UITableViewDelegate,UITableViewDataSource{
             cell.hospitalNameLbl.text = "Hospital: " + (addSurgeryObj.hospitalName ?? "N/A")
             
             //            Set sales person name
-            cell.salesPersonLbl.text = "Sales person: " + (addSurgeryObj.salesPersonName ?? "N/A")//(itemDetail.sales_person?.fullname ?? "N/A")
+            cell.salesPersonLbl.text = "Sales person: " + (addSurgeryObj.salesPersonName ?? "N/A")
         } else {
             cell.isOfflineData = false
-            //        cell.itemDetail = isFilterApplied ? filteredInventoryArr[indexPath.row] : inventoryArr[indexPath.row]
             cell.surgeryOrStockIdLbl.text = "Inventory Code: " + (itemDetail.unique_id ?? "N/A")
             cell.lblDate.text = "Date: " + (itemDetail.created_at ?? "\(Date())")
             
@@ -225,9 +171,8 @@ extension InventoryListVC:UITableViewDelegate,UITableViewDataSource{
             cell.viewMain.layer.borderColor = ColorConstant.mainThemeColor.cgColor
             cell.barCodeStatus.isHidden = true
         }
-
-            return cell
-//        }
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -241,7 +186,7 @@ extension InventoryListVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = isFilterApplied ? filteredInventoryArr[indexPath.row] : inventoryArr[indexPath.row]
         let vc = BarCodeListVC()//nibName: "BarCodeListVC", bundle: nil)
-
+        
         if item.addSurgeryTempObj == nil {
             vc.barCodesArr = item.scans ?? []
         }  else {
